@@ -2,7 +2,6 @@ package ba.posao.models;
 
 import java.io.Serializable;
 
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.PrePersist;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 
 @Entity
@@ -28,6 +25,17 @@ public class Korisnici implements Serializable {
     private String password;
     private String email;
     
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idkorisnika")
+    private Nezaposleni nezaposleni;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idkorisnika")
+    private Admin admin;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idkorisnika")
+    private Poslodavci poslodavac;
    
 
     
@@ -35,13 +43,13 @@ public class Korisnici implements Serializable {
     	
     }
     
-    public Integer getId() {
-    	return idKorisnika;
-    }
-    
-    public void setId(Integer Id) {
-    	this.idKorisnika = Id;
-    }
+	public void setIdKorisnika(Integer idKorisnika) {
+		this.idKorisnika = idKorisnika;
+	}
+
+	public Nezaposleni getNezaposleni() {
+		return nezaposleni;
+	}
     
 	public String getUsername() {
 		return username;
@@ -61,5 +69,31 @@ public class Korisnici implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public Integer getIdKorisnika() {
+		return idKorisnika;
+	}
+
+	public void setNezaposleni(Nezaposleni nezaposleni) {
+		this.nezaposleni = nezaposleni;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	public Poslodavci getPoslodavac() {
+		return poslodavac;
+	}
+
+	public void setPoslodavac(Poslodavci poslodavac) {
+		this.poslodavac = poslodavac;
+	}
+	
+	
 
 }

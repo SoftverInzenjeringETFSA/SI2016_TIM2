@@ -18,8 +18,12 @@ import org.hibernate.annotations.Parameter;
 @Entity
 public class Nezaposleni implements Serializable {
 	private static final long serialVersionUID = 1L;
-	@Column(name="idkorisnika")
+	@Id
+	@GeneratedValue(generator="SharedPrimaryKeyGenerator")
+	@GenericGenerator(name="SharedPrimaryKeyGenerator",strategy="foreign",parameters =  @Parameter(name="property", value="korisnici"))
+	@Column(name = "idkorisnika", unique = true, nullable = false)
 	private Integer idKorisnika;
+	
 	private Korisnici korisnik;
 	
 	private String ime;
@@ -27,10 +31,6 @@ public class Nezaposleni implements Serializable {
 	private String cv;
 	private Integer privatanProfil;
 	
-	@Id
-	@GeneratedValue(generator="SharedPrimaryKeyGenerator")
-	@GenericGenerator(name="SharedPrimaryKeyGenerator",strategy="foreign",parameters =  @Parameter(name="property", value="korisnici"))
-	@Column(name = "idkorisnika", unique = true, nullable = false)
 	public Integer getId() {
 	 	return idKorisnika;
     }

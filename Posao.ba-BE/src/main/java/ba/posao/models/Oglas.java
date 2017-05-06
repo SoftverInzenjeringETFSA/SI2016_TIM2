@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -16,10 +17,10 @@ public class Oglas {
 	@Column(name="idoglasa")
 	private Integer idOglasa;
     
-    @OneToOne
+    @ManyToOne
     private Poslodavci poslodavac;
     
-    @OneToOne
+    @ManyToOne
     private Lokacije lokacija;
     
     @OneToOne
@@ -33,11 +34,11 @@ public class Oglas {
     
     private Integer prioritet;
 
-	public Integer getId() {
+	public Integer getIdOglasa() {
 		return idOglasa;
 	}
 
-	public void setId(Integer idOglasa) {
+	public void setIdOglasa(Integer idOglasa) {
 		this.idOglasa = idOglasa;
 	}
 
