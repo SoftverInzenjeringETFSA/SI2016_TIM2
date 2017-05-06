@@ -2,7 +2,9 @@ package ba.posao.models;
 
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +13,7 @@ import javax.persistence.OneToMany;
 import ba.posao.models.PoljaTemplatea;
 import ba.posao.models.OglasPodaci;
 
+@Entity
 public class Template {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -42,8 +45,9 @@ public class Template {
 		this.naziv = naziv;
 	}
 	
-	
-    public ArrayList<PoljaTemplatea> getPoljaTemplatea() {
+
+    @OneToMany(mappedBy = "template", cascade = CascadeType.ALL)
+	public ArrayList<PoljaTemplatea> getPoljaTemplatea() {
 		return poljaTemplatea;
 	}
 
@@ -51,6 +55,7 @@ public class Template {
 		this.poljaTemplatea = poljaTemplatea;
 	}
 
+    @OneToMany(mappedBy = "template", cascade = CascadeType.ALL)
 	public ArrayList<OglasPodaci> getOglasPodaci() {
 		return oglasPodaci;
 	}

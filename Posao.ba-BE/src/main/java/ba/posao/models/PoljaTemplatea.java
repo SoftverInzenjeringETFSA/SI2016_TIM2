@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import ba.posao.models.Template;
@@ -29,6 +30,8 @@ public class PoljaTemplatea {
 		this.id = id;
 	}
 
+	@ManyToOne
+    @JoinColumn(name = "idTemplate")
 	public Template getTemplate() {
 		return template;
 	}
