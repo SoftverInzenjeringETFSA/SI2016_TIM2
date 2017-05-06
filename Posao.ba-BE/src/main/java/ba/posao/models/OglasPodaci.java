@@ -1,41 +1,49 @@
 package ba.posao.models;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import ba.posao.models.Template;
+import ba.posao.models.PoljaTemplatea;
+
 @Entity
-public class OglasPodaci {
-	
-	private Integer id;
-	
-    @OneToOne(targetEntity=Oglas.class)
-    @PrimaryKeyJoinColumn
-	private Oglas oglas;
-	
-	@OneToMany(targetEntity=Template.class, mappedBy="template")
-	private ArrayList<Template> template = new ArrayList<>();
-	
-	@OneToMany(targetEntity=PoljaTemplatea.class, mappedBy="poljatemplatea")
-	private ArrayList<PoljaTemplatea> poljaTemplatea = new ArrayList<>();
-	
-	private String vrijednost;
+@Table(name="oglaspodaci")
+public class OglasPodaci implements Serializable {
+	private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(generator="SharedPrimaryKeyGenerator")
-    @GenericGenerator(name="SharedPrimaryKeyGenerator",strategy="foreign",parameters =  @Parameter(name="property", value="oglas"))
+    @GenericGenerator(name="SharedPrimaryKeyGenerator",strategy="foreign",parameters =  @Parameter(name="property", value="idoglasa"))
     @Column(name = "idoglasa", unique = true, nullable = false)
+	private Integer id;
+	
+    @OneToOne(targetEntity=Oglas.class)
+    @PrimaryKeyJoinColumn(name="idoglasa")
+	private Oglas oglas;
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="idtemplate")
+	private Template template;
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="idpolja")
+	private PoljaTemplatea poljeTemplatea;
+	
+	private String vrijednost;
+
 	public Integer getId() {
 		return id;
 	}
@@ -52,23 +60,21 @@ public class OglasPodaci {
 		this.oglas = oglas;
 	}
 
-	@ManyToOne
-    @JoinColumn(name = "idTemplate")
-	public ArrayList<Template> getTemplate() {
+
+	public Template getTemplate() {
 		return template;
 	}
 
-	public void setTemplate(ArrayList<Template> template) {
+	public void setTemplate(Template template) {
 		this.template = template;
 	}
 
-	
-	public ArrayList<PoljaTemplatea> getPoljaTemplatea() {
-		return poljaTemplatea;
+	public PoljaTemplatea getPoljeTemplatea() {
+		return poljeTemplatea;
 	}
 
-	public void setPoljaTemplatea(ArrayList<PoljaTemplatea> poljaTemplatea) {
-		this.poljaTemplatea = poljaTemplatea;
+	public void setPoljeTemplatea(PoljaTemplatea poljeTemplatea) {
+		this.poljeTemplatea = poljeTemplatea;
 	}
 
 	public String getVrijednost() {

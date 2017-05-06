@@ -35,6 +35,9 @@ nbdist/
 # Log file
 *.log
 
+#Maven
+*.lst
+
 # Package Files #
 *.jar
 *.war

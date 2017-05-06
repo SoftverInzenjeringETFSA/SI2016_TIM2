@@ -1,32 +1,41 @@
 package ba.posao.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import ba.posao.models.PoljaTemplatea;
 import ba.posao.models.OglasPodaci;
 
 @Entity
-public class Template {
-    @Id
+public class Template implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="idtemplate")
 	private Integer id;
 	
 	private String naziv;
 	
-	@OneToMany
-	private ArrayList<PoljaTemplatea> poljaTemplatea = new ArrayList<>();
+	@OneToMany(mappedBy="template",  cascade=CascadeType.ALL)
+	private List<PoljaTemplatea> poljaTemplatea = new ArrayList<>();
 	
-	@OneToMany
-	private ArrayList<OglasPodaci> oglasPodaci = new ArrayList<>();
+	@OneToMany(mappedBy="template", cascade=CascadeType.ALL)
+	private List<OglasPodaci> oglasPodaci = new ArrayList<>();
 
 
 	public Integer getId() {
@@ -46,8 +55,7 @@ public class Template {
 	}
 	
 
-    @OneToMany(mappedBy = "template", cascade = CascadeType.ALL)
-	public ArrayList<PoljaTemplatea> getPoljaTemplatea() {
+	public List<PoljaTemplatea> getPoljaTemplatea() {
 		return poljaTemplatea;
 	}
 
@@ -55,8 +63,7 @@ public class Template {
 		this.poljaTemplatea = poljaTemplatea;
 	}
 
-    @OneToMany(mappedBy = "template", cascade = CascadeType.ALL)
-	public ArrayList<OglasPodaci> getOglasPodaci() {
+	public List<OglasPodaci> getOglasPodaci() {
 		return oglasPodaci;
 	}
 
