@@ -1,4 +1,14 @@
-ba/posao/beans/Kantoni.class
-ba/posao/beans/KantoniRepository.class
+ba/posao/models/Kategorije.class
+ba/posao/models/Nezaposleni.class
+ba/posao/models/Admin.class
+ba/posao/models/Lokacije.class
+ba/posao/models/Kantoni.class
 ba/posao/controllers/MainController.class
+ba/posao/models/Template.class
 ba/posao/Application.class
+ba/posao/models/Oglas.class
+ba/posao/repositories/KantoniRepository.class
+ba/posao/models/OglasPodaci.class
+ba/posao/models/PoljaTemplatea.class
+ba/posao/models/Poslodavci.class
+ba/posao/models/Korisnici.class

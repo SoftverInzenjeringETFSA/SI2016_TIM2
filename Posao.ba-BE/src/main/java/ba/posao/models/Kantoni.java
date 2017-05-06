@@ -1,4 +1,6 @@
-package ba.posao.beans;
+package ba.posao.models;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Kantoni {
+public class Kantoni implements Serializable  {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="idkantona")

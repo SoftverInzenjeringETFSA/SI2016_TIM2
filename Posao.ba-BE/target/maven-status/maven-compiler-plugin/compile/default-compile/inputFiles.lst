@@ -1,4 +1,14 @@
-/home/ervin/Posao.ba-BE/src/main/java/ba/posao/beans/Kantoni.java
+/home/ervin/Posao.ba-BE/src/main/java/ba/posao/models/Nezaposleni.java
+/home/ervin/Posao.ba-BE/src/main/java/ba/posao/models/Kategorije.java
+/home/ervin/Posao.ba-BE/src/main/java/ba/posao/repositories/KantoniRepository.java
+/home/ervin/Posao.ba-BE/src/main/java/ba/posao/models/Oglas.java
+/home/ervin/Posao.ba-BE/src/main/java/ba/posao/models/Poslodavci.java
+/home/ervin/Posao.ba-BE/src/main/java/ba/posao/models/OglasPodaci.java
+/home/ervin/Posao.ba-BE/src/main/java/ba/posao/models/PoljaTemplatea.java
+/home/ervin/Posao.ba-BE/src/main/java/ba/posao/models/Template.java
+/home/ervin/Posao.ba-BE/src/main/java/ba/posao/models/Admin.java
+/home/ervin/Posao.ba-BE/src/main/java/ba/posao/models/Lokacije.java
 /home/ervin/Posao.ba-BE/src/main/java/ba/posao/controllers/MainController.java
-/home/ervin/Posao.ba-BE/src/main/java/ba/posao/beans/KantoniRepository.java
+/home/ervin/Posao.ba-BE/src/main/java/ba/posao/models/Kantoni.java
 /home/ervin/Posao.ba-BE/src/main/java/ba/posao/Application.java
+/home/ervin/Posao.ba-BE/src/main/java/ba/posao/models/Korisnici.java
