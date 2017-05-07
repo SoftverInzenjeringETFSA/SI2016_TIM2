@@ -29,13 +29,17 @@ public class OglasPodaci implements Serializable {
     @Id
     @GeneratedValue(generator="SharedPrimaryKeyGenerator")
     @GenericGenerator(name="SharedPrimaryKeyGenerator",strategy="foreign",parameters =  @Parameter(name="property", value="idoglasa"))
-    @Column(name = "idoglasa", unique = false, nullable = false)
+    @Column(name = "idpolja", unique = false, nullable = false)
 	private Integer id;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="idtemplate")
 	private Template template;
 			
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="idpolja")
+	private List<PoljaTemplatea> poljaTemplatea;
+	
 	private String vrijednost;
 
 	public Integer getId() {
@@ -61,5 +65,13 @@ public class OglasPodaci implements Serializable {
 
 	public void setVrijednost(String vrijednost) {
 		this.vrijednost = vrijednost;
+	}
+	
+	public List<PoljaTemplatea> getPoljaTemplatea() {
+		return poljaTemplatea;
+	}
+
+	public void setPoljaTemplatea(List<PoljaTemplatea> poljaTemplatea) {
+		this.poljaTemplatea = poljaTemplatea;
 	}
 }

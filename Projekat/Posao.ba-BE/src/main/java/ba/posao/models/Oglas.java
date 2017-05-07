@@ -52,9 +52,6 @@ public class Oglas implements Serializable {
     @JoinColumn(name="idoglasa")
     private List<OglasPodaci> oglasPodaci;
     
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="idpolja")
-	private List<PoljaTemplatea> poljaTemplatea;
 
 	public Integer getIdOglasa() {
 		return idOglasa;
@@ -144,13 +141,7 @@ public class Oglas implements Serializable {
 		this.oglasPodaci = oglasPodaci;
 	}
     
-	public List<PoljaTemplatea> getPoljaTemplatea() {
-		return poljaTemplatea;
-	}
 
-	public void setPoljaTemplatea(List<PoljaTemplatea> poljaTemplatea) {
-		this.poljaTemplatea = poljaTemplatea;
-	}
 	
 	
     
