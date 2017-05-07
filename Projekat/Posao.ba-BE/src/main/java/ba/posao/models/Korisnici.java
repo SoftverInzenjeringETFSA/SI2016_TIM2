@@ -98,6 +98,10 @@ public class Korisnici implements Serializable {
 		this.poslodavac = poslodavac;
 	}
 	
+	@Override
+    public String toString() {
+        return String.format("Korisnik[id=%d, username='%s', email='%s']", idKorisnika, username, email);
+    }
 	
-
+	
 }
