@@ -10,9 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="korisnici")
 public class Korisnici implements Serializable {
 	private static final long serialVersionUID = 1L;
 	  
@@ -22,6 +24,8 @@ public class Korisnici implements Serializable {
     private Integer idKorisnika;
     
     private String username;
+    
+    @Column(name="password_hash")
     private String password;
     private String email;
     

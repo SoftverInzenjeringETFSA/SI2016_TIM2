@@ -1,38 +1,60 @@
 package ba.posao.models;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Oglas {
-    @Id
+public class Oglas implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="idoglasa")
 	private Integer idOglasa;
     
-    @ManyToOne
+    @ManyToOne(targetEntity=Poslodavci.class)
+    @JoinColumn(name="idposlodavca")
     private Poslodavci poslodavac;
     
-    @ManyToOne
+    @ManyToOne(targetEntity=Lokacije.class)
+    @JoinColumn(name="idlokacije")
     private Lokacije lokacija;
     
-    @OneToOne
+    @ManyToOne(targetEntity=Kategorije.class)
+    @JoinColumn(name="idkategorije")
     private Kategorije kategorije;
     
+    @Column(name="datumobjave")
     private Date datumObjave;
+    
+    @Column(name="datumisteka")
+    
     private Date datumIsteka;
     private byte sakriven;
     private byte zatvoren;
     private byte uspjesan;
     
     private Integer prioritet;
+    
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE,targetEntity=OglasPodaci.class)
+    @JoinColumn(name="idoglasa")
+    private List<OglasPodaci> oglasPodaci;
+    
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="idpolja")
+	private List<PoljaTemplatea> poljaTemplatea;
 
 	public Integer getIdOglasa() {
 		return idOglasa;
@@ -113,6 +135,23 @@ public class Oglas {
 	public void setPrioritet(Integer prioritet) {
 		this.prioritet = prioritet;
 	}
+
+	public List<OglasPodaci> getOglasPodaci() {
+		return oglasPodaci;
+	}
+
+	public void setOglasPodaci(List<OglasPodaci> oglasPodaci) {
+		this.oglasPodaci = oglasPodaci;
+	}
     
+	public List<PoljaTemplatea> getPoljaTemplatea() {
+		return poljaTemplatea;
+	}
+
+	public void setPoljaTemplatea(List<PoljaTemplatea> poljaTemplatea) {
+		this.poljaTemplatea = poljaTemplatea;
+	}
+	
+	
     
 }

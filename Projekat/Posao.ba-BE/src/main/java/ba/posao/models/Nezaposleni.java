@@ -24,11 +24,11 @@ public class Nezaposleni implements Serializable {
 	@Column(name = "idkorisnika", unique = true, nullable = false)
 	private Integer idKorisnika;
 	
-	private Korisnici korisnik;
-	
 	private String ime;
 	private String prezime;
 	private String cv;
+	
+	@Column(name="privatanprofil")
 	private Integer privatanProfil;
 	
 	public Integer getId() {
@@ -70,14 +70,4 @@ public class Nezaposleni implements Serializable {
 	public void setPrivatanProfil(Integer privatanProfil) {
 		this.privatanProfil = privatanProfil;
 	}
-	
-    @OneToOne(targetEntity=Korisnici.class)
-    @PrimaryKeyJoinColumn
-    public Korisnici getKorisnici() {
-    	return korisnik;
-    }
-    
-    public void setKorisnici(Korisnici korisnik) {
-    	this.korisnik = korisnik;
-    }
 }

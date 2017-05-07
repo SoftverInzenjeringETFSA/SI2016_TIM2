@@ -16,14 +16,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name="kantoni")
 public class Kantoni implements Serializable  {
+	private static final long serialVersionUID = 1L;
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="idkantona")
     private Integer idKantona;
     private String  naziv;
-    
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Lokacije> lokacije = new ArrayList<>();
     
     public Integer getId() {
         return idKantona;
@@ -48,14 +46,5 @@ public class Kantoni implements Serializable  {
 	public void setIdKantona(Integer idKantona) {
 		this.idKantona = idKantona;
 	}
-
-	public List<Lokacije> getLokacije() {
-		return lokacije;
-	}
-
-	public void setLokacije(List<Lokacije> lokacije) {
-		this.lokacije = lokacije;
-	}
-    
     
 }

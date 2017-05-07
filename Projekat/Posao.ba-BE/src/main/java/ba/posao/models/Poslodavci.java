@@ -14,11 +14,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 @Entity
+@Table(name="poslodavci")
 public class Poslodavci implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -28,16 +30,16 @@ public class Poslodavci implements Serializable {
 	@Column(name = "idkorisnika", unique = true, nullable = false)
 	private Integer idKorisnika;
 	
-	@OneToOne
-	private Korisnici korisnik;
 	 
 	private String ime;
 	private String prezime;
+	
+	@Column(name="nazivfirme")
 	private String nazivFirme;
 	private String telefon;
 	
-	@OneToMany
-	private List<Oglas> oglasi = new ArrayList<>();
+	/*@OneToMany
+	private List<Oglas> oglasi = new ArrayList<>();*/
 	
 	public Integer getIdKorisnika() {
 		return idKorisnika;
@@ -47,13 +49,6 @@ public class Poslodavci implements Serializable {
 		this.idKorisnika = idKorisnika;
 	}
 
-	public Korisnici getKorisnik() {
-		return korisnik;
-	}
-
-	public void setKorisnik(Korisnici korisnik) {
-		this.korisnik = korisnik;
-	}
 
 	public String getIme() {
 		return ime;
@@ -86,15 +81,14 @@ public class Poslodavci implements Serializable {
 	public void setTelefon(String telefon) {
 		this.telefon = telefon;
 	}
+
+	/*public List<Oglas> getOglasi() {
+		return oglasi;
+	}
+
+	public void setOglasi(List<Oglas> oglasi) {
+		this.oglasi = oglasi;
+	}	*/
 	
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    public Korisnici getKorisnici() {
-    	return korisnik;
-    }
-    
-    public void setKorisnici(Korisnici korisnik) {
-    	this.korisnik = korisnik;
-    }
 	
 }

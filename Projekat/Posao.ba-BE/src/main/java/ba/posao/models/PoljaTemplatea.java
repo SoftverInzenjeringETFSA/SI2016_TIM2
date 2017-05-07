@@ -28,16 +28,10 @@ public class PoljaTemplatea implements Serializable {
     @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="idpolja")
 	private Integer id;
-    
-    @ManyToOne(targetEntity=Template.class,fetch = FetchType.LAZY , cascade=CascadeType.ALL)
-    @JoinColumn(name = "idtemplate")
-    private Template template;
-    
+ 
+    @Column(name="nazivpolja")
     private String nazivPolja;
-    
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<OglasPodaci> oglasPodaci = new ArrayList<>();
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -46,27 +40,11 @@ public class PoljaTemplatea implements Serializable {
 		this.id = id;
 	}
 
-	public Template getTemplate() {
-		return template;
-	}
-
-	public void setTemplate(Template template) {
-		this.template = template;
-	}
-
 	public String getNazivPolja() {
 		return nazivPolja;
 	}
 
 	public void setNazivPolja(String nazivPolja) {
 		this.nazivPolja = nazivPolja;
-	}
-	
-	public List<OglasPodaci> getOglasPodaci() {
-		return oglasPodaci;
-	}
-
-	public void setOglasPodaci(List<OglasPodaci> oglasPodaci) {
-		this.oglasPodaci = oglasPodaci;
-	}
+	}	
 }

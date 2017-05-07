@@ -23,9 +23,7 @@ public class Admin implements Serializable {
 	 @GenericGenerator(name="SharedPrimaryKeyGenerator",strategy="foreign",parameters =  @Parameter(name="property", value="korisnici"))
 	 @Column(name = "idkorisnika", unique = true, nullable = false)
 	 private Integer idKorisnika;
-	 
-	 private Korisnici korisnik;
-	 
+	 	 
 
 	 public Integer getId() {
 	  	return idKorisnika;
@@ -33,15 +31,5 @@ public class Admin implements Serializable {
 	    
 	 public void setId(Integer id) {
 		 this.idKorisnika = id;
-	 }
-	    
-	 @OneToOne
-	 @PrimaryKeyJoinColumn
-	 public Korisnici getKorisnici() {
-	   	return korisnik;
-	 }
-	    
-	 public void setKorisnici(Korisnici korisnik) {
-	  	this.korisnik = korisnik;
 	 }
 }
