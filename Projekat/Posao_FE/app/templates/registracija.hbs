@@ -1,0 +1,24 @@
+<div class="red">
+  <div class="kolona">
+    <h4>POSLODAVAC</h4>
+    <ul>
+      <li>Objavljivanje oglasa</li>
+      <li>Zatvaranje oglasa</li>
+      <li>Obnova oglasa</li>
+    </ul>
+    {{#link-to 'registracijaPoslodavac' class="buttonRegistracija"}}
+      Registruj se
+    {{/link-to}}
+  </div>
+  <div class="kolona">
+    <h4>NEZAPOSLENI</h4>
+    <ul>
+      <li>Pretraga oglasa</li>
+      <li>Prijava na oglas</li>
+    </ul>
+    {{#link-to 'registracijaNezaposleni' class="buttonRegistracija"}}
+      Registruj se 
+    {{/link-to}}
+  </div>
+</div>
+{{outlet}}
