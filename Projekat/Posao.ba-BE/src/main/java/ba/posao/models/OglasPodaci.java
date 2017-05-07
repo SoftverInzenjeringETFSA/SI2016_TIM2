@@ -29,7 +29,7 @@ public class OglasPodaci implements Serializable {
     @Id
     @GeneratedValue(generator="SharedPrimaryKeyGenerator")
     @GenericGenerator(name="SharedPrimaryKeyGenerator",strategy="foreign",parameters =  @Parameter(name="property", value="idoglasa"))
-    @Column(name = "idoglasa", unique = false, nullable = false)
+    @Column(name = "idpolja", unique = false, nullable = false)
 	private Integer id;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
