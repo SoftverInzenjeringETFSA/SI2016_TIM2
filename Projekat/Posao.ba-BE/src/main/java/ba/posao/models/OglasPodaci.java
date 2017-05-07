@@ -36,6 +36,10 @@ public class OglasPodaci implements Serializable {
 	@JoinColumn(name="idtemplate")
 	private Template template;
 			
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="idpolja")
+	private List<PoljaTemplatea> poljaTemplatea;
+	
 	private String vrijednost;
 
 	public Integer getId() {
@@ -61,5 +65,13 @@ public class OglasPodaci implements Serializable {
 
 	public void setVrijednost(String vrijednost) {
 		this.vrijednost = vrijednost;
+	}
+	
+	public List<PoljaTemplatea> getPoljaTemplatea() {
+		return poljaTemplatea;
+	}
+
+	public void setPoljaTemplatea(List<PoljaTemplatea> poljaTemplatea) {
+		this.poljaTemplatea = poljaTemplatea;
 	}
 }

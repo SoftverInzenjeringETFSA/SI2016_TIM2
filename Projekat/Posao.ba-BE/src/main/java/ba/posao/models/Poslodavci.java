@@ -37,10 +37,7 @@ public class Poslodavci implements Serializable {
 	@Column(name="nazivfirme")
 	private String nazivFirme;
 	private String telefon;
-	
-	/*@OneToMany
-	private List<Oglas> oglasi = new ArrayList<>();*/
-	
+		
 	public Integer getIdKorisnika() {
 		return idKorisnika;
 	}
@@ -81,14 +78,5 @@ public class Poslodavci implements Serializable {
 	public void setTelefon(String telefon) {
 		this.telefon = telefon;
 	}
-
-	/*public List<Oglas> getOglasi() {
-		return oglasi;
-	}
-
-	public void setOglasi(List<Oglas> oglasi) {
-		this.oglasi = oglasi;
-	}	*/
-	
 	
 }

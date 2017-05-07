@@ -25,10 +25,6 @@ public class Lokacije implements Serializable {
     @JoinColumn(name="idkantona")
     private Kantoni kanton;
     
-    /*@OneToMany(targetEntity=Oglas.class)
-    private List<Oglas> oglasi = new ArrayList<>();*/
-
-    
 	public Integer getId() {
 		return id;
 	}
@@ -44,12 +40,4 @@ public class Lokacije implements Serializable {
 	public void setKanton(Kantoni kanton) {
 		this.kanton = kanton;
 	}
-
-	/*public List<Oglas> getOglasi() {
-		return oglasi;
-	}
-
-	public void setOglasi(List<Oglas> oglasi) {
-		this.oglasi = oglasi;
-	}    */
 }
