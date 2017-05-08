@@ -7,6 +7,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('registracija');
+  this.route('registracija-nezaposleni');
+  this.route('registracija-poslodavac');
 });
 
 export default Router;
