@@ -37,7 +37,20 @@ public class Poslodavci implements Serializable {
 	@Column(name="nazivfirme")
 	private String nazivFirme;
 	private String telefon;
-		
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idkorisnika")
+    private SakriveniPodaci sakriveniPodaci;
+
+	public SakriveniPodaci getSakriveniPodaci() {
+		return sakriveniPodaci;
+	}
+
+
+	public void setSakriveniPodaci(SakriveniPodaci sakriveniPodaci) {
+		this.sakriveniPodaci = sakriveniPodaci;
+	}
+
 	public Integer getIdKorisnika() {
 		return idKorisnika;
 	}

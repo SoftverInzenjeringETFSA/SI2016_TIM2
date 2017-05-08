@@ -52,7 +52,19 @@ public class Oglas implements Serializable {
     @JoinColumn(name="idoglasa")
     private List<OglasPodaci> oglasPodaci;
     
+    @OneToMany(cascade = CascadeType.MERGE,targetEntity=OglasPrijave.class)
+    @JoinColumn(name="idprijave")
+    private List<OglasPrijave> oglasPrijave;
 
+	public List<OglasPrijave> getOglasPrijave() {
+		return oglasPrijave;
+	}
+
+	public void setOglasPrijave(List<OglasPrijave> oglasPrijave) {
+		this.oglasPrijave = oglasPrijave;
+	}
+
+	
 	public Integer getIdOglasa() {
 		return idOglasa;
 	}

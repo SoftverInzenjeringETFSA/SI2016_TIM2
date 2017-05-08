@@ -27,7 +27,15 @@ public class Nezaposleni implements Serializable {
 	private String ime;
 	private String prezime;
 	private String cv;
-	
+
+	public Integer getIdKorisnika() {
+		return idKorisnika;
+	}
+
+	public void setIdKorisnika(Integer idKorisnika) {
+		this.idKorisnika = idKorisnika;
+	}
+
 	@Column(name="privatanprofil")
 	private Integer privatanProfil;
 	
