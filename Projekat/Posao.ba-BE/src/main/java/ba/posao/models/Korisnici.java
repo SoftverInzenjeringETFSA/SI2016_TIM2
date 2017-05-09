@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Table(name="korisnici")
 public class Korisnici implements Serializable {
 	private static final long serialVersionUID = 1L;
-	  
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="idkorisnika")

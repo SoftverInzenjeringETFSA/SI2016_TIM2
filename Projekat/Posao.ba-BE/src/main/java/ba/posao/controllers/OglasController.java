@@ -17,8 +17,8 @@ import ba.posao.repositories.OglasRepository;
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/oglasi") 
 public class OglasController {
+
 	@Autowired
-	
 	private OglasRepository oglasRepository;
 	
 	@GetMapping(path="/{id}")
