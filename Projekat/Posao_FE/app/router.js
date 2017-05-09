@@ -7,9 +7,11 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('registracija');
-  this.route('registracija-nezaposleni');
-  this.route('registracija-poslodavac');
+  this.route('index',{path:'/'});
+  this.route('registracija',{ path: '/registracija' });
+  this.route('registracija-nezaposleni',{ path: '/registracija1' });
+  this.route('registracija-poslodavac',{ path: '/registracija2' });
+  this.route('login',{ path: '/login' });
 });
 
 export default Router;

@@ -1,15 +1,5 @@
-body,html{
-    height: 100vh!important;
-    width:100vw!important;
-    overflow: hidden;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    background-image:url('/assets/images/welcome.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat; 
-}
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+/*navbar*/
 
 .navbar{
     background-color:#202030;
@@ -27,17 +17,32 @@ body,html{
 li{
     float:none!important;
     display: inline-block!important;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .menu-text{
     color: white!important;
-     font-size: 14px!important;
+     font-size: 13px!important;
+     text-decoration: none!important;
 }
 
-a:hover{
+.menu-text:hover{
     background-color: transparent!important;
     text-shadow:  0.0px 0.2px white;
+}
+
+/*welcome-page*/
+
+.wrap-welcome{
+    height: 100vh!important;
+    width:100vw!important;
+    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-image:url('/assets/images/welcome.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .btn-welcome{
@@ -47,15 +52,125 @@ a:hover{
   position: absolute!important;
   width: 250px;
   height: 40px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 15px;
-  background-color:transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  text-shadow:  0.0px 0.4px #202030;
   transition: all .5s;
-  color : #202030;
-  border-color: #202030;
+  color: #202030;
+  background-color: #f7ce3e;
+  border-color: #f7ce3e;
 }
 
 .btn-welcome:hover{
   color: white;
-  background-color: #202030;
+}
+
+.logo-welcome{
+    left:51%;
+    top: 47%;
+	transform: translate(-50%, -50%);
+  position: absolute!important;
+  width: 400px;
+  height: 300px;
+
+}
+
+/*login-page*/
+
+.login-form
+{
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400!important;
+	border-radius: 5px!important;
+	top: 350px;
+	position: absolute;
+	margin-left: 50%;
+	transform: translate(-60%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+	width: 350px;
+	height: 450px;
+	
+}
+
+.login-input-wrapper
+{
+	margin-top: 100px;
+	padding: 15px;
+}
+
+.login-input::focus::-webkit-input-placeholder
+{
+	display: none;
+}
+
+.logo-login
+{
+	left:50%;
+    top: 10%;
+	transform: translate(-50%, -50%);
+  position: absolute!important;
+  width: 220px;
+  height: 170px;
+	
+}
+
+.loginPage
+{
+	background-image: url('/assets/images/login.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	height: 100vh!important;
+    width:100vw!important;
+    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.btn-login
+{
+	margin-top: 40px;
+	width: 80%;
+	height: 50px;
+	background-color:#F7CE3E;
+	color: white;
+    border-color: #f7ce3e;
+	text-decoration-style: bold;
+    transition: all .5s!important;
+    margin-top: 40px;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+	font-weight: 600!important;
+}
+
+.login-input
+{
+	width: 100%;
+	height: 50px;
+	background-color: transparent;
+	border-style: none;
+	border-bottom: 1px solid #F7CE3E;
+	color: #F7CE3E;
+	text-align: center;
+}
+
+.login-input:focus
+{
+	outline: none!important;
+	color: #F7CE3E;
+	
+}
+
+
+.btn-primary.btn-outline {
+    color: #1a2930!important;
+}
+
+.btn-primary.btn-outline:hover
+ {
+    color: #fff!important;
+    background-color: #F7CE3E!important;
 }
