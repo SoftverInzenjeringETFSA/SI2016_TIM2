@@ -1,8 +1,10 @@
 package ba.posao.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,39 +19,47 @@ public class KorisnikController {
 
 	@Autowired
     private KorisnikService korisnikService;
- 
-    @RequestMapping(path="/save")
-    public String process() {
-/*    	korisnikService.save(new Customer("Jack", "Smith"));
-    	korisnikService.save(new Customer("Adam", "Johnson"));
-    	korisnikService.save(new Customer("Kim", "Smith"));
-    	korisnikService.save(new Customer("David", "Williams"));
-    	korisnikService.save(new Customer("Peter", "Davis"));*/
-        return "Done";
+
+    @RequestMapping(path="/get/all", method = RequestMethod.GET)
+    public List<Korisnici> findAll() {
+    	List<Korisnici> k;
+    	
+    	k = (List<Korisnici>) korisnikService.findAllKorisnici();
+    	
+    	return k;
     }
- 
-    @RequestMapping(path="/findall")
-    public String findAll() {
-        String result = "<html>";
- 
-        for (Korisnici k : korisnikService.findAllKorisnici()) {
-            result += k.toString() + "<br>";
-        }
- 
-        return result + "</html>";
+
+    @RequestMapping(path="/get", method = RequestMethod.GET)
+    public List<Korisnici> viewKorisnici(@RequestParam(name = "id", defaultValue = "1") int id, @RequestParam(name = "p", defaultValue = "0") int pageNumber) {
+    	List<Korisnici> k = new ArrayList<Korisnici>();
+    	
+    	if (pageNumber != 0)
+    		k = (List<Korisnici>) korisnikService.getPage(pageNumber);
+    	else
+        	k.add(korisnikService.findKorisnici(id));
+    	
+    	return k;
     }
- 
-    @RequestMapping(path="/customers", method = RequestMethod.GET)
-    public String viewCustomers(@RequestParam(name = "p", defaultValue = "1") int pageNumber) {
-        String result = "<html>";
- 
-        List<Korisnici> korisnici = korisnikService.getPage(pageNumber);
- 
-        for (Korisnici k : korisnici) {
-            result += k.toString() + "</br>";
-        }
- 
-        return result + "</html>";
+    
+    @RequestMapping(path= "/add", method = RequestMethod.GET)
+	public String addKorisnici(@ModelAttribute("imeForme") Korisnici k){
+		
+		if(k.getIdKorisnika() == 0) {
+			korisnikService.addKorisnici(k);
+		}
+		else {
+			korisnikService.updateKorisnici(k);
+		}
+		
+		return "done";
+	}
+    
+    @RequestMapping(path = "/delete", method = RequestMethod.GET)
+    public String deleteKorisnici(@RequestParam(name = "id") int id) {
+    	
+    	korisnikService.removeKorisnici(id);
+        return "obavljeno";
     }
+
 
 }
