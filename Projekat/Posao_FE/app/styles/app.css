@@ -180,6 +180,11 @@ li{
     color: #fff!important;
     background-color: #F7CE3E!important;
 }
+/*registration page employer*/
+.registrationPageEmployer
+{
+	background-color: white;
+}
 
 /*registration-page*/
 
@@ -195,6 +200,11 @@ li{
     overflow-y: hidden;
     overflow-x: hidden;
 }
+.login-input-wrapper-registration-employer
+{
+	margin-top: 100px;
+	padding: 15px;
+}
 
 .registration-form
 {
@@ -209,6 +219,16 @@ li{
     -moz-transform: translate(-50%, -50%);
 	width: 50%;
 	height: 70%;
+}
+
+.registration-employer-color
+{
+  color: #202030;
+  border-bottom: 1px solid #202030;
+}
+.radio-buttons-unemployed
+{
+  color:#202030!important;
 }
 
 .registration-block{
