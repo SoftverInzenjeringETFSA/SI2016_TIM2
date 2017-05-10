@@ -4,9 +4,7 @@ target/
 
 # STS
 .apt_generated
-.classpath
 .factorypath
-.project
 .settings
 .springBeans
 
@@ -25,8 +23,6 @@ nbdist/
 .nb-gradle/
 
 # Eclipse
-.classpath
-.project
 .settings/
 
 # Compiled class file
