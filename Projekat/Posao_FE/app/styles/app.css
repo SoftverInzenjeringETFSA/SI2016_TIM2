@@ -90,7 +90,6 @@ li{
     -moz-transform: translate(-50%, -50%);
 	width: 350px;
 	height: 450px;
-
 }
 
 .login-input-wrapper
@@ -98,12 +97,6 @@ li{
 	margin-top: 100px;
 	padding: 15px;
 }
-.col-sm-4 {
-    width: 50%;
-    margin-top: 100px;
-    border: 2px solid;
-    border-radius: 8px;
-  }
 
 .login-input-wrapper-registration
 {
@@ -139,18 +132,7 @@ li{
     overflow-y: hidden;
     overflow-x: hidden;
 }
-.registrationPage
-{
-	background-color:white;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-	height: 100vh!important;
-    width:100vw!important;
-    overflow: hidden;
-    overflow-y: hidden;
-    overflow-x: hidden;
-}
+
 
 .btn-login
 {
@@ -197,4 +179,80 @@ li{
  {
     color: #fff!important;
     background-color: #F7CE3E!important;
+}
+
+/*registration-page*/
+
+.registrationPage
+{
+	background-color:white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	height: 100vh!important;
+    width:100vw!important;
+    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.registration-form
+{
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400!important;
+	border-radius: 5px!important;
+	top: 350px;
+	position: absolute;
+	margin-left: 50%;
+	transform: translate(-60%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+	width: 50%;
+	height: 70%;
+}
+
+.registration-block{
+    width: 200px!important;
+    margin:10px;
+    height: 250px;
+    margin-top: 100px!important;
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 3%;
+}
+
+.row-registration{
+    margin-left: 18%;
+    padding: 2%;
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+}
+
+.list-registration{
+    padding-left: 10%!important;
+}
+
+.item-registration{
+    margin-top: 4px;
+    color: #55a078;
+}
+
+.btn-register{
+    margin-bottom: 20px!important;
+    bottom: 0!important;
+	width: 100%!important;
+	height: 40px!important;
+	background-color:#F7CE3E;
+	color: white;
+    border-color: #f7ce3e;
+	text-decoration-style: bold;
+    transition: all .5s!important;
+    font-size: 15px;
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+	font-weight: 580!important;
+}
+
+.btn-register:hover{
+    border-color: #f7ce3e!important;
 }
