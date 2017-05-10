@@ -1,22 +1,19 @@
 package ba.posao.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Lokacije implements Serializable {
-    @Id
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="idlokacije")
 	private Integer id;
@@ -24,6 +21,8 @@ public class Lokacije implements Serializable {
     @ManyToOne(targetEntity=Kantoni.class)
     @JoinColumn(name="idkantona")
     private Kantoni kanton;
+    
+    private String naziv;
     
 	public Integer getId() {
 		return id;
@@ -40,4 +39,14 @@ public class Lokacije implements Serializable {
 	public void setKanton(Kantoni kanton) {
 		this.kanton = kanton;
 	}
+
+	public String getNaziv() {
+		return naziv;
+	}
+
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
+	}
+	
+	
 }
