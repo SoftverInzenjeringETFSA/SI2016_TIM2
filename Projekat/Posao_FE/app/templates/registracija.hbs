@@ -1,4 +1,38 @@
-<div class="red">
+<div class="registrationPage">
+    <div class="login-form">
+
+            <img class="logo-login" src="assets/images/logo.png" >
+
+      <div class="row">
+        <div class="col-sm-4">
+          <h4>POSLODAVAC</h4>
+          <ul>
+            <li>Objavljivanje oglasa</li>
+            <li>Zatvaranje oglasa</li>
+            <li>Obnova oglasa</li>
+          </ul>
+          {{#link-to 'registracija-poslodavac' }}
+          <button class="btn btn-primary btn-outline btn-login" style="width: 100%">Registruj se</button>
+          {{/link-to}}
+        </div>
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-4">
+          <h4>NEZAPOSLENI</h4>
+          <ul>
+            <li>Pretraga oglasa</li>
+            <li>Prijava na oglas</li>
+          </ul>
+          {{#link-to 'registracija-nezaposleni'}}
+            <button class="btn btn-primary btn-outline btn-login" style="width: 100%">Registruj se</button>
+          {{/link-to}}
+        </div>
+      </div>
+
+    </div>
+
+</div>
+<!-- <div class="red">
   <div class="kolona">
     <h4>POSLODAVAC</h4>
     <ul>
@@ -17,8 +51,8 @@
       <li>Prijava na oglas</li>
     </ul>
     {{#link-to 'registracijaNezaposleni' class="buttonRegistracija"}}
-      Registruj se 
+      Registruj se
     {{/link-to}}
   </div>
 </div>
-{{outlet}}
+{{outlet}} -->

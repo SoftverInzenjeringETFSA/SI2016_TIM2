@@ -90,10 +90,22 @@ li{
     -moz-transform: translate(-50%, -50%);
 	width: 350px;
 	height: 450px;
-	
+
 }
 
 .login-input-wrapper
+{
+	margin-top: 100px;
+	padding: 15px;
+}
+.col-sm-4 {
+    width: 50%;
+    margin-top: 100px;
+    border: 2px solid;
+    border-radius: 8px;
+  }
+
+.login-input-wrapper-registration
 {
 	margin-top: 100px;
 	padding: 15px;
@@ -112,12 +124,24 @@ li{
   position: absolute!important;
   width: 220px;
   height: 170px;
-	
+
 }
 
 .loginPage
 {
 	background-image: url('/assets/images/login.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	height: 100vh!important;
+    width:100vw!important;
+    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.registrationPage
+{
+	background-color:white;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -161,7 +185,7 @@ li{
 {
 	outline: none!important;
 	color: #F7CE3E;
-	
+
 }
 
 
