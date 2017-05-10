@@ -1,2 +1,44 @@
-<h2>Registracija nezaposleni</h2>
+<div class="registrationPageEmployer">
+    <div class="registration-form-employer">
+
+            <img class="logo-login" src="assets/images/logo.png" >
+
+        <div class="colors login-input" style="margin-top:90px" >
+            <div class="form-group has-feedback" style="color:#202030!important">
+                <input class="colors login-input registration-employer-color" placeholder="Ime i prezime" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ImeNezaposlenog'"
+                    type="text">
+            </div>
+
+            <div class="form-group has-feedback">
+                <input class="colors login-input registration-employer-color" placeholder="E-mail:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mailNezaposlenog'"
+                    type="text" style="#202030">
+            </div>
+            <div class="form-group has-feedback">
+                <input class="colors login-input registration-employer-color" placeholder="Lozinka:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lozinka'"
+                    type="password">
+            </div>
+            <div class="form-group has-feedback">
+                <input class="colors login-input registration-employer-color" placeholder="Ponovo unesite lozinku:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lozinka2'"
+                    type="password">
+            </div>
+            <div class="form-group has-feedback">
+                <input class="colors login-input registration-employer-color" placeholder="Adresa:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adresa'"
+                    type="text">
+            </div>
+            <div class="form-group has-feedback">
+                <input class="colors login-input registration-employer-color" placeholder="Telefon:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefon'"
+                    type="text">
+            </div>
+            <div class="form-group has-feedback radio-buttons-unemployed">
+              <input type="radio" name="tip-profila" value="javni" style="color:#202030" checked > Javni profil
+              <input type="radio" name="tip-profila" value="privatni"> Privatni profil<br>
+            </div>
+            <button class="btn btn-primary btn-outline btn-login" style="width: 100%">Registruj se</button>
+
+         </div>
+
+
+    </div>
+
+</div>
 {{outlet}}
