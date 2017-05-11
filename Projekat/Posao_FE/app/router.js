@@ -13,7 +13,7 @@ Router.map(function() {
   this.route('registracija-poslodavac',{ path: '/registracija2' });
   this.route('login',{ path: '/login' });
   this.route('main');
-  this.route('dodaj-oglas');
+  this.route('dodaj-oglas',{path: '/dodaj-oglas'});
 });
 
 export default Router;
