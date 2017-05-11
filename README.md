@@ -5,6 +5,10 @@
 
 
 * Instalirati Eclipse Neon.3
+
+* Instalirati STS - Spring Tools Suite
+
+* Instalirati Maven
     
 *   Instalirati MySql (Korištena verzija 5.7.18, druge verzije bi trebale biti kompatibilne)
 
@@ -15,3 +19,11 @@
     * CREATE USER 'EtfSI2016'@'localhost' IDENTIFIED BY '2016SIEtf';
     * GRANT select, insert, delete, update on tim2.* to 'EtfSI2016'@'localhost';
     
+* Instalirati node.js
+
+* Instalirati npm
+
+* Instalirati bower
+
+* Instalirati Ember CLI
+

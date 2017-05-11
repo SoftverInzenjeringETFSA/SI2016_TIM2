@@ -224,8 +224,8 @@ li{
 
 .registration-employer-color
 {
-  color: #202030;
-  border-bottom: 1px solid #202030;
+  color: #202030!important;
+  border-bottom: 1px solid #202030!important;
 }
 .radio-buttons-unemployed
 {
@@ -290,4 +290,9 @@ li{
     -moz-transform: translate(-50%, -50%);
 	width: 450px;
 	height: 450px;
+}
+
+.btn-register:hover {
+    border: #F7CE3E!important;
+
 }
