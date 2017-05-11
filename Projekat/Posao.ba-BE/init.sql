@@ -482,6 +482,8 @@ START TRANSACTION;
 USE `tim2`;
 INSERT INTO `tim2`.`lokacije` (`idLokacije`, `idKantona`, `naziv`) VALUES (1, 9, 'Sarajevo');
 INSERT INTO `tim2`.`lokacije` (`idLokacije`, `idKantona`, `naziv`) VALUES (2, 4, 'Zenica');
+INSERT INTO `tim2`.`lokacije` (`idLokacije`, `idKantona`, `naziv`) VALUES (3, 3, 'Tuzla');
+INSERT INTO `tim2`.`lokacije` (`idLokacije`, `idKantona`, `naziv`) VALUES (4, 7, 'Mostar');
 
 COMMIT;
 
@@ -505,6 +507,9 @@ START TRANSACTION;
 USE `tim2`;
 INSERT INTO `tim2`.`oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `datumObjave`, `datumIsteka`, `sakriven`, `zatvoren`, `uspjesan`, `prioritet`) VALUES (1, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1);
 INSERT INTO `tim2`.`oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `datumObjave`, `datumIsteka`, `sakriven`, `zatvoren`, `uspjesan`, `prioritet`) VALUES (2, 2, 2, 2, '2017-05-10 00:00:00', '2017-06-01 23:59:59', 0, 0, 0, 2);
+INSERT INTO `tim2`.`oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `datumObjave`, `datumIsteka`, `sakriven`, `zatvoren`, `uspjesan`, `prioritet`) VALUES (3, 2, 3, 2, '2017-05-08 00:00:00', '2017-06-05 23:59:59', 0, 0, 0, 2);
+INSERT INTO `tim2`.`oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `datumObjave`, `datumIsteka`, `sakriven`, `zatvoren`, `uspjesan`, `prioritet`) VALUES (4, 2, 3, 1, '2017-05-07 00:00:00', '2017-06-07 23:59:59', 0, 0, 0, 1);
+INSERT INTO `tim2`.`oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `datumObjave`, `datumIsteka`, `sakriven`, `zatvoren`, `uspjesan`, `prioritet`) VALUES (5, 2, 4, 1, '2017-05-10 00:00:00', '2017-06-10 23:59:59', 0, 0, 0, 1);
 
 COMMIT;
 
@@ -516,6 +521,8 @@ START TRANSACTION;
 USE `tim2`;
 INSERT INTO `tim2`.`template` (`idTemplate`, `naziv`) VALUES (1, 'IT Posao');
 INSERT INTO `tim2`.`template` (`idTemplate`, `naziv`) VALUES (2, 'Trgovac');
+INSERT INTO `tim2`.`template` (`idTemplate`, `naziv`) VALUES (3, 'Menadzer');
+INSERT INTO `tim2`.`template` (`idTemplate`, `naziv`) VALUES (4, 'Pravnik');
 
 COMMIT;
 
@@ -578,3 +585,15 @@ INSERT INTO `tim2`.`oglaspodaci` (`idOglasa`, `idTemplate`, `idPolja`, `vrijedno
 
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Data for table `tim2`.`notifikacija`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `tim2`;
+INSERT INTO `tim2`.`notifikacija` (`idNotifikacije`, `idKorisnika`, `Tekst`, `Pregledana`, `vrijemeGenerisanja`) values (1, 2, 'Notifikacija broj jedan', true, '2017-08-05 17:12:33');
+INSERT INTO `tim2`.`notifikacija` (`idNotifikacije`, `idKorisnika`, `Tekst`, `Pregledana`, `vrijemeGenerisanja`) values (2, 3, 'Notifikacija broj dva', false, '2017-09-05 04:22:13');
+INSERT INTO `tim2`.`notifikacija` (`idNotifikacije`, `idKorisnika`, `Tekst`, `Pregledana`, `vrijemeGenerisanja`) values (3, 4, 'Notifikacija broj tri', true, '2017-09-05 11:48:23');
+INSERT INTO `tim2`.`notifikacija` (`idNotifikacije`, `idKorisnika`, `Tekst`, `Pregledana`, `vrijemeGenerisanja`) values (4, 2, 'Notifikacija broj cetiri', false, '2017-10-05 16:13:09');
+
+COMMIT;

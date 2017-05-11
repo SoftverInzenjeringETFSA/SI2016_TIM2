@@ -1,11 +1,9 @@
 package ba.posao.controllers;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,14 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import ba.posao.models.Korisnici;
 import ba.posao.models.Notifikacija;
-import ba.posao.repositories.NotifikacijaRepository;
-import ba.posao.services.KorisnikService;
 import ba.posao.services.NotifikacijaService;
 
-@Controller    // This means that this class is a Controller
+@RestController
 @RequestMapping(path="/notifikacije") 
 public class NotifikacijaController {
 	
@@ -29,7 +25,7 @@ public class NotifikacijaController {
 	
 	@GetMapping(path="/{id}")
 	public @ResponseBody Notifikacija getNotifikacijaById(@PathVariable("id") Integer id) {
-		return notifikacijaService.findById(id);
+		return notifikacijaService.findByIdNotifikacije(id);
 	}
 	
     @RequestMapping(path="/get/all", method = RequestMethod.GET)
@@ -72,6 +68,5 @@ public class NotifikacijaController {
     	notifikacijaService.removeNotifikacija(id);
         return "obavljeno";
     }
-
 
 }
