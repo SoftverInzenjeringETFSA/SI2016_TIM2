@@ -3,6 +3,8 @@
 
 
 
+## Konfiguracija
+
 
 * Instalirati Eclipse Neon.3
     *   Instalirati Spring IDE -> Help->Eclipse Marketplace
@@ -24,4 +26,61 @@
 * Instalirati bower
 
 * Instalirati Ember CLI
+
+
+## Urađeno
+
+
+Unutar projekta Posao.ba implementirano je sljedeće:
+* Frontend:
+   * Welcome page
+   * Login page
+   * Registracija (Poslodavac i nezaposleni)
+   * Profil korisnika
+   * Oglas
+   * Lista oglasa
+   * Pretraga oglasa
+   * Unos oglasa
+
+* Backend:
+   * Baza podataka
+   * REST servisi za: 
+      * Korisnike
+         * Pretraga korisnika po email-u i username-u
+         * Pretraga svih korisnika
+         * Dodavanje korisnika
+         * Brisanje korisnika
+         * Update korisnika
+         * Utvrđivanje vrste korisnika (Admin, poslodavac ili nezaposleni)
+         * Login korisnika
+         * Započeta registracija korisnika
+         * Notifikacije
+      * Oglase
+         * Oglasi jednog poslodavca /oglasi/poslodavac/{id}
+         * Oglasi po kategorijama oglasi/kategorija?kategorija=NazivKategorije
+         * Pretraga po vrijednostima /oglasi/pretraga?vrijednost=ABC
+         * Pretraga po lokaciji /oglasi/pretraga/lokacija?lokacija=Sarajevo
+         * Pretraga oglasa po ID-u /oglasi/{id}
+   
+   
+   
+## TO DO:
+
+
+Potrebno je osposobiti povezivanje frontend-a i backend-a, vršenjem odgovarajuće serijalizacije podataka u ember-data i obratno.
+http://nortpoint.io/2016/10/13/lets-make-friends-with-spring-and-emberjs/
+Implementirati preostale funkcionalnosti.
+
+
+
+## Folderi
+
+
+* Pomocna dokumentacija - Unutar iste se nalaze .docx dokumenti, .vpp dijagrami, paleta, te screenshot svih route.
+* Dokumentacija - SRS, Ponuda, Intervju i Dokument dizajna sistema
+* Reference - Dokumenti povezani s dokumentacijom
+* Projekat:
+   * Posao.ba-BE - backend projekat
+   * Posao_FE - frontend projekat
+
 
