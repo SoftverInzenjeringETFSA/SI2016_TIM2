@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('registracija-nezaposleni',{ path: '/registracija1' });
   this.route('registracija-poslodavac',{ path: '/registracija2' });
   this.route('login',{ path: '/login' });
+  this.route('dodaj-oglas');
 });
 
 export default Router;
