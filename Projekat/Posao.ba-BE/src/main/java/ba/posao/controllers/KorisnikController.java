@@ -60,6 +60,11 @@ public class KorisnikController {
     	korisnikService.removeKorisnici(id);
         return "obavljeno";
     }
+    
+    @RequestMapping(path="/tip", method = RequestMethod.GET) 
+    public String tipKorisnika(@RequestParam(name = "id") int id) {
+    	return korisnikService.getKorisnikType(id);
+    }
 
 
 }
