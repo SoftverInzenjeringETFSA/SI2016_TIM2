@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import ba.posao.models.Notifikacija;
 import ba.posao.repositories.NotifikacijaRepository;
 
-
 @Service
 public class NotifikacijaService {
 
@@ -44,6 +43,9 @@ public class NotifikacijaService {
     public void removeNotifikacija(int id) {
     	repository.delete(id);
 	}
-
+    
+    public Notifikacija findByIdNotifikacije(Integer id) {
+    	return repository.findById(id);
+	}
 
 }

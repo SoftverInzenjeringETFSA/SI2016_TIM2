@@ -9,11 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import ba.posao.models.Kantoni;
 import ba.posao.models.Korisnici;
-import ba.posao.repositories.KantoniRepository;
 import ba.posao.repositories.KorisnikRepository;
-import ba.posao.repositories.UserRepository;
 
 
 @Controller    // This means that this class is a Controller
