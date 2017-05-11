@@ -6,12 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.hibernate.service.spi.ServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import ba.posao.models.Korisnici;
 import ba.posao.repositories.KorisnikRepository;
 
 @Service
-public class KorisnikService {
+public class KorisnikService implements UserDetailsService{
 
 	private final static int PAGESIZE = 3;
 
@@ -36,8 +51,9 @@ public class KorisnikService {
     	repository.save(k);
 	}
     
-    public void updateKorisnici(Korisnici k) {
+    public Boolean updateKorisnici(Korisnici k) {
     	repository.save(k);
+    	return true;
 	}
 
     public void removeKorisnici(int id) {
@@ -64,6 +80,52 @@ public class KorisnikService {
     	
     	return "ERROR_UNKNOWN";
     }
+    
+	public String getKorisnikTypeByUserName(String username) {
+    	Korisnici k = repository.findByUsername(username);
+    	if(k == null)
+    		return "ERROR_NULL";
+    	
+    	if(k.getPoslodavac() != null)
+    		return "ROLE_POSLODAVAC";
+    	if(k.getNezaposleni() != null)
+    		return "ROLE_NEZAPOSLENI";
+    	if(k.getAdmin() != null)
+    		return "ROLE_ADMIN";
+    	
+    	return "ERROR_UNKNOWN";
+    }
+    public Boolean registerKorisnik(Korisnici korisnik) {
+    	
+    	// Registracija nije implementirana do kraja
+
+        if(repository.findByUsername(korisnik.getUsername()) != null) {
+            throw new ServiceException("Korisnik sa datim username-om vec postoji!");
+        }
+
+        Korisnici kreiranKorisnik = repository.save(korisnik);
+
+        return kreiranKorisnik != null;
+
+    }
+	 @Override
+	    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+
+	        Korisnici korisnik = repository.findByUsername(s);
+	        if(korisnik == null) {
+	            throw new UsernameNotFoundException("Nije pronađen korisnik s takvim username-om");
+	        }
+	        return new User(korisnik.getUsername(), korisnik.getPassword(), getGrantedAuthorities(korisnik));
+	    }
+
+	    private Collection<GrantedAuthority> getGrantedAuthorities(Korisnici korisnik) {
+	        Collection<GrantedAuthority> authorities = new ArrayList<>();
+	        if(korisnik.getNezaposleni() != null || korisnik.getPoslodavac() != null || korisnik.getAdmin() != null) {
+	           authorities.add(new SimpleGrantedAuthority(korisnik.getUsername()));
+	        }
+	        return authorities;
+	    }
+
     
     
 }
