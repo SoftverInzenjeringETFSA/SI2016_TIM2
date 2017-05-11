@@ -122,8 +122,8 @@ li{
 
 .loginPage
 {
-	background-image: url('/assets/images/login.png');
-    background-position: center;
+	background-image: url('/assets/images/login.jpg');
+    background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
 	height: 100vh!important;
@@ -137,6 +137,7 @@ li{
 .btn-login
 {
 	margin-top: 40px;
+    margin-bottom: 50px;
 	width: 80%;
 	height: 50px;
 	background-color:#F7CE3E;
@@ -275,4 +276,18 @@ li{
 
 .btn-register:hover{
     border-color: #f7ce3e!important;
+}
+
+.registration-form-employer{
+    font-family: 'Montserrat', sans-serif;
+	font-weight: 400!important;
+	border-radius: 5px!important;
+	top: 300px;
+	position: absolute;
+	margin-left: 50%;
+	transform: translate(-60%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+	width: 450px;
+	height: 450px;
 }
