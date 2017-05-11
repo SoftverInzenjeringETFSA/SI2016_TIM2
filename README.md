@@ -7,6 +7,8 @@
 * Instalirati Eclipse Neon.3
 
 * Instalirati STS - Spring Tools Suite
+
+* Instalirati Maven
     
 *   Instalirati MySql (Korištena verzija 5.7.18, druge verzije bi trebale biti kompatibilne)
 
@@ -24,3 +26,4 @@
 * Instalirati bower
 
 * Instalirati Ember CLI
+
