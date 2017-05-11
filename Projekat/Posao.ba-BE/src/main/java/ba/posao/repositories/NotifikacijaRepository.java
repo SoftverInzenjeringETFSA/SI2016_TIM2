@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import ba.posao.models.Notifikacija;
 
 @Repository
-public interface NotifikacijaRepository extends PagingAndSortingRepository<Notifikacija, Long> {
+public interface NotifikacijaRepository extends PagingAndSortingRepository<Notifikacija, Integer> {
 	@Query("select n from Notifikacija n where idNotifikacije=?")
 	public Notifikacija findById(Integer id);
 }
