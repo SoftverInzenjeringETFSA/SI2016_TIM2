@@ -5,35 +5,43 @@
 
         <div class="login-input-wrapper-registration" style="margin-top:90px" >
             <div class="form-group has-feedback" style="color:#202030!important">
-                <input class="colors login-input registration-employer-color" placeholder="Naziv poslodavca" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Korisničko ime'"
+                <input class="colors login-input registration-employer-color" placeholder="Naziv oglasa" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Naziv oglasa'"
                     type="text">
             </div>
 
             <div class="form-group has-feedback">
-                <input class="colors login-input registration-employer-color" placeholder="E-mail:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'"
+                <input class="colors login-input registration-employer-color" placeholder="Poslodavac" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Poslodavac'"
                     type="text" style="#202030">
             </div>
             <div class="form-group has-feedback">
-                <input class="colors login-input registration-employer-color" placeholder="Lozinka:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lozinka'"
-                    type="password">
+                <!-- <input class="colors login-input registration-employer-color" placeholder="Kategorija" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kategorija'"
+                    type="password"> -->
+                    <select class="colors login-input registration-employer-color" name="Kategorija" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kategorija'">
+                        <option selected disabled>Kategorija oglasa</option>
+                        <option value="arhitektura">Arhitektonske usluge</option>
+                        <option value="bankarstvo">Bankarstvo</option>
+                        <option value="ekonomija">Ekonomija</option>
+                        <option value="graficki-dizajn">Grafi;ki dizajn</option>
+                        <option value="nekretnikne">Nekretnine</option>
+                        <option value="osiguranje">Osiguranje</option>
+                        <option value="Turizam">Turizam</option>
+                      </select>
             </div>
+
             <div class="form-group has-feedback">
-                <input class="colors login-input registration-employer-color" placeholder="Ponovo unesite lozinku:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lozinka2'"
-                    type="password">
-            </div>
-            <div class="form-group has-feedback">
-                <input class="colors login-input registration-employer-color" placeholder="Oblast djelatnosti:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'OblastDjelatnosti'"
+                <input class="colors login-input registration-employer-color" placeholder="Opis oglasa" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Opis oglasa'"
                     type="text">
             </div>
             <div class="form-group has-feedback">
-                <input class="colors login-input registration-employer-color" placeholder="Adresa:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adresa'"
+                <input class="colors login-input registration-employer-color" placeholder="Kontakt informacije" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kontakt informacije'"
                     type="text">
             </div>
             <div class="form-group has-feedback">
-                <input class="colors login-input registration-employer-color" placeholder="Telefon:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefon'"
-                    type="text">
+                <!-- <input class="colors login-input registration-employer-color" placeholder="Datum isteka oglasa" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Datum isteka oglasa'"
+                    type="text"> -->
+                <input class="colors login-input registration-employer-color" placeholder="Datum isteka oglasa" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Datum isteka oglasa'" type="date" name="datum-isteka">
             </div>
-            <button class="btn btn-primary btn-outline btn-login" style="width: 100%">Registruj se</button>
+            <button class="btn btn-primary btn-outline btn-login" style="width: 100%">Dodaj oglas</button>
 
          </div>
 
