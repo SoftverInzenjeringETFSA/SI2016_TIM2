@@ -362,3 +362,160 @@ transform: translate(-50%, -50%);
   color: #55a078!important;
   border-bottom: 1px solid #55a078!important;
 }
+
+/*profile-page*/
+
+.profile-form
+{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400!important;
+  border-radius: 5px!important;
+  top: 350px;
+  position: absolute;
+  margin-left: 50%;
+  transform translate: (-60%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+  width: 350px;
+  height: 450px;
+
+}
+
+.profilePage
+{
+  background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh!important;
+    width: 100vw!important;
+    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.logo-profile
+{
+  left:50%;
+    top: 10%;
+  transform: translate(-50%, -50%);
+  position: absolute!important;
+  width: 220px;
+  height: 170px;
+
+}
+
+.profile-izgled
+{
+   font-family: 'Montserrat', sans-serif;
+   text-align: center;
+   font-size: 22px;
+   margin-top: 85px;
+   position: absolute;
+   margin-left: 26%;
+}
+
+.profile-list
+{
+  width: 100%;
+  margin-top: 180px;
+  margin-left: -5%;
+  border: 2px solid;
+  border-radius: 8px;
+}
+
+.col-sm-12 {
+    width: 100%;
+    margin-top: 140px;
+    border: 2px solid;
+    border-radius: 8px;
+  }
+
+.profile-li
+{
+  margin-top: 10px;
+  margin-left: -30px;
+}
+
+/*viewad*/
+
+.viewad-form
+{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400!important;
+  border-radius: 5px!important;
+  top: 350px;
+  position: absolute;
+  margin-left: 50%;
+  transform translate: (-60%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+  width: 350px;
+  height: 450px;
+
+}
+
+.viewadPage
+{
+  background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh!important;
+    width: 100vw!important;
+    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.logo-viewad
+{
+  left:50%;
+    top: 10%;
+  transform: translate(-50%, -50%);
+  position: absolute!important;
+  width: 220px;
+  height: 170px;
+
+}
+
+.viewad-izgled
+{
+   font-family: 'Montserrat', sans-serif;
+   text-align: center;
+   font-size: 22px;
+   margin-top: 85px;
+   position: absolute;
+   margin-left: 26%;
+}
+
+.viewad-list
+{
+  width: 100%;
+  margin-top: 180px;
+  margin-left: -5%;
+  border: 2px solid;
+  border-radius: 8px;
+}
+
+.col-sm-12 {
+    width: 100%;
+    margin-top: 140px;
+    border: 2px solid;
+    border-radius: 8px;
+  }
+
+.viewad-li
+{
+  margin-top: 10px;
+  margin-left: -30px;
+}
+
+.template-viewad
+{
+  left: 80%;
+  top: 10%;
+  position: absolute!important;
+  width: 50px;
+  height: 50px;
+}

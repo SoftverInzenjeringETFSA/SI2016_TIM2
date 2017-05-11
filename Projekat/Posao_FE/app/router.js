@@ -14,6 +14,8 @@ Router.map(function() {
   this.route('login',{ path: '/login' });
   this.route('main');
   this.route('dodaj-oglas',{path: '/dodaj-oglas'});
+  this.route('viewad');
+  this.route('profile');
 });
 
 export default Router;
