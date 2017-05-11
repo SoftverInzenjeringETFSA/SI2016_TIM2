@@ -43,4 +43,25 @@ public class KorisnikService {
     public void removeKorisnici(int id) {
     	repository.delete(id);
 	}
+    
+    /*
+     * Zbog dizajna baze ne čuva se tip korisnika
+     * Potrebno je iz tabele odrediti koji je to tip
+     * Koristiti za određivanje privilegija
+     * */
+    
+    public String getKorisnikType(int id) {
+    	Korisnici k = repository.findByIdKorisnika(id);
+    	if(k == null)
+    		return "ERROR_NULL";
+    	
+    	if(k.getPoslodavac() != null)
+    		return "ROLE_POSLODAVAC";
+    	if(k.getNezaposleni() != null)
+    		return "ROLE_NEZAPOSLENI";
+    	if(k.getAdmin() != null)
+    		return "ROLE_ADMIN";
+    	
+    	return "ERROR_UNKNOWN";
+    }
 }
