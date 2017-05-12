@@ -45,11 +45,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(korisnikServis); - Login za sve korisinike, nije testiran do kraja
-   	auth.inMemoryAuthentication() // login za testnim podacima
+    	
+    auth.userDetailsService(korisnikServis); //nije testirano do kraja
+    
+   	/*auth.inMemoryAuthentication() // login za testnim podacima
         .withUser("admin")
         .password("password")
-        .roles("ADMIN");
+        .roles("ADMIN");*/
 
     }
 }

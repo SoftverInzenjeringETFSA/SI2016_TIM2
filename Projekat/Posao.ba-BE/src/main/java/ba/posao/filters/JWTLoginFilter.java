@@ -1,5 +1,6 @@
 package ba.posao.filters;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,6 +25,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -56,11 +60,42 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
         } else {
             creds = new ObjectMapper().readValue(req.getInputStream(), AccountCredentials.class);
         }
+        
 
+        byte[] pass = null;
+        
+        try {
+			pass = creds.getPassword().getBytes("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+        
+        MessageDigest m = null;
+		try {
+			m = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+		StringBuffer hexString = new StringBuffer();
+		
+		byte[] passHash = m.digest(pass);
+		
+		for (int i = 0; i < passHash.length; i++) {
+		    if ((0xff & passHash[i]) < 0x10) {
+		        hexString.append("0"
+		                + Integer.toHexString((0xFF & passHash[i])));
+		    } else {
+		        hexString.append(Integer.toHexString(0xFF & passHash[i]));
+		    }
+		}
+		
+		System.out.println("...DEBUG: " + hexString.toString());
+		
         return getAuthenticationManager().authenticate(
                 new UsernamePasswordAuthenticationToken(
                         creds.getUsername(),
-                        creds.getPassword(),
+                        hexString.toString(),
                         Collections.emptyList()
                 )
         );
