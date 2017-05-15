@@ -47,7 +47,8 @@ public class TokenAuthenticationService {
         ServletContext servletContext = request.getServletContext();
         WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
         korisnikRepository = webApplicationContext.getBean(KorisnikRepository.class);
-
+        korisnikServis = webApplicationContext.getBean(KorisnikService.class);
+        
         String token = request.getHeader(HEADER_STRING);
         if (token != null) {
             // parse the token.
