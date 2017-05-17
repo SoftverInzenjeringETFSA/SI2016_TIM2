@@ -5,12 +5,14 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 
 @Entity
@@ -29,16 +31,19 @@ public class Korisnici implements Serializable {
     private String password;
     private String email;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idkorisnika")
+    //@OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "idkorisnika")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "korisnici", cascade = CascadeType.ALL)
     private Nezaposleni nezaposleni;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idkorisnika")
+    //@OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "idkorisnika")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "korisnici", cascade = CascadeType.ALL)
     private Admin admin;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idkorisnika")
+    //@OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "idkorisnika")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "korisnici", cascade = CascadeType.ALL)
     private Poslodavci poslodavac;
    
 
@@ -51,8 +56,13 @@ public class Korisnici implements Serializable {
 		this.idKorisnika = idKorisnika;
 	}
 
+	
 	public Nezaposleni getNezaposleni() {
 		return nezaposleni;
+	}
+	
+	public void setNezaposleni(Nezaposleni nezaposleni) {
+		this.nezaposleni = nezaposleni;
 	}
     
 	public String getUsername() {
@@ -78,25 +88,25 @@ public class Korisnici implements Serializable {
 		return idKorisnika;
 	}
 
-	public void setNezaposleni(Nezaposleni nezaposleni) {
-		this.nezaposleni = nezaposleni;
-	}
+//	public void setNezaposleni(Nezaposleni nezaposleni) {
+//		this.nezaposleni = nezaposleni;
+//	}
 
 	public Admin getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(Admin admin) {
-		this.admin = admin;
-	}
+//	public void setAdmin(Admin admin) {
+//		this.admin = admin;
+//	}
 
 	public Poslodavci getPoslodavac() {
 		return poslodavac;
 	}
 
-	public void setPoslodavac(Poslodavci poslodavac) {
-		this.poslodavac = poslodavac;
-	}
+//	public void setPoslodavac(Poslodavci poslodavac) {
+//		this.poslodavac = poslodavac;
+//	}
 	
 	@Override
     public String toString() {

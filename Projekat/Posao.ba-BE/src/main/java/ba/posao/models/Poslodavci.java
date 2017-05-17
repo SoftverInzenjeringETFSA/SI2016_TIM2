@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -25,6 +26,18 @@ public class Poslodavci implements Serializable {
 	@GenericGenerator(name="SharedPrimaryKeyGenerator",strategy="foreign",parameters =  @Parameter(name="property", value="korisnici"))
 	@Column(name = "idkorisnika", unique = true, nullable = false)
 	private Integer idKorisnika;
+	
+	@PrimaryKeyJoinColumn
+    @OneToOne
+	private Korisnici korisnici;
+
+	 public Korisnici getKorisnici() {
+		  	return korisnici;
+		 }
+		    
+		 public void setKorisnici(Korisnici korisnici) {
+			 this.korisnici = korisnici;
+		 }
 	
 	 
 	private String ime;

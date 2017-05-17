@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ba.posao.models.Korisnici;
 import ba.posao.services.KorisnikService;
+import ba.posao.services.NezaposleniService;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +34,30 @@ public class KorisnikController {
 
 	@Autowired
     private KorisnikService korisnikService;
+	
+	@Autowired
+	private NezaposleniService nezaposleniService;
+	
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity register(@RequestBody Korisnici korisnik)
     {
         try {
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body(korisnikService.registerKorisnik(korisnik));
+        	if(korisnik.getNezaposleni() != null)
+        	{
+        		korisnik.getNezaposleni().setKorisnici(korisnik);
+                return ResponseEntity.status(HttpStatus.OK)
+                        .body(korisnikService.registerKorisnik(korisnik));
+                //korisnik.getNezaposleni().setKorisnici(korisnik);
+                //return ResponseEntity.status(HttpStatus.OK)
+                //        .body(nezaposleniService.registerNezaposleni(korisnik.getNezaposleni()));
+        	}
+        	else if (korisnik.getPoslodavac() != null)
+        	{
+        		korisnik.getPoslodavac().setKorisnici(korisnik);
+                return ResponseEntity.status(HttpStatus.OK)
+                        .body(korisnikService.registerKorisnik(korisnik));
+        	} 
+        	else return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
         catch (ServiceException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)

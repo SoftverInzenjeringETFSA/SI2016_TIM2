@@ -6,9 +6,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Nezaposleni implements Serializable {
@@ -23,6 +27,19 @@ public class Nezaposleni implements Serializable {
 	private String prezime;
 	private String cv;
 
+	@JsonIgnore
+    @PrimaryKeyJoinColumn
+    @OneToOne
+	private Korisnici korisnici;
+
+    public Korisnici getKorisnici() {
+        return korisnici;
+    }
+    
+    public void setKorisnici(Korisnici korisnici) {
+        this.korisnici = korisnici;
+    }
+	
 	public Integer getIdKorisnika() {
 		return idKorisnika;
 	}
