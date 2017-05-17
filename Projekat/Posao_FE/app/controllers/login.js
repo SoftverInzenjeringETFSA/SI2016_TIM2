@@ -13,7 +13,6 @@ export default Ember.Controller.extend({
         login: function(credentials, doRedirect) {
             var self = this;
             this.authenticate(credentials).then(function(value) {
-		        console.log("desilo se");
 
                 if(doRedirect) {
                     self.transitionToRoute('index');
@@ -22,8 +21,6 @@ export default Ember.Controller.extend({
             }.bind(doRedirect), function(reason) {
             	//self.errorMessage = "op";
                 self.transitionToRoute('registracija');
-
-		        console.log("desilo na 23");
 
                 //this.errorMessage = "Pogrešni kredencijali.";
             });

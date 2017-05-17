@@ -22,7 +22,7 @@ public class OglasController {
 	private OglasRepository oglasRepository;
 	
 	@CrossOrigin
-	@GetMapping(path="/{id}")
+	@GetMapping(path="/get/{id}")
 	public @ResponseBody Oglas getOglasById(@PathVariable("id") Integer id) {
 		return oglasRepository.findById(id);
 	}

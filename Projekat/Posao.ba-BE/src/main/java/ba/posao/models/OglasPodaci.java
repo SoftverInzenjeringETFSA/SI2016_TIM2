@@ -68,6 +68,10 @@ public class OglasPodaci implements Serializable {
 	public List<PoljaTemplatea> getPoljaTemplatea() {
 		return poljaTemplatea;
 	}
+	
+	public PoljaTemplatea getPoljeTemplatea() {
+		return this.poljaTemplatea.get(0);
+	}
 
 	public void setPoljaTemplatea(List<PoljaTemplatea> poljaTemplatea) {
 		this.poljaTemplatea = poljaTemplatea;

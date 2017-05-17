@@ -6,15 +6,15 @@
     <div class="row">
         <div class="col-sm-12">
             <ul>
-                <li class="viewad-li">Naziv oglasa:</li>
+            {{#each model.oglas.oglasPodaci as |podatak|}}
+                <li class="viewad-li">{{podatak.poljeTemplatea.nazivPolja}} : {{podatak.vrijednost}}</li>
                 <br>
-                <li class="viewad-li">Kategorija:</li>
+            {{/each}}
+                <li class="viewad-li">Kategorija: {{model.oglas.kategorije.naziv}}</li>
                 <br>
-                <li class="viewad-li">Struka:</li>
+                <li class="viewad-li">Poslodavac: {{model.oglas.poslodavac.nazivFirme}}</li>
                 <br>
-                <li class="viewad-li">Opis oglasa:</li>
-                <br>
-                <li class="viewad-li">Kontakt info:</li>
+                <li class="viewad-li">Kontakt info: {{model.oglas.poslodavac.telefon}}</li>
             </ul>
             <img class="template-viewad" src="assets/images/oglas.png" >
 
