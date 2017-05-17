@@ -1,22 +1,25 @@
 <div class="loginPage">
-    <div class="login-form">
-       
+    <form class="login-form" {{action 'loginNormal' on='submit'}}>
+           
            {{#link-to "index"}} <img class="logo-login" src="assets/images/logo-white.png" >{{/link-to}}
      
+
         <div class="login-input-wrapper">
             <div class="form-group has-feedback">
-                <input class=" colors login-input" placeholder="Korisničko ime" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Korisničko ime'"
-                    type="text">
+                {{input class=" colors login-input" placeholder="Korisničko ime" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Korisničko ime'" type="text" value=identification}}
                 <i class="glyphicon glyphicon-user form-control-feedback pull-left" aria-hidden="true" style="margin-top: 5px; color: #F7CE3E;"></i>
             </div>
             <div class="form-group has-feedback">
-                <input class="colors login-input" placeholder="Lozinka" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lozinka'"
-                    type="password">
+                {{input class="colors login-input" placeholder="Lozinka" onfocus="this.placeholder = ''" onblur="this.placeholder='Lozinka'" type="password" value=password}}
                 <i class="glyphicon glyphicon-lock form-control-feedback pull-left" aria-hidden="true" style="margin-top: 5px; color: #F7CE3E;"></i>
             </div>
          </div>
-        <button class="btn btn-primary btn-outline btn-login" style="width: 100%">PRIJAVITE SE</button>
-       
-    </div>
+        <button class="btn btn-primary btn-outline btn-login" style="width: 100%" type='submit'>PRIJAVITE SE</button>
 
+        {{#if errorMessage}}
+            <p>error:</p>
+            <p>{{errorMessage}}</p>
+
+        {{/if}}
+    </form>
 </div>

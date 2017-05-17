@@ -89,9 +89,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 		        hexString.append(Integer.toHexString(0xFF & passHash[i]));
 		    }
 		}
-		
-		System.out.println("...DEBUG: " + hexString.toString());
-		
+				
         return getAuthenticationManager().authenticate(
                 new UsernamePasswordAuthenticationToken(
                         creds.getUsername(),
@@ -104,6 +102,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
     @Override
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain, Authentication auth) throws IOException, ServletException {
         TokenAuthenticationService.addAuthentication(res, auth.getName());
+        res.setStatus(HttpServletResponse.SC_NO_CONTENT);
     }
 
 }

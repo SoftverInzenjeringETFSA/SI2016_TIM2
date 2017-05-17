@@ -1,4 +1,3 @@
-
 <div class="main-page">
 {{#link-to "index"}}  <img class="logo-main" src="assets/images/logo.png" >{{/link-to}}	
 <div class="form-group has-feedback search-main">
@@ -7,23 +6,22 @@
 </div>            
 <table class="table table-hover table-blue">
 	<tbody>
-
-		<tr class="table-row">
-			<td class="col-md-2">
-				<img class="img-responsive img-list" src="assets/images/oglas.png">
-			</td>
-			<td class="col-md-6">
-				<h4 class="title">NAZIV OGLASA</h4>
-                <p class="desc">Poslodavac/Kompanija</p>
-                <p class="desc">Datum isteka</p>
-                
-			</td>
-			<td class="col-md-5">
-				<button class="btn btn-primary btn-outline btn-main" style="margin-right: 22px;">Pročitaj više</button>
-			</td>
-			
-		</tr>
-        
+		{{#each model.oglasi as |oglas|}}
+			<tr class="table-row">
+				<td class="col-md-2">
+					<img class="img-responsive img-list" src="assets/images/oglas.png">
+				</td>
+				<td class="col-md-6">
+					<h4 class="title">{{oglas.naziv}}</h4>
+	                <p class="desc">{{oglas.poslodavac.nazivFirme}}</p>
+	                <p class="desc">{{oglas.datumObjave}}</p>
+	                
+				</td>
+				<td class="col-md-5">
+					<button class="btn btn-primary btn-outline btn-main" style="margin-right: 22px;">Pročitaj više</button>
+				</td>			
+			</tr>
+        {{/each}}
 	</tbody>
 </table>
 </div>

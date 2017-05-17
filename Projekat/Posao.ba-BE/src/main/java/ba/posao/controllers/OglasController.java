@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,29 +20,41 @@ public class OglasController {
 
 	@Autowired
 	private OglasRepository oglasRepository;
+	
+	@CrossOrigin
 	@GetMapping(path="/{id}")
 	public @ResponseBody Oglas getOglasById(@PathVariable("id") Integer id) {
 		return oglasRepository.findById(id);
 	}
+
+	@CrossOrigin
+	@GetMapping(path="/svi")
+	public @ResponseBody List<Oglas> findAll() {
+		return oglasRepository.findAll();
+	}
 	
 	//svi oglasi poslodavca
+	@CrossOrigin
 	@GetMapping(path="/poslodavac/{id}")
 	public @ResponseBody List<Oglas> findByPoslodavac(@PathVariable("id") Integer id) {
 		return oglasRepository.findAllByPoslodavacIdKorisnika(id);
 	}
 	
 	// /oglasi/kategorija?kategorija=...
+	@CrossOrigin
 	@GetMapping(path="/kategorija") 
 	public @ResponseBody List<Oglas> findByKategorije(@RequestParam("kategorija") String kategorija) {
 		return oglasRepository.findAllByKategorijeNaziv(kategorija);
 	}
 	
 	//radi donekle
+	@CrossOrigin
 	@GetMapping(path="/pretraga")
 	public @ResponseBody List<Oglas> findByString(@RequestParam("vrijednost") String vrijednost) {
 		return oglasRepository.findAllByOglasPodaciVrijednost(vrijednost);
 	}
 	
+	@CrossOrigin
 	@GetMapping(path="/pretraga/lokacija")
 	public @ResponseBody List<Oglas> findByLokacija(@RequestParam("lokacija") String lokacija) {
 		return oglasRepository.findAllByLokacijaNaziv(lokacija);

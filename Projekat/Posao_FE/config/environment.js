@@ -1,4 +1,4 @@
-/* eslint-env node */
+/* jshint node: true */
 
 module.exports = function(environment) {
   var ENV = {
@@ -14,7 +14,8 @@ module.exports = function(environment) {
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
         Date: false
-      }
+      },
+      apiHost: null
     },
 
     APP: {
@@ -23,12 +24,31 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['g-map'] = {
+    key: 'AIzaSyC5xfl4ytPUyDUy_yulTluJpZoBZKECEyE'
+  };
+
+  ENV['ember-simple-auth'] = {
+    authorizer: 'authorizer:token',
+    baseURL: ''
+  };
+
+  ENV['ember-simple-auth-token'] = {
+    refreshAccessTokens: false,
+    authorizer: 'authorizer:token',
+    identificationField: 'username',
+    serverTokenEndpoint: ''
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.LOG_ACTIVE_GENERATION = true;
+    ENV.APP.LOG_TRANSITIONS = true;
+    ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV.apiHost = "http://localhost:8080";
+    ENV.apiVersion = "1";
   }
 
   if (environment === 'test') {
@@ -42,9 +62,14 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
-  if (environment === 'production') {
-
+  if (environment === 'production') {   
+    ENV.apiHost = "http://localhost:8080";
+    ENV.apiVersion = "1";
   }
+
+
+  ENV['ember-simple-auth'].baseURL = ENV.apiHost;
+  ENV['ember-simple-auth-token'].serverTokenEndpoint = `${ENV.apiHost}/login`;
 
   return ENV;
 };
