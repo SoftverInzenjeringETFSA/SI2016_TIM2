@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,19 +26,19 @@ public class OglasPodaci implements Serializable {
 	private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator="SharedPrimaryKeyGenerator")
-    @GenericGenerator(name="SharedPrimaryKeyGenerator",strategy="foreign",parameters =  @Parameter(name="property", value="idoglasa"))
-    @Column(name = "idpolja", unique = false, nullable = false)
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "idpolja")
 	private Integer id;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="idtemplate")
-	private Template template;
-			
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="idpolja")
-	private List<PoljaTemplatea> poljaTemplatea;
-	
+    private String staje;
+    public String getStaje() {
+		return staje;
+	}
+    public void setStaje(String e)
+    {
+    	this.staje=e;
+    }
+
 	private String vrijednost;
 
 	public Integer getId() {
@@ -48,15 +49,6 @@ public class OglasPodaci implements Serializable {
 		this.id = id;
 	}
 
-	public Template getTemplate() {
-		return template;
-	}
-
-	public void setTemplate(Template template) {
-		this.template = template;
-	}
-
-
 	public String getVrijednost() {
 		return vrijednost;
 	}
@@ -65,15 +57,4 @@ public class OglasPodaci implements Serializable {
 		this.vrijednost = vrijednost;
 	}
 	
-	public List<PoljaTemplatea> getPoljaTemplatea() {
-		return poljaTemplatea;
-	}
-	
-	public PoljaTemplatea getPoljeTemplatea() {
-		return this.poljaTemplatea.get(0);
-	}
-
-	public void setPoljaTemplatea(List<PoljaTemplatea> poljaTemplatea) {
-		this.poljaTemplatea = poljaTemplatea;
-	}
 }

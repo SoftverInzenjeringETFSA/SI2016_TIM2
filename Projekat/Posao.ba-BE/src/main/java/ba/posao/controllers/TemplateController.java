@@ -8,18 +8,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import ba.posao.models.Poruke;
-import ba.posao.repositories.PorukeRepository;
+
+import ba.posao.models.Template;
+import ba.posao.services.TemplateService;
 
 @Controller    // This means that this class is a Controller. no shit??
 @CrossOrigin
-@RequestMapping(path="/poruke") 
-public class PorukeController {
+@RequestMapping(path="/template") 
+public class TemplateController {
+	
+	
+
 	@Autowired
-	private PorukeRepository porukeRepository;
+	TemplateService repository;
 	
 	@GetMapping(path="/{id}")
-	public @ResponseBody Poruke getPorukeById(@PathVariable("id") Integer id) {
-		return porukeRepository.findById(id);
+	public @ResponseBody Template getTemplateById(@PathVariable("id") Integer id) {
+		return repository.findById(id);
 	}
+
 }

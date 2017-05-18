@@ -5,10 +5,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -19,11 +21,27 @@ public class PoljaTemplatea implements Serializable {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="idpolja")
+	@Column(name="id")
 	private Integer id;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idtemplate", nullable = false)
+	private Template template;
+	
+	   @Column(name="nazivpolja")
+	    private String nazivPolja;
+	
+	
+//	@ManyToOne(targetEntity=Template.class)
+//	@Column(name="idTemplate")
+	
+	
+	
+	public Template getTemplate() {
+		return this.template;
+	}
+
  
-    @Column(name="nazivpolja")
-    private String nazivPolja;
 	
 	public Integer getId() {
 		return id;
@@ -40,4 +58,14 @@ public class PoljaTemplatea implements Serializable {
 	public void setNazivPolja(String nazivPolja) {
 		this.nazivPolja = nazivPolja;
 	}	
+	
+/*	private Template getTemplate()
+	{
+		return this.template;
+	} */
+	
+	private void setTemplate(Template template)
+	{
+		this.template=template;
+	}
 }

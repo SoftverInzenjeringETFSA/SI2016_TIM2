@@ -1,13 +1,17 @@
 package ba.posao.models;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 
@@ -21,6 +25,25 @@ public class Template implements Serializable {
 	private Integer id;
 	
 	private String naziv;
+	
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "template")
+	private Set<PoljaTemplatea> poljaTemplatea;
+	
+	
+	
+	
+	public Set<PoljaTemplatea> getPoljaTemplatea() {
+		return this.poljaTemplatea;
+	}
+	
+	public void setPoljaTemplatea(Set<PoljaTemplatea> p)
+	{
+		this.poljaTemplatea=p;
+	}
+	
+
+	
 	
 	public Integer getId() {
     	return id;
