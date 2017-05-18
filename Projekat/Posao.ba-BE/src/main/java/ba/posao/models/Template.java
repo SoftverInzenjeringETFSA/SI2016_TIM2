@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 
-
 @Entity
 public class Template implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,13 +21,16 @@ public class Template implements Serializable {
 	@Column(name="idtemplate")
 	private Integer id;
 	
+	
 	private String naziv;
 	
-	
+	public Template() {
+		super();
+	}
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "template")
 	private Set<PoljaTemplatea> poljaTemplatea;
-	
-	
+		
 	public Set<PoljaTemplatea> getPoljaTemplatea() {
 		return this.poljaTemplatea;
 	}

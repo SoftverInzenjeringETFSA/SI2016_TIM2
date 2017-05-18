@@ -31,21 +31,13 @@ public class PoljaTemplatea implements Serializable {
 	@JoinColumn(name = "idtemplate", nullable = false)
 	private Template template;
 	
-	   @Column(name="nazivpolja")
-	   private String nazivPolja;
-	
-	
-//	@ManyToOne(targetEntity=Template.class)
-//	@Column(name="idTemplate")
-	
-	
+   @Column(name="nazivpolja")
+   private String nazivPolja;	
 	
 	public Template getTemplate() {
 		return this.template;
 	}
 
- 
-	
 	public Integer getId() {
 		return id;
 	}
@@ -62,12 +54,7 @@ public class PoljaTemplatea implements Serializable {
 		this.nazivPolja = nazivPolja;
 	}	
 	
-/*	private Template getTemplate()
-	{
-		return this.template;
-	} */
-	
-	private void setTemplate(Template template)
+	public void setTemplate(Template template)
 	{
 		this.template=template;
 	}
