@@ -29,8 +29,6 @@ public class Template implements Serializable {
 	private Set<PoljaTemplatea> poljaTemplatea;
 	
 	
-	
-	
 	public Set<PoljaTemplatea> getPoljaTemplatea() {
 		return this.poljaTemplatea;
 	}

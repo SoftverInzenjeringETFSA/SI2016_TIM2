@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2017 at 08:33 PM
+-- Generation Time: May 18, 2017 at 09:22 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -528,7 +528,7 @@ ALTER TABLE `sakrivenipodaci`
 -- Indexes for table `template`
 --
 ALTER TABLE `template`
-  ADD PRIMARY KEY (`idTemplate`,`naziv`);
+  ADD PRIMARY KEY (`idTemplate`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
