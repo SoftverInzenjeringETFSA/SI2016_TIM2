@@ -47,6 +47,8 @@ public class Oglas implements Serializable {
     private byte uspjesan;
     
     private Integer prioritet;
+    private String naziv;
+    private String opis;
     
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE,targetEntity=OglasPodaci.class)
     @JoinColumn(name="idoglasa")
@@ -151,6 +153,22 @@ public class Oglas implements Serializable {
 
 	public void setOglasPodaci(List<OglasPodaci> oglasPodaci) {
 		this.oglasPodaci = oglasPodaci;
+	}
+
+	public String getNaziv() {
+		return naziv;
+	}
+
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
+	}
+
+	public String getOpis() {
+		return opis;
+	}
+
+	public void setOpis(String opis) {
+		this.opis = opis;
 	}
     
 
