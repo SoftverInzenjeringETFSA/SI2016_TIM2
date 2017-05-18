@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2017 at 09:22 PM
+-- Generation Time: May 18, 2017 at 11:04 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tim2`
+-- Database: `posao`
 --
 
 -- --------------------------------------------------------
@@ -215,19 +215,21 @@ CREATE TABLE `oglas` (
   `sakriven` tinyint(4) NOT NULL,
   `zatvoren` tinyint(4) NOT NULL DEFAULT '0',
   `uspjesan` tinyint(4) DEFAULT NULL,
-  `prioritet` int(11) NOT NULL DEFAULT '5'
+  `prioritet` int(11) NOT NULL DEFAULT '5',
+  `naziv` varchar(256) NOT NULL,
+  `opis` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oglas`
 --
 
-INSERT INTO `oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `datumObjave`, `datumIsteka`, `sakriven`, `zatvoren`, `uspjesan`, `prioritet`) VALUES
-(1, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1),
-(2, 2, 2, 2, '2017-05-10 00:00:00', '2017-06-01 23:59:59', 0, 0, 0, 2),
-(3, 2, 3, 2, '2017-05-08 00:00:00', '2017-06-05 23:59:59', 0, 0, 0, 2),
-(4, 2, 3, 1, '2017-05-07 00:00:00', '2017-06-07 23:59:59', 0, 0, 0, 1),
-(5, 2, 4, 1, '2017-05-10 00:00:00', '2017-06-10 23:59:59', 0, 0, 0, 1);
+INSERT INTO `oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `datumObjave`, `datumIsteka`, `sakriven`, `zatvoren`, `uspjesan`, `prioritet`, `naziv`, `opis`) VALUES
+(1, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas 1', 'Opis 1'),
+(2, 2, 2, 2, '2017-05-10 00:00:00', '2017-06-01 23:59:59', 0, 0, 0, 2, 'Oglas 2', 'Opis 2'),
+(3, 2, 3, 2, '2017-05-08 00:00:00', '2017-06-05 23:59:59', 0, 0, 0, 2, 'Oglas 3', 'Opis 3'),
+(4, 2, 3, 1, '2017-05-07 00:00:00', '2017-06-07 23:59:59', 0, 0, 0, 1, 'Oglas 4', 'Opis 4'),
+(5, 2, 4, 1, '2017-05-10 00:00:00', '2017-06-10 23:59:59', 0, 0, 0, 1, 'Oglas 5', 'Opis 5');
 
 -- --------------------------------------------------------
 
@@ -247,21 +249,21 @@ CREATE TABLE `oglaspodaci` (
 --
 
 INSERT INTO `oglaspodaci` (`id`, `idOglasa`, `vrijednost`, `staje`) VALUES
-(1, 1, 'Junior developer', ''),
-(2, 1, 'Tražimo junior developera', ''),
-(3, 1, 'Junior developer sa dvogodišnjim iskustvom sa različitim tehnologijama, želja za učenjem, entuzijazam bla bla', ''),
-(4, 1, 'Java, Spring, Ember, Angular js', ''),
-(5, 1, '2017-05-05 00:00:00', ''),
-(6, 1, '2017-07-01 23:59:59', ''),
-(7, 1, 'Sarajevo', ''),
-(8, 2, 'Trgovac', ''),
-(9, 2, 'Kratak opis', ''),
-(10, 2, 'Opis posla ....', ''),
-(11, 2, 'SSS', ''),
-(12, 2, '2017-05-10 00:00:00', ''),
-(13, 2, '', ''),
-(14, 2, 'Zenica', ''),
-(15, 2, 'Napomena', '');
+(1, 1, 'Junior developer', 'Titula'),
+(2, 1, 'Tražimo junior developera', 'Titula'),
+(3, 1, 'Junior developer sa dvogodišnjim iskustvom sa različitim tehnologijama, želja za učenjem, entuzijazam bla bla', 'iskustvo'),
+(4, 1, 'Java, Spring, Ember, Angular js', 'Jezici'),
+(5, 1, '2017-05-05 00:00:00', 'Datum i vrijeme'),
+(6, 1, '2017-07-01 23:59:59', 'Datum i vrijeme'),
+(7, 1, 'Sarajevo', 'Lokacija'),
+(8, 2, 'Trgovac', 'Datum i vrijeme'),
+(9, 2, 'Kratak opis', 'Opis'),
+(10, 2, 'Opis posla ....', 'Opis'),
+(11, 2, 'SSS', 'SSS'),
+(12, 2, '2017-05-10 00:00:00', 'Datum i vrijeme'),
+(13, 2, 'Mostar', 'Lokacija'),
+(14, 2, 'Zenica', 'Lokacija'),
+(15, 2, 'Napomena', 'Napomena');
 
 -- --------------------------------------------------------
 
