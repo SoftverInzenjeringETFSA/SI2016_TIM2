@@ -27,7 +27,6 @@ public class OglasPodaci implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "idpolja")
 	private Integer id;
 	
     private String staje;
