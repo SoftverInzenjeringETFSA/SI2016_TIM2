@@ -29,7 +29,7 @@ public class PoljaTemplatea implements Serializable {
 	private Template template;
 	
 	   @Column(name="nazivpolja")
-	    private String nazivPolja;
+	   private String nazivPolja;
 	
 	
 //	@ManyToOne(targetEntity=Template.class)

@@ -1,10 +1,8 @@
 package ba.posao.models;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -41,9 +39,6 @@ public class Template implements Serializable {
 	{
 		this.poljaTemplatea=p;
 	}
-	
-
-	
 	
 	public Integer getId() {
     	return id;
