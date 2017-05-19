@@ -1,9 +1,6 @@
 package ba.posao.services;
 
 import java.util.Date;
-import java.time.LocalDateTime;
-
-
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

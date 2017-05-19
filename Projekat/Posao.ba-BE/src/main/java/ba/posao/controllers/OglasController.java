@@ -37,21 +37,21 @@ public class OglasController {
 	}
 	
 	@CrossOrigin
-	@GetMapping(path="/svi")
+	@GetMapping(path="/all")
 	public @ResponseBody List<Oglas> findAll() {
 		return oglasRepository.findAll();
 	}
 	
 	//svi oglasi poslodavca
 	@CrossOrigin
-	@GetMapping(path="/poslodavac/{id}")
-	public @ResponseBody List<Oglas> findByPoslodavac(@PathVariable("id") Integer id) {
+	@GetMapping(path="/poslodavac")
+	public @ResponseBody List<Oglas> findByPoslodavac(@RequestParam("id") int id) {
 		return oglasRepository.findAllByPoslodavacIdKorisnika(id);
 	}
 	
 	// /oglasi/kategorija?kategorija=...
 	@CrossOrigin
-	@GetMapping(path="/kategorija") 
+	@GetMapping(path="")
 	public @ResponseBody List<Oglas> findByKategorije(@RequestParam("kategorija") String kategorija) {
 		return oglasRepository.findAllByKategorijeNaziv(kategorija);
 	}

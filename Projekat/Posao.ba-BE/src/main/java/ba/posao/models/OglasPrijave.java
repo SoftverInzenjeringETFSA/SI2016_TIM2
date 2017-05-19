@@ -5,12 +5,15 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="oglasprijave")
@@ -26,9 +29,10 @@ public class OglasPrijave implements Serializable {
     @ManyToOne(targetEntity=Nezaposleni.class)
     @JoinColumn(name="idkorisnika")
     private Nezaposleni nezaposleni;
-    
-    @ManyToOne(targetEntity=Oglas.class)
-    @JoinColumn(name="idoglasa")
+        
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @JoinColumn(name="idoglasa", nullable = false)
     private Oglas oglas;
     
     @Column(name="dodatneinformacije")

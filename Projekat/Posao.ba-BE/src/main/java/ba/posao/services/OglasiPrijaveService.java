@@ -23,7 +23,7 @@ public class OglasiPrijaveService {
 	@Autowired
 	NezaposleniRepository korisnikRepository;
 	
-	 public Boolean addPrijavu(int korisnik, int oglas) {
+     public Boolean addPrijavu(int korisnik, int oglas) {
 	    	
 		 if (oglasRepository.findById(oglas)!=null &&
 				 korisnikRepository.findById(korisnik)!=null){
@@ -42,4 +42,5 @@ public class OglasiPrijaveService {
 		 else 
 	    	return false;
 		}
+     
 }
