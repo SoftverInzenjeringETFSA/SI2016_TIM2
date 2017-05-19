@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import ba.posao.models.Oglas;
 
 @Repository
-public interface OglasRepository extends PagingAndSortingRepository<Oglas, Long> {
+public interface OglasRepository extends PagingAndSortingRepository<Oglas, Integer> {
 	@Query("select o from Oglas o where idOglasa=?")
 	public Oglas findById(Integer id);
 	

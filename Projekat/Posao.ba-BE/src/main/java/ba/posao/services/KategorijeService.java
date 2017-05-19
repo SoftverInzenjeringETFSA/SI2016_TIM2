@@ -50,15 +50,15 @@ public class KategorijeService {
     	}
     	else 
     	{ 
-    		//repository.delete(repository.findById(id));
     		Kategorije _k = repository.findById(id);
     		_k.setNaziv(k.getNaziv());
-    		repository.save(_k);
-        	return true;
+    		if (repository.findByName(k.getNaziv()).isEmpty())
+    		{
+    			repository.save(_k);
+    			return true;
+    		}
+        	return false;
     	}
-    
- 
-    	
 	}
 
     public Boolean removeKategorije(int id) {

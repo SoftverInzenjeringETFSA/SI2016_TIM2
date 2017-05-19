@@ -1,5 +1,6 @@
 package ba.posao.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ba.posao.models.Oglas;
@@ -7,6 +8,8 @@ import ba.posao.repositories.OglasRepository;
 
 @Service
 public class OglasiService {
+	
+	@Autowired
 	OglasRepository repository;
 	
 	 public Boolean addOglas(Oglas k) {
@@ -19,8 +22,9 @@ public class OglasiService {
 	    	return true;
 		}
 
-	    public void removeOglas(long id) {
+	    public Boolean removeOglas(int id) {
 	    	repository.delete(id);
+	    	return true;
 		}
 		
 }

@@ -31,8 +31,8 @@ public class OglasController {
 	private OglasiService oglasService;
 	
 	@CrossOrigin
-	@GetMapping(path="/get/{id}")
-	public @ResponseBody Oglas getOglasById(@PathVariable("id") Integer id) {
+	@GetMapping(path="/get")
+	public @ResponseBody Oglas getOglasById(@RequestParam("id") int id) {
 		return oglasRepository.findById(id);
 	}
 
@@ -79,6 +79,12 @@ public class OglasController {
             return ResponseEntity.status(HttpStatus.OK)
                     .body(korisnikService.registerKorisnik(korisnik)); */
 	  }
+	 
+	 @RequestMapping(value = "/remove", method = RequestMethod.DELETE)
+	    public ResponseEntity delete(@RequestParam(name="id")int id)
+	    {
+		return ResponseEntity.status(HttpStatus.OK).body(oglasService.removeOglas(id));
+	    }
 
 	
 }
