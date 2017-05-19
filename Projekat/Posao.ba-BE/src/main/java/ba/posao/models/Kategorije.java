@@ -16,7 +16,6 @@ public class Kategorije implements Serializable {
 	@Column(name="idkategorije")
 	private Integer idkategorije;
 
-    
     private String naziv;
 
 	public Integer getId() {
