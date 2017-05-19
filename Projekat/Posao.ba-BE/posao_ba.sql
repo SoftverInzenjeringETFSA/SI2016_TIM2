@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2017 at 01:17 PM
+-- Generation Time: May 19, 2017 at 01:27 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tim2`
+-- Database: `posao_ba`
 --
 
 -- --------------------------------------------------------
@@ -225,10 +225,10 @@ CREATE TABLE `oglas` (
 --
 
 INSERT INTO `oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `datumObjave`, `datumIsteka`, `sakriven`, `zatvoren`, `uspjesan`, `prioritet`, `naziv`, `opis`) VALUES
-(1, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas 1', 'Opis 1'),
-(2, 2, 2, 2, '2017-05-10 00:00:00', '2017-06-01 23:59:59', 0, 0, 0, 2, 'Oglas 2', 'Opis 2'),
-(3, 2, 3, 2, '2017-05-08 00:00:00', '2017-05-19 00:00:00', 0, 0, 0, 2, 'Oglas 3', 'Opis 3'),
-(4, 2, 3, 1, '2017-05-07 00:00:00', '2017-06-07 00:00:00', 0, 1, 0, 1, 'Oglas 4', 'Opis 4');
+(1, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
+(2, 2, 2, 2, '2017-05-10 00:00:00', '2017-06-01 23:59:59', 0, 0, 0, 2, 'Oglas 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
+(3, 2, 3, 2, '2017-05-08 00:00:00', '2017-05-19 00:00:00', 0, 0, 0, 2, 'Oglas 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
+(4, 2, 3, 1, '2017-05-07 00:00:00', '2017-06-07 00:00:00', 0, 1, 0, 1, 'Oglas 4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.');
 
 -- --------------------------------------------------------
 
