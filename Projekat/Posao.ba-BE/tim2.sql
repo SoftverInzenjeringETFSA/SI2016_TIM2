@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2017 at 11:04 PM
+-- Generation Time: May 19, 2017 at 01:17 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `posao`
+-- Database: `tim2`
 --
 
 -- --------------------------------------------------------
@@ -227,9 +227,8 @@ CREATE TABLE `oglas` (
 INSERT INTO `oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `datumObjave`, `datumIsteka`, `sakriven`, `zatvoren`, `uspjesan`, `prioritet`, `naziv`, `opis`) VALUES
 (1, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas 1', 'Opis 1'),
 (2, 2, 2, 2, '2017-05-10 00:00:00', '2017-06-01 23:59:59', 0, 0, 0, 2, 'Oglas 2', 'Opis 2'),
-(3, 2, 3, 2, '2017-05-08 00:00:00', '2017-06-05 23:59:59', 0, 0, 0, 2, 'Oglas 3', 'Opis 3'),
-(4, 2, 3, 1, '2017-05-07 00:00:00', '2017-06-07 23:59:59', 0, 0, 0, 1, 'Oglas 4', 'Opis 4'),
-(5, 2, 4, 1, '2017-05-10 00:00:00', '2017-06-10 23:59:59', 0, 0, 0, 1, 'Oglas 5', 'Opis 5');
+(3, 2, 3, 2, '2017-05-08 00:00:00', '2017-05-19 00:00:00', 0, 0, 0, 2, 'Oglas 3', 'Opis 3'),
+(4, 2, 3, 1, '2017-05-07 00:00:00', '2017-06-07 00:00:00', 0, 1, 0, 1, 'Oglas 4', 'Opis 4');
 
 -- --------------------------------------------------------
 
@@ -276,7 +275,7 @@ CREATE TABLE `oglasprijave` (
   `idOglasa` int(11) NOT NULL,
   `idKorisnika` int(11) NOT NULL,
   `dodatneInformacije` varchar(1000) DEFAULT NULL,
-  `vrijemePrijave` datetime NOT NULL
+  `vrijemePrijave` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
