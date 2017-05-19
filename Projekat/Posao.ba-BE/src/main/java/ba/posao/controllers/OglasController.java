@@ -36,8 +36,6 @@ public class OglasController {
 		return oglasRepository.findById(id);
 	}
 	
-	
-
 	@CrossOrigin
 	@GetMapping(path="/svi")
 	public @ResponseBody List<Oglas> findAll() {

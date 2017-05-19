@@ -26,13 +26,27 @@ public class OglasPrijave implements Serializable {
     @ManyToOne(targetEntity=Nezaposleni.class)
     @JoinColumn(name="idkorisnika")
     private Nezaposleni nezaposleni;
-	
+    
+    @ManyToOne(targetEntity=Oglas.class)
+    @JoinColumn(name="idoglasa")
+    private Oglas oglas;
+    
     @Column(name="dodatneinformacije")
     private String dodatneInformacije;
     
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="vrijemeprijave")
     private Date vrijemePrijave;
+	
+    public Oglas getOglas() {
+		return oglas;
+	}
 
+	public void setOglas(Oglas oglas) {
+		this.oglas = oglas;
+	}
+
+	
 	public Integer getIdPrijave() {
 		return idPrijave;
 	}
