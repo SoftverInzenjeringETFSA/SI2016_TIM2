@@ -1,4 +1,35 @@
-<div class="wrap-welcome">
-    <img class="logo-welcome" src="assets/images/logo-white.png">
-    {{#link-to "main"}}<button type="button" class="btn btn-outline-primary btn-lg btn-welcome">PRETRAŽI OGLASE</button>{{/link-to}}
+<div class="main-page">     
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3" style="background: red;">
+				<div class="form-group has-feedback search-main">
+				    <input class=" colors login-input main-color" placeholder="Pretraži oglase" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Pretraži oglase'" type="text">
+				    <i class="glyphicon glyphicon-search form-control-feedback pull-left" aria-hidden="true" style="margin-top: 5px; color: #55a078"></i>
+				</div>   
+			</div>
+
+			<div class="col-md-7 col-md-offset-1">
+				<table class="table table-hover">
+					<tbody>
+						{{#each model.oglasi as |oglas|}}			
+						<tr class="row">				
+							<td class="col-md-3">
+								<h4 class="title">
+									{{#link-to 'viewad' oglas.idOglasa}}
+										{{oglas.naziv}}
+									{{/link-to}}
+								</h4>
+				                <p class="desc">{{oglas.poslodavac.nazivFirme}}</p>
+				                <p class="desc">{{oglas.datumObjave}}</p>				                
+							</td>	
+							<td class="col-md-8 col-md-offset-1">
+								<p class="desc">{{oglas.opis}}</p>
+							</td>			
+						</tr>			
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
