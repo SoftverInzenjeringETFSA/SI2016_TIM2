@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ba.posao.models.Kategorije;
+import ba.posao.models.Template;
 import ba.posao.services.KategorijeService;
 
 
@@ -51,25 +55,26 @@ public class KategorijeController {
     	
     	return k;
     }
-    
-    @RequestMapping(path= "/add", method = RequestMethod.GET)
-	public String addKategorije(@ModelAttribute("imeForme") Kategorije k){
-		
-		if(k.getId() == 0) {
-			kategorijeService.addKategorije(k);
-		}
-		else {
-			kategorijeService.updateKategorije(k);
-		}
-		
-		return "done";
-	}
-    
-    @RequestMapping(path = "/delete", method = RequestMethod.GET)
-    public String deleteKategorije(@RequestParam(name = "id") int id) {
-    	
-    	kategorijeService.removeKategorije(id);
-        return "obavljeno";
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ResponseEntity register(@RequestBody Kategorije kategory)
+    {
+	return ResponseEntity.status(HttpStatus.OK).body(kategorijeService.addKategorije(kategory));
     }
+    
+    @RequestMapping(value = "/remove", method = RequestMethod.DELETE)
+    public ResponseEntity delete(@RequestParam(name="id")int id)
+    {
+    	//if (kategorijeService.findByIdKategorije(id)!=null)
+	return ResponseEntity.status(HttpStatus.OK).body(kategorijeService.removeKategorije(id));
+    }
+    
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public ResponseEntity update(@RequestBody Kategorije kategory, @RequestParam(name="id")int id)
+    {
+    	//if (kategorijeService.findByIdKategorije(id)!=null)
+	return ResponseEntity.status(HttpStatus.OK).body(kategorijeService.updateKategorije(kategory, id));
+    }
+    
+    
 
 }

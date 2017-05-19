@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import ba.posao.models.Kategorije;
+import ba.posao.models.Template;
 import ba.posao.repositories.KategorijeRepository;
 
 
@@ -33,20 +34,45 @@ public class KategorijeService {
         return repository.findAll(request).getContent();
     }
     
-    public void addKategorije(Kategorije k) {
+    public Boolean addKategorije(Kategorije k) {
+    	if (repository.findByName(k.getNaziv()).size()==0)
     	repository.save(k);
+    	else return false;
+    	return true;
 	}
     
-    public void updateKategorije(Kategorije k) {
-    	repository.save(k);
+    //ako nema id
+    public Boolean updateKategorije(Kategorije k, int id) {
+    	
+    	if ( repository.findById(id).equals(null))
+    	{    	
+    		return false;
+    	}
+    	else 
+    	{ 
+    		Kategorije _k = repository.findById(id);
+    		_k.setNaziv(k.getNaziv());
+    		if (repository.findByName(k.getNaziv()).isEmpty())
+    		{
+    			repository.save(_k);
+    			return true;
+    		}
+        	return false;
+    	}
 	}
 
-    public void removeKategorije(int id) {
+    public Boolean removeKategorije(int id) {
     	repository.delete(id);
+    	return true;
 	}
     
     public Kategorije findByIdKategorije(Integer id) {
     	return repository.findById(id);
+  
 	}
+
+	
+
+	
 
 }

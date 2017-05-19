@@ -31,10 +31,12 @@ public class OglasController {
 	private OglasiService oglasService;
 	
 	@CrossOrigin
-	@GetMapping(path="/get/{id}")
-	public @ResponseBody Oglas getOglasById(@PathVariable("id") Integer id) {
+	@GetMapping(path="/get")
+	public @ResponseBody Oglas getOglasById(@RequestParam("id") int id) {
 		return oglasRepository.findById(id);
 	}
+	
+	
 
 	@CrossOrigin
 	@GetMapping(path="/svi")
@@ -79,6 +81,24 @@ public class OglasController {
             return ResponseEntity.status(HttpStatus.OK)
                     .body(korisnikService.registerKorisnik(korisnik)); */
 	  }
+	 
+	 @RequestMapping(value = "/remove", method = RequestMethod.DELETE)
+	    public ResponseEntity delete(@RequestParam(name="id")int id)
+	    {
+		return ResponseEntity.status(HttpStatus.OK).body(oglasService.removeOglas(id));
+	    }
+	 
+	 @RequestMapping(value = "/close", method = RequestMethod.PUT)
+	    public ResponseEntity close(@RequestParam(name="id")int id)
+	    {
+		return ResponseEntity.status(HttpStatus.OK).body(oglasService.closeOglas(id));
+	    }
+	 
+	 @RequestMapping(value = "/reopen", method = RequestMethod.PUT)
+	    public ResponseEntity reOpen(@RequestParam(name="id")int id)
+	    {
+		return ResponseEntity.status(HttpStatus.OK).body(oglasService.reOpenOglas(id));
+	    }
 
 	
 }
