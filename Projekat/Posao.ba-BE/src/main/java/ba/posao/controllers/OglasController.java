@@ -35,6 +35,8 @@ public class OglasController {
 	public @ResponseBody Oglas getOglasById(@RequestParam("id") int id) {
 		return oglasRepository.findById(id);
 	}
+	
+	
 
 	@CrossOrigin
 	@GetMapping(path="/svi")
@@ -84,6 +86,12 @@ public class OglasController {
 	    public ResponseEntity delete(@RequestParam(name="id")int id)
 	    {
 		return ResponseEntity.status(HttpStatus.OK).body(oglasService.removeOglas(id));
+	    }
+	 
+	 @RequestMapping(value = "/close", method = RequestMethod.PUT)
+	    public ResponseEntity close(@RequestParam(name="id")int id)
+	    {
+		return ResponseEntity.status(HttpStatus.OK).body(oglasService.closeOglas(id));
 	    }
 
 	

@@ -26,5 +26,20 @@ public class OglasiService {
 	    	repository.delete(id);
 	    	return true;
 		}
-		
+	    
+	    public Boolean closeOglas(int id) {
+	   if (repository.findById(id)!=null)
+	   {
+	    	Oglas o = repository.findById(id);
+	    	if (o.getZatvoren()==0) {
+	    		byte b=1;
+		    	
+		    	o.setZatvoren(b);
+		    	repository.save(o);
+		    	return true;
+	    	}
+	    	return false;	
+	   }
+	   else return false;
+	    }
 }
