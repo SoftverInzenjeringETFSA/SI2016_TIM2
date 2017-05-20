@@ -104,3 +104,26 @@
     background-color: #8f99a3;
   }
 }
+
+.form-control{
+  margin-left: 4px;
+}
+
+.form-group-reg{
+  margin: 15px;
+  overflow: hidden;
+}
+
+.form-group-reg, .control-label{
+  text-align: right;
+  padding: 6px;
+}
+
+.form-group-reg .radio-inline{
+  text-align: left;
+}
+
+.registracija-link, .registracija-link:hover{
+  color:#ededed;
+  text-decoration: none;
+}

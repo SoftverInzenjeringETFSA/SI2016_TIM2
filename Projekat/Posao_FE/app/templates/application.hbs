@@ -38,6 +38,7 @@
         </div>
         {{else}} 
         <form class="navbar-form navbar-right" {{action 'loginNormal' on='submit'}}>
+          {{#link-to "registracija" class="registracija-link"}}Registruj se{{/link-to}}
           <div class="form-group">
             {{input type="text" class="form-control" placeholder="Korisničko ime" value=identification}}
           </div>
