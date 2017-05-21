@@ -36,19 +36,16 @@ public class Korisnici implements Serializable {
     //@OneToOne(cascade = CascadeType.ALL)
     //@JoinColumn(name = "idkorisnika")
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "korisnici", cascade = CascadeType.ALL)
-    @JsonIgnore
     private Nezaposleni nezaposleni;
     
     //@OneToOne(cascade = CascadeType.ALL)
     //@JoinColumn(name = "idkorisnika")
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "korisnici", cascade = CascadeType.ALL)
-    @JsonIgnore
     private Admin admin;
     
     //@OneToOne(cascade = CascadeType.ALL)
     //@JoinColumn(name = "idkorisnika")
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "korisnici", cascade = CascadeType.ALL)
-    @JsonIgnore
     private Poslodavci poslodavac;
    
 

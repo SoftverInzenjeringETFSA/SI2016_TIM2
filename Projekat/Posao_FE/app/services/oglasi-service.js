@@ -5,7 +5,7 @@ export default BaseService.extend({
 
     all: function() {
         var oglasi = [];
-        this.ajax({ url: `oglasi/svi`, type: "GET"}).then(function(data) {
+        this.ajax({ url: `oglasi/all`, type: "GET"}).then(function(data) {
             data.forEach(function(oglas) {
                 oglasi.addObject(Oglas.create(oglas));
             });

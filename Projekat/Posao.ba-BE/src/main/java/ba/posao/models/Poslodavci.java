@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="poslodavci")
 public class Poslodavci implements Serializable {
@@ -28,6 +30,7 @@ public class Poslodavci implements Serializable {
 	private Integer idKorisnika;
 	
 	@PrimaryKeyJoinColumn
+	@JsonIgnore
     @OneToOne
 	private Korisnici korisnici;
 

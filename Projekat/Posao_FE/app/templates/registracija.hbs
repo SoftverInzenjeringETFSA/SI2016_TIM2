@@ -52,27 +52,27 @@
       <div class="form-group-reg">
         <label for="inputFirma1" class="col-sm-2 control-label">Firma:</label>
         <div class="col-sm-10">
-          {{input type="text" class="form-control" id="inputFirma1" placeholder="Firma" value=firma}}
+          {{input type="text" class="form-control" id="inputFirma1" placeholder="Firma" value=nazivFirme disabled=(poslodavac-helper tip)}}
         </div>
       </div>
 
       <div class="form-group-reg">
         <label for="inputTelefon1" class="col-sm-2 control-label">Telefon:</label>
         <div class="col-sm-10">
-          {{input type="text" class="form-control" id="inputTelefon1" placeholder="123456789" value=telefon}}
+          {{input type="text" class="form-control" id="inputTelefon1" placeholder="123456789" value=telefon disabled=(poslodavac-helper tip)}}
         </div>
       </div>
 
       <div class="form-group-reg">
         <label for="inputCV" class="col-sm-2 control-label">CV:</label>
         <div class="col-sm-10">
-          <textarea class="form-control" id="inputCV">{{cv}}</textarea>
+          {{textarea class="form-control" id="inputCV" disabled=(nezaposleni-helper tip) value=cv}}
         </div>
       </div>
 
       <div class="form-group-reg">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default">Registruj se</button>
+          <button type="submit" class="btn btn-default" {{action 'register'}}>Registruj se</button>
         </div>
       </div>
     </form>
