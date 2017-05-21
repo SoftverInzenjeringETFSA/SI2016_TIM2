@@ -8,6 +8,7 @@ import org.springframework.security
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -32,11 +33,33 @@ public class TokenAuthenticationService {
     static final String SECRET = "ThisIsASecret";
     static final String TOKEN_PREFIX = "Bearer";
     static final String HEADER_STRING = "Authorization";
+    static final String ROLE = "role";
+    static final String USER = "user";
 
-    public static void addAuthentication(HttpServletResponse res, String username) {
+    public static void addAuthentication(HttpServletResponse res, String username, ServletContext servletContext) {
+    	KorisnikService ks = WebApplicationContextUtils.getWebApplicationContext(servletContext).getBean(KorisnikService.class);
+    	String role = ks.getKorisnikTypeByUserName(username);
+    	/*Korisnici userAccount = korisnikRepository.findByUsername(username);
+    	String role;
+    	
+    	if (userAccount.getNezaposleni() != null){
+    		role = "nezaposleni";
+    	}
+    	else if (userAccount.getPoslodavac() != null){
+    		role = "poslodavac";
+    	}
+    	else if (userAccount.getAdmin() != null){
+    		role = "admin";
+    	}else{
+    		role = "";
+    	}
+    	*/
+    	
         String JWT = Jwts.builder()
                 .setSubject(username)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
+                .claim(ROLE, role)
+                //.claim(USER, user)
                 .signWith(SignatureAlgorithm.HS512, SECRET)
                 .compact();
         res.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
@@ -59,6 +82,7 @@ public class TokenAuthenticationService {
                     .getSubject();
 
             Korisnici userAccount = korisnikRepository.findByUsername(user);
+            
             Collection<GrantedAuthority> authorities = new ArrayList<>();
             if(userAccount != null) {
                 authorities.add(new SimpleGrantedAuthority(korisnikServis.getKorisnikTypeByUserName(userAccount.getUsername())));
