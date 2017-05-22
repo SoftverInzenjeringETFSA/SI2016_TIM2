@@ -17,6 +17,7 @@ Router.map(function() {
   this.route('dodaj-oglas',{path: '/dodaj-oglas'});
   this.route('viewad', {path: '/ad/:id'});
   this.route('profile');
+  this.route('kreiraj-template', {path: '/kreiraj-template'});
 });
 
 export default Router;

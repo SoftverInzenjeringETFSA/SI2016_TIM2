@@ -10,9 +10,6 @@ export default Ember.Controller.extend({
     actions: {
     	update: function(){
 			let korisnik = this.get('model.profil');
-			console.log("korisnik: ");
-			console.log(korisnik);
-			console.log(korisnik.idKorisnika);
 			this.update(korisnik, korisnik.idKorisnika);
     	}
     }

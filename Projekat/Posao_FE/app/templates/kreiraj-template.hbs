@@ -1,0 +1,11 @@
+
+<form>
+{{input type="text" class="form-control" id="inputnaziv_template" placeholder="Naziv" value=model.template.naziv}}<br>
+<button type="button" class="btn btn-success" {{action 'dodaj'}}>Dodaj polje</button><br>
+{{#each model.template.poljaTemplatea as |polje index|}}
+	{{input type="text" value=polje.nazivPolja}} 
+	<button type="button" class="btn btn-success" {{action 'izbrisi' index}}>Izbriši</button><br>
+
+{{/each}}
+</form>
+<button type="button" class="btn btn-success" {{action 'submit'}}>Submit</button>
