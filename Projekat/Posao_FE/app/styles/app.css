@@ -317,3 +317,23 @@ margin-left:5%;
   position: relative;
   color:#F6AE2D;
 }
+.pozadinaPregledOglasa{
+  background-image: url('../assets/images/findingJOb.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  margin-top: 1%;
+  position: relative;
+  color:#F6AE2D;
+}
+.tamnijaPodloga{
+  background-color: rgba(28,49,68,0.9);
+}
+.margineFormeOglasa{
+  margin-top: 9%;
+  margin-left: 2.8%;
+}
