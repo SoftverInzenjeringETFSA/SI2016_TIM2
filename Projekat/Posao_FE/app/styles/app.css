@@ -260,3 +260,46 @@ body {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
+.pozadinaRegistracije{
+  background-image: url('../assets/images/hand.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  margin-top: 1%;
+  position: relative;
+  color:#F6AE2D;
+}
+.pomjereniTextBox{
+  display: inline-block;
+  width:43%;
+  margin-left:5%;
+}
+
+.firma {
+width:91.5%;
+margin-left:5%;
+}
+.pozadinaProfil{
+  background-image: url('../assets/images/profile.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  margin-top: 1%;
+  position: relative;
+  color:#F6AE2D;
+}
+.margineFormeProfila_{
+  margin-top: 0.7%;
+  margin-left: 4%;
+}
+.margineFormeProfil{
+  margin-top: 15%;
+}

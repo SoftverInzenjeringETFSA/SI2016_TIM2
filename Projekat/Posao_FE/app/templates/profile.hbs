@@ -1,31 +1,56 @@
 <div class="profilePage">
     <div class="container">
-        <div class="row">
+        <div class="row pozadinaProfil">
             <!-- Left side -->
-            <form class="distinct-page-form col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-0">
+            <form class="distinct-page-form col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-0 margineFormeProfila_">
                 <div class="col-xs-12 text-center">
                   <h1>Pregled korisničkog računa</h1>
-                  <p>Na ovoj stranici možete izmijeniti svoje lične podatke</p>,
+                  <p>Na ovoj stranici možete izmijeniti svoje lične podatke</p>
                   <hr class="h-divider" />
                 </div>
 
                 <div class="col-xs-12">
-                  <div class="form-group">
+                  <div class="form-group pomjereniTextBox">
                     <label for="inputUsername1">Korisničko ime:</label>
                     {{input type="text" class="form-control" id="inputUsername1" placeholder="Username" value=username}}
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group pomjereniTextBox">
                     <label for="inputPassword3">Lozinka:</label>
                     {{input type="password" class="form-control" id="inputPassword3" placeholder="Password" value=password}}
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group pomjereniTextBox">
                     <label for="inputEmail3">Email:</label>
                     {{input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=email}}
                   </div>
 
-                  <div class="form-group radio-group">
+                  <div class="form-group pomjereniTextBox">
+                    <label for="inputTelefon1">Telefon:</label>
+                    {{input type="text" class="form-control" id="inputTelefon1" placeholder="123456789" value=telefon disabled=(poslodavac-helper tip)}}
+                  </div>
+
+                  <div class="form-group pomjereniTextBox">
+                    <label for="inputIme1">Ime:</label>
+                    {{input type="text" class="form-control" id="inputIme1" placeholder="Ime" value=ime}}
+                  </div>
+
+                  <div class="form-group pomjereniTextBox">
+                    <label for="inputPrezime1">Prezime:</label>
+                    {{input type="text" class="form-control" id="inputPrezime1" placeholder="Prezime" value=prezime}}
+                  </div>
+
+                  <div class="form-group firma">
+                    <label for="inputFirma1">Firma:</label>
+                    {{input type="text" class="form-control" id="inputFirma1" placeholder="Firma" value=nazivFirme disabled=(poslodavac-helper tip)}}
+                  </div>
+
+                  <div class="form-group pomjereniTextBox">
+                    <label for="inputCV">CV:</label>
+                    {{textarea class="form-control" id="inputCV" disabled=(nezaposleni-helper tip) value=cv}}
+                  </div>
+
+                   <div class="form-group radio-group pomjereniTextBox">
                     <label for="tipKorisnika">Tip korisnika:</label>
                     <div class="input-group">
                         <span class="input-group-addon no-bottom-border">
@@ -41,43 +66,18 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <label for="inputIme1">Ime:</label>
-                    {{input type="text" class="form-control" id="inputIme1" placeholder="Ime" value=ime}}
-                  </div>
-
-                  <div class="form-group">
-                    <label for="inputPrezime1">Prezime:</label>
-                    {{input type="text" class="form-control" id="inputPrezime1" placeholder="Prezime" value=prezime}}
-                  </div>
-
-                  <div class="form-group">
-                    <label for="inputFirma1">Firma:</label>
-                    {{input type="text" class="form-control" id="inputFirma1" placeholder="Firma" value=nazivFirme disabled=(poslodavac-helper tip)}}
-                  </div>
-
-                  <div class="form-group">
-                    <label for="inputTelefon1">Telefon:</label>
-                    {{input type="text" class="form-control" id="inputTelefon1" placeholder="123456789" value=telefon disabled=(poslodavac-helper tip)}}
-                  </div>
-
-                  <div class="form-group">
-                    <label for="inputCV">CV:</label>
-                    {{textarea class="form-control" id="inputCV" disabled=(nezaposleni-helper tip) value=cv}}
-                  </div>
-
                   <div class="form-group text-center">
                       <button type="submit" class="btn btn-success" {{action 'register'}}>Spasi izmjene</button>
                   </div>
                 </div>
             </form>
             <!-- Right side -->
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-offset-1">
                 <!-- Generate Report Form -->
-                <form class="row distinct-page-form">
+                <form class="row distinct-page-form margineFormeProfil">
                     <div class="col-xs-12 text-center">
                         <h1>Generisanje izvještaja</h1>
-                        <p>Kreirajte izvještaj stanja i uspjeha Vaših oglasa</p>,
+                        <p>Kreirajte izvještaj stanja i uspjeha Vaših oglasa</p>
                         <hr class="h-divider" />
                     </div>
 
@@ -91,7 +91,7 @@
                 <form class="row distinct-page-form">
                     <div class="col-xs-12 text-center">
                         <h1>Brisanje korisničkog računa</h1>
-                        <p>Da li zaista želite napustiti portal Posao.ba?</p>,
+                        <p>Da li zaista želite napustiti portal Posao.ba?</p>
                         <hr class="h-divider" />
                     </div>
 
