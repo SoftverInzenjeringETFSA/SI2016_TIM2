@@ -13,11 +13,14 @@ import ba.posao.models.Korisnik;
 public interface KorisnikRepository extends PagingAndSortingRepository<Korisnik, Integer> {
 	
 	public Korisnik findByEmail(String email);
-	public Korisnik findByUsername(String username);
+	//public Korisnik findByUsername(String username);
 	public Korisnik findByIdKorisnika(Integer id);
 	public List<Korisnik> findAll();
 	
+	@Query("SELECT k FROM Korisnik k WHERE username= :name")
+	public Korisnik findByUsername (@Param("name")String name);
+	
 	
 	@Query("SELECT o FROM Nezaposleni o WHERE CONCAT(o.ime, o.prezime) LIKE %:name%")
-	public List<Korisnik> findUsersByUsername (@Param("name")String name);
+	public List<Korisnik> findUsersByName (@Param("name")String name);
 }

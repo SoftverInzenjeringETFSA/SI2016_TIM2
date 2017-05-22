@@ -30,6 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/oglasi/all").permitAll()
                 //.antMatchers("/oglasi/get").permitAll()
                 .antMatchers("/oglasi/get/**").permitAll()
+                //.antMatchers("/oglasi/get/**").hasRole("POSLODAVAC")
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
                 .antMatchers(HttpMethod.POST,"/register").permitAll()
                 .anyRequest().authenticated()

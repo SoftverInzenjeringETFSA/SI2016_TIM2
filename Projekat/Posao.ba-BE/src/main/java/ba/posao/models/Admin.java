@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="admin")
 public class Admin implements Serializable {
@@ -24,6 +26,7 @@ public class Admin implements Serializable {
 	@Column(name = "idkorisnika", unique = true, nullable = false)
 	private Integer idKorisnika;
 	
+	@JsonIgnore
 	@PrimaryKeyJoinColumn
     @OneToOne
 	private Korisnik korisnici;

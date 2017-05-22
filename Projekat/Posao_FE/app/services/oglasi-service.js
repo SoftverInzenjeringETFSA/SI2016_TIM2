@@ -17,10 +17,10 @@ export default BaseService.extend({
     details: function(id) {
         var oglas = Oglas.create({});
         this.ajax({ url: `oglasi/get?id=${id}`, type: "GET"}).then(function(data) {
-        	console.log("data: ");
+        	//console.log("data: ");
         	console.log(data);
             oglas.setProperties(data);
-        	console.log("created: ");
+        	//console.log("created: ");
         	console.log(oglas);
         });
 

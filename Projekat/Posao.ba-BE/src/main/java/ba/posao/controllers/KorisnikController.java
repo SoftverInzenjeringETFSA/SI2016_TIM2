@@ -133,5 +133,11 @@ public class KorisnikController {
     	return korisnikService.findByName(name);
     }
     
+  
+    @RequestMapping(path="/get/exact", method = RequestMethod.GET) 
+    public Korisnik searchByUsername(@RequestParam(name = "name") String name) {
+    	return korisnikService.getKorisnikByUserName(name);
+    }
+    
     
 }

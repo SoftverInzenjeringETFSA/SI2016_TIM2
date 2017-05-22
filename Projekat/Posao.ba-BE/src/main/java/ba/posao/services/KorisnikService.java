@@ -136,7 +136,7 @@ public class KorisnikService implements UserDetailsService{
 	    
 	    public List<Korisnik> findByName(String name) {
 	    	
-	      return repository.findUsersByUsername(name);
+	      return repository.findUsersByName(name);
 	    }
 
 }

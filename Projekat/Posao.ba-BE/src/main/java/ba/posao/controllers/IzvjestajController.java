@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ba.posao.models.Izvjestaj;
-import ba.posao.models.Korisnici;
+import ba.posao.models.Korisnik;
 import ba.posao.models.Korisnik;
 import ba.posao.repositories.KorisnikRepository;
 import ba.posao.repositories.OglasRepository;
