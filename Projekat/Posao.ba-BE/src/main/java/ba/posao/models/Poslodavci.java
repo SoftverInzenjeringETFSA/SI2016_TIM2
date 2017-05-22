@@ -32,13 +32,13 @@ public class Poslodavci implements Serializable {
 	@PrimaryKeyJoinColumn
 	@JsonIgnore
     @OneToOne
-	private Korisnici korisnici;
+	private Korisnik korisnici;
 
-	 public Korisnici getKorisnici() {
+	 public Korisnik getKorisnici() {
 		  	return korisnici;
 		 }
 		    
-		 public void setKorisnici(Korisnici korisnici) {
+		 public void setKorisnici(Korisnik korisnici) {
 			 this.korisnici = korisnici;
 		 }
 	

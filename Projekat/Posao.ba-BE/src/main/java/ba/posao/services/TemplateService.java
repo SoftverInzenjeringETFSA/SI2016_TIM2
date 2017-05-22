@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ba.posao.models.Korisnici;
+import ba.posao.models.Korisnik;
 import ba.posao.models.PoljaTemplatea;
 import ba.posao.models.Template;
 import ba.posao.repositories.PoljaTemplateaRepository;

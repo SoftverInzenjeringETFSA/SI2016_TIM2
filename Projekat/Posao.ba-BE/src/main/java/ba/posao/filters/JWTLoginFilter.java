@@ -8,7 +8,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import ba.posao.models.Korisnici;
+import ba.posao.models.Korisnik;
 import ba.posao.repositories.KorisnikRepository;
 import ba.posao.services.*;
 import com.fasterxml.jackson.databind.ObjectMapper;

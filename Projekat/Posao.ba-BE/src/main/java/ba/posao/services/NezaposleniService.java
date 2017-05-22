@@ -22,7 +22,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import ba.posao.models.Korisnici;
+import ba.posao.models.Korisnik;
 import ba.posao.models.Nezaposleni;
 import ba.posao.repositories.KorisnikRepository;
 import ba.posao.repositories.NezaposleniRepository;

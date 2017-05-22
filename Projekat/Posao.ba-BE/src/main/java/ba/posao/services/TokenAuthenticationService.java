@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import ba.posao.models.Korisnici;
+import ba.posao.models.Korisnik;
 import ba.posao.repositories.KorisnikRepository;
 
 import javax.servlet.ServletContext;
@@ -81,7 +81,7 @@ public class TokenAuthenticationService {
                     .getBody()
                     .getSubject();
 
-            Korisnici userAccount = korisnikRepository.findByUsername(user);
+            Korisnik userAccount = korisnikRepository.findByUsername(user);
             
             Collection<GrantedAuthority> authorities = new ArrayList<>();
             if(userAccount != null) {

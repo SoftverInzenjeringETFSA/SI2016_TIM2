@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import ba.posao.models.Korisnici;
+import ba.posao.models.Korisnik;
 import ba.posao.repositories.KorisnikRepository;
 
 
@@ -29,12 +29,12 @@ public class MainController {
 	}
 	
 	@GetMapping(path="/email")
-	public @ResponseBody Korisnici findByEmail(@RequestParam String email) {
+	public @ResponseBody Korisnik findByEmail(@RequestParam String email) {
 		return userRepository.findByEmail(email);
 	}
 	
 	@GetMapping(path="/users")
-	public @ResponseBody List<Korisnici> findAll() {
+	public @ResponseBody List<Korisnik> findAll() {
 		return userRepository.findAll();
 	}
 }

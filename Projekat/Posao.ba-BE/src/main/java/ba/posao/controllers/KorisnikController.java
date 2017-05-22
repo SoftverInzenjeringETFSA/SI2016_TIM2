@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ba.posao.models.Korisnici;
+import ba.posao.models.Kategorije;
+import ba.posao.models.Korisnik;
 import ba.posao.services.KorisnikService;
 import ba.posao.services.NezaposleniService;
 
@@ -39,7 +40,7 @@ public class KorisnikController {
 	private NezaposleniService nezaposleniService;
 	
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity register(@RequestBody Korisnici korisnik)
+    public ResponseEntity register(@RequestBody Korisnik korisnik)
     {
         try {
         	if(korisnik.getNezaposleni() != null)
@@ -68,10 +69,10 @@ public class KorisnikController {
     }
     @PreAuthorize("hasAnyRole('ROLE_NEZAPOSLENI','ROLE_POSLODAVAC', 'ROLE_ADMIN')")
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public ResponseEntity update(@RequestBody Korisnici korisnik ) {
+    public ResponseEntity update(@RequestBody Korisnik korisnik,  @RequestParam(name="id")int id ) {
         try {
             return ResponseEntity.status(HttpStatus.OK)
-                                .body(korisnikService.updateKorisnici(korisnik));
+                                .body(korisnikService.updateKorisnici(korisnik, id));
         }
         catch (ServiceException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -86,50 +87,51 @@ public class KorisnikController {
     }
 
     @RequestMapping(path="/get/all", method = RequestMethod.GET)
-    public List<Korisnici> findAll() {
-    	List<Korisnici> k;
+    public List<Korisnik> findAll() {
+    	List<Korisnik> k;
     	
-    	k = (List<Korisnici>) korisnikService.findAllKorisnici();
+    	k = (List<Korisnik>) korisnikService.findAllKorisnici();
     	
     	return k;
     }
 
     @RequestMapping(path="/get", method = RequestMethod.GET)
-    public List<Korisnici> viewKorisnici(@RequestParam(name = "id", defaultValue = "1") int id, @RequestParam(name = "p", defaultValue = "0") int pageNumber) {
-    	List<Korisnici> k = new ArrayList<Korisnici>();
+    public List<Korisnik> viewKorisnici(@RequestParam(name = "id", defaultValue = "1") int id, @RequestParam(name = "p", defaultValue = "0") int pageNumber) {
+    	List<Korisnik> k = new ArrayList<Korisnik>();
     	
     	if (pageNumber != 0)
-    		k = (List<Korisnici>) korisnikService.getPage(pageNumber);
+    		k = (List<Korisnik>) korisnikService.getPage(pageNumber);
     	else
         	k.add(korisnikService.findKorisnici(id));
     	
     	return k;
     }
     
-    @RequestMapping(path= "/add", method = RequestMethod.GET)
-	public String addKorisnici(@ModelAttribute("imeForme") Korisnici k){
-		
-		if(k.getIdKorisnika() == 0) {
-			korisnikService.addKorisnici(k);
-		}
-		else {
-			korisnikService.updateKorisnici(k);
-		}
-		
-		return "done";
+    @RequestMapping(path= "/add", method = RequestMethod.POST)
+	public String addKorisnici(@RequestBody Korisnik k){
+    	
+    	if (korisnikService.getKorisnikByUserName(k.getUsername())==null)
+    		korisnikService.addKorisnici(k);
+    	else return "Vec postoji korisnik sa ovim username";
+		return "done"; 
 	}
     
-    @RequestMapping(path = "/delete", method = RequestMethod.GET)
-    public String deleteKorisnici(@RequestParam(name = "id") int id) {
+    @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
+    public Boolean deleteKorisnici(@RequestParam(name = "id") int id) {
     	
     	korisnikService.removeKorisnici(id);
-        return "obavljeno";
+        return true;
     }
     
     @RequestMapping(path="/tip", method = RequestMethod.GET) 
     public String tipKorisnika(@RequestParam(name = "id") int id) {
     	return korisnikService.getKorisnikType(id);
     }
-
-
+    
+    @RequestMapping(path="", method = RequestMethod.GET) 
+    public List<Korisnik> searchByName(@RequestParam(name = "name") String name) {
+    	return korisnikService.findByName(name);
+    }
+    
+    
 }

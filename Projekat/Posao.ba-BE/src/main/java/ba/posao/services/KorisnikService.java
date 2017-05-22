@@ -22,7 +22,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import ba.posao.models.Korisnici;
+import ba.posao.models.Korisnik;
 import ba.posao.repositories.KorisnikRepository;
 
 @Service
@@ -33,26 +33,29 @@ public class KorisnikService implements UserDetailsService{
     @Autowired
     KorisnikRepository repository;
 
-    public Iterable<Korisnici> findAllKorisnici() {
+    public Iterable<Korisnik> findAllKorisnici() {
         return repository.findAll();
     }
     
-    public Korisnici findKorisnici (int id) {
+    public Korisnik findKorisnici (int id) {
         return repository.findOne(Integer.valueOf(id));
     }
 
-    public List<Korisnici> getPage(int pageNumber) {
+    public List<Korisnik> getPage(int pageNumber) {
         PageRequest request = new PageRequest(pageNumber - 1, PAGESIZE, Sort.Direction.ASC, "idKorisnika");
 
         return repository.findAll(request).getContent();
     }
     
-    public void addKorisnici(Korisnici k) {
+    public void addKorisnici(Korisnik k) {
     	repository.save(k);
 	}
     
-    public Boolean updateKorisnici(Korisnici k) {
-    	repository.save(k);
+    public Boolean updateKorisnici(Korisnik k, int id) {
+    	Korisnik _k=repository.findByIdKorisnika(id);
+    	_k=k;
+    	_k.setIdKorisnika(id);
+    	repository.save(_k);
     	return true;
 	}
 
@@ -67,7 +70,7 @@ public class KorisnikService implements UserDetailsService{
      * */
     
     public String getKorisnikType(int id) {
-    	Korisnici k = repository.findByIdKorisnika(id);
+    	Korisnik k = repository.findByIdKorisnika(id);
     	if(k == null)
     		return "ERROR_NULL";
     	
@@ -82,7 +85,7 @@ public class KorisnikService implements UserDetailsService{
     }
     
 	public String getKorisnikTypeByUserName(String username) {
-    	Korisnici k = repository.findByUsername(username);
+    	Korisnik k = repository.findByUsername(username);
     	if(k == null)
     		return "ERROR_NULL";
     	
@@ -95,7 +98,7 @@ public class KorisnikService implements UserDetailsService{
     	
     	return "ERROR_UNKNOWN";
     }
-    public Boolean registerKorisnik(Korisnici korisnik) {
+    public Boolean registerKorisnik(Korisnik korisnik) {
     	
     	// Registracija nije implementirana do kraja
 
@@ -103,7 +106,7 @@ public class KorisnikService implements UserDetailsService{
             throw new ServiceException("Korisnik sa datim username-om vec postoji!");
         }
 
-        Korisnici kreiranKorisnik = repository.save(korisnik);
+        Korisnik kreiranKorisnik = repository.save(korisnik);
 
         return kreiranKorisnik != null;
 
@@ -111,21 +114,29 @@ public class KorisnikService implements UserDetailsService{
 	 @Override
 	    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
-	        Korisnici korisnik = repository.findByUsername(s);
+	        Korisnik korisnik = repository.findByUsername(s);
 	        if(korisnik == null) {
 	            throw new UsernameNotFoundException("Nije pronađen korisnik s takvim username-om");
 	        }
 	        return new User(korisnik.getUsername(), korisnik.getPassword(), getGrantedAuthorities(korisnik));
 	    }
 
-	    private Collection<GrantedAuthority> getGrantedAuthorities(Korisnici korisnik) {
+	    private Collection<GrantedAuthority> getGrantedAuthorities(Korisnik korisnik) {
 	        Collection<GrantedAuthority> authorities = new ArrayList<>();
 	        if(korisnik.getNezaposleni() != null || korisnik.getPoslodavac() != null || korisnik.getAdmin() != null) {
 	           authorities.add(new SimpleGrantedAuthority(korisnik.getUsername()));
 	        }
 	        return authorities;
 	    }
+	    
+	    public Korisnik getKorisnikByUserName(String username) {
+	    	return repository.findByUsername(username);
+	    	
+	    }
+	    
+	    public List<Korisnik> findByName(String name) {
+	    	
+	      return repository.findUsersByUsername(name);
+	    }
 
-    
-    
 }

@@ -30,9 +30,9 @@ public class Notifikacija implements Serializable {
 
 	private Boolean pregledana;
 	
-    @ManyToOne(targetEntity=Korisnici.class)
+    @ManyToOne(targetEntity=Korisnik.class)
     @JoinColumn(name="idkorisnika")
-    private Korisnici korisnik;
+    private Korisnik korisnik;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idnotifikacije")
@@ -90,11 +90,11 @@ public class Notifikacija implements Serializable {
 		this.pregledana = pregledana;
 	}
 
-	public Korisnici getKorisnik() {
+	public Korisnik getKorisnik() {
 		return korisnik;
 	}
 
-	public void setKorisnik(Korisnici korisnik) {
+	public void setKorisnik(Korisnik korisnik) {
 		this.korisnik = korisnik;
 	}
 
