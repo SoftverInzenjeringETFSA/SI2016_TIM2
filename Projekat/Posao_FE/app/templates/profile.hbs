@@ -10,64 +10,68 @@
                 </div>
 
                 <div class="col-xs-12">
+
                   <div class="form-group pomjereniTextBox">
-                    <label for="inputUsername1">Korisničko ime:</label>
-                    {{input type="text" class="form-control" id="inputUsername1" placeholder="Username" value=username}}
+                    <label for="inputPassword3_profil">Lozinka:</label>
+                    {{input type="password" class="form-control" id="inputPassword3_profil" placeholder="Password" value=model.profil.password}}
                   </div>
 
                   <div class="form-group pomjereniTextBox">
-                    <label for="inputPassword3">Lozinka:</label>
-                    {{input type="password" class="form-control" id="inputPassword3" placeholder="Password" value=password}}
+                    <label for="inputEmail3_profil">Email:</label>
+                    {{input type="email" class="form-control" id="inputEmail3_profil" placeholder="Email" value=model.profil.email}}
+                  </div>
+
+                  {{#if this.model.profil.poslodavac}}
+                  <div class="form-group pomjereniTextBox">
+                    <label for="inputTelefon1_profil">Telefon:</label>
+                    {{input type="text" class="form-control" id="inputTelefon1_profil" placeholder="123456789" value=model.profil.poslodavac.telefon}}
+                  </div>
+                  {{/if}}
+
+                  {{#if this.model.profil.nezaposleni}}
+                  <div class="form-group pomjereniTextBox">
+                    <label for="inputIme1_profil">Ime:</label>
+                    {{input type="text" class="form-control" id="inputIme1_profil" placeholder="Ime" value=model.profil.nezaposleni.ime}}
                   </div>
 
                   <div class="form-group pomjereniTextBox">
-                    <label for="inputEmail3">Email:</label>
-                    {{input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=email}}
+                    <label for="inputPrezime1_profil">Prezime:</label>
+                    {{input type="text" class="form-control" id="inputPrezime1_profil" placeholder="Prezime" value=model.profil.nezaposleni.prezime}}
                   </div>
+                  {{/if}}
 
-                  <div class="form-group pomjereniTextBox">
-                    <label for="inputTelefon1">Telefon:</label>
-                    {{input type="text" class="form-control" id="inputTelefon1" placeholder="123456789" value=telefon disabled=(poslodavac-helper tip)}}
-                  </div>
-
-                  <div class="form-group pomjereniTextBox">
-                    <label for="inputIme1">Ime:</label>
-                    {{input type="text" class="form-control" id="inputIme1" placeholder="Ime" value=ime}}
-                  </div>
-
-                  <div class="form-group pomjereniTextBox">
-                    <label for="inputPrezime1">Prezime:</label>
-                    {{input type="text" class="form-control" id="inputPrezime1" placeholder="Prezime" value=prezime}}
-                  </div>
-
+                  {{#if this.model.profil.poslodavac}}
                   <div class="form-group firma">
-                    <label for="inputFirma1">Firma:</label>
-                    {{input type="text" class="form-control" id="inputFirma1" placeholder="Firma" value=nazivFirme disabled=(poslodavac-helper tip)}}
+                    <label for="inputFirma1_profil">Firma:</label>
+                    {{input type="text" class="form-control" id="inputFirma1_profil" placeholder="Firma" value=model.profil.poslodavac.nazivFirme}}
                   </div>
+                  {{/if}}
 
+                  {{#if this.model.profil.nezaposleni}}
                   <div class="form-group pomjereniTextBox">
-                    <label for="inputCV">CV:</label>
-                    {{textarea class="form-control" id="inputCV" disabled=(nezaposleni-helper tip) value=cv}}
+                    <label for="inputCV_profil">CV:</label>
+                    {{textarea class="form-control" id="inputCV_profil" value=model.profil.nezaposleni.cv}}
                   </div>
+                  {{/if}}
 
-                   <div class="form-group radio-group pomjereniTextBox">
-                    <label for="tipKorisnika">Tip korisnika:</label>
+                   {{!--<div class="form-group radio-group pomjereniTextBox">
+                    <label for="tipKorisnika_profil">Tip korisnika:</label>
                     <div class="input-group">
                         <span class="input-group-addon no-bottom-border">
-                            {{radio-button value="Nezaposleni" checked=tip name="tipKorisnika"}}
+                            {{radio-button value="Nezaposleni" checked=tip name="tipKorisnika_profil"}}
                         </span>
                         <p class="form-control no-bottom-border">Nezaposleni</p>
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon no-top-border">
-                            {{radio-button value="Poslodavac" checked=tip name="tipKorisnika"}}
+                            {{radio-button value="Poslodavac" checked=tip name="tipKorisnika_profil"}}
                         </span>
                         <p class="form-control no-top-border">Poslodavac</p>
                     </div>
-                  </div>
+                  </div>--}}
 
                   <div class="form-group text-center">
-                      <button type="submit" class="btn btn-success" {{action 'register'}}>Spasi izmjene</button>
+                      <button type="submit" class="btn btn-success" {{action 'update'}}>Spasi izmjene</button>
                   </div>
                 </div>
             </form>

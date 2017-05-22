@@ -67,8 +67,8 @@ public class KorisnikController {
 
 
     }
-    @PreAuthorize("hasAnyRole('ROLE_NEZAPOSLENI','ROLE_POSLODAVAC', 'ROLE_ADMIN')")
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    //@PreAuthorize("hasAnyRole('ROLE_NEZAPOSLENI','ROLE_POSLODAVAC', 'ROLE_ADMIN')")
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ResponseEntity update(@RequestBody Korisnik korisnik,  @RequestParam(name="id")int id ) {
         try {
             return ResponseEntity.status(HttpStatus.OK)

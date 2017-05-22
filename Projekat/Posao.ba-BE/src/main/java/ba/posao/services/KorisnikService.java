@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -29,7 +33,7 @@ import ba.posao.repositories.KorisnikRepository;
 public class KorisnikService implements UserDetailsService{
 
 	private final static int PAGESIZE = 3;
-
+	
     @Autowired
     KorisnikRepository repository;
 
@@ -52,8 +56,10 @@ public class KorisnikService implements UserDetailsService{
 	}
     
     public Boolean updateKorisnici(Korisnik k, int id) {
+    	
     	Korisnik _k=repository.findByIdKorisnika(id);
     	_k=k;
+    	_k.setPassword(toMD5(k.getPassword()));
     	_k.setIdKorisnika(id);
     	repository.save(_k);
     	return true;
@@ -105,7 +111,8 @@ public class KorisnikService implements UserDetailsService{
         if(repository.findByUsername(korisnik.getUsername()) != null) {
             throw new ServiceException("Korisnik sa datim username-om vec postoji!");
         }
-
+        
+        korisnik.setPassword(toMD5(korisnik.getPassword()));
         Korisnik kreiranKorisnik = repository.save(korisnik);
 
         return kreiranKorisnik != null;
@@ -130,7 +137,9 @@ public class KorisnikService implements UserDetailsService{
 	    }
 	    
 	    public Korisnik getKorisnikByUserName(String username) {
-	    	return repository.findByUsername(username);
+	    	Korisnik k = repository.findByUsername(username);
+	    	k.setPassword("");
+	    	return k;
 	    	
 	    }
 	    
@@ -138,5 +147,37 @@ public class KorisnikService implements UserDetailsService{
 	    	
 	      return repository.findUsersByName(name);
 	    }
-
+	    
+	    private String toMD5(String str)
+	    {
+	        byte[] pass = null;
+	        
+	        try {
+				pass = str.getBytes("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+	        
+	        MessageDigest m = null;
+			try {
+				m = MessageDigest.getInstance("MD5");
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
+			
+			StringBuffer hexString = new StringBuffer();
+			
+			byte[] passHash = m.digest(pass);
+			
+			for (int i = 0; i < passHash.length; i++) {
+			    if ((0xff & passHash[i]) < 0x10) {
+			        hexString.append("0"
+			                + Integer.toHexString((0xFF & passHash[i])));
+			    } else {
+			        hexString.append(Integer.toHexString(0xFF & passHash[i]));
+			    }
+			}
+			
+			return hexString.toString();
+	   }
 }

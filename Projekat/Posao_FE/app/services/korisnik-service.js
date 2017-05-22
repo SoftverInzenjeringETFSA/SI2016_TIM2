@@ -23,4 +23,12 @@ export default BaseService.extend({
 
         return korisnik;
     },
+
+    update: function(korisnik, id) {
+        this.ajax({ url: `korisnici/update?id=${id}`, type: "POST", data: JSON.stringify(korisnik)}).then(function(data) {
+        });
+    
+        return true;
+    },
+
 });
