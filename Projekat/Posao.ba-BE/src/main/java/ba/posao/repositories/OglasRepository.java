@@ -32,4 +32,24 @@ public interface OglasRepository extends PagingAndSortingRepository<Oglas, Integ
 	public List<Oglas> search(@Param("name")String name, 
 			@Param("lokacija")Integer idlokacije, 
 			@Param("kategorija")Integer idkategorije);	
+	
+	@Query("SELECT o FROM Oglas o WHERE o.lokacija.id=:lokacija")
+	public List<Oglas> searchLocation(@Param("lokacija")Integer idlokacije);	
+	
+	@Query("SELECT o FROM Oglas o WHERE o.kategorije.idkategorije=:kategorija" )
+	public List<Oglas> searchKategory(@Param("kategorija")Integer idkategorije);	
+	
+	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.kategorije.idkategorije=:kategorija" )
+	public List<Oglas> searchNameCategory(@Param("name")String name, 
+			@Param("kategorija")Integer idkategorije);
+	
+	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.lokacija.id=:lokacija" )
+	public List<Oglas> searchNameLocatin(@Param("name")String name, 
+			@Param("lokacija")Integer idlokacije);	
+	
+	@Query("SELECT o FROM Oglas o WHERE o.lokacija.id=:lokacija and o.kategorije.idkategorije=:kategorija" )
+	public List<Oglas> searchCategoryLocation(@Param("lokacija")Integer idlokacije, 
+			@Param("kategorija")Integer idkategorije);	
+	
+	
 }

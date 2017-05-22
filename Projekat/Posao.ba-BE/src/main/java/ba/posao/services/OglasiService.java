@@ -67,4 +67,22 @@ public class OglasiService {
 	   public List<Oglas> search(String name, int idlokacije, int idkategorije) {
 		   return repository.search(name, idlokacije, idkategorije);
 	   }
+	   
+	   public List<Oglas> searchLocation(int idlokacije) {
+		   return repository.searchLocation(idlokacije);
+	   }
+	   public List<Oglas> searchCategory(int idkategorije) {
+		   return repository.searchKategory(idkategorije);
+	   }
+	   public List<Oglas> searchNameCategory(String name, int idkategorije) {
+		   return repository.searchNameCategory(name, idkategorije);
+	   }
+	   
+	   public List<Oglas> searchNameLocation(String name, int idlokacije) {
+		   return repository.searchNameLocatin(name, idlokacije);
+	   }
+	   public List<Oglas> searchCategoryLocation(int idkategorije, int idlokacije) {
+		   return repository.searchCategoryLocation(idlokacije, idkategorije);
+	   }
 }
+

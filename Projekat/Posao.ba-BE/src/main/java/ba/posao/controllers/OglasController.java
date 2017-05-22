@@ -31,6 +31,7 @@ public class OglasController {
 	@Autowired 
 	private OglasiService oglasService;
 	
+	
 	@CrossOrigin
 	@GetMapping(path="/get")
 	public @ResponseBody Oglas getOglasById(@RequestParam("id") int id) {
@@ -105,6 +106,24 @@ public class OglasController {
 	    		@RequestParam(name = "idlok", required=false) Integer idlokacije, 
 	    		@RequestParam(name = "idk", required=false) Integer idkategorije) {
 	    	
+		 
+		 if (name!=null && idlokacije!=null & idkategorije!=null)
 	    	return oglasService.search(name, idlokacije, idkategorije);
+		 else if (name==null & idlokacije!=null & idkategorije==null)
+			 return oglasService.searchLocation(idlokacije);
+		 else if (name==null & idlokacije==null & idkategorije!=null)
+			 return oglasService.searchCategory(idkategorije);
+		 else if (name!=null && idlokacije==null & idkategorije==null)
+			 return oglasRepository.findAllByOglasPodaciVrijednost(name);
+		 else if (idlokacije==null) 
+			 return oglasService.searchNameCategory(name, idkategorije);
+		 else if (idkategorije==null)
+			 return oglasService.searchNameLocation(name, idlokacije);
+		 else if (name==null)
+			 return oglasService.searchCategoryLocation(idkategorije, idlokacije);
+		 else return oglasRepository.findAll();
+	 
+		
+	 
 	    }
 }
