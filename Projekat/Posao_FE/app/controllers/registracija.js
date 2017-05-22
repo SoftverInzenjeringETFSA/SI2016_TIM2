@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	registracijaService: Ember.inject.service(),
+	korisnikService: Ember.inject.service('korisnik-service'),
 
 	register: function(korisnik) {
-        this.get('registracijaService').register(korisnik);
+        this.get('korisnikService').register(korisnik);
     },
 
     actions: {
