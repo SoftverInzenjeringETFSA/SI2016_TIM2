@@ -225,15 +225,19 @@ body {
     background-color: #8f99a3;
   }
 }
-.registracija-link, .registracija-link:hover, .registracija-link:focus{
+.registracija-link{
   color:#ededed;
+  text-decoration: none;
+}
+.registracija-link:hover, .registracija-link:focus {
+  color: #F6AE2D !important;
   text-decoration: none;
 }
 .dobrodosli{
   color: #ededed;  
 }
 /* ---------------- Registracija----------------------*/
-.registrationPage, .viewadPage {
+.registrationPage, .viewadPage, .profilePage {
   background-color: #dedede;
 }
 .distinct-page-form {

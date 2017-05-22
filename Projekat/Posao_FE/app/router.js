@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('registracija-poslodavac',{ path: '/registracija2' });
   this.route('login',{ path: '/login' });
   //this.route('main');
+  this.route('personal-adverts', {path: '/moji-oglasi'});
   this.route('dodaj-oglas',{path: '/dodaj-oglas'});
   this.route('viewad', {path: '/ad/:id'});
   this.route('profile');
