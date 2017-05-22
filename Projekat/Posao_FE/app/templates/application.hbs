@@ -24,7 +24,16 @@
           {{#if (eq session.data.authenticated.role "ROLE_NEZAPOSLENI")}}
           {{/if}}
           {{#if (eq session.data.authenticated.role "ROLE_POSLODAVAC")}}
-          <li><a href="#">Kreiraj oglas</a></li>
+          <li>
+            {{#link-to "personal-adverts"}}
+            Moji oglasi
+            {{/link-to}}
+          </li>
+          <li>
+            {{#link-to "create-advert"}}
+            Kreiranje oglasa
+            {{/link-to}}
+          </li>
           {{/if}}
 
 

@@ -4,7 +4,7 @@
             <!-- Left side -->
             <form class="distinct-page-form col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-0">
                 <div class="col-xs-12 text-center">
-                  <h1>Pregled korisničko računa</h1>
+                  <h1>Pregled korisničkog računa</h1>
                   <p>Na ovoj stranici možete izmijeniti svoje lične podatke</p>,
                   <hr class="h-divider" />
                 </div>
@@ -72,24 +72,41 @@
                 </div>
             </form>
             <!-- Right side -->
-            <form class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1 distinct-page-form">
-                <div class="col-xs-12 text-center">
-                    <h1>Brisanje korisničkog računa</h1>
-                    <p>Da li zaista želite napustiti portal Posao.ba?</p>,
-                    <hr class="h-divider" />
-                </div>
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1">
+                <!-- Generate Report Form -->
+                <form class="row distinct-page-form">
+                    <div class="col-xs-12 text-center">
+                        <h1>Generisanje izvještaja</h1>
+                        <p>Kreirajte izvještaj stanja i uspjeha Vaših oglasa</p>,
+                        <hr class="h-divider" />
+                    </div>
 
-                <div class="col-xs-12">
-                  <div class="form-group">
-                    <label for="inputPassword3">Potvrdite brisanje računa lozinkom:</label>
-                    {{input type="password" class="form-control" id="inputPassword3" placeholder="Password" value=password}}
-                  </div>
+                    <div class="col-xs-12">
+                      <div class="form-group text-center">
+                          <button type="submit" class="btn btn-success" {{action 'generate-report'}}>Generiši izvještaj</button>
+                      </div>
+                    </div>
+                </form>
+                <!-- Delete Profile Form -->
+                <form class="row distinct-page-form">
+                    <div class="col-xs-12 text-center">
+                        <h1>Brisanje korisničkog računa</h1>
+                        <p>Da li zaista želite napustiti portal Posao.ba?</p>,
+                        <hr class="h-divider" />
+                    </div>
 
-                  <div class="form-group text-center">
-                      <button type="submit" class="btn btn-danger" {{action 'delete'}}>Obriši račun</button>
-                  </div>
-                </div>
-            </form>
+                    <div class="col-xs-12">
+                      <div class="form-group">
+                        <label for="inputPassword3">Potvrdite brisanje računa lozinkom:</label>
+                        {{input type="password" class="form-control" id="inputPassword3" placeholder="Password" value=password}}
+                      </div>
+
+                      <div class="form-group text-center">
+                          <button type="submit" class="btn btn-danger" {{action 'delete'}}>Obriši račun</button>
+                      </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
