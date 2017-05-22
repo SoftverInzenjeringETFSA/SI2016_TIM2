@@ -1,6 +1,9 @@
 package ba.posao.services;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,4 +63,8 @@ public class OglasiService {
 		   }
 		   else return false;
 		    }
+	   
+	   public List<Oglas> search(String name, int idlokacije, int idkategorije) {
+		   return repository.search(name, idlokacije, idkategorije);
+	   }
 }

@@ -1,5 +1,6 @@
 package ba.posao.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,6 +98,13 @@ public class OglasController {
 	    {
 		return ResponseEntity.status(HttpStatus.OK).body(oglasService.reOpenOglas(id));
 	    }
-
-	
+	 
+	 @RequestMapping(path="/search", method = RequestMethod.GET)
+	    public @ResponseBody List<Oglas> search(@RequestParam(name = "name", required=false
+	    ) String name, 
+	    		@RequestParam(name = "idlok", required=false) Integer idlokacije, 
+	    		@RequestParam(name = "idk", required=false) Integer idkategorije) {
+	    	
+	    	return oglasService.search(name, idlokacije, idkategorije);
+	    }
 }

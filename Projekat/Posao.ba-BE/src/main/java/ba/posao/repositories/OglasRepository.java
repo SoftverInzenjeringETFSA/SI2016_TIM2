@@ -25,4 +25,8 @@ public interface OglasRepository extends PagingAndSortingRepository<Oglas, Integ
 	
 	public List<Oglas> findAllByLokacijaNaziv(String lokacija);
 	
+	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.lokacija.id=:lokacija and o.kategorije.idkategorije=:kategorija" )
+	public List<Oglas> search(@Param("name")String name, 
+			@Param("lokacija")Integer idlokacije, 
+			@Param("kategorija")Integer idkategorije);	
 }

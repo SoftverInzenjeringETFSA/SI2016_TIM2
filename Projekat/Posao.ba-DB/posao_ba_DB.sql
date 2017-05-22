@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2017 at 01:27 PM
+-- Generation Time: May 22, 2017 at 04:02 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `posao_ba`
+-- Database: `tim2`
 --
 
 -- --------------------------------------------------------
@@ -104,8 +104,6 @@ CREATE TABLE `korisnici` (
 INSERT INTO `korisnici` (`idKorisnika`, `username`, `password_hash`, `email`) VALUES
 (1, 'admin', '098f6bcd4621d373cade4e832627b4f6', 'admin@posao.ba'),
 (2, 'firma1', '098f6bcd4621d373cade4e832627b4f6', 'firma1@firma1.com'),
-(3, 'firma2', '098f6bcd4621d373cade4e832627b4f6', 'forma2@firma2.com'),
-(4, 'korisnik1', '098f6bcd4621d373cade4e832627b4f6', 'korisnik1@domena.com'),
 (5, 'korisnik2', '098f6bcd4621d373cade4e832627b4f6', 'korisnik2@domena.com');
 
 -- --------------------------------------------------------
@@ -149,7 +147,6 @@ CREATE TABLE `nezaposleni` (
 --
 
 INSERT INTO `nezaposleni` (`idKorisnika`, `ime`, `prezime`, `cv`, `privatanProfil`) VALUES
-(4, 'Prvi', 'Nezaposleni', 'CV Tekst 1', 0),
 (5, 'Drugi', 'Nezaposleni', 'CV Tekst 2', 0);
 
 -- --------------------------------------------------------
@@ -172,8 +169,6 @@ CREATE TABLE `notifikacija` (
 
 INSERT INTO `notifikacija` (`idNotifikacije`, `idKorisnika`, `tekst`, `pregledana`, `vrijemeGenerisanja`) VALUES
 (1, 2, 'Notifikacija broj jedan', 1, '2017-08-05 17:12:33'),
-(2, 3, 'Notifikacija broj dva', 0, '2017-09-05 04:22:13'),
-(3, 4, 'Notifikacija broj tri', 1, '2017-09-05 11:48:23'),
 (4, 2, 'Notifikacija broj cetiri', 0, '2017-10-05 16:13:09');
 
 -- --------------------------------------------------------
@@ -228,7 +223,9 @@ INSERT INTO `oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `
 (1, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
 (2, 2, 2, 2, '2017-05-10 00:00:00', '2017-06-01 23:59:59', 0, 0, 0, 2, 'Oglas 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
 (3, 2, 3, 2, '2017-05-08 00:00:00', '2017-05-19 00:00:00', 0, 0, 0, 2, 'Oglas 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
-(4, 2, 3, 1, '2017-05-07 00:00:00', '2017-06-07 00:00:00', 0, 1, 0, 1, 'Oglas 4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.');
+(4, 2, 3, 1, '2017-05-07 00:00:00', '2017-06-07 00:00:00', 0, 1, 0, 1, 'Oglas 4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
+(6, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas X', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
+(7, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas X', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.');
 
 -- --------------------------------------------------------
 
@@ -248,13 +245,13 @@ CREATE TABLE `oglaspodaci` (
 --
 
 INSERT INTO `oglaspodaci` (`id`, `idOglasa`, `vrijednost`, `staje`) VALUES
-(1, 1, 'Junior developer', 'Titula'),
-(2, 1, 'Tražimo junior developera', 'Titula'),
-(3, 1, 'Junior developer sa dvogodišnjim iskustvom sa različitim tehnologijama, želja za učenjem, entuzijazam bla bla', 'iskustvo'),
-(4, 1, 'Java, Spring, Ember, Angular js', 'Jezici'),
-(5, 1, '2017-05-05 00:00:00', 'Datum i vrijeme'),
-(6, 1, '2017-07-01 23:59:59', 'Datum i vrijeme'),
-(7, 1, 'Sarajevo', 'Lokacija'),
+(1, 7, 'Junior developer noviiii', 'Titula'),
+(2, 7, 'Tražimo junior developera', 'Titula'),
+(3, 7, 'Junior developer sa dvogodišnjim iskustvom sa različitim tehnologijama, želja za učenjem, entuzijazam bla bla', 'iskustvo'),
+(4, 7, 'Java, Spring, Ember, Angular js', 'Jezici'),
+(5, 7, '2017-05-05 00:00:00', 'Datum i vrijeme'),
+(6, 7, '2017-07-01 23:59:59', 'Datum i vrijeme'),
+(7, 7, 'Sarajevo', 'Lokacija'),
 (8, 2, 'Trgovac', 'Datum i vrijeme'),
 (9, 2, 'Kratak opis', 'Opis'),
 (10, 2, 'Opis posla ....', 'Opis'),
@@ -345,8 +342,7 @@ CREATE TABLE `poslodavci` (
 --
 
 INSERT INTO `poslodavci` (`idKorisnika`, `ime`, `prezime`, `nazivFirme`, `telefon`) VALUES
-(2, 'Vlasnik', 'Firme', 'Firma1', '123-456'),
-(3, 'Vlasnik 2', 'Firme', 'Firma2', '123-456');
+(2, 'VlasnikUpdated', 'Firme', 'Firma1', '123-456');
 
 -- --------------------------------------------------------
 
@@ -379,8 +375,7 @@ CREATE TABLE `sakrivenipodaci` (
 --
 
 INSERT INTO `sakrivenipodaci` (`idPoslodavca`, `privatnoIme`, `privatnoPrezime`, `privatnanTelefon`, `privatanEmail`) VALUES
-(2, 0, 0, 0, 0),
-(3, 1, 1, 0, 0);
+(2, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -564,7 +559,7 @@ ALTER TABLE `notifikacija`
 -- AUTO_INCREMENT for table `oglas`
 --
 ALTER TABLE `oglas`
-  MODIFY `idOglasa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idOglasa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `oglaspodaci`
 --
@@ -609,87 +604,87 @@ ALTER TABLE `admin`
 -- Constraints for table `lokacije`
 --
 ALTER TABLE `lokacije`
-  ADD CONSTRAINT `fk_Lokacije_Kantoni1` FOREIGN KEY (`idKantona`) REFERENCES `kantoni` (`idKantona`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Lokacije_Kantoni1` FOREIGN KEY (`idKantona`) REFERENCES `kantoni` (`idKantona`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `nezaposleni`
 --
 ALTER TABLE `nezaposleni`
-  ADD CONSTRAINT `fk_Nezaposleni_Korisnici` FOREIGN KEY (`idKorisnika`) REFERENCES `korisnici` (`idKorisnika`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Nezaposleni_Korisnici` FOREIGN KEY (`idKorisnika`) REFERENCES `korisnici` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `notifikacija`
 --
 ALTER TABLE `notifikacija`
-  ADD CONSTRAINT `fk_Notifikacija_Korisnici1` FOREIGN KEY (`idKorisnika`) REFERENCES `korisnici` (`idKorisnika`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Notifikacija_Korisnici1` FOREIGN KEY (`idKorisnika`) REFERENCES `korisnici` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `notifikacijapozivnica`
 --
 ALTER TABLE `notifikacijapozivnica`
-  ADD CONSTRAINT `fk_NotifikacijaPozivnica_Notifikacija1` FOREIGN KEY (`idNotifikacije`) REFERENCES `notifikacija` (`idNotifikacije`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_NotifikacijaPozivnica_Pozivnice1` FOREIGN KEY (`idPozivnice`) REFERENCES `pozivnice` (`idPozivnice`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_NotifikacijaPozivnica_Notifikacija1` FOREIGN KEY (`idNotifikacije`) REFERENCES `notifikacija` (`idNotifikacije`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_NotifikacijaPozivnica_Pozivnice1` FOREIGN KEY (`idPozivnice`) REFERENCES `pozivnice` (`idPozivnice`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `notifikacijaprijava`
 --
 ALTER TABLE `notifikacijaprijava`
-  ADD CONSTRAINT `fk_NotifikacijaPrijava_Nezaposleni1` FOREIGN KEY (`idPrijavljenog`) REFERENCES `nezaposleni` (`idKorisnika`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_NotifikacijaPrijava_Notifikacija1` FOREIGN KEY (`idNotifikacije`) REFERENCES `notifikacija` (`idNotifikacije`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_NotifikacijaPrijava_OglasPrijave1` FOREIGN KEY (`idPrijave`) REFERENCES `oglasprijave` (`idPrijave`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_NotifikacijaPrijava_Nezaposleni1` FOREIGN KEY (`idPrijavljenog`) REFERENCES `nezaposleni` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_NotifikacijaPrijava_Notifikacija1` FOREIGN KEY (`idNotifikacije`) REFERENCES `notifikacija` (`idNotifikacije`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_NotifikacijaPrijava_OglasPrijave1` FOREIGN KEY (`idPrijave`) REFERENCES `oglasprijave` (`idPrijave`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `oglas`
 --
 ALTER TABLE `oglas`
-  ADD CONSTRAINT `fk_Oglas_Kategorije1` FOREIGN KEY (`idKategorije`) REFERENCES `kategorije` (`idKategorije`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Oglas_Lokacije1` FOREIGN KEY (`idLokacije`) REFERENCES `lokacije` (`idLokacije`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Oglas_Poslodavci1` FOREIGN KEY (`idPoslodavca`) REFERENCES `poslodavci` (`idKorisnika`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Oglas_Kategorije1` FOREIGN KEY (`idKategorije`) REFERENCES `kategorije` (`idKategorije`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Oglas_Lokacije1` FOREIGN KEY (`idLokacije`) REFERENCES `lokacije` (`idLokacije`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Oglas_Poslodavci1` FOREIGN KEY (`idPoslodavca`) REFERENCES `poslodavci` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `oglaspodaci`
 --
 ALTER TABLE `oglaspodaci`
-  ADD CONSTRAINT `fk_OglasPodaci_Oglas1` FOREIGN KEY (`idOglasa`) REFERENCES `oglas` (`idOglasa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_OglasPodaci_Oglas1` FOREIGN KEY (`idOglasa`) REFERENCES `oglas` (`idOglasa`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `oglasprijave`
 --
 ALTER TABLE `oglasprijave`
-  ADD CONSTRAINT `fk_OglasPrijave_Nezaposleni1` FOREIGN KEY (`idKorisnika`) REFERENCES `nezaposleni` (`idKorisnika`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_OglasPrijave_Nezaposleni1` FOREIGN KEY (`idKorisnika`) REFERENCES `nezaposleni` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_OglasPrijave_Oglas1` FOREIGN KEY (`idOglasa`) REFERENCES `oglas` (`idOglasa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `poljatemplatea`
 --
 ALTER TABLE `poljatemplatea`
-  ADD CONSTRAINT `fk_PoljaTemplatea_Template1` FOREIGN KEY (`idTemplate`) REFERENCES `template` (`idTemplate`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_PoljaTemplatea_Template1` FOREIGN KEY (`idTemplate`) REFERENCES `template` (`idTemplate`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `poruke`
 --
 ALTER TABLE `poruke`
-  ADD CONSTRAINT `fk_Poruke_Nezaposleni1` FOREIGN KEY (`idNezaposlenog`) REFERENCES `nezaposleni` (`idKorisnika`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Poruke_Poslodavci1` FOREIGN KEY (`idPoslodavca`) REFERENCES `poslodavci` (`idKorisnika`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Poruke_Nezaposleni1` FOREIGN KEY (`idNezaposlenog`) REFERENCES `nezaposleni` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Poruke_Poslodavci1` FOREIGN KEY (`idPoslodavca`) REFERENCES `poslodavci` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `poslodavci`
 --
 ALTER TABLE `poslodavci`
-  ADD CONSTRAINT `fk_Poslodavci_Korisnici1` FOREIGN KEY (`idKorisnika`) REFERENCES `korisnici` (`idKorisnika`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Poslodavci_Korisnici1` FOREIGN KEY (`idKorisnika`) REFERENCES `korisnici` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `pozivnice`
 --
 ALTER TABLE `pozivnice`
-  ADD CONSTRAINT `fk_Pozivnice_Nezaposleni1` FOREIGN KEY (`idKorisnika`) REFERENCES `nezaposleni` (`idKorisnika`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Pozivnice_Oglas1` FOREIGN KEY (`idOglasa`) REFERENCES `oglas` (`idOglasa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Pozivnice_Nezaposleni1` FOREIGN KEY (`idKorisnika`) REFERENCES `nezaposleni` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Pozivnice_Oglas1` FOREIGN KEY (`idOglasa`) REFERENCES `oglas` (`idOglasa`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `sakrivenipodaci`
 --
 ALTER TABLE `sakrivenipodaci`
-  ADD CONSTRAINT `fk_SakriveniPodaci_Poslodavci1` FOREIGN KEY (`idPoslodavca`) REFERENCES `poslodavci` (`idKorisnika`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_SakriveniPodaci_Poslodavci1` FOREIGN KEY (`idPoslodavca`) REFERENCES `poslodavci` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
