@@ -44,19 +44,19 @@
         </ul>
         {{#if session.isAuthenticated}}
         <div class="navbar-form navbar-right">
-          <span class="dobrodosli">Dobro došli, {{session.data.authenticated.username}}</span>
-          <button class="btn btn-default" {{action 'logout'}}>Logout</button>
+          <span class="dobrodosli">Dobro došli, {{session.data.authenticated.username}}&ensp;</span>
+          <button class="btn btn-default login-button" {{action 'logout'}}>Odjava</button>
         </div>
         {{else}} 
-        <form class="navbar-form navbar-right" {{action 'loginNormal' on='submit'}}>
-          {{#link-to "registracija" class="registracija-link"}}Registruj se{{/link-to}}
+        <form class="navbar-form navbar-right login-form" {{action 'loginNormal' on='submit'}}>
+          {{#link-to "registracija" class="registracija-link"}}Nemaš profil? Registruj se!{{/link-to}}
           <div class="form-group">
             {{input type="text" class="form-control" placeholder="Korisničko ime" value=identification}}
           </div>
           <div class="form-group">
-            {{input type="text" class="form-control" placeholder="Lozinka" value=password}}
+            {{input type="password" class="form-control" placeholder="Lozinka" value=password}}
           </div>
-          <button type="submit" class="btn btn-default">Prijava</button>
+          <button type="submit" class="btn btn-default login-button">Prijava</button>
         </form>
         {{/if}}
       </div><!-- /.navbar-collapse -->

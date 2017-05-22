@@ -1,6 +1,82 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto|Ubuntu|Montserrat');
 
-/* --------------------- tim 6 edit ( mene stid :( ) --------------------------*/
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.h-divider {
+  border-color: #151515;
+  margin-top: 0;
+}
+/* ---------------- Sidebar----------------------*/
+.sidebar {
+  margin: 0;
+  padding-top: 1.3em;
+  padding-bottom: 1.3em;
+  background-color: #4589c0;
+  -webkit-box-shadow: 5px 0px 15px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 5px 0px 15px 0px rgba(0,0,0,0.4);
+  box-shadow: 5px 0px 15px 0px rgba(0,0,0,0.4);
+}
+.sidebar > .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+.sidebar .form-control {
+  margin-left: 0;
+  border-radius: 0;
+}
+@media (min-width: 992px) {
+  .col-sm-offset-3 {
+    margin-left: 0;
+  }
+  .row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+/* --------------- Search box -----------------*/
+.custom-search-input{
+  padding: 3px;
+  border: solid 1px #E4E4E4;
+  border-radius: 0;
+  background-color: #fefefe;
+}
+.custom-search-input input{
+  border: 0;
+  box-shadow: none;
+}
+.custom-search-input button{
+  margin: 2px 0 0 0;
+  background: none;
+  box-shadow: none;
+  border: 0;
+  color: #666666;
+  padding: 0 8px 0 10px;
+  border-left: solid 1px #ccc;
+}
+.custom-search-input button:hover{
+  border: 0;
+  box-shadow: none;
+  border-left: solid 1px #ccc;
+}
+.custom-search-input .glyphicon-search{
+  font-size: 23px;
+}
+/* -------------------------------------------------*/
+.advert-table {
+  margin: 2em 0;
+}
+.advert-table tr {
+  border-top: 1px solid #ddd !important;
+}
+.advert-table tr:hover {
+  background-color: #eee !important;
+}
+.advert-table td {
+  border-top: 0 !important;
+}
 .form-horizontal .form-group {
   margin-bottom: 0;
 }
@@ -10,8 +86,54 @@
 .oglas-data {
   padding: 7px 15px;
 }
+.navbar {
+  padding-top: 0.45em;
+  padding-bottom: 0.45em;
+  margin-bottom: 0;
+  -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.4);
+}
+.navbar, .navbar-brand {
+  font-family: 'Montserrat', sans-serif !important; 
+}
+.navbar-brand {
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  color: #F6AE2D !important;
+}
+.navbar ul {
+  font-size: 1.2em;
+  padding-top: 2px;
+}
 .navbar-form input, .navbar-form button {
   border-radius: 0;
+}
+.login-form {
+  position: relative;
+  padding-right: 0;
+  margin-top: 1px;
+}
+.login-form > a {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-bottom: -20px;
+}
+.login-form > a:hover {
+  color: #efe743; 
+}
+.login-button {
+  text-transform: uppercase;
+  background-color: #F6AE2D !important;
+  border-top: 2px solid #F6AE2D;
+  border: 1px solid #F6AE2D;
+}
+.login-button:hover {
+    background-color: #F4BA4E !important;
+}
+.login-button:active {
+  background-color: #F4B030 !important;
 }
 .navbar-default {
   background-color: #1c3144;
@@ -88,7 +210,6 @@
 .navbar-default .navbar-link:hover {
   color: #ededed;
 }
-
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #ededed;
@@ -104,30 +225,34 @@
     background-color: #8f99a3;
   }
 }
-
-.form-control{
-  margin-left: 4px;
-}
-
-.form-group-reg{
-  margin: 15px;
-  overflow: hidden;
-}
-
-.form-group-reg, .control-label{
-  text-align: right;
-  padding: 6px;
-}
-
-.form-group-reg .radio-inline{
-  text-align: left;
-}
-
 .registracija-link, .registracija-link:hover, .registracija-link:focus{
   color:#ededed;
   text-decoration: none;
 }
-
 .dobrodosli{
   color: #ededed;  
+}
+/* ---------------- Registracija----------------------*/
+.registrationPage, .viewadPage {
+  background-color: #dedede;
+}
+.distinct-page-form {
+  background-color: #fefefe;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  -webkit-box-shadow: 4px -4px 18px 0px rgba(194,194,194,0.5),
+                      -4px 4px 18px 0px rgba(194,194,194,0.5);
+  -moz-box-shadow: 4px -4px 18px 0px rgba(194,194,194,0.5),
+                   -4px 4px 18px 0px rgba(194,194,194,0.5);
+  box-shadow: 4px -4px 16px 0px rgba(194,194,194,0.5),
+              -4px 4px 18px 0px rgba(194,194,194,0.5);
+}
+.no-top-border {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+.no-bottom-border {
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }

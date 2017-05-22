@@ -1,80 +1,75 @@
-<div class="registrationPage container">
-  <div class="row">
-    <form class="form-horizontal-reg">
-
-      <div class="form-group-reg">
-        <label for="inputUsername1" class="col-sm-2 control-label">Username:</label>
-        <div class="col-sm-10">
-          {{input type="text" class="form-control" id="inputUsername1" placeholder="Username" value=username}}
+<div class="registrationPage">
+  <div class="container">
+    <div class="row">
+      <form class="distinct-page-form col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+        <div class="col-xs-12 text-center">
+          <h1>Kreiranje korisničkog računa</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>,
+          <hr class="h-divider" />
         </div>
-      </div>
 
-      <div class="form-group-reg">
-        <label for="inputPassword3" class="col-sm-2 control-label">Password:</label>
-        <div class="col-sm-10">
-          {{input type="password" class="form-control" id="inputPassword3" placeholder="Password" value=password}}
-        </div>
-      </div>
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="inputUsername1">Username:</label>
+            {{input type="text" class="form-control" id="inputUsername1" placeholder="Username" value=username}}
+          </div>
 
-      <div class="form-group-reg">
-        <label for="inputEmail3" class="col-sm-2 control-label">Email:</label>
-        <div class="col-sm-10">
-          {{input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=email}}
-        </div>
-      </div>
+          <div class="form-group">
+            <label for="inputPassword3">Password:</label>
+            {{input type="password" class="form-control" id="inputPassword3" placeholder="Password" value=password}}
+          </div>
 
-      <div class="form-group-reg">
-        <label for="tipKorisnika" class="col-sm-2 control-label">Tip korisnika:</label>
-        <div class="col-sm-10">
-          <label class="radio-inline">
-            {{radio-button value="Nezaposleni" checked=tip name="tipKorisnika"}}Nezaposleni
-          </label>
-          <label class="radio-inline">
-            {{radio-button value="Poslodavac" checked=tip name="tipKorisnika"}}Poslodavac
-          </label>
-        </div>
-      </div>
+          <div class="form-group">
+            <label for="inputEmail3">Email:</label>
+            {{input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=email}}
+          </div>
 
-      <div class="form-group-reg">
-        <label for="inputIme1" class="col-sm-2 control-label">Ime:</label>
-        <div class="col-sm-10">
-          {{input type="text" class="form-control" id="inputIme1" placeholder="Ime" value=ime}}
-        </div>
-      </div>
+          <div class="form-group radio-group">
+            <label for="tipKorisnika">Tip korisnika:</label>
+            <div class="input-group">
+                <span class="input-group-addon no-bottom-border">
+                    {{radio-button value="Nezaposleni" checked=tip name="tipKorisnika"}}
+                </span>
+                <p class="form-control no-bottom-border">Nezaposleni</p>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon no-top-border">
+                    {{radio-button value="Poslodavac" checked=tip name="tipKorisnika"}}
+                </span>
+                <p class="form-control no-top-border">Poslodavac</p>
+            </div>
+          </div>
 
-      <div class="form-group-reg">
-        <label for="inputPrezime1" class="col-sm-2 control-label">Prezime:</label>
-        <div class="col-sm-10">
-          {{input type="text" class="form-control" id="inputPrezime1" placeholder="Prezime" value=prezime}}
-        </div>
-      </div>
+          <div class="form-group">
+            <label for="inputIme1">Ime:</label>
+            {{input type="text" class="form-control" id="inputIme1" placeholder="Ime" value=ime}}
+          </div>
 
-      <div class="form-group-reg">
-        <label for="inputFirma1" class="col-sm-2 control-label">Firma:</label>
-        <div class="col-sm-10">
-          {{input type="text" class="form-control" id="inputFirma1" placeholder="Firma" value=nazivFirme disabled=(poslodavac-helper tip)}}
-        </div>
-      </div>
+          <div class="form-group">
+            <label for="inputPrezime1">Prezime:</label>
+            {{input type="text" class="form-control" id="inputPrezime1" placeholder="Prezime" value=prezime}}
+          </div>
 
-      <div class="form-group-reg">
-        <label for="inputTelefon1" class="col-sm-2 control-label">Telefon:</label>
-        <div class="col-sm-10">
-          {{input type="text" class="form-control" id="inputTelefon1" placeholder="123456789" value=telefon disabled=(poslodavac-helper tip)}}
-        </div>
-      </div>
+          <div class="form-group">
+            <label for="inputFirma1">Firma:</label>
+            {{input type="text" class="form-control" id="inputFirma1" placeholder="Firma" value=nazivFirme disabled=(poslodavac-helper tip)}}
+          </div>
 
-      <div class="form-group-reg">
-        <label for="inputCV" class="col-sm-2 control-label">CV:</label>
-        <div class="col-sm-10">
-          {{textarea class="form-control" id="inputCV" disabled=(nezaposleni-helper tip) value=cv}}
-        </div>
-      </div>
+          <div class="form-group">
+            <label for="inputTelefon1">Telefon:</label>
+            {{input type="text" class="form-control" id="inputTelefon1" placeholder="123456789" value=telefon disabled=(poslodavac-helper tip)}}
+          </div>
 
-      <div class="form-group-reg">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default" {{action 'register'}}>Registruj se</button>
+          <div class="form-group">
+            <label for="inputCV">CV:</label>
+            {{textarea class="form-control" id="inputCV" disabled=(nezaposleni-helper tip) value=cv}}
+          </div>
+
+          <div class="form-group text-center">
+              <button type="submit" class="btn btn-success" {{action 'register'}}>Registruj se</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>
