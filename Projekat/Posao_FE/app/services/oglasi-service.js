@@ -27,4 +27,42 @@ export default BaseService.extend({
         return oglas;        
     },
 
+    search: function(name, kategorijaId, filter){
+        let query = "oglasi/search?";
+
+        if (kategorijaId !== null && filter !== null){
+            query = query + "idk=" + kategorijaId + "&idlok=" + filter;
+            
+            if (name !== null){
+                query = query + "&name=" + name;
+            }
+        }
+        else if (kategorijaId === null && filter !== null){
+            query = query + "idlok=" + filter;
+
+            if (name !== null){
+                query = query + "&name=" + name;
+            }
+        }
+        else if (kategorijaId !== null && filter === null){
+            query = query + "idk=" + kategorijaId;
+
+            if (name !== null){
+                query = query + "&name=" + name;
+            }
+        }
+        else if (name !== null){
+            query = query + "name=" + name;
+        }
+
+        var oglasi = [];
+        this.ajax({ url: query, type: "GET"}).then(function(data) {
+            data.forEach(function(oglas) {
+                oglasi.addObject(Oglas.create(oglas));
+            });
+        });
+
+        return oglasi;
+    }
+
 });

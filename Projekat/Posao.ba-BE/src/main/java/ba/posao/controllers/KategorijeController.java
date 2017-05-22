@@ -35,6 +35,7 @@ public class KategorijeController {
 		return kategorijeService.findByIdKategorije(id);
 	}
 	
+	@CrossOrigin
     @RequestMapping(path="/get/all", method = RequestMethod.GET)
     public List<Kategorije> findAll() {
     	List<Kategorije> k;
