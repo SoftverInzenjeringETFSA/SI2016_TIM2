@@ -12,6 +12,7 @@ export default Ember.Controller.extend({
 		 login: function(credentials, doRedirect) {
             var self = this;
             this.authenticate(credentials).then(function(value) {
+                console.log(self.get("session.data"));
 
                 if(doRedirect) {
                     self.transitionToRoute('index');
