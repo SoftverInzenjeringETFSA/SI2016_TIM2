@@ -304,3 +304,16 @@ margin-left:5%;
 .margineFormeProfil{
   margin-top: 15%;
 }
+.pozadinaDodavanjeOglasa{
+  background-image: url('../assets/images/welcome.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  margin-top: 1%;
+  position: relative;
+  color:#F6AE2D;
+}
