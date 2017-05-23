@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	session: Ember.inject.service('session'),
+    session: Ember.inject.service('session'),
+    collapsedBool: false,
+	collapsedStr: "collapse navbar-collapse",
 
 	authenticate: function(credentials) {
         var authenticator = 'authenticator:jwt';
@@ -24,6 +26,19 @@ export default Ember.Controller.extend({
 
                 //this.errorMessage = "Pogrešni kredencijali.";
             });
+        },
+
+        collapse: function(){
+            let col = !this.get("collapsedBool");
+
+            this.set("collapsedBool", col);
+
+            if(col){
+                this.set("collapsedStr", "collapse navbar-collapse in");
+            }
+            else{
+                this.set("collapsedStr", "collapse navbar-collapse");
+            }
         },
 
         loginNormal: function() {
