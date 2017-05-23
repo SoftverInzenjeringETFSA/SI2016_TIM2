@@ -238,7 +238,7 @@ body {
 }
 /* ---------------- Registracija----------------------*/
 
-.viewadPage,.registrationPage, .profilePage {
+.viewadPage,.registrationPage, .profilePage, .templatePage {
   background-color: transparent;
   color:#F6AE2D;
 }
@@ -311,10 +311,6 @@ margin-left:5%;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
-  margin-top: 1%;
-  position: relative;
-  color:#F6AE2D;
 }
 .cover-screen {
   position: fixed;
