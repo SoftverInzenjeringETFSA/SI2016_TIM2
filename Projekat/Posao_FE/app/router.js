@@ -18,13 +18,11 @@ Router.map(function() {
   this.route('viewad', {path: '/ad/:id'});
   this.route('profile');
   this.route('kreiraj-template', {path: '/kreiraj-template'});
+  this.route('edit-kategorije');
+  this.route('pregled-notifikacija');
+  this.route('pregled-korisnika');
+  this.route('pregled-profila-public');
 
-  this.route('', function() {
-    this.route('edit-kategorije');
-    this.route('pregled-notifikacija');
-    this.route('pregled-korisnika');
-    this.route('pregled-profila-public');
-  });
 });
 
 export default Router;
