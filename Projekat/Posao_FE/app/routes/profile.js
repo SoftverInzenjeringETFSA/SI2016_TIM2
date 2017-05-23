@@ -7,9 +7,6 @@ export default Ember.Route.extend({
 	model: function(params, transition) {
 		let username = this.get("session.data.authenticated.username");
 		let _profil = this.get('korisnikService').profil(username);
-		console.log("test: "); + _profil;
-		console.log(_profil);
-
 	
 		return Ember.RSVP.hash({
         	profil: _profil

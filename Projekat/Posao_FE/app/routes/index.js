@@ -8,7 +8,6 @@ export default Ember.Route.extend({
 
 		model: function(params, transition) {
 		let _kategorije = this.get('kategorijaService').all();
-		console.log(_kategorije);
 
         return Ember.RSVP.hash({
             oglasi: this.get('oglasiService').all(),

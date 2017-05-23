@@ -1,15 +1,18 @@
 <div class="registrationPage">
+
   <!-- Background Image -->
   <div class="img img-responsive pozadinaRegistracije cover-screen"></div>
+  
   <div class="container">
     <div class="row">
-      <form class="distinct-page-form col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-1">
-        <div class="col-xs-12 text-center">
-          <h1>Kreiranje oglasa</h1>
-          <hr class="h-divider" />
-        </div>
-
-        <div class="col-xs-12">
+      <!-- Left side -->
+      <form class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-5 col-lg-offset-1">
+        <div class="col-xs-12 distinct-page-form">
+          <div class="text-center">
+            <h1>Kreiranje oglasa</h1>
+            <hr class="h-divider" />
+          </div>
+          <div>
             <div class="form-group pomjereniTextBox">
                 <label for="category">Kategoriju oglasa:</label>
                 <select class="form-control" name="kategorija">
@@ -30,69 +33,72 @@
                 </select>
             </div>
 
-          <div class="form-group pomjereniTextBox">
-            <label for="category">Lokacija:</label>
-            <select class="form-control" name="lokacija">
-                    <option>Zenica</option>
-                    <option>Mostar</option>
-            </select>
-          </div>
-
-          <div class="form-group pomjereniTextBox">
-            <label for="inputNaziv1">Naziv oglasa:</label>
-            {{input type="text" class="form-control" id="inputNaziv1" placeholder="Naziv" value=naziv}}
-          </div>
-
-          <div class="form-group pomjereniTextBox">
-            <label for="inputOpis">Opis:</label>
-            {{textarea class="form-control" id="inputOpis" disabled=(poslodavac-helper tip) value=opis}}
-          </div>
-
-          <div class="form-group pomjereniTextBox">
-            <label for="inputDateTime">Datum:</label>
-                <div class='input-group date' id='inputDateTime'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
+            <div class="form-group pomjereniTextBox">
+              <label for="category">Lokacija:</label>
+              <select class="form-control" name="lokacija">
+                      <option>Zenica</option>
+                      <option>Mostar</option>
+              </select>
             </div>
 
+            <div class="form-group pomjereniTextBox">
+              <label for="inputNaziv1">Naziv oglasa:</label>
+              {{input type="text" class="form-control" id="inputNaziv1" placeholder="Naziv" value=naziv}}
+            </div>
+
+            <div class="form-group pomjereniTextBox">
+              <label for="inputOpis">Opis:</label>
+              {{textarea class="form-control" id="inputOpis" disabled=(poslodavac-helper tip) value=opis}}
+            </div>
+
+            <div class="form-group pomjereniTextBox">
+              <label for="inputDateTime">Datum:</label>
+                  <div class='input-group date' id='inputDateTime'>
+                      <input type='text' class="form-control" />
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                  </div>
+              </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-success" {{action 'register'}}>Registruj se</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- Right side -->
+      <form class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-1">
+        <!-- Obnova oglasa -->
+        <div class="distinct-page-form col-xs-12">
+          <div class="text-center">
+            <h1>Obnavljanje oglasa</h1>
+            <hr class="h-divider" />
+          </div>
+          <div class="form-group">
+              <label for="inputDateTime">Datum:</label>
+              <div class='input-group date' id='inputDateTime'>
+                  <input type='text' class="form-control" />
+                  <span class="input-group-addon">
+                      <i class="glyphicon glyphicon-calendar"></i>
+                  </span>
+              </div>
+          </div>
           <div class="form-group text-center">
-              <button type="submit" class="btn btn-success" {{action 'register'}}>Registruj se</button>
+            <button type="button" class="btn btn-success" {{action 'submit'}}>Obnovi</button>
           </div>
         </div>
-      </form>
-
-      <form class="distinct-page-form col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-2">
-      <div class="col-xs-12 text-center">
-          <h1>Obnavljanje oglasa</h1>
-          <hr class="h-divider" />
+        <!-- Brisanje oglasa -->
+        <div class="distinct-page-form col-xs-12">
+          <div class="text-center">
+            <h1>Brisanje oglasa</h1>
+            <hr class="h-divider" />
+          </div>
+          <div class="form-group text-center">
+            <button type="button" class="btn btn-success" {{action 'submit'}}>Obriši</button>
+          </div>
         </div>
-
-        <div class="form-group pomjereniTextBox">
-            <label for="inputDateTime">Datum:</label>
-                <div class='input-group date' id='inputDateTime'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-         <div class="form-group pomjereniTextBox">
-            <button type="button" class="btn btn-success" {{action 'submit'}}>Submit</button>
-         </div>
-      </form>
-
-      <form class="distinct-page-form col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-2">
-      <div class="col-xs-12 text-center">
-          <h1>Brisanje oglasa</h1>
-          <hr class="h-divider" />
-        </div>
-
-         <div class="form-group pomjereniTextBox">
-            <button type="button" class="btn btn-success" {{action 'submit'}}>Submit</button>
-         </div>
       </form>
     </div>
   </div>
