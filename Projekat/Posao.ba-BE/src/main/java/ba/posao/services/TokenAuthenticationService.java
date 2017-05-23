@@ -35,10 +35,12 @@ public class TokenAuthenticationService {
     static final String HEADER_STRING = "Authorization";
     static final String ROLE = "role";
     static final String USER = "user";
+    static final String USERID = "userid";
 
     public static void addAuthentication(HttpServletResponse res, String username, ServletContext servletContext) {
     	KorisnikService ks = WebApplicationContextUtils.getWebApplicationContext(servletContext).getBean(KorisnikService.class);
     	String role = ks.getKorisnikTypeByUserName(username);
+    	String k = ks.getKorisnikByUserName(username).getIdKorisnika().toString();
     	/*Korisnici userAccount = korisnikRepository.findByUsername(username);
     	String role;
     	
@@ -59,6 +61,7 @@ public class TokenAuthenticationService {
                 .setSubject(username)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
                 .claim(ROLE, role)
+                .claim(USERID, k)
                 //.claim(USER, user)
                 .signWith(SignatureAlgorithm.HS512, SECRET)
                 .compact();

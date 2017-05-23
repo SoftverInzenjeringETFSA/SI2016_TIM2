@@ -1,1 +1,19 @@
-{{outlet}}
+<div>
+	<table class="table table-hover advert-table">
+		<tbody>
+			{{#each model.poruke as |poruka|}}			
+			<tr class="row ">				
+				<td class="col-md-3 ">
+					<h4 class="title">
+							{{poruka.posiljalac.username}}
+					</h4>
+	                <p class="desc">{{poruka.vrijeme}}</p>
+				</td>	
+				<td class="col-md-8 col-md-offset-1 ">
+					<p class="desc">{{poruka.tekst}}</p>
+				</td>			
+			</tr>			
+			{{/each}}
+		</tbody>
+	</table>
+</div>

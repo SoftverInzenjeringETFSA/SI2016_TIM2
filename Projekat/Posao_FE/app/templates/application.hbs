@@ -23,6 +23,7 @@
           <li>{{#link-to 'kreiraj-template'}}Kreiraj template{{/link-to}}</li>
           {{/if}}
           {{#if (eq session.data.authenticated.role "ROLE_NEZAPOSLENI")}}
+          <li>{{#link-to 'pregled-notifikacija'}}Poruke{{/link-to}}</li>
           {{/if}}
           {{#if (eq session.data.authenticated.role "ROLE_POSLODAVAC")}}
           <li>
@@ -35,6 +36,7 @@
             Kreiranje oglasa
             {{/link-to}}
           </li>
+          <li>{{#link-to 'pregled-notifikacija'}}Notifikacije{{/link-to}}</li>
           {{/if}}
 
 
