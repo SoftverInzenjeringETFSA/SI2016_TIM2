@@ -122,8 +122,5 @@ public class OglasController {
 		 else if (name==null)
 			 return oglasService.searchCategoryLocation(idkategorije, idlokacije);
 		 else return oglasRepository.findAll();
-	 
-		
-	 
 	    }
 }
