@@ -1,1 +1,56 @@
-{{outlet}}
+<div class="templatePage">
+  <!-- Background Image -->
+  <div class="img img-responsive pozadinaDodavanjeOglasa cover-screen"></div>
+  <div class="container">
+    <div class="row">
+
+    <form class="distinct-page-form col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+    	<div class="col-xs-12 text-center">
+          <h1>Dodavanje kategorije</h1>
+          <hr class="h-divider" />
+        </div>
+
+        <div class="form-group text-center">
+            <label for="inputNaziv1">Naziv:</label>
+            {{input type="text" class="form-control" id="inputnaziv_template" placeholder="Naziv" value=model.template.naziv}}
+         </div>
+
+         <div class="form-group text-center">
+            <button type="button" class="btn btn-success" {{action 'dodaj'}}>Dodaj</button><br>
+         </div>
+      </form>
+
+      <form class="distinct-page-form col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+    	<div class="col-xs-12 text-center">
+          <h1>Izmjena kategorije</h1>
+          <hr class="h-divider" />
+        </div>
+
+        <div class="form-group text-center">
+            <label for="inputNaziv1">Naziv:</label>
+            {{input type="text" class="form-control" id="inputnaziv_template" placeholder="Naziv" value=model.template.naziv}}
+         </div>
+
+         <div class="form-group text-center">
+            <button type="button" class="btn btn-success" {{action 'dodaj'}}>Izmijeni</button><br>
+         </div>
+      </form>
+
+      <form class="distinct-page-form col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+    	<div class="col-xs-12 text-center">
+          <h1>Brisanje kategorije</h1>
+          <hr class="h-divider" />
+        </div>
+
+        <div class="form-group text-center">
+            <label for="inputNaziv1">Naziv:</label>
+            {{input type="text" class="form-control" id="inputnaziv_template" placeholder="Naziv" value=model.template.naziv}}
+         </div>
+
+         <div class="form-group text-center">
+            <button type="button" class="btn btn-success" {{action 'dodaj'}}>Izbriši</button><br>
+         </div>
+      </form>
+    </div>
+  </div>
+</div>
