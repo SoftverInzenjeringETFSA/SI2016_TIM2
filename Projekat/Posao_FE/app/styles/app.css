@@ -237,8 +237,10 @@ body {
   color: #ededed;  
 }
 /* ---------------- Registracija----------------------*/
-.registrationPage, .viewadPage, .profilePage {
-  background-color: #dedede;
+
+.viewadPage,.registrationPage, .profilePage {
+  background-color: transparent;
+  color:#F6AE2D;
 }
 .form-control[disabled] {
   background-color: #11114a !important;
@@ -276,9 +278,6 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
-  position: relative;
-  color:#F6AE2D;
 }
 .pomjereniTextBox{
   display: inline-block;
@@ -298,9 +297,7 @@ margin-left:5%;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
-  position: relative;
-  color:#F6AE2D;
+
 }
 .margineFormeProfila_{
 }
@@ -319,25 +316,28 @@ margin-left:5%;
   position: relative;
   color:#F6AE2D;
 }
+.cover-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+}
 .pozadinaPregledOglasa{
   background-image: url('../assets/images/findingJOb.jpg');
-  background-position: center center;
+ background-position: center center;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
-  margin-top: 1%;
-  position: relative;
-  color:#F6AE2D;
 }
 .tamnijaPodloga{
   background-color: rgba(28,49,68,0.9);
 }
 .margineFormeOglasa{
-  margin-top: 9%;
-  margin-left: 2.8%;
+
 }
 .pozadinaListeOglasa{
   background-image: url('../assets/images/intervju.jpg');
