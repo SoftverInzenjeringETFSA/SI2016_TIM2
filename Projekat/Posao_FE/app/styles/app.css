@@ -243,11 +243,11 @@ body {
   color:#F6AE2D;
 }
 .form-control[disabled] {
-  background-color: #11114a !important;
+  background-color: #182132 !important;
   border-color: #F6AE2D !important;
 }
 .form-control[disabled]::-webkit-input-placeholder{
-  color: #11114a !important;
+  color: #182132 !important;
 }
 .distinct-page-form {
   background-color: rgba(28,49,68,0.5);
