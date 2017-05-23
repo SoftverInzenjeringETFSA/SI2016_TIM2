@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2017 at 04:02 PM
+-- Generation Time: May 23, 2017 at 07:10 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -104,7 +104,8 @@ CREATE TABLE `korisnici` (
 INSERT INTO `korisnici` (`idKorisnika`, `username`, `password_hash`, `email`) VALUES
 (1, 'admin', '098f6bcd4621d373cade4e832627b4f6', 'admin@posao.ba'),
 (2, 'firma1', '098f6bcd4621d373cade4e832627b4f6', 'firma1@firma1.com'),
-(5, 'korisnik2', '098f6bcd4621d373cade4e832627b4f6', 'korisnik2@domena.com');
+(5, 'korisnik2', '098f6bcd4621d373cade4e832627b4f6', 'korisnik2@domena.com'),
+(6, 'ekalac1', 'test', 'no');
 
 -- --------------------------------------------------------
 
@@ -147,7 +148,8 @@ CREATE TABLE `nezaposleni` (
 --
 
 INSERT INTO `nezaposleni` (`idKorisnika`, `ime`, `prezime`, `cv`, `privatanProfil`) VALUES
-(5, 'Drugi', 'Nezaposleni', 'CV Tekst 2', 0);
+(5, 'Drugi', 'Nezaposleni', 'CV Tekst 2', 0),
+(6, 'Elza', '', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -275,6 +277,13 @@ CREATE TABLE `oglasprijave` (
   `vrijemePrijave` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `oglasprijave`
+--
+
+INSERT INTO `oglasprijave` (`idPrijave`, `idOglasa`, `idKorisnika`, `dodatneInformacije`, `vrijemePrijave`) VALUES
+(1, 1, 5, NULL, '2017-05-23 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -316,12 +325,22 @@ INSERT INTO `poljatemplatea` (`id`, `idTemplate`, `nazivPolja`) VALUES
 
 CREATE TABLE `poruke` (
   `idPoruke` int(11) NOT NULL,
-  `idNezaposlenog` int(11) NOT NULL,
-  `idPoslodavca` int(11) NOT NULL,
+  `idPosiljaoca` int(11) NOT NULL,
+  `idPrimaoca` int(11) NOT NULL,
   `tekst` varchar(1000) NOT NULL,
   `vrijeme` datetime NOT NULL,
   `procitano` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `poruke`
+--
+
+INSERT INTO `poruke` (`idPoruke`, `idPosiljaoca`, `idPrimaoca`, `tekst`, `vrijeme`, `procitano`) VALUES
+(1, 2, 5, 'Do?i da me ljubis', '2017-05-23 00:00:00', 0),
+(2, 2, 5, 'Do?i da me ljubis', '2017-05-23 00:00:00', 0),
+(3, 2, 5, 'Do?i da me ljubis', '2017-05-23 00:00:00', 0),
+(4, 2, 5, 'Korisnik Drugi Nezaposlenise prijavio na oglas Oglas 1', '2017-05-23 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -497,8 +516,8 @@ ALTER TABLE `poljatemplatea`
 --
 ALTER TABLE `poruke`
   ADD PRIMARY KEY (`idPoruke`),
-  ADD KEY `fk_Poruke_Nezaposleni1_idx` (`idNezaposlenog`),
-  ADD KEY `fk_Poruke_Poslodavci1_idx` (`idPoslodavca`);
+  ADD KEY `fk_Poruke_Nezaposleni1_idx` (`idPosiljaoca`),
+  ADD KEY `fk_Poruke_Poslodavci1_idx` (`idPrimaoca`);
 
 --
 -- Indexes for table `poslodavci`
@@ -544,7 +563,7 @@ ALTER TABLE `kategorije`
 -- AUTO_INCREMENT for table `korisnici`
 --
 ALTER TABLE `korisnici`
-  MODIFY `idKorisnika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idKorisnika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `lokacije`
 --
@@ -569,7 +588,7 @@ ALTER TABLE `oglaspodaci`
 -- AUTO_INCREMENT for table `oglasprijave`
 --
 ALTER TABLE `oglasprijave`
-  MODIFY `idPrijave` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPrijave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `poljatemplatea`
 --
@@ -579,7 +598,7 @@ ALTER TABLE `poljatemplatea`
 -- AUTO_INCREMENT for table `poruke`
 --
 ALTER TABLE `poruke`
-  MODIFY `idPoruke` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPoruke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `pozivnice`
 --
@@ -664,8 +683,8 @@ ALTER TABLE `poljatemplatea`
 -- Constraints for table `poruke`
 --
 ALTER TABLE `poruke`
-  ADD CONSTRAINT `fk_Poruke_Nezaposleni1` FOREIGN KEY (`idNezaposlenog`) REFERENCES `nezaposleni` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Poruke_Poslodavci1` FOREIGN KEY (`idPoslodavca`) REFERENCES `poslodavci` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Poruke_Nezaposleni1` FOREIGN KEY (`idPosiljaoca`) REFERENCES `korisnici` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Poruke_Poslodavci1` FOREIGN KEY (`idPrimaoca`) REFERENCES `korisnici` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `poslodavci`
