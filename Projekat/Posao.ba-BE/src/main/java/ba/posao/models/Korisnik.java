@@ -1,6 +1,7 @@
 package ba.posao.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -48,9 +50,7 @@ public class Korisnik implements Serializable {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "korisnici", cascade = CascadeType.ALL)
     private Poslodavci poslodavac;
    
-
-    
-    public Korisnik() {
+	public Korisnik() {
     	
     }
     

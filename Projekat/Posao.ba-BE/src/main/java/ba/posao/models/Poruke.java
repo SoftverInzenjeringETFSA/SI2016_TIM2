@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.joda.time.DateTime;
+
 
 @Entity
 public class Poruke implements Serializable{
@@ -26,26 +28,26 @@ public class Poruke implements Serializable{
 	private Date vrijeme;
 	private Boolean procitano;
 	
-    @ManyToOne(targetEntity=Nezaposleni.class)
-    @JoinColumn(name="idnezaposlenog")
-    private Nezaposleni idNezaposlenog;
+    @ManyToOne(targetEntity=Korisnik.class)
+    @JoinColumn(name="idposiljaoca")
+    private Korisnik posiljalac;
     
-    @ManyToOne(targetEntity=Poslodavci.class)
-    @JoinColumn(name="idposlodavca")
-    private Poslodavci idPoslodavca;
+    public Korisnik getPosiljalac() {
+		return posiljalac;
+	}
+	public void setPosiljalac(Korisnik posiljalac) {
+		this.posiljalac = posiljalac;
+	}
+	public Korisnik getPrimalac() {
+		return primalac;
+	}
+	public void setPrimalac(Korisnik primalac) {
+		this.primalac = primalac;
+	}
+	@ManyToOne(targetEntity=Korisnik.class)
+    @JoinColumn(name="idprimaoca")
+    private Korisnik primalac;
 
-	public Nezaposleni getIdNezaposlenog() {
-		return idNezaposlenog;
-	}
-	public void setIdNezaposlenog(Nezaposleni idNezaposlenog) {
-		this.idNezaposlenog = idNezaposlenog;
-	}
-	public Poslodavci getIdPoslodavca() {
-		return idPoslodavca;
-	}
-	public void setIdPoslodavca(Poslodavci idPoslodavca) {
-		this.idPoslodavca = idPoslodavca;
-	}
 
 	public Integer getIdPoruke() {
 		return idPoruke;
@@ -59,18 +61,19 @@ public class Poruke implements Serializable{
 	public void setTekst(String tekst) {
 		this.tekst = tekst;
 	}
-	public Date getVrijeme() {
-		return vrijeme;
-	}
-	public void setVrijeme(Date vrijeme) {
-		this.vrijeme = vrijeme;
-	}
 	public Boolean getProcitano() {
 		return procitano;
 	}
 	public void setProcitano(Boolean procitano) {
 		this.procitano = procitano;
 	}
+	public Date getVrijeme() {
+		return vrijeme;
+	}
+	public void setVrijeme(Date vrijeme) {
+		this.vrijeme = vrijeme;
+	}
+	
 	
 
 }
