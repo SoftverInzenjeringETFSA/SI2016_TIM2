@@ -290,7 +290,7 @@ width:91.5%;
 margin-left:5%;
 }
 .pozadinaProfil{
-  background-image: url('../assets/images/profile.jpg');
+  background-image: url('../assets/images/treger.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
@@ -304,7 +304,7 @@ margin-left:5%;
 .margineFormeProfil{
 }
 .pozadinaDodavanjeOglasa{
-  background-image: url('../assets/images/welcome.jpg');
+  background-image: url('../assets/images/laptop.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
@@ -334,13 +334,4 @@ margin-left:5%;
 }
 .margineFormeOglasa{
 
-}
-.pozadinaListeOglasa{
-  background-image: url('../assets/images/intervju.jpg');
-  background-position: top;
-  background-repeat: no-repeat;
-  border-radius: 8px;
-  margin-top: 1%;
-  position: relative;
-  color:#F6AE2D;
 }
