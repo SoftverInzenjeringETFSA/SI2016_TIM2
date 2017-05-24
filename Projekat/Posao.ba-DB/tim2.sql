@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2017 at 03:27 PM
+-- Generation Time: May 24, 2017 at 06:04 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -246,7 +246,7 @@ CREATE TABLE `oglaspodaci` (
 --
 
 INSERT INTO `oglaspodaci` (`id`, `idOglasa`, `vrijednost`, `staje`) VALUES
-(8, 2, 'Trgovac', 'Datum i vrijeme'),
+(8, 2, 'Trgovac', 'Zanimanje'),
 (9, 2, 'Kratak opis', 'Opis'),
 (10, 2, 'Opis posla ....', 'Opis'),
 (11, 2, 'SSS', 'SSS'),
