@@ -2,18 +2,40 @@
   <!-- Background Image -->
   <div class="img img-responsive pozadinaDodavanjeOglasa cover-screen"></div>
   <div class="container">
+  
+  <div class={{modalClass}} id="myModal" role="dialog" style={{modalStyle}}>
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" {{action 'sakrijModal'}}>&times;</button>
+          <h4 class="modal-title">Izvještaj</h4>
+        </div>
+        <div class="modal-body">
+            {{textarea class="form-control" id="inputPoruka" value=poruka.tekst}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" {{action 'sakrijModal'}}>Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" {{action 'send'}}>Pošalji</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <div class="row">
     	<div class="col-md-7 col-md-offset-1">
 			<table class="table table-hover advert-table">
 				<tbody>
-					{{#each model.korisnik as |_korisnik|}}			
-					<tr class="row ">				
+					{{#each model.korisnici as |korisnik|}}			
+					<tr class="row ">		
 						<td class="col-md-3 ">
 							<h4 class="title">
-									{{_korisnik.username}}
+									{{korisnik.username}}
 							</h4>
-			                <p class="desc">{{_korisnik.email}}</p>
-						</td>	
+			                <p class="desc">{{korisnik.email}}</p>
+						</td>
+						<td class="col-md-2">
+          					<button class="btn btn-default login-button" {{action 'porukaPopout' korisnik.idKorisnika}}>Pošalji poruku</button>
+						</td>
 						<!--da se stavi ime, prezime i cv i tjt??
 						btw ove se tabele moraju sredit jos pa zanemarite to-->		
 					</tr>			

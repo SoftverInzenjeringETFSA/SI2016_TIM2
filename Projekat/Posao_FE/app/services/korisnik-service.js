@@ -46,7 +46,18 @@ export default BaseService.extend({
             izvjestaj.setProperties(data);
         });
 
-        return izvjestaj;        
+        return izvjestaj;
+    },
+
+    all: function() {
+        var korisnici = [];
+        this.ajax({ url: `korisnici/get/all`, type: "GET"}).then(function(data) {
+            data.forEach(function(korisnik){
+                korisnici.addObject(Korisnik.create(korisnik));
+            })
+        });
+
+        return korisnici;
     },
 
 });
