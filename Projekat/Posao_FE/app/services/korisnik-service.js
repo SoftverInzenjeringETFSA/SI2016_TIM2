@@ -31,4 +31,11 @@ export default BaseService.extend({
         return true;
     },
 
+    delete: function(korisnikid) {
+        this.ajax({ url: `korisnici/delete?id=${korisnikid}`, type: "DELETE", data: JSON.stringify({})}).then(function(data) {
+        });
+    
+        return true;
+    },
+
 });
