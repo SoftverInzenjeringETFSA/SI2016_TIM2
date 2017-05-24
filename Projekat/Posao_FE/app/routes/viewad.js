@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	oglasiService: Ember.inject.service(),
+	session: Ember.inject.service(),
 
 	model: function(params, transition) {
     	return Ember.RSVP.hash({

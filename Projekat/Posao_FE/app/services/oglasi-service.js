@@ -17,11 +17,7 @@ export default BaseService.extend({
     details: function(id) {
         var oglas = Oglas.create({});
         this.ajax({ url: `oglasi/get?id=${id}`, type: "GET"}).then(function(data) {
-        	//console.log("data: ");
-        	console.log(data);
             oglas.setProperties(data);
-        	//console.log("created: ");
-        	console.log(oglas);
         });
 
         return oglas;        
@@ -34,8 +30,13 @@ export default BaseService.extend({
         return true;
     },
 
+    prijava: function(userid, adid) {
+    console.log("u prijavi");
+    this.ajax({ url: `prijave/add?korisnik=${userid}&oglas=${adid}`, type: "POST", data: {}}).then(function(data) {
+    });
 
-
+        return true;
+    },
 
     search: function(name, kategorijaId, filter){
         let query = "oglasi/search?";

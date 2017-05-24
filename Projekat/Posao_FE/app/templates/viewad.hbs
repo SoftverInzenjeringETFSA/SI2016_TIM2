@@ -34,6 +34,11 @@
                         </div>
                         {{/each}}
                     </div>
+                    <div>
+                        {{#if (eq session.data.authenticated.role "ROLE_NEZAPOSLENI")}}
+                            <button class="btn btn-default login-button" {{action 'prijava' model.oglas.idOglasa}}>Prijavi se</button>
+                        {{/if}}
+                    </div>
                 </div>
             </div>
             <!-- Right side -->
