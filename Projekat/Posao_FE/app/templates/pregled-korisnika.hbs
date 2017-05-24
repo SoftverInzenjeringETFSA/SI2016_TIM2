@@ -1,6 +1,6 @@
 <div class="templatePage">
   <!-- Background Image -->
-  <div class="img img-responsive pozadinaDodavanjeOglasa cover-screen"></div>
+  <div class="img img-responsive pozadinaPregledKorisnika cover-screen"></div>
   <div class="container">
   
   <div class={{modalClass}} id="myModal" role="dialog" style={{modalStyle}}>
@@ -22,27 +22,27 @@
   </div>
 
     <div class="row">
-    	<div class="col-md-7 col-md-offset-1">
-			<table class="table table-hover advert-table">
-				<tbody>
-					{{#each model.korisnici as |korisnik|}}			
-					<tr class="row ">		
-						<td class="col-md-3 ">
-							<h4 class="title">
-									{{korisnik.username}}
-							</h4>
-			                <p class="desc">{{korisnik.email}}</p>
-						</td>
-						<td class="col-md-2">
-          					<button class="btn btn-default login-button" {{action 'porukaPopout' korisnik.idKorisnika}}>Pošalji poruku</button>
-						</td>
-						<!--da se stavi ime, prezime i cv i tjt??
-						btw ove se tabele moraju sredit jos pa zanemarite to-->		
-					</tr>			
-					{{/each}}
-				</tbody>
-			</table>
-		</div>
+      <div class="col-md-6 col-md-offset-3">
+      <table class="table table-hover advert-table tamnijaPodloga">
+        <tbody>
+          {{#each model.korisnici as |korisnik|}}     
+          <tr class="row ">   
+            <td class="col-md-3 ">
+              <h4 class="title">
+                  {{korisnik.username}}
+              </h4>
+                      <p class="desc">{{korisnik.email}}</p>
+            </td>
+            <td class="col-md-2">
+                    <button class="btn btn-default login-button" {{action 'porukaPopout' korisnik.idKorisnika}}>Pošalji poruku</button>
+            </td>
+            <!--da se stavi ime, prezime i cv i tjt??
+            btw ove se tabele moraju sredit jos pa zanemarite to-->   
+          </tr>     
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
     </div>
   </div>
 </div>

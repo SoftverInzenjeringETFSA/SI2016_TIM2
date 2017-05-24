@@ -68,14 +68,14 @@
                     {{/if}}
 
                     {{#if this.model.profil.poslodavac}}
-                    <div class="form-group firma">
+                    <div class="form-group pomjereniTextBox">
                       <label for="inputFirma1_profil">Firma:</label>
                       {{input type="text" class="form-control" id="inputFirma1_profil" placeholder="Firma" value=model.profil.poslodavac.nazivFirme}}
                     </div>
                     {{/if}}
 
                     {{#if this.model.profil.nezaposleni}}
-                    <div class="form-group pomjereniTextBox">
+                    <div class="form-group firma">
                       <label for="inputCV_profil">CV:</label>
                       {{textarea class="form-control" id="inputCV_profil" value=model.profil.nezaposleni.cv}}
                     </div>
@@ -116,11 +116,6 @@
                     </div>
 
                     <div class="col-xs-12">
-                      <div class="form-group">
-                        <label for="inputPassword3">Potvrdite brisanje računa lozinkom:</label>
-                        {{input type="password" class="form-control" id="inputPassword3" placeholder="Password" value=password}}
-                      </div>
-
                       <div class="form-group text-center">
                           <button type="submit" class="btn btn-danger" {{action 'delete'}}>Obriši račun</button>
                       </div>

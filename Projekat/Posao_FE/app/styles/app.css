@@ -73,6 +73,8 @@ body {
 }
 .advert-table tr:hover {
   background-color: #eee !important;
+  border-radius: 8px;
+  color: #1c3144;
 }
 .advert-table td {
   border-top: 0 !important;
@@ -336,6 +338,12 @@ margin-left:2%;
 .tamnijaPodloga{
   background-color: rgba(28,49,68,0.9);
 }
-.margineFormeOglasa{
-
+.pozadinaPregledKorisnika{
+  background-image: url('../assets/images/torba.jpg');
+ background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }

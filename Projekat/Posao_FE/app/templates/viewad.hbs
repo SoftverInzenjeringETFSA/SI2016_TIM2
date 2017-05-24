@@ -37,7 +37,9 @@
                          {{#if (eq model.oglas.zatvoren 0)}}
                             <p>Da</p>
                           {{#if (eq model.userid model.oglas.poslodavac.idKorisnika)}}
-                            <button {{action 'zatvori'}}>Zatvori</button>
+                            <div class="form-group text-center">
+                                <button class="btn btn-default login-button" {{action 'zatvori'}}>Zatvori</button><br><br>
+                            </div>
                           {{/if}}
                           
                         {{else}}
@@ -56,12 +58,12 @@
                         </div>
                         {{/each}}
                     </div>
-                    <div>
+                    <div class="form-group text-center">
                         {{#if (eq session.data.authenticated.role "ROLE_NEZAPOSLENI")}}
-                            <button class="btn btn-default login-button" {{action 'prijava' model.oglas.idOglasa}}>Prijavi se</button>
+                            <button class="btn btn-default login-button" {{action 'prijava' model.oglas.idOglasa}}>Prijavi se</button><br><br>
                         {{/if}}
                         {{#if (eq session.data.authenticated.role "ROLE_ADMIN")}}
-                            <button class="btn btn-default login-button" {{action 'delete'}}>Izbriši oglas</button>
+                            <button class="btn btn-danger" {{action 'delete'}}>Izbriši oglas</button><br><br>
                         {{/if}}
                     </div>
                 </div>
