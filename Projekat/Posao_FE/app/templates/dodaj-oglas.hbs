@@ -48,18 +48,16 @@
               {{input type="text" class="form-control" id="inputNaziv1" placeholder="Naziv" value=naziv}}
             </div>
 
-            <div class="form-group pomjereniTextBox">
+            <div class="form-group firma">
               <label for="inputOpis">Opis:</label>
               {{textarea class="form-control" id="inputOpis" value=opis}}
             </div>
 
-            <div class="form-group pomjereniTextBox">
+            <div class="form-group datum">
               <label for="inputDateTime">Datum isteka:</label>
-                  <div class='input-group date' id='inputDateTime'>
-                      {{input type='date' class="form-control" value=datum}}
-                      <span class="input-group-addon">
-                          <span class="glyphicon glyphicon-calendar"></span>
-                      </span>
+                  <div class='input-group datum date' id='inputDateTime'>
+                      {{input type='date' class="form-control datum" value=datum}}
+                      
                   </div>
               </div>
 
@@ -71,7 +69,7 @@
               {{/each}}
 
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-success" {{action 'register'}}>Registruj se</button>
+                <button type="submit" class="btn btn-success" {{action 'register'}}>Dodaj</button>
             </div>
           </div>
         </div>
@@ -88,7 +86,7 @@
           <div class="form-group">
               <label for="inputDateTime">Datum:</label>
               <div class='input-group date' id='inputDateTime'>
-                  <input type='text' class="form-control" />
+                  {{input type='date' class="form-control" value=datum}}
                   <span class="input-group-addon">
                       <i class="glyphicon glyphicon-calendar"></i>
                   </span>
