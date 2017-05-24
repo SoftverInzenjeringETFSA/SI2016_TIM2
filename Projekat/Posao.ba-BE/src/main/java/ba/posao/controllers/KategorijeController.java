@@ -69,7 +69,7 @@ public class KategorijeController {
 	return ResponseEntity.status(HttpStatus.OK).body(kategorijeService.removeKategorije(id));
     }
     
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ResponseEntity update(@RequestBody Kategorije kategory, @RequestParam(name="id")int id)
     {
     	//if (kategorijeService.findByIdKategorije(id)!=null)
