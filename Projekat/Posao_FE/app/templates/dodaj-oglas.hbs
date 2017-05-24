@@ -44,17 +44,19 @@
             </div>
 
             <div class="form-group pomjereniTextBox">
-              <label for="inputNaziv1">Naziv oglasa:</label>
+              <label for="inputNaziv1">Naziv oglasa:</label><br>
+              <span class="greskaUnosa">Morate unijeti naziv!</span>
               {{input type="text" class="form-control" id="inputNaziv1" placeholder="Naziv" value=naziv}}
             </div>
 
             <div class="form-group firma">
-              <label for="inputOpis">Opis:</label>
+              <label for="inputOpis">Opis:</label><br>
+              <span class="greskaUnosa">Morate unijeti opis!</span>
               {{textarea class="form-control" id="inputOpis" value=opis}}
             </div>
 
             <div class="form-group datum">
-              <label for="inputDateTime">Datum isteka:</label>
+              <label class="marginaWTF" for="inputDateTime">Datum isteka:</label>
                   <div class='input-group datum date' id='inputDateTime'>
                       {{input type='date' class="form-control datum" value=datum}}
                       

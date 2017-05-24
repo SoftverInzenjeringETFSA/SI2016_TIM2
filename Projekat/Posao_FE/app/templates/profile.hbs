@@ -39,44 +39,51 @@
                   </div>
                   <div>
                     <div class="form-group pomjereniTextBox">
-                      <label for="inputPassword3_profil">Lozinka:</label>
+                      <label for="inputPassword3_profil">Lozinka:</label><br>
+                      <span class="greskaUnosa">Morate unijeti lozinku!</span>
                       {{input type="password" class="form-control" id="inputPassword3_profil" placeholder="Password" value=model.profil.password}}
                     </div>
 
                     <div class="form-group pomjereniTextBox">
-                      <label for="inputEmail3_profil">Email:</label>
+                      <label for="inputEmail3_profil">Email:</label><br>
+                      <span class="greskaUnosa">Morate unijeti email!</span>
                       {{input type="email" class="form-control" id="inputEmail3_profil" placeholder="Email" value=model.profil.email}}
                     </div>
 
                     {{#if this.model.profil.poslodavac}}
                     <div class="form-group pomjereniTextBox">
-                      <label for="inputTelefon1_profil">Telefon:</label>
+                      <label for="inputTelefon1_profil">Telefon:</label><br>
+                      <span class="greskaUnosa">Morate unijeti telefon!</span>
                       {{input type="text" class="form-control" id="inputTelefon1_profil" placeholder="123456789" value=model.profil.poslodavac.telefon}}
                     </div>
                     {{/if}}
 
                     {{#if this.model.profil.nezaposleni}}
                     <div class="form-group pomjereniTextBox">
-                      <label for="inputIme1_profil">Ime:</label>
+                      <label for="inputIme1_profil">Ime:</label><br>
+                      <span class="greskaUnosa">Morate unijeti ime!</span>
                       {{input type="text" class="form-control" id="inputIme1_profil" placeholder="Ime" value=model.profil.nezaposleni.ime}}
                     </div>
 
                     <div class="form-group pomjereniTextBox">
-                      <label for="inputPrezime1_profil">Prezime:</label>
+                      <label for="inputPrezime1_profil">Prezime:</label><br>
+                      <span class="greskaUnosa">Morate unijeti prezime!</span>
                       {{input type="text" class="form-control" id="inputPrezime1_profil" placeholder="Prezime" value=model.profil.nezaposleni.prezime}}
                     </div>
                     {{/if}}
 
                     {{#if this.model.profil.poslodavac}}
                     <div class="form-group pomjereniTextBox">
-                      <label for="inputFirma1_profil">Firma:</label>
+                      <label for="inputFirma1_profil">Firma:</label><br>
+                      <span class="greskaUnosa">Morate unijeti firmu!</span>
                       {{input type="text" class="form-control" id="inputFirma1_profil" placeholder="Firma" value=model.profil.poslodavac.nazivFirme}}
                     </div>
                     {{/if}}
 
                     {{#if this.model.profil.nezaposleni}}
                     <div class="form-group firma">
-                      <label for="inputCV_profil">CV:</label>
+                      <label for="inputCV_profil">CV:</label><br>
+                      <span class="greskaUnosa">Morate unijeti CV!</span>
                       {{textarea class="form-control" id="inputCV_profil" value=model.profil.nezaposleni.cv}}
                     </div>
                     {{/if}}

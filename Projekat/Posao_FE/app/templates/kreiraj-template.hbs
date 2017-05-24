@@ -11,7 +11,8 @@
         </div>
 
         <div class="form-group text-center">
-            <label for="inputNaziv1">Naziv:</label>
+            <label for="inputNaziv1">Naziv:</label><br>
+            <span class="greskaUnosa">Morate unijeti naziv!</span>
             {{input type="text" class="form-control" id="inputnaziv_template" placeholder="Naziv" value=model.template.naziv}}
          </div>
 
@@ -22,9 +23,10 @@
          <div class="form-group text-center">
       {{#each model.template.poljaTemplatea as |polje index|}}
         <div class="form-group text-center">
-                <label for="inputNaziv1">Naziv:</label>
-                {{input type="text" class="form-control" value=polje.nazivPolja}} 
-            </div>
+            <label for="inputNaziv1">Naziv:</label><br>
+            <span class="greskaUnosa">Morate unijeti naziv!</span>
+            {{input type="text" class="form-control" value=polje.nazivPolja}} 
+        </div>
         <button type="button" class="btn btn-success" {{action 'izbrisi' index}}>Izbriši</button><br>
       {{/each}}
          </div>
