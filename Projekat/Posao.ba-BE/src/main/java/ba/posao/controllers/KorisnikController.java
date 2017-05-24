@@ -22,6 +22,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,6 +73,14 @@ public class KorisnikController {
     //@PreAuthorize("hasAnyRole('ROLE_NEZAPOSLENI','ROLE_POSLODAVAC', 'ROLE_ADMIN')")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ResponseEntity update(@RequestBody Korisnik korisnik,  @RequestParam(name="id")int id ) {
+		
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Korisnik _korisnik = korisnikService.getKorisnikByUserName(auth.getName());
+		
+		if (_korisnik == null || _korisnik.getIdKorisnika() != korisnik.getIdKorisnika() || korisnik.getIdKorisnika() != id){
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Zabranjen pristup");
+		}
+    	
         try {
             return ResponseEntity.status(HttpStatus.OK)
                                 .body(korisnikService.updateKorisnici(korisnik, id));
@@ -118,10 +128,14 @@ public class KorisnikController {
 	}
     
     @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
-    public Boolean deleteKorisnici(@RequestParam(name = "id") int id) {
-    	
-    	korisnikService.removeKorisnici(id);
-        return true;
+    public ResponseEntity deleteKorisnici(@RequestParam(name = "id") int id) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Korisnik _korisnik = korisnikService.getKorisnikByUserName(auth.getName());	
+		if (_korisnik == null || _korisnik.getIdKorisnika() != id){
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Zabranjen pristup");
+		}
+		korisnikService.removeKorisnici(id);
+		return ResponseEntity.status(HttpStatus.OK).body(true);
     }
     
     @RequestMapping(path="/tip", method = RequestMethod.GET) 
@@ -135,6 +149,7 @@ public class KorisnikController {
     }
     
   
+    @PreAuthorize("#name == authentication.name")
     @RequestMapping(path="/get/exact", method = RequestMethod.GET) 
     public Korisnik searchByUsername(@RequestParam(name = "name") String name) {
     	return korisnikService.getKorisnikByUserName(name);
