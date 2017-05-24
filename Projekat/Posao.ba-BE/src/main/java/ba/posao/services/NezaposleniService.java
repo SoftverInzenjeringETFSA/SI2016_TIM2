@@ -42,4 +42,9 @@ public class NezaposleniService{
     public int getCount()  {
     	return repository.getUnemployedCount();
 }
+    
+    public Iterable<Nezaposleni> getAll()  {
+    	return repository.findAll();
+    }
+    
 }

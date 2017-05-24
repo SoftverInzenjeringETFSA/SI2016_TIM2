@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ba.posao.models.Kategorije;
 import ba.posao.models.Korisnik;
+import ba.posao.models.Nezaposleni;
 import ba.posao.services.KorisnikService;
 import ba.posao.services.NezaposleniService;
 
@@ -138,6 +139,12 @@ public class KorisnikController {
     public Korisnik searchByUsername(@RequestParam(name = "name") String name) {
     	return korisnikService.getKorisnikByUserName(name);
     }
+    
+    @RequestMapping(path="/get/nezaposleni", method = RequestMethod.GET) 
+    public Iterable<Nezaposleni> getNezaposleni() {
+    	return nezaposleniService.getAll();
+    }
+    
     
     
 }
