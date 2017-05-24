@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,8 +57,14 @@ public class OglasController {
 	//svi oglasi poslodavca
 	@CrossOrigin
 	@GetMapping(path="/poslodavac")
-	public @ResponseBody List<Oglas> findByPoslodavac(@RequestParam("id") int id) {
-		return oglasRepository.findAllByPoslodavacIdKorisnika(id);
+	public ResponseEntity findByPoslodavac(@RequestParam("id") int id) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Korisnik _korisnik = korisnikService.getKorisnikByUserName(auth.getName());	
+		if (_korisnik == null || _korisnik.getIdKorisnika() != id){
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Zabranjen pristup");
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(oglasRepository.findAllByPoslodavacIdKorisnika(id));
 	}
 	
 	// /oglasi/kategorija?kategorija=...
@@ -110,12 +118,22 @@ public class OglasController {
 	 @RequestMapping(value = "/remove", method = RequestMethod.DELETE)
 	    public ResponseEntity delete(@RequestParam(name="id")int id)
 	    {
+		 
 		return ResponseEntity.status(HttpStatus.OK).body(oglasService.removeOglas(id));
 	    }
 	 
 	 @RequestMapping(value = "/close", method = RequestMethod.POST)
 	    public ResponseEntity close(@RequestParam(name="id")int id)
 	    {
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			Korisnik _korisnik = korisnikService.getKorisnikByUserName(auth.getName());
+			Integer idKreatora = oglasRepository.findById(id).getPoslodavac().getIdKorisnika();
+			
+			
+			if (_korisnik == null || _korisnik.getIdKorisnika() != idKreatora){
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Zabranjen pristup");
+			}
+		 
 		return ResponseEntity.status(HttpStatus.OK).body(oglasService.closeOglas(id));
 	    }
 	 

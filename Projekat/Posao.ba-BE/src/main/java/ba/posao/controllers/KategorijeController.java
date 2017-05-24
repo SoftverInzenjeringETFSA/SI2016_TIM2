@@ -75,7 +75,4 @@ public class KategorijeController {
     	//if (kategorijeService.findByIdKategorije(id)!=null)
 	return ResponseEntity.status(HttpStatus.OK).body(kategorijeService.updateKategorije(kategory, id));
     }
-    
-    
-
 }

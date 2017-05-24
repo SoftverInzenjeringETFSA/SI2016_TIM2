@@ -6,7 +6,7 @@ export default BaseService.extend({
     get: function() {
     var izvjestaj = Izvjestaj.create({});
       
-    this.ajax({ url: `izvjestaj/get`, type: "GET"}).then(function(data) {
+    this.ajax({ url: `izvjestaj/`, type: "GET"}).then(function(data) {
         //izvjestaj.setProperties(data);
     });
 

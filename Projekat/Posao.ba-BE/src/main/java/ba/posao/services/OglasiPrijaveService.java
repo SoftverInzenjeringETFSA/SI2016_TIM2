@@ -46,8 +46,8 @@ public class OglasiPrijaveService {
 				 
 				 Oglas oglasObjekat = oglasRepository.findById(oglas);
 				 Poruke poruka = new Poruke();
-				 poruka.setPrimalac(korisnikRepository.findByIdKorisnika(korisnik));
-				 poruka.setPosiljalac(korisnikRepository.findByIdKorisnika(oglasObjekat.getPoslodavac().getIdKorisnika()));
+				 poruka.setPosiljalac(korisnikRepository.findByIdKorisnika(korisnik));
+				 poruka.setPrimalac(korisnikRepository.findByIdKorisnika(oglasObjekat.getPoslodavac().getIdKorisnika()));
 				 poruka.setVrijeme((Date) LocalDate.now().toDate());
 				 poruka.setTekst("Korisnik "+n.getIme()+" "+n.getPrezime()+"se prijavio na oglas "+oglasObjekat.getNaziv());
 				 poruka.setProcitano(false);
