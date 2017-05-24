@@ -42,7 +42,7 @@ export default Ember.Controller.extend({
         sakrijModal: function(){
             this.set("modalClass", "modal fade");
             this.set("modalStyle", "display:none");
-            this.set("izvjestaj", {brojOglasa: "", brojUspjesnihOglasa: "", brojKorisnika: ""});
+            this.set("izvjestaj", {brojOglasa: "", brojNezaposlenih: "", brojPoslodavaca: "", brojPrijava: ""});
         },
 
         report: function(){
