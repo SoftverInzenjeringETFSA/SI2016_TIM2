@@ -2,9 +2,108 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	korisnikService: Ember.inject.service('korisnik-service'),
+	usernameError: false,
+	passwordError: false,
+	emailError: false,
+	telefonError: false,
+	imeError: false,
+	prezimeError: false,
+	firmaError: false,
+	cvError: false,
+	tipError: false,
+	serverSuccess: false,
+	serverError: false,
+
+	validiraj: function(){
+
+
+		let ispravno = true;
+
+		let _usernameError = false;
+		let _passwordError = false;
+		let _emailError = false;
+		let _telefonError = false;
+		let _imeError = false;
+		let _prezimeError = false;
+		let _firmaError = false;
+		let _cvError = false;
+		let _tipError = false;
+
+		if (this.get("tip") == null){
+			console.log("validiram");
+			console.log(this.get("tip"));
+
+			ispravno = false;
+			_tipError = true;
+		}
+		
+		if (this.get("username") == null || this.get("username").length < 1){
+			ispravno = false;
+			_usernameError = true;
+		}
+
+		if (this.get("password") == null || this.get("password").length < 1){
+			ispravno = false;
+			_passwordError = true;
+		}
+
+		//popraviti
+		if (this.get("email") == null || this.get("email").length < 1){
+			ispravno = false;
+			_emailError = true;
+		}
+
+
+		if (!_tipError && this.get("tip") == "Nezaposleni")
+		{
+			if (this.get("cv") == null || this.get("cv").length < 1){
+				ispravno = false;
+				_cvError = true;
+			}
+		}
+
+		if (!_tipError && this.get("tip") == "Poslodavac")
+		{
+			if (this.get("telefon") == null || !this.get("telefon").match(/^\d{9}$/)){
+				ispravno = false;
+				_telefonError = true;
+			}
+
+			if (this.get("nazivFirme") == null || this.get("nazivFirme").length < 1){
+				ispravno = false;
+				_firmaError = true;
+			}
+		}
+
+		if (this.get("ime") == null || this.get("ime").length < 1){
+			ispravno = false;
+			_imeError = true;
+		}
+
+		if (this.get("prezime") == null || this.get("prezime").length < 1){
+			ispravno = false;
+			_prezimeError = true;
+		}
+
+		this.set("usernameError", _usernameError);
+		this.set("passwordError", _passwordError);		
+		this.set("emailError", _emailError);
+		this.set("telefonError", _telefonError);
+		this.set("imeError", _imeError);
+		this.set("prezimeError", _prezimeError);
+		this.set("firmaError", _firmaError);
+		this.set("cvError", _cvError);
+		this.set("firmaError", _firmaError);
+		this.set("tipError", _tipError);
+
+		return ispravno;
+
+	},
 
 	register: function(korisnik) {
-        this.get('korisnikService').register(korisnik);
+		let self = this;
+
+        this.get('korisnikService').register(korisnik).then(data => self.set("serverSuccess", true)).catch(err => self.set("serverError", true));
     },
 
     actions: {
@@ -26,7 +125,9 @@ export default Ember.Controller.extend({
 				korisnik.poslodavac = poslodavac;
 			}
 
-			this.register(korisnik);
+			if (this.validiraj()){
+				this.register(korisnik);
+			}
     	}
     }
 });

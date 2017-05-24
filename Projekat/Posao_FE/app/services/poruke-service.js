@@ -16,10 +16,6 @@ export default BaseService.extend({
 
 
     send: function(poruka) {
-        var poruke = [];
-        this.ajax({ url: `poruke/send`, type: "POST", data: JSON.stringify(poruka)}).then({
-        });
-
-        return true;
+        return this.ajax({ url: `poruke/send`, type: "POST", data: JSON.stringify(poruka)});
     },
 });

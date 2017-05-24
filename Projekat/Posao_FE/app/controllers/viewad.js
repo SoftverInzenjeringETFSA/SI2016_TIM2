@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 
 	prijava: function(korisnik, oglas) {
-        this.get('oglasiService').prijava(korisnik, oglas);
+        return this.get('oglasiService').prijava(korisnik, oglas).then(x => {}).catch(err => {});
     },
 
     delete: function(oglasId) {

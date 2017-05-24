@@ -12,9 +12,9 @@ export default Ember.Controller.extend({
     opis: "",
     polja: [],
 
-	addOglas: function(oglas){
-		this.get("oglasiService").add(oglas);
-	},
+    validacija(){
+        return true;
+    },
 
 	register: function(){
 		let oglas = {};
@@ -37,7 +37,7 @@ export default Ember.Controller.extend({
 		oglas.oglasPodaci = this.get("polja");
 		oglas.datumIsteka = this.get("datum");
 
-		this.get("oglasiService").postavi(oglas);
+		this.get("oglasiService").postavi(oglas).then(x => {}).catch(err => {});
 
 
 	},
@@ -60,8 +60,9 @@ export default Ember.Controller.extend({
     	},
 
     	register() {
-    		console.log("hmm");
-      		this.register();
+            if (this.validacija()){
+                this.register();
+            }
     	},
 
     	selectTemplate(templateId) {

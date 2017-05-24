@@ -5,22 +5,35 @@ export default Ember.Controller.extend({
     noviNaziv: "",
 
 	add: function(kategorija) {
-        this.get('kategorijaService').add(kategorija);
+        this.get('kategorijaService').add(kategorija).then(x => {}).catch(x => {});
     },
 
     izmijeni: function(kategorija) {
 
-        this.get('kategorijaService').update(kategorija, kategorija.id);
+        this.get('kategorijaService').update(kategorija, kategorija.id).then(x => {}).catch(x => {});
         //this.set("model.kategorije", )
     },
 
     brisi: function(kategorija, index) {
-        this.get('kategorijaService').delete(kategorija.id);
+        var self = this;
 
-        let _kategorije = this.get("model.kategorije");
+        this.get('kategorijaService').delete(kategorija.id).then(x => {
+                    let _kategorije = this.get("model.kategorije");
+                    this.set("model.kategorije", [..._kategorije.slice(0, index), ..._kategorije.slice(index + 1)]);
+                    //ispis poruke
+        }).catch(err => {});
 
-        this.set("model.kategorije", [..._kategorije.slice(0, index), ..._kategorije.slice(index + 1)]);
+
     },
+
+    validirajNovu: function(){
+        return true;
+    },
+
+    validirajIzmjenu: function(){
+        return true;
+    },
+
 
     actions: {
     	add: function(){
@@ -30,14 +43,12 @@ export default Ember.Controller.extend({
 
         izmijeni: function(index){
             let _kategorije = this.get("model.kategorije");
-            //let kategorija = _kategorije.find(x => x.get("id") == id);
             let kategorija = _kategorije[index];
             this.izmijeni(kategorija);
         },
 
         brisi: function(index){
             let _kategorije = this.get("model.kategorije");
-            //let kategorija = _kategorije.find(x => x.get("id") == id);
             let kategorija = _kategorije[index];
             this.brisi(kategorija, index);
         }

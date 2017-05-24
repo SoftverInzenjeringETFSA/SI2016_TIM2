@@ -7,10 +7,7 @@ import Izvjestaj from '../models/izvjestaj';
 export default BaseService.extend({
 
     register: function(korisnik) {
-        this.ajax({ url: `korisnici/register`, type: "POST", data: JSON.stringify(korisnik)}).then(function(data) {
-        });
-    
-        return true;
+        return this.ajax({ url: `korisnici/register`, type: "POST", data: JSON.stringify(korisnik)});
     },
 
     profil: function(username) {
@@ -26,10 +23,7 @@ export default BaseService.extend({
     },
 
     update: function(korisnik, id) {
-        this.ajax({ url: `korisnici/update?id=${id}`, type: "POST", data: JSON.stringify(korisnik)}).then(function(data) {
-        });
-    
-        return true;
+        return this.ajax({ url: `korisnici/update?id=${id}`, type: "POST", data: JSON.stringify(korisnik)});
     },
 
     delete: function(korisnikid) {

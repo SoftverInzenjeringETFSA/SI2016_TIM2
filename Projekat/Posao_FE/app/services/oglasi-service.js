@@ -35,17 +35,11 @@ export default BaseService.extend({
     },
 
     postavi: function(oglas) {
-    this.ajax({ url: `oglasi/postavioglas`, type: "POST", data: JSON.stringify(oglas)}).then(function(data) {
-    });
-
-        return true;
+    return this.ajax({ url: `oglasi/postavioglas`, type: "POST", data: JSON.stringify(oglas)});
     },
 
     prijava: function(userid, adid) {
-    this.ajax({ url: `prijave/add?korisnik=${userid}&oglas=${adid}`, type: "POST", data: {}}).then(function(data) {
-    });
-
-        return true;
+    return this.ajax({ url: `prijave/add?korisnik=${userid}&oglas=${adid}`, type: "POST", data: {}});
     },
 
     zatvori: function(id) {

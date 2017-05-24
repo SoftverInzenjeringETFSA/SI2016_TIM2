@@ -9,9 +9,19 @@ export default Ember.Controller.extend({
     modalClass: "modal fade",
     modalStyle: "display:hidden",
     poruka: Poruka.create({}),
+    success: false,
+    error: false,
 
     sendMessage: function(){
-        this.get("porukeService").send(this.get("poruka"));
+        this.get("porukeService").send(this.get("poruka")).then(res => {}).catch(err => {});
+    },
+
+    validiraj: function(){
+        let _success = false;
+        let _error = false;
+        let validno = true;
+
+        return validno;
     },
 
     actions: {
@@ -33,7 +43,10 @@ export default Ember.Controller.extend({
         },
 
         posalji: function(){
-            this.sendMessage();
+            if (this.validiraj())
+            {
+                this.sendMessage();
+            }
         }
     }
 });

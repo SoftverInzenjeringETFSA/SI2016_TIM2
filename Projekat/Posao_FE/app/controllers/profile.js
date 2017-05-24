@@ -9,8 +9,12 @@ export default Ember.Controller.extend({
     modalStyle: "display:hidden",
     izvjestaj: Izvjestaj.create({}),
 
+    validacija: function(){
+        return true;
+    },
+
 	update: function(korisnik, id) {
-        this.get('korisnikService').update(korisnik, id);
+        this.get('korisnikService').update(korisnik, id).then(x => {}).catch(err => {});
     },
 
     delete: function(korisnikId){
@@ -25,13 +29,14 @@ export default Ember.Controller.extend({
     actions: {
     	update: function(){
 			let korisnik = this.get('model.profil');
-			this.update(korisnik, korisnik.idKorisnika);
+
+            if(this.validacija()){
+                this.update(korisnik, korisnik.idKorisnika);
+            }
     	},
 
         delete: function(){
             let korisnikId = this.get("session.data.authenticated.userid");
-            console.log("korisnikId");
-            console.log(korisnikId);
 
             if (this.delete(korisnikId)){
                 this.get('session').invalidate();

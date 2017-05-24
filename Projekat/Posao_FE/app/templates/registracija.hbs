@@ -13,57 +13,77 @@
         <div class="col-xs-12">
           <div class="form-group pomjereniTextBox">
             <label for="inputUsername1">Korisničko ime:</label><br>
-            <span class="greskaUnosa">Morate unijeti korisni;ko ime!</span>
+            {{#if usernameError}}
+            <span class="greskaUnosa">Morate unijeti korisničko ime!</span>
+            {{/if}}
             {{input type="text" class="form-control" id="inputUsername1" placeholder="Username" value=username}}
           </div>
 
           <div class="form-group pomjereniTextBox">
             <label for="inputPassword3">Lozinka:</label><br>
+            {{#if passwordError}}
             <span class="greskaUnosa">Morate unijeti lozinku!</span>
+            {{/if}}
             {{input type="password" class="form-control" id="inputPassword3" placeholder="Password" value=password}}
           </div>
 
           <div class="form-group pomjereniTextBox">
             <label for="inputEmail3">Email:</label><br>
-            <span class="greskaUnosa">Morate unijeti email!</span>
+            {{#if emailError}}
+            <span class="greskaUnosa">Morate unijeti validan email!</span>
+            {{/if}}
             {{input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=email}}
           </div>
 
           <div class="form-group pomjereniTextBox">
             <label for="inputTelefon1">Telefon:</label><br>
-            <span class="greskaUnosa">Morate unijeti telefon!</span>
+            {{#if telefonError}}
+            <span class="greskaUnosa">Morate unijeti telefon u formatu 123456789!</span>
+            {{/if}}
             {{input type="text" class="form-control" id="inputTelefon1" placeholder="123456789" value=telefon disabled=(poslodavac-helper tip)}}
           </div>
 
           <div class="form-group pomjereniTextBox">
             <label for="inputIme1">Ime:</label><br>
+            {{#if imeError}}
             <span class="greskaUnosa">Morate unijeti ime!</span>
+            {{/if}}
             {{input type="text" class="form-control" id="inputIme1" placeholder="Ime" value=ime}}
 
           </div>
 
           <div class="form-group pomjereniTextBox">
             <label for="inputPrezime1">Prezime:</label><br>
+            {{#if prezimeError}}
             <span class="greskaUnosa">Morate unijeti prezime!</span>
+            {{/if}}
             {{input type="text" class="form-control" id="inputPrezime1" placeholder="Prezime" value=prezime}}
           </div>
 
           <div class="form-group firma">
             <label for="inputFirma1">Firma:</label><br>
-            <span class="greskaUnosa">Morate unijeti firmu!</span>
+            {{#if firmaError}}
+            <span class="greskaUnosa">Morate unijeti ime firme!</span>
+            {{/if}}
             {{input type="text" class="form-control" id="inputFirma1" placeholder="Firma" value=nazivFirme disabled=(poslodavac-helper tip)}}
           </div>
 
           
           <div class="form-group pomjereniTextBox">
             <label for="inputCV">CV:</label><br>
+            {{#if cvError}}
             <span class="greskaUnosa">Morate unijeti CV!</span>
+            {{/if}}
             {{textarea class="form-control" id="inputCV" disabled=(nezaposleni-helper tip) value=cv}}
           </div>
           
 
           <div class="form-group radio-group pomjereniTextBox">
             <label for="tipKorisnika">Tip korisnika:</label>
+            {{#if tipError}}
+            <span class="greskaUnosa">Morate izabrati tip računa!</span>
+            {{/if}}
+
             <div class="input-group">
                 <span class="input-group-addon no-bottom-border">
                     {{radio-button value="Nezaposleni" checked=tip name="tipKorisnika"}}
@@ -78,7 +98,13 @@
             </div>
           </div>
 
-          
+          {{#if serverSuccess}}
+            <p>Uspješno ste registrovani!</p>
+          {{/if}}
+          {{#if serverError}}
+            <p>Nažalost, došlo je do greške prilikom registracije.</p>
+          {{/if}}
+                    
           <div class="form-group text-center">
               <button type="submit" class="btn btn-success" {{action 'register'}}>Registruj se</button>
           </div>

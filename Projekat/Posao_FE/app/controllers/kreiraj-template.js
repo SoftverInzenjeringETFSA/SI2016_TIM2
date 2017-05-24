@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 	templateService: Ember.inject.service('template-service'),
 
 	addTemplate: function(template){
-		this.get("templateService").add(template);
+		this.get("templateService").add(template).then(x => {}).catch(x => {});
 	},
 
     actions: {
@@ -25,7 +25,10 @@ export default Ember.Controller.extend({
 
     	submit: function(){
     		let template = this.get("model.template");
-    		this.addTemplate(template);
+
+            if (validno()){
+                this.addTemplate(template);
+            }
     	}
 	}
 });

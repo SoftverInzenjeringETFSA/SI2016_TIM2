@@ -15,24 +15,16 @@ export default BaseService.extend({
     },
 
     update: function(kategorija, kategorijaId) {
-        this.ajax({ url: `kategorije/update?id=${kategorijaId}`, type: "POST", data: JSON.stringify(kategorija)}).then(function(data) {
-        });
-    
-        return true;
+        return this.ajax({ url: `kategorije/update?id=${kategorijaId}`, type: "POST", data: JSON.stringify(kategorija)});
+
     },
 
     delete: function(id) {
-        this.ajax({ url: `kategorije/remove?id=${id}`, type: "DELETE" }).then(function(data) {
-        });
-    
-        return true;
+        return this.ajax({ url: `kategorije/remove?id=${id}`, type: "DELETE" });
     },
 
     add: function(kategorija) {
-        this.ajax({ url: `kategorije/add`, type: "POST", data: JSON.stringify(kategorija)}).then(function(data) {
-        });
-    
-        return true;
+        return this.ajax({ url: `kategorije/add`, type: "POST", data: JSON.stringify(kategorija)});
     },
 
 
