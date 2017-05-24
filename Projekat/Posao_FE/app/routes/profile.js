@@ -9,7 +9,7 @@ export default Ember.Route.extend({
 		let _profil = this.get('korisnikService').profil(username);
 	
 		return Ember.RSVP.hash({
-        	profil: _profil
+        	profil: _profil,
     	})
 	}
 })

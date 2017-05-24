@@ -30,7 +30,7 @@ public class IzvjestajController {
 	@Autowired
 	private OglasRepository oglasRepository;
 	
-    @RequestMapping(path="/get/all", method = RequestMethod.GET)
+    @RequestMapping(path="/get", method = RequestMethod.GET)
     public Izvjestaj findAll() {
     	List<Korisnik> korisnici;
     	

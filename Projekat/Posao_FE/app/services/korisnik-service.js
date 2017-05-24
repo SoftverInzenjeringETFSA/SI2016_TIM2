@@ -2,6 +2,7 @@ import BaseService from './base-service';
 import Korisnik from '../models/korisnik';
 import Nezaposleni from '../models/nezaposleni';
 import Poslodavac from '../models/poslodavac';
+import Izvjestaj from '../models/izvjestaj';
 
 export default BaseService.extend({
 
@@ -36,6 +37,16 @@ export default BaseService.extend({
         });
     
         return true;
+    },
+
+
+    izvjestaj: function() {
+        var izvjestaj = Izvjestaj.create({});
+        this.ajax({ url: `izvjestaj/get`, type: "GET"}).then(function(data) {
+            izvjestaj.setProperties(data);
+        });
+
+        return izvjestaj;        
     },
 
 });
