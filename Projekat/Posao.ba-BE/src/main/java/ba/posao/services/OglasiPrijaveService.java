@@ -65,4 +65,8 @@ public class OglasiPrijaveService {
 	    	return false;
 		}
      
+     public int getCount()  {
+    	 return repository.getCount();
+     }
+     
 }

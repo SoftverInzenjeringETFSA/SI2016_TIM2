@@ -13,6 +13,9 @@ public interface OglasPrijaveRepository extends PagingAndSortingRepository<Oglas
 	
 	@Query("select o from OglasPrijave o where idOglasa=? and idKorisnika=?")
 	public ArrayList<OglasPrijave> findByPrijava(Integer idOglasa, Integer idKorisnika);
+	
+	@Query("SELECT COUNT(k) FROM OglasPrijave k")
+	public int getCount();
 
 
 }

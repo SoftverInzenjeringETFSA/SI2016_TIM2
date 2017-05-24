@@ -38,4 +38,8 @@ public class NezaposleniService{
     	
     	return nez != null; 
 	}
+    
+    public int getCount()  {
+    	return repository.getUnemployedCount();
+}
 }

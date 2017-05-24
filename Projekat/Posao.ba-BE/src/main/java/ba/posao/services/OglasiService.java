@@ -96,5 +96,12 @@ public class OglasiService {
 	   public List<Oglas> searchCategoryLocation(int idkategorije, int idlokacije) {
 		   return repository.searchCategoryLocation(idlokacije, idkategorije);
 	   }
+	   
+	   public int getCount() {
+		   return repository.getCount();
+	   }
+	   
+	   
+	   
 }
 

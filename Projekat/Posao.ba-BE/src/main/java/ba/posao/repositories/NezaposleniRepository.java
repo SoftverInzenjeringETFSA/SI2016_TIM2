@@ -10,4 +10,7 @@ import ba.posao.models.Nezaposleni;
 public interface NezaposleniRepository extends CrudRepository<Nezaposleni, Integer> {
 	@Query("select k from Nezaposleni k where idKorisnika=?")
 	public Nezaposleni findById(Integer id);
+	
+	@Query("SELECT COUNT(k) FROM Nezaposleni k")
+	public int getUnemployedCount();
 } 

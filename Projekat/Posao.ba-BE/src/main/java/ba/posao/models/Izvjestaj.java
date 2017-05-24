@@ -3,8 +3,11 @@ package ba.posao.models;
 public class Izvjestaj {
 
 	private Integer brojOglasa;
-	private Integer brojUspjesnihOglasa;
-	private Integer brojKorisnika;
+	private int brojPrijava;
+	private int brojPoslodavaca;
+	private int brojNezaposlenih;
+	
+	
 	
 	public Integer getBrojOglasa() {
 		return brojOglasa;
@@ -12,16 +15,24 @@ public class Izvjestaj {
 	public void setBrojOglasa(Integer brojOglasa) {
 		this.brojOglasa = brojOglasa;
 	}
-	public Integer getBrojUspjesnihOglasa() {
-		return brojUspjesnihOglasa;
+	public int getBrojPrijava() {
+		return brojPrijava;
 	}
-	public void setBrojUspjesnihOglasa(Integer brojUspjesnihOglasa) {
-		this.brojUspjesnihOglasa = brojUspjesnihOglasa;
+	public void setBrojPrijava(int brojPrijava) {
+		this.brojPrijava = brojPrijava;
 	}
-	public Integer getBrojKorisnika() {
-		return brojKorisnika;
+	public int getBrojPoslodavaca() {
+		return brojPoslodavaca;
 	}
-	public void setBrojKorisnika(Integer brojKorisnika) {
-		this.brojKorisnika = brojKorisnika;
+	public void setBrojPoslodavaca(int brojPoslodavaca) {
+		this.brojPoslodavaca = brojPoslodavaca;
 	}
+	public int getBrojNezaposlenih() {
+		return brojNezaposlenih;
+	}
+	public void setBrojNezaposlenih(int brojNezaposlenih) {
+		this.brojNezaposlenih = brojNezaposlenih;
+	}
+	
+	
 }

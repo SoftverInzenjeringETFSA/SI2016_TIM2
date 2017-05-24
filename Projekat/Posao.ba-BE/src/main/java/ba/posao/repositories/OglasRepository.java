@@ -51,5 +51,8 @@ public interface OglasRepository extends PagingAndSortingRepository<Oglas, Integ
 	public List<Oglas> searchCategoryLocation(@Param("lokacija")Integer idlokacije, 
 			@Param("kategorija")Integer idkategorije);	
 	
+	@Query("SELECT COUNT(k) FROM Oglas k")
+	public int getCount();
+	
 	
 }

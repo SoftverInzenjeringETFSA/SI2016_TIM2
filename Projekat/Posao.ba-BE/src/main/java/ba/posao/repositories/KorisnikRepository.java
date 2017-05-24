@@ -23,4 +23,6 @@ public interface KorisnikRepository extends PagingAndSortingRepository<Korisnik,
 	
 	@Query("SELECT o FROM Nezaposleni o WHERE CONCAT(o.ime, o.prezime) LIKE %:name%")
 	public List<Korisnik> findUsersByName (@Param("name")String name);
+	
+	
 }
