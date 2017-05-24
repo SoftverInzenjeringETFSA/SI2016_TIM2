@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ba.posao.models.Kategorije;
 import ba.posao.models.Korisnik;
 import ba.posao.models.Nezaposleni;
+import ba.posao.models.PasswordDTO;
 import ba.posao.services.KorisnikService;
 import ba.posao.services.NezaposleniService;
 
@@ -128,12 +129,15 @@ public class KorisnikController {
 	}
     
     @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
-    public ResponseEntity deleteKorisnici(@RequestParam(name = "id") int id) {
+    public ResponseEntity deleteKorisnici(@RequestParam(name = "id") int id, @RequestBody PasswordDTO pass) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Korisnik _korisnik = korisnikService.getKorisnikByUserName(auth.getName());	
 		if (_korisnik == null || _korisnik.getIdKorisnika() != id){
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Zabranjen pristup");
 		}
+		
+		String passMD5=korisnikService.toMD5(pass.getPassword());
+		
 		korisnikService.removeKorisnici(id);
 		return ResponseEntity.status(HttpStatus.OK).body(true);
     }

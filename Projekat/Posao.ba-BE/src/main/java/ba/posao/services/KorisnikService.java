@@ -148,7 +148,7 @@ public class KorisnikService implements UserDetailsService{
 	      return repository.findUsersByName(name);
 	    }
 	    
-	    private String toMD5(String str)
+	    public String toMD5(String str)
 	    {
 	        byte[] pass = null;
 	        
