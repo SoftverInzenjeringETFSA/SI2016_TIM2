@@ -140,7 +140,7 @@ public class KorisnikController {
     	return korisnikService.getKorisnikByUserName(name);
     }
     
-    @RequestMapping(path="/get/nezaposleni", method = RequestMethod.GET) 
+    @RequestMapping(path="/nezaposleni", method = RequestMethod.GET) 
     public Iterable<Nezaposleni> getNezaposleni() {
     	return nezaposleniService.getAll();
     }

@@ -2,6 +2,8 @@ package ba.posao.repositories;
 
 import java.util.List;
 
+import javax.persistence.OrderBy;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -28,26 +30,49 @@ public interface OglasRepository extends PagingAndSortingRepository<Oglas, Integ
 	
 	public List<Oglas> findAllByLokacijaNaziv(String lokacija);
 	
-	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.lokacija.id=:lokacija and o.kategorije.idkategorije=:kategorija" )
-	public List<Oglas> search(@Param("name")String name, 
+	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.lokacija.id=:lokacija and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave" )
+	public List<Oglas> searchASC(@Param("name")String name, 
 			@Param("lokacija")Integer idlokacije, 
 			@Param("kategorija")Integer idkategorije);	
 	
-	@Query("SELECT o FROM Oglas o WHERE o.lokacija.id=:lokacija")
+	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.lokacija.id=:lokacija and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave desc" )
+	public List<Oglas> searchDESC(@Param("name")String name, 
+			@Param("lokacija")Integer idlokacije, 
+			@Param("kategorija")Integer idkategorije);	
+	
+	@Query("SELECT o FROM Oglas o WHERE o.lokacija.id=:lokacija ORDER BY o.datumObjave desc")
 	public List<Oglas> searchLocation(@Param("lokacija")Integer idlokacije);	
 	
-	@Query("SELECT o FROM Oglas o WHERE o.kategorije.idkategorije=:kategorija" )
+	@Query("SELECT o FROM Oglas o WHERE o.lokacija.id=:lokacija ORDER BY o.datumObjave")
+	public List<Oglas> searchLocationASC(@Param("lokacija")Integer idlokacije);
+	
+	@Query("SELECT o FROM Oglas o WHERE o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave desc" )
 	public List<Oglas> searchKategory(@Param("kategorija")Integer idkategorije);	
 	
-	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.kategorije.idkategorije=:kategorija" )
+	@Query("SELECT o FROM Oglas o WHERE o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave" )
+	public List<Oglas> searchKategoryASC(@Param("kategorija")Integer idkategorije);
+	
+	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave desc" )
 	public List<Oglas> searchNameCategory(@Param("name")String name, 
 			@Param("kategorija")Integer idkategorije);
 	
-	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.lokacija.id=:lokacija" )
+	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave" )
+	public List<Oglas> searchNameCategoryASC(@Param("name")String name, 
+			@Param("kategorija")Integer idkategorije);
+	
+	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.lokacija.id=:lokacija ORDER BY o.datumObjave desc" )
 	public List<Oglas> searchNameLocatin(@Param("name")String name, 
 			@Param("lokacija")Integer idlokacije);	
 	
-	@Query("SELECT o FROM Oglas o WHERE o.lokacija.id=:lokacija and o.kategorije.idkategorije=:kategorija" )
+	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.lokacija.id=:lokacija ORDER BY o.datumObjave" )
+	public List<Oglas> searchNameLocatinASC(@Param("name")String name, 
+			@Param("lokacija")Integer idlokacije);	
+	
+	@Query("SELECT o FROM Oglas o WHERE o.lokacija.id=:lokacija and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave" )
+	public List<Oglas> searchCategoryLocationASC(@Param("lokacija")Integer idlokacije, 
+			@Param("kategorija")Integer idkategorije);	
+	
+	@Query("SELECT o FROM Oglas o WHERE o.lokacija.id=:lokacija and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave desc" )
 	public List<Oglas> searchCategoryLocation(@Param("lokacija")Integer idlokacije, 
 			@Param("kategorija")Integer idkategorije);	
 	

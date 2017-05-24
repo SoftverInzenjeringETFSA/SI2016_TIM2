@@ -1,5 +1,7 @@
 package ba.posao.services;
 
+import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -76,25 +78,38 @@ public class OglasiService {
 		   else return false;
 		    }
 	   
-	   public List<Oglas> search(String name, int idlokacije, int idkategorije) {
-		   return repository.search(name, idlokacije, idkategorije);
+	   public List<Oglas> search(String name, int idlokacije, int idkategorije, Boolean order) {
+		   if (order)
+		   return repository.searchASC(name, idlokacije, idkategorije);
+		   else return repository.searchDESC(name, idlokacije, idkategorije);
+		   
 	   }
 	   
-	   public List<Oglas> searchLocation(int idlokacije) {
-		   return repository.searchLocation(idlokacije);
+	   public List<Oglas> searchLocation(int idlokacije, Boolean order) {
+		   if (order)
+		   return repository.searchLocationASC(idlokacije);
+		   else return repository.searchLocation(idlokacije);
 	   }
-	   public List<Oglas> searchCategory(int idkategorije) {
-		   return repository.searchKategory(idkategorije);
+	   public List<Oglas> searchCategory(int idkategorije, Boolean order) {
+		   if (order)
+		   return repository.searchKategoryASC(idkategorije);
+		   else return repository.searchKategory(idkategorije);
 	   }
-	   public List<Oglas> searchNameCategory(String name, int idkategorije) {
-		   return repository.searchNameCategory(name, idkategorije);
+	   public List<Oglas> searchNameCategory(String name, int idkategorije, Boolean order) {
+		   if (order)
+		   return repository.searchNameCategoryASC(name, idkategorije);
+		   else return repository.searchNameCategory(name, idkategorije);
 	   }
 	   
-	   public List<Oglas> searchNameLocation(String name, int idlokacije) {
-		   return repository.searchNameLocatin(name, idlokacije);
+	   public List<Oglas> searchNameLocation(String name, int idlokacije, Boolean order) {
+		   if (order)
+		   return repository.searchNameLocatinASC(name, idlokacije);
+		   else return repository.searchNameLocatin(name, idlokacije);
 	   }
-	   public List<Oglas> searchCategoryLocation(int idkategorije, int idlokacije) {
+	   public List<Oglas> searchCategoryLocation(int idkategorije, int idlokacije, Boolean order) {
+		   if (order)
 		   return repository.searchCategoryLocation(idlokacije, idkategorije);
+		   else return repository.searchCategoryLocation(idlokacije, idkategorije);
 	   }
 	   
 	   public int getCount() {

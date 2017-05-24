@@ -128,24 +128,26 @@ public class OglasController {
 	 @RequestMapping(path="/search", method = RequestMethod.GET)
 	    public @ResponseBody List<Oglas> search(@RequestParam(name = "name", required=false
 	    ) String name, 
-	    		@RequestParam(name = "idlok", required=false) Integer idlokacije, 
-	    		@RequestParam(name = "idk", required=false) Integer idkategorije) {
-	    	
-		 
+	    		@RequestParam(name = "idlok", required=false ) Integer idlokacije, 
+	    		@RequestParam(name = "idk", required=false) Integer idkategorije, 
+	    		@RequestParam(name = "asc", required=false, defaultValue="false") Boolean order
+	    )
+	 {	 
 		 if (name!=null && idlokacije!=null & idkategorije!=null)
-	    	return oglasService.search(name, idlokacije, idkategorije);
+	    	return oglasService.search(name, idlokacije, idkategorije, order);
 		 else if (name==null & idlokacije!=null & idkategorije==null)
-			 return oglasService.searchLocation(idlokacije);
+			 return oglasService.searchLocation(idlokacije, order);
 		 else if (name==null & idlokacije==null & idkategorije!=null)
-			 return oglasService.searchCategory(idkategorije);
+			 return oglasService.searchCategory(idkategorije, order);
 		 else if (name!=null && idlokacije==null & idkategorije==null)
 			 return oglasRepository.findAllByOglasPodaciVrijednost(name);
 		 else if (idlokacije==null) 
-			 return oglasService.searchNameCategory(name, idkategorije);
+			 return oglasService.searchNameCategory(name, idkategorije, order);
 		 else if (idkategorije==null)
-			 return oglasService.searchNameLocation(name, idlokacije);
+			 return oglasService.searchNameLocation(name, idlokacije, order);
 		 else if (name==null)
-			 return oglasService.searchCategoryLocation(idkategorije, idlokacije);
+			 return oglasService.searchCategoryLocation(idkategorije, idlokacije, order);
 		 else return oglasRepository.findAll();
+		
 	    }
 }
