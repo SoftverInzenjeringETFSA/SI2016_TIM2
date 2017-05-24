@@ -11,6 +11,8 @@
                     <h1>Pregled oglasa</h1>
                     <hr class="h-divider" />
                 </div>
+
+
                 <div class="form-horizontal col-xs-12">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Kategorija:</label>
@@ -23,7 +25,27 @@
                         <div class="col-sm-10 oglas-data">
                             <p>{{model.oglas.opis}}</p>
                         </div>
-                    </div>   
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Otvoren:</label>
+                        <div class="col-sm-10 oglas-data">
+                        {{log "ttt"}}
+                            {{log model.oglas.zatvoren}}
+                        {{log "ttt"}}
+
+                         {{#if (eq model.oglas.zatvoren 0)}}
+                            <p>Da</p>
+                          {{#if (eq model.userid model.oglas.poslodavac.idKorisnika)}}
+                            <button {{action 'zatvori'}}>Zatvori</button>
+                          {{/if}}
+                          
+                        {{else}}
+                            <p>Ne</p>
+                        {{/if}}
+                        </div>
+                    </div>  
+
                     <div>
                         {{#each model.oglas.oglasPodaci as |podatak|}}
                         <div class="form-group">

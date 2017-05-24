@@ -113,13 +113,13 @@ public class OglasController {
 		return ResponseEntity.status(HttpStatus.OK).body(oglasService.removeOglas(id));
 	    }
 	 
-	 @RequestMapping(value = "/close", method = RequestMethod.PUT)
+	 @RequestMapping(value = "/close", method = RequestMethod.POST)
 	    public ResponseEntity close(@RequestParam(name="id")int id)
 	    {
 		return ResponseEntity.status(HttpStatus.OK).body(oglasService.closeOglas(id));
 	    }
 	 
-	 @RequestMapping(value = "/reopen", method = RequestMethod.PUT)
+	 @RequestMapping(value = "/reopen", method = RequestMethod.POST)
 	    public ResponseEntity reOpen(@RequestParam(name="id")int id)
 	    {
 		return ResponseEntity.status(HttpStatus.OK).body(oglasService.reOpenOglas(id));

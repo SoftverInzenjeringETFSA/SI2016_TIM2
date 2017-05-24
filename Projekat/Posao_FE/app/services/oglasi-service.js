@@ -23,6 +23,17 @@ export default BaseService.extend({
         return oglas;        
     },
 
+    my: function(id){
+        var oglasi = [];
+        this.ajax({ url: `oglasi/poslodavac?id=${id}`, type: "GET"}).then(function(data) {
+            data.forEach(function(oglas) {
+                oglasi.addObject(Oglas.create(oglas));
+            });
+        });
+
+        return oglasi;
+    },
+
     postavi: function(oglas) {
     this.ajax({ url: `oglasi/postavioglas`, type: "POST", data: JSON.stringify(oglas)}).then(function(data) {
     });
@@ -35,6 +46,10 @@ export default BaseService.extend({
     });
 
         return true;
+    },
+
+    zatvori: function(id) {
+    return this.ajax({ url: `oglasi/close?id=${id}`, type: "POST", data: {}});
     },
 
     delete: function(adid) {
