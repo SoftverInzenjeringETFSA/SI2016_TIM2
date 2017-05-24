@@ -15,29 +15,31 @@
           <div>
             <div class="form-group pomjereniTextBox">
                 <label for="category">Kategoriju oglasa:</label>
-                <select class="form-control" name="kategorija">
-                    <option>Ekonomija</option>
-                    <option>IT</option>
-                    <option>Biznis template</option>
-                    <option>IT template</option>
+                <select class="form-control" name="kategorija" onchange={{action "selectKategorija" value="target.value"}}>
+                  <option value="-1" >-</option>
+                  {{#each model.kategorije as |kategorija|}}      
+                    <option value={{kategorija.id}}>{{kategorija.naziv}}</option>
+                  {{/each}}
                 </select>
             </div>
 
             <div class="form-group pomjereniTextBox">
                 <label for="category">Template oglasa:</label>
-                <select class="form-control" name="template">
-                    <option>Biznis template</option>
-                    <option>IT template</option>
-                    <option>Biznis template</option>
-                    <option>IT template</option>
+                <select class="form-control" name="template" onchange={{action "selectTemplate" value="target.value"}}>
+                  <option value="-1" >-</option>
+                  {{#each model.templatei as |template|}}      
+                    <option value={{template.id}}>{{template.naziv}}</option>
+                  {{/each}}
                 </select>
             </div>
 
-            <div class="form-group pomjereniTextBox">
+              <div class="form-group pomjereniTextBox">
               <label for="category">Lokacija:</label>
-              <select class="form-control" name="lokacija">
-                      <option>Zenica</option>
-                      <option>Mostar</option>
+              <select class="form-control" name="lokacija" onchange={{action "selectLokacija" value="target.value"}}>
+                  <option value="-1" >-</option>
+                  {{#each model.lokacije as |lokacija|}}      
+                    <option value={{lokacija.id}}>{{lokacija.naziv}}</option>
+                  {{/each}}
               </select>
             </div>
 
@@ -48,18 +50,25 @@
 
             <div class="form-group pomjereniTextBox">
               <label for="inputOpis">Opis:</label>
-              {{textarea class="form-control" id="inputOpis" disabled=(poslodavac-helper tip) value=opis}}
+              {{textarea class="form-control" id="inputOpis" value=opis}}
             </div>
 
             <div class="form-group pomjereniTextBox">
-              <label for="inputDateTime">Datum:</label>
+              <label for="inputDateTime">Datum isteka:</label>
                   <div class='input-group date' id='inputDateTime'>
-                      <input type='text' class="form-control" />
+                      {{input type='date' class="form-control" value=datum}}
                       <span class="input-group-addon">
                           <span class="glyphicon glyphicon-calendar"></span>
                       </span>
                   </div>
               </div>
+
+              {{#each polja as |polje index|}}
+              <div class="form-group pomjereniTextBox">
+              <label for={{polje.staje}}>{{polje.staje}}:</label>
+              {{input type="text" class="form-control" placeholder=polje.staje value=polje.vrijednost}}
+              </div>
+              {{/each}}
 
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-success" {{action 'register'}}>Registruj se</button>

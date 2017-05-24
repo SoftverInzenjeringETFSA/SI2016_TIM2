@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ba.posao.models.Oglas;
+import ba.posao.models.OglasPodaci;
+import ba.posao.repositories.OglasPodaciRepository;
 import ba.posao.repositories.OglasRepository;
 
 @Service
@@ -17,8 +19,18 @@ public class OglasiService {
 	@Autowired
 	OglasRepository repository;
 	
+	@Autowired
+	OglasPodaciRepository podaciRepository;
+	
 	 public Boolean addOglas(Oglas k) {
-	    	repository.save(k);
+		 	k.setDatumObjave(new Date());
+	    	Oglas _oglas = repository.save(k);
+	    	
+	    	for(OglasPodaci podatak : k.getOglasPodaci()){
+	    		podatak.setOglas(_oglas);
+	    	}
+	    	
+	    	podaciRepository.save(k.getOglasPodaci());
 	    	return true;
 		}
 	    

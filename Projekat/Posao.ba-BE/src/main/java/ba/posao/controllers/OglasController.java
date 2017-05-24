@@ -18,7 +18,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import ba.posao.models.Korisnik;
 import ba.posao.models.Oglas;
+import ba.posao.models.OglasPrijave;
+import ba.posao.models.Poslodavci;
+import ba.posao.models.OglasDTO;
+import ba.posao.repositories.KorisnikRepository;
 import ba.posao.repositories.OglasRepository;
+import ba.posao.services.KorisnikService;
 import ba.posao.services.OglasiService;
 
 @Controller    // This means that this class is a Controller
@@ -27,6 +32,9 @@ public class OglasController {
 
 	@Autowired
 	private OglasRepository oglasRepository;
+	
+	@Autowired
+	private KorisnikService korisnikService;
 	
 	@Autowired 
 	private OglasiService oglasService;
@@ -73,9 +81,26 @@ public class OglasController {
 	
 	 @CrossOrigin
 	  @RequestMapping(value = "/postavioglas", method = RequestMethod.POST)
-	  public ResponseEntity register(@RequestBody Oglas oglas)
+	  public ResponseEntity register(@RequestBody OglasDTO oglas)
 	  {
-		 return ResponseEntity.status(HttpStatus.OK).body(oglasService.addOglas(oglas));
+		 Oglas _oglas = new Oglas();
+		 _oglas.setDatumIsteka(oglas.getDatumIsteka());
+		 _oglas.setKategorije(oglas.getKategorije());
+		 _oglas.setLokacija(oglas.getLokacija());
+		 _oglas.setNaziv(oglas.getNaziv());
+		 _oglas.setOglasPodaci(oglas.getOglasPodaci());
+		 _oglas.setOglasPrijave(new ArrayList<OglasPrijave>());
+		 _oglas.setOpis(oglas.getOpis());
+		 _oglas.setPrioritet(oglas.getPrioritet());
+		 _oglas.setSakriven(oglas.getSakriven());
+		 _oglas.setUspjesan(oglas.getUspjesan());
+		 _oglas.setZatvoren(oglas.getZatvoren());
+		 _oglas.setOglasPrijave(oglas.getOglasPrijave());
+		 
+		 Poslodavci poslodavac = korisnikService.findKorisnici(oglas.getPoslodavacId()).getPoslodavac();
+		 _oglas.setPoslodavac(poslodavac);
+		 
+		 return ResponseEntity.status(HttpStatus.OK).body(oglasService.addOglas(_oglas));
 		 
 			/*korisnik.getNezaposleni().setKorisnici(korisnik);
             return ResponseEntity.status(HttpStatus.OK)

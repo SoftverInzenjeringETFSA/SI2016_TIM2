@@ -1,5 +1,7 @@
 package ba.posao.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,11 @@ public class TemplateController {
 	@GetMapping(path="/{id}")
 	public @ResponseBody Template getTemplateById(@PathVariable("id") Integer id) {
 		return service.findById(id);
+	}
+	
+	@GetMapping(path="/get/all")
+	public @ResponseBody List<Template> getAllTemplates() {
+		return service.findAll();
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)

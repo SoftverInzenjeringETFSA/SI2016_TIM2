@@ -1,4 +1,5 @@
 import BaseService from './base-service';
+import Template from '../models/template';
 
 export default BaseService.extend({
 
@@ -8,4 +9,16 @@ export default BaseService.extend({
     
         return true;
     },
+
+    all: function(template) {
+    	let templatei = [];
+        this.ajax({ url: `template/get/all`, type: "GET"}).then(function(data) {
+            data.forEach(function(template) {
+                templatei.addObject(Template.create(template));
+            });
+        });
+    
+        return templatei;
+    },
+
 });

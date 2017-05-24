@@ -27,6 +27,16 @@ export default BaseService.extend({
         return oglas;        
     },
 
+    postavi: function(oglas) {
+    this.ajax({ url: `oglasi/postavioglas`, type: "POST", data: JSON.stringify(oglas)}).then(function(data) {
+    });
+
+        return true;
+    },
+
+
+
+
     search: function(name, kategorijaId, filter){
         let query = "oglasi/search?";
 

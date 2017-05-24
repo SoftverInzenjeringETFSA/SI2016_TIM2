@@ -15,32 +15,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-@Entity
-public class Oglas implements Serializable {
+public class OglasDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="idoglasa")
-	private Integer idOglasa;
-	
+    private Integer poslodavacId;
     
-    @ManyToOne(targetEntity=Poslodavci.class)
-    @JoinColumn(name="idposlodavca")
-    private Poslodavci poslodavac;
-    
-    @ManyToOne(targetEntity=Lokacije.class)
-    @JoinColumn(name="idlokacije")
     private Lokacije lokacija;
     
-    @ManyToOne(targetEntity=Kategorije.class)
-    @JoinColumn(name="idkategorije")
     private Kategorije kategorije;
     
-    @Column(name="datumobjave")
     private Date datumObjave;
-    
-    @Column(name="datumisteka") 
+
     private Date datumIsteka;
     private byte sakriven;
     private byte zatvoren;
@@ -50,11 +35,8 @@ public class Oglas implements Serializable {
     private String naziv;
     private String opis;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "oglas")
     private List<OglasPodaci> oglasPodaci;
     
-    @OneToMany(cascade = CascadeType.MERGE,targetEntity=OglasPrijave.class)
-    @JoinColumn(name="idprijave")
     private List<OglasPrijave> oglasPrijave;
 
 	public List<OglasPrijave> getOglasPrijave() {
@@ -65,21 +47,12 @@ public class Oglas implements Serializable {
 		this.oglasPrijave = oglasPrijave;
 	}
 
-	
-	public Integer getIdOglasa() {
-		return idOglasa;
+	public Integer getPoslodavacId() {
+		return poslodavacId;
 	}
 
-	public void setIdOglasa(Integer idOglasa) {
-		this.idOglasa = idOglasa;
-	}
-
-	public Poslodavci getPoslodavac() {
-		return poslodavac;
-	}
-
-	public void setPoslodavac(Poslodavci poslodavac) {
-		this.poslodavac = poslodavac;
+	public void setPoslodavacId(Integer poslodavacId) {
+		this.poslodavacId = poslodavacId;
 	}
 
 	public Lokacije getLokacija() {

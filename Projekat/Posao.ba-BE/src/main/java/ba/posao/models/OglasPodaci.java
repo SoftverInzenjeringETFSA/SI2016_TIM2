@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +17,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import ba.posao.models.Template;
 import ba.posao.models.PoljaTemplatea;
@@ -30,6 +33,7 @@ public class OglasPodaci implements Serializable {
 	private Integer id;
 	
     private String staje;
+    
     public String getStaje() {
 		return staje;
 	}
@@ -39,6 +43,12 @@ public class OglasPodaci implements Serializable {
     }
 
 	private String vrijednost;
+
+
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idoglasa", nullable = false)
+	private Oglas oglas;
 
 	public Integer getId() {
 		return id;
@@ -54,6 +64,15 @@ public class OglasPodaci implements Serializable {
 
 	public void setVrijednost(String vrijednost) {
 		this.vrijednost = vrijednost;
+	}
+	
+
+	public Oglas getOglas() {
+		return this.oglas;
+	}
+	
+	public void setOglas(Oglas oglas){
+		this.oglas = oglas;
 	}
 	
 }

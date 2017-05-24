@@ -39,5 +39,10 @@ public class TemplateService {
 		}	
 		return true;
 	}
+	
+	public List<Template> findAll() 
+	{
+		return repository.findAll();
+	}
 
 }
