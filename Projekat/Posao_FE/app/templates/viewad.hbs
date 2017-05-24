@@ -38,6 +38,9 @@
                         {{#if (eq session.data.authenticated.role "ROLE_NEZAPOSLENI")}}
                             <button class="btn btn-default login-button" {{action 'prijava' model.oglas.idOglasa}}>Prijavi se</button>
                         {{/if}}
+                        {{#if (eq session.data.authenticated.role "ROLE_ADMIN")}}
+                            <button class="btn btn-default login-button" {{action 'delete'}}>Izbriši oglas</button>
+                        {{/if}}
                     </div>
                 </div>
             </div>

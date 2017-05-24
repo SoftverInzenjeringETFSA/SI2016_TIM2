@@ -31,11 +31,14 @@ export default BaseService.extend({
     },
 
     prijava: function(userid, adid) {
-    console.log("u prijavi");
     this.ajax({ url: `prijave/add?korisnik=${userid}&oglas=${adid}`, type: "POST", data: {}}).then(function(data) {
     });
 
         return true;
+    },
+
+    delete: function(adid) {
+    return this.ajax({ url: `oglasi/remove?id=${adid}`, type: "DELETE", data: {}});
     },
 
     search: function(name, kategorijaId, filter){

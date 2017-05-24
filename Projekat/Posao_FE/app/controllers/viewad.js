@@ -5,16 +5,24 @@ export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 
 	prijava: function(korisnik, oglas) {
-		console.log("ovdje");
-		console.log(oglas);
         this.get('oglasiService').prijava(korisnik, oglas);
+    },
+
+    delete: function(oglasId) {
+        return this.get('oglasiService').delete(oglasId);
     },
 
     actions: {
     	prijava: function(oglasId){
 			let korisnikId = this.get("session.data.authenticated.userid");
-		    console.log(this.get("model.oglas.idOglasa"));
 			this.prijava(korisnikId, oglasId);
+    	},
+
+    	delete: function(){
+		    let oglasId = this.get("model.oglas.idOglasa");
+            this.delete(oglasId).then(x => {
+                this.transitionToRoute('index');
+            });
     	}
     }
 });

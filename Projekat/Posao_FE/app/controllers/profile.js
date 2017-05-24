@@ -20,6 +20,8 @@ export default Ember.Controller.extend({
 
         delete: function(){
             let korisnikId = this.get("session.data.authenticated.userid");
+            console.log("korisnikId");
+            console.log(korisnikId);
 
             if (this.delete(korisnikId)){
                 this.get('session').invalidate();
