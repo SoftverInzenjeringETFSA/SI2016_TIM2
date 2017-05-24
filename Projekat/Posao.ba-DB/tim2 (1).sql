@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2017 at 07:10 PM
+-- Generation Time: May 24, 2017 at 03:27 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -226,8 +226,7 @@ INSERT INTO `oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `
 (2, 2, 2, 2, '2017-05-10 00:00:00', '2017-06-01 23:59:59', 0, 0, 0, 2, 'Oglas 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
 (3, 2, 3, 2, '2017-05-08 00:00:00', '2017-05-19 00:00:00', 0, 0, 0, 2, 'Oglas 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
 (4, 2, 3, 1, '2017-05-07 00:00:00', '2017-06-07 00:00:00', 0, 1, 0, 1, 'Oglas 4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
-(6, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas X', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
-(7, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas X', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.');
+(6, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas X', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.');
 
 -- --------------------------------------------------------
 
@@ -247,13 +246,6 @@ CREATE TABLE `oglaspodaci` (
 --
 
 INSERT INTO `oglaspodaci` (`id`, `idOglasa`, `vrijednost`, `staje`) VALUES
-(1, 7, 'Junior developer noviiii', 'Titula'),
-(2, 7, 'Tražimo junior developera', 'Titula'),
-(3, 7, 'Junior developer sa dvogodišnjim iskustvom sa različitim tehnologijama, želja za učenjem, entuzijazam bla bla', 'iskustvo'),
-(4, 7, 'Java, Spring, Ember, Angular js', 'Jezici'),
-(5, 7, '2017-05-05 00:00:00', 'Datum i vrijeme'),
-(6, 7, '2017-07-01 23:59:59', 'Datum i vrijeme'),
-(7, 7, 'Sarajevo', 'Lokacija'),
 (8, 2, 'Trgovac', 'Datum i vrijeme'),
 (9, 2, 'Kratak opis', 'Opis'),
 (10, 2, 'Opis posla ....', 'Opis'),
@@ -671,7 +663,7 @@ ALTER TABLE `oglaspodaci`
 --
 ALTER TABLE `oglasprijave`
   ADD CONSTRAINT `fk_OglasPrijave_Nezaposleni1` FOREIGN KEY (`idKorisnika`) REFERENCES `nezaposleni` (`idKorisnika`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_OglasPrijave_Oglas1` FOREIGN KEY (`idOglasa`) REFERENCES `oglas` (`idOglasa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_OglasPrijave_Oglas1` FOREIGN KEY (`idOglasa`) REFERENCES `oglas` (`idOglasa`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `poljatemplatea`
