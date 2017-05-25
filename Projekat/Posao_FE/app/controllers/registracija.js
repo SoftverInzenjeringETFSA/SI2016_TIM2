@@ -14,6 +14,7 @@ export default Ember.Controller.extend({
 	serverSuccess: false,
 	serverError: false,
 
+
 	validiraj: function(){
 
 
@@ -32,8 +33,8 @@ export default Ember.Controller.extend({
 		let re = /^[A-Za-z]+$/;
 		//slova i razmak
 		let re2 = /^[a-zA-Z ]*$/;
-		//slova,-.brojevi i razmak (CV)
-		let re3=/^[a-z\d\-_.:\s]+$/i;
+		//slova,-.brojevi i -_.'
+		let re3=/^[a-z\d\-_.'\s]+$/i;
 		//email unicode
 		let re1 = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
@@ -45,18 +46,18 @@ export default Ember.Controller.extend({
 			_tipError = true;
 		}
 		
-		if (this.get("username") == null || this.get("username").length < 3){
+		if (this.get("username") == null || this.get("username").length < 1){
 			ispravno = false;
 			_usernameError = true;
-			this.set("imeVarijable", "Polje mora sadržavati više od 3 katraktera!");
+			this.set("imeVarijable", "Polje mora sadržavati više od 0 katraktera!");
 		}
 
-		if (this.get("password") == null || this.get("password").length < 3){
+		if (this.get("password") == null || this.get("password").length < 6){
 			ispravno = false;
 			_passwordError = true;
 		}
 
-		//popraviti
+		
 		if (this.get("email") == null || !re1.test(this.get("email"))){
 			ispravno = false;
 			_emailError = true;
@@ -65,7 +66,7 @@ export default Ember.Controller.extend({
 
 		if (!_tipError && this.get("tip") == "Nezaposleni")
 		{
-			if (this.get("cv") == null || this.get("cv").length < 50 || !re3.test(this.get("cv"))){
+			if (this.get("cv") == null || this.get("cv").length < 50 ){
 				ispravno = false;
 				_cvError = true;
 			}
@@ -78,19 +79,18 @@ export default Ember.Controller.extend({
 				_telefonError = true;
 			}
 
-			if (this.get("nazivFirme") == null || this.get("nazivFirme").length < 2 || !re2.test(this.get("nazivFirme"))){
+			if (this.get("nazivFirme") == null || this.get("nazivFirme").length < 1 /*|| !re2.test(this.get("nazivFirme"))*/){
 				ispravno = false;
 				_firmaError = true;
 			}
 		}
 
-		if (this.get("ime") == null || this.get("ime").length > 15 || this.get("ime").length < 2 || !re.test(this.get("ime"))){
+		if (this.get("ime") == null || this.get("ime").length > 15 || this.get("ime").length < 1 /*|| !re3.test(this.get("ime"))*/){
 			ispravno = false;
 			_imeError = true;
 		}
 
-
-		if (this.get("prezime") == null || this.get("prezime").length > 30 || this.get("prezime").length < 2 || !re.test(this.get("prezime"))){
+		if (this.get("prezime") == null || this.get("prezime").length > 30 || this.get("prezime").length < 1 /*|| !re3.test(this.get("prezime"))*/){
 			ispravno = false;
 			_prezimeError = true;
 		}
