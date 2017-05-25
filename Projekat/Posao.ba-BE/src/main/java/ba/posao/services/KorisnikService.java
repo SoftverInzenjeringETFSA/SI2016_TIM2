@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
@@ -51,8 +53,19 @@ public class KorisnikService implements UserDetailsService{
         return repository.findAll(request).getContent();
     }
     
-    public void addKorisnici(Korisnik k) {
+    public ResponseEntity addKorisnici(Korisnik k) {
+    	
+    	if (k.getUsername()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username ne može biti prazno");
+    	else if (repository.findByUsername(k.getUsername())!=null)
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username mora biti jedinstven");
+    	else if (k.getPassword()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Password ne može biti prazno");
+    	else if (k.getEmail()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Morate unijeti email");
+    	
     	repository.save(k);
+    	return ResponseEntity.status(HttpStatus.OK).body(true);
 	}
     
     public Boolean updateKorisnici(Korisnik k, int id) {
@@ -104,18 +117,24 @@ public class KorisnikService implements UserDetailsService{
     	
     	return "ERROR_UNKNOWN";
     }
-    public Boolean registerKorisnik(Korisnik korisnik) {
+    public ResponseEntity registerKorisnik(Korisnik korisnik) {
     	
     	// Registracija nije implementirana do kraja
 
-        if(repository.findByUsername(korisnik.getUsername()) != null) {
-            throw new ServiceException("Korisnik sa datim username-om vec postoji!");
-        }
+       
+        if (korisnik.getUsername()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username ne može biti prazno");
+    	else if (repository.findByUsername(korisnik.getUsername())!=null)
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username mora biti jedinstven");
+    	else if (korisnik.getPassword()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Password ne može biti prazno");
+    	else if (korisnik.getEmail()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Morate unijeti email");
         
         korisnik.setPassword(toMD5(korisnik.getPassword()));
         Korisnik kreiranKorisnik = repository.save(korisnik);
 
-        return kreiranKorisnik != null;
+        return ResponseEntity.status(HttpStatus.OK).body( kreiranKorisnik != null);
 
     }
 	 @Override
