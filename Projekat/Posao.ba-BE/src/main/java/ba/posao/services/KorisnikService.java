@@ -121,8 +121,11 @@ public class KorisnikService implements UserDetailsService{
     	return ResponseEntity.status(HttpStatus.OK).body(true);
 	}
 
-    public void removeKorisnici(int id) {
+    public ResponseEntity removeKorisnici(int id) {
+    	if (repository.findByIdKorisnika(id)==null)
+    		ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ne postoji trazeni korisnik");
     	repository.delete(id);
+    	return ResponseEntity.status(HttpStatus.OK).body(true);
 	}
     
     /*

@@ -129,8 +129,7 @@ public class KorisnikController {
 		String passMD5=korisnikService.toMD5(pass.getPassword());
 		if (passMD5.equals(_korisnik.getPassword()))
 		{
-			korisnikService.removeKorisnici(id);
-			return ResponseEntity.status(HttpStatus.OK).body(true);
+			return korisnikService.removeKorisnici(id);
 		}
 		else return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Pogresan password");
 		
