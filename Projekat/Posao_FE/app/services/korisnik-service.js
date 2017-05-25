@@ -54,4 +54,15 @@ export default BaseService.extend({
         return korisnici;
     },
 
+    nezaposleni: function() {
+        var korisnici = [];
+        this.ajax({ url: `korisnici/nezaposleni`, type: "GET"}).then(function(data) {
+            data.forEach(function(korisnik){
+                korisnici.addObject(Korisnik.create(korisnik));
+            })
+        });
+
+        return korisnici;
+    },
+
 });

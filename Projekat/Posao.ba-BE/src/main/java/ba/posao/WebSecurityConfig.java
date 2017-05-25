@@ -33,6 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/kategorije/update/**").hasRole("ADMIN")
         		.antMatchers(HttpMethod.POST, "/korisnici/register/**").permitAll()
         		.antMatchers("/korisnici/get/all/**").hasRole("POSLODAVAC")
+        		.antMatchers("/korisnici/nezaposleni/**").hasAnyRole("POSLODAVAC", "ADMIN")
         		.antMatchers("/korisnici/get/exact/**").hasAnyRole("ADMIN", "POSLODAVAC", "NEZAPOSLENI")
                 .antMatchers("/oglasi/all").permitAll()
                 .antMatchers("/oglasi/get/**").permitAll()
