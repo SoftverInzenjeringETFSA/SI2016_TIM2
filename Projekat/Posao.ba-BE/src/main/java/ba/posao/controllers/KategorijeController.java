@@ -37,12 +37,9 @@ public class KategorijeController {
 	
 	@CrossOrigin
     @RequestMapping(path="/get/all", method = RequestMethod.GET)
-    public List<Kategorije> findAll() {
-    	List<Kategorije> k;
-    	
-    	k = (List<Kategorije>) kategorijeService.findAllKategorije();
-    	
-    	return k;
+    public Iterable<Kategorije> findAll() {		
+    	return kategorijeService.findAllKategorije();
+ 
     }
     
     @RequestMapping(path="/get", method = RequestMethod.GET)
@@ -59,20 +56,19 @@ public class KategorijeController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity register(@RequestBody Kategorije kategory)
     {
-	return ResponseEntity.status(HttpStatus.OK).body(kategorijeService.addKategorije(kategory));
+	return kategorijeService.addKategorije(kategory);
     }
     
     @RequestMapping(value = "/remove", method = RequestMethod.DELETE)
     public ResponseEntity delete(@RequestParam(name="id")int id)
     {
-    	//if (kategorijeService.findByIdKategorije(id)!=null)
-	return ResponseEntity.status(HttpStatus.OK).body(kategorijeService.removeKategorije(id));
+	return kategorijeService.removeKategorije(id);
     }
     
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ResponseEntity update(@RequestBody Kategorije kategory, @RequestParam(name="id")int id)
     {
     	//if (kategorijeService.findByIdKategorije(id)!=null)
-	return ResponseEntity.status(HttpStatus.OK).body(kategorijeService.updateKategorije(kategory, id));
+	return kategorijeService.updateKategorije(kategory, id);
     }
 }
