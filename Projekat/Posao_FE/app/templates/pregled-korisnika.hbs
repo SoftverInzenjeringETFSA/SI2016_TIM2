@@ -8,7 +8,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" {{action 'sakrijModal'}}>&times;</button>
-          <h4 class="modal-title">Izvještaj</h4>
+          <h4 class="modal-title">Slanje poruke</h4>
         </div>
         <div class="modal-body">
             {{textarea class="form-control" id="inputPoruka" value=poruka.tekst}}
@@ -36,7 +36,7 @@
           <tr class="row ">   
             <td class="col-md-3 ">
               <h4 class="title">
-                  {{korisnik.username}}
+                  {{korisnik.ime}} {{korisnik.prezime}} 
               </h4>
                       <p class="desc">{{korisnik.email}}</p>
             </td>
