@@ -50,7 +50,7 @@ export default BaseService.extend({
     return this.ajax({ url: `oglasi/remove?id=${adid}`, type: "DELETE", data: {}});
     },
 
-    search: function(name, kategorijaId, filter){
+    search: function(name, kategorijaId, filter, asc){
         let query = "oglasi/search?";
 
         if (kategorijaId !== null && filter !== null){
@@ -76,6 +76,14 @@ export default BaseService.extend({
         }
         else if (name !== null){
             query = query + "name=" + name;
+        }
+
+        if (asc){
+            if(name !== null || kategorijaId !== null || filter !== null){
+                query = query + "&asc=true";
+            }
+            else
+                query = query + "asc=true";
         }
 
         var oglasi = [];
