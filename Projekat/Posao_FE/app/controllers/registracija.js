@@ -28,6 +28,14 @@ export default Ember.Controller.extend({
 		let _firmaError = false;
 		let _cvError = false;
 		let _tipError = false;
+		//samo slova
+		let re = /^[A-Za-z]+$/;
+		//slova i razmak
+		let re2 = /^[a-zA-Z ]*$/;
+		//slova,-.brojevi i razmak (CV)
+		let re3=/^[a-z\d\-_.:\s]+$/i;
+		//email unicode
+		let re1 = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 		if (this.get("tip") == null){
 			console.log("validiram");
@@ -37,18 +45,19 @@ export default Ember.Controller.extend({
 			_tipError = true;
 		}
 		
-		if (this.get("username") == null || this.get("username").length < 1){
+		if (this.get("username") == null || this.get("username").length < 3){
 			ispravno = false;
 			_usernameError = true;
+			this.set("imeVarijable", "Polje mora sadržavati više od 3 katraktera!");
 		}
 
-		if (this.get("password") == null || this.get("password").length < 1){
+		if (this.get("password") == null || this.get("password").length < 3){
 			ispravno = false;
 			_passwordError = true;
 		}
 
 		//popraviti
-		if (this.get("email") == null || this.get("email").length < 1){
+		if (this.get("email") == null || !re1.test(this.get("email"))){
 			ispravno = false;
 			_emailError = true;
 		}
@@ -56,7 +65,7 @@ export default Ember.Controller.extend({
 
 		if (!_tipError && this.get("tip") == "Nezaposleni")
 		{
-			if (this.get("cv") == null || this.get("cv").length < 1){
+			if (this.get("cv") == null || this.get("cv").length < 50 || !re3.test(this.get("cv"))){
 				ispravno = false;
 				_cvError = true;
 			}
@@ -69,18 +78,19 @@ export default Ember.Controller.extend({
 				_telefonError = true;
 			}
 
-			if (this.get("nazivFirme") == null || this.get("nazivFirme").length < 1){
+			if (this.get("nazivFirme") == null || this.get("nazivFirme").length < 2 || !re2.test(this.get("nazivFirme"))){
 				ispravno = false;
 				_firmaError = true;
 			}
 		}
 
-		if (this.get("ime") == null || this.get("ime").length < 1){
+		if (this.get("ime") == null || this.get("ime").length > 15 || this.get("ime").length < 2 || !re.test(this.get("ime"))){
 			ispravno = false;
 			_imeError = true;
 		}
 
-		if (this.get("prezime") == null || this.get("prezime").length < 1){
+
+		if (this.get("prezime") == null || this.get("prezime").length > 30 || this.get("prezime").length < 2 || !re.test(this.get("prezime"))){
 			ispravno = false;
 			_prezimeError = true;
 		}
