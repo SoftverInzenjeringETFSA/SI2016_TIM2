@@ -4,17 +4,19 @@ export default Ember.Controller.extend({
     kategorijaId: null,
     filter: null,
     pretraga: null,
+    poredak: null,
+    asc: false,
 
     oglasiService: Ember.inject.service('oglasi-service'),
 
-    search: function(kategorijaId, filter, name){
-        if (kategorijaId === null && filter === null && name === null){
+    search: function(kategorijaId, filter, name, asc){
+        if (kategorijaId === null && filter === null && name === null && asc === false){
             let _oglasi = this.get("oglasiService").all();
             this.set("model.oglasi", _oglasi);
             return;
         }
 
-        let _oglasi = this.get("oglasiService").search(name, kategorijaId, filter);
+        let _oglasi = this.get("oglasiService").search(name, kategorijaId, filter, asc);
         this.set("model.oglasi", _oglasi);
     },
   
@@ -29,10 +31,15 @@ export default Ember.Controller.extend({
       this.set('filter', filter);
     },
 
+    selectPoredak(poredak){
+        this.set('asc', poredak === "TEMP_ASC");
+    },
+
     search(){
         let _kat = this.get("kategorijaId");
         let _filter = this.get("filter");
         let _name = this.get("pretraga");
+        let _asc = this.get("asc");
 
         if (_kat == -1){
             _kat = null;
@@ -46,10 +53,7 @@ export default Ember.Controller.extend({
             _name = null;
         }
 
-        console.log("pretraga");
-        console.log(_name);
-
-        this.search(_kat, _filter, _name);
+        this.search(_kat, _filter, _name, _asc);
     }
   }
 });

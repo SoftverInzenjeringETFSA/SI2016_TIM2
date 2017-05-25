@@ -18,26 +18,19 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class={{collapsedStr}} id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li {{!--class="active"--}}><a href="#">Oglasi<span class="sr-only">(current)</span></a></li>
+          <li {{!--class="active"--}}><a href="/">Oglasi<span class="sr-only">(current)</span></a></li>
           {{#if (eq session.data.authenticated.role "ROLE_ADMIN")}}
           <li>{{#link-to 'kreiraj-template'}}Kreiraj template{{/link-to}}</li>
+          <li>{{#link-to 'edit-kategorije'}}Kategorije oglasa{{/link-to}}</li>
           {{/if}}
           {{#if (eq session.data.authenticated.role "ROLE_NEZAPOSLENI")}}
           <li>{{#link-to 'pregled-notifikacija'}}Poruke{{/link-to}}</li>
           {{/if}}
           {{#if (eq session.data.authenticated.role "ROLE_POSLODAVAC")}}
-          <li>
-            {{#link-to "personal-adverts"}}
-            Moji oglasi
-            {{/link-to}}
-          </li>
-          <li>
-            {{#link-to "dodaj-oglas"}}
-            Kreiranje oglasa
-            {{/link-to}}
-          </li>
+          <li>{{#link-to "personal-adverts"}}Moji oglasi{{/link-to}}</li>
+          <li>{{#link-to "dodaj-oglas"}}Kreiranje oglasa{{/link-to}}</li>
           <li>{{#link-to 'pregled-notifikacija'}}Notifikacije{{/link-to}}</li>
-          <li>{{#link-to 'pregled-korisnika'}}Pregled korisnika{{/link-to}}</li>
+          <li>{{#link-to 'pregled-korisnika'}}Pregled nezaposlenih{{/link-to}}</li>
           {{/if}}
 
 
