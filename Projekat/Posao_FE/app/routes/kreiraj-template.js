@@ -8,7 +8,7 @@ export default Ember.Route.extend({
 		//console.log((!this.get('session.isAuthenticated' || (this.get('session.data.authenticated.role') !== "ROLE_POSLODAVAC" ))));
 
 		if(!this.get('session.isAuthenticated') || (this.get('session.data.authenticated.role') !== "ROLE_ADMIN" )) {
-			return this.transitionTo("error");
+			return this.transitionTo("unauthorized");
 		}
 	},
 
