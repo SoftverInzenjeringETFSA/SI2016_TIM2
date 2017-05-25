@@ -82,8 +82,7 @@ public class KorisnikController {
 		}
     	
         try {
-            return ResponseEntity.status(HttpStatus.OK)
-                                .body(korisnikService.updateKorisnici(korisnik, id));
+            return korisnikService.updateKorisnici(korisnik, id);
         }
         catch (ServiceException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)

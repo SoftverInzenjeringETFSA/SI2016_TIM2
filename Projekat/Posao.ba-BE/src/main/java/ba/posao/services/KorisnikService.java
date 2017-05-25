@@ -63,19 +63,62 @@ public class KorisnikService implements UserDetailsService{
     		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Password ne može biti prazno");
     	else if (k.getEmail()=="")
     		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Morate unijeti email");
-    	
+    	else if (k.getNezaposleni()!=null) {
+    		if (k.getNezaposleni().getIme()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ime ne može biti prazno");
+    		else if (k.getNezaposleni().getPrezime()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Prezime ne može biti prazno");
+    		else if (k.getNezaposleni().getCv()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CV ne može biti prazno");
+    }
+    	else if (k.getPoslodavac()!=null) {
+    		if (k.getPoslodavac().getIme()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ime ne može biti prazno");
+    		else if (k.getPoslodavac().getNazivFirme()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Naziv firme ne može biti prazno");
+    		else if (k.getPoslodavac().getPrezime()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Prezime ne može biti prazno");
+    		else if (k.getPoslodavac().getTelefon()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Telefon ne može biti prazno");
+    	}
     	repository.save(k);
     	return ResponseEntity.status(HttpStatus.OK).body(true);
 	}
     
-    public Boolean updateKorisnici(Korisnik k, int id) {
+    public ResponseEntity updateKorisnici(Korisnik k, int id) {
     	
     	Korisnik _k=repository.findByIdKorisnika(id);
+    /*	if (k.getUsername()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username ne može biti prazno");
+    	else if (repository.findByUsername(k.getUsername())!=null)
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username mora biti jedinstven");
+    	else if (k.getPassword()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Password ne može biti prazno");
+    	else if (k.getEmail()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Morate unijeti email");
+    	else if (k.getNezaposleni()!=null) {
+    		if (k.getNezaposleni().getIme()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ime ne može biti prazno");
+    		else if (k.getNezaposleni().getPrezime()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Prezime ne može biti prazno");
+    		else if (k.getNezaposleni().getCv()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CV ne može biti prazno");
+    }
+    	else if (k.getPoslodavac()!=null) {
+    		if (k.getPoslodavac().getIme()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ime ne može biti prazno");
+    		else if (k.getPoslodavac().getNazivFirme()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Naziv firme ne može biti prazno");
+    		else if (k.getPoslodavac().getPrezime()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Prezime ne može biti prazno");
+    		else if (k.getPoslodavac().getTelefon()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Telefon ne može biti prazno");
+    	} */
     	_k=k;
     	_k.setPassword(toMD5(k.getPassword()));
     	_k.setIdKorisnika(id);
     	repository.save(_k);
-    	return true;
+    	return ResponseEntity.status(HttpStatus.OK).body(true);
 	}
 
     public void removeKorisnici(int id) {
@@ -199,4 +242,6 @@ public class KorisnikService implements UserDetailsService{
 			
 			return hexString.toString();
 	   }
+	    
+	   
 }
