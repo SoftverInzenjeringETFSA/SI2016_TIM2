@@ -5,6 +5,8 @@ import java.util.Date;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import ba.posao.models.Nezaposleni;
@@ -68,5 +70,15 @@ public class OglasiPrijaveService {
      public int getCount()  {
     	 return repository.getCount();
      }
+     
+     public ResponseEntity imaPrijava(int korisnik, int oglas)  {
+    	 
+    	 if (nezaposleniRepository.findById(korisnik)==null)
+    		 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ne postoji korisnik sa traženim id");
+    	 else if (oglasRepository.findById(oglas)==null)
+    		 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ne postoji oglas sa traženim id");
+    	 else return ResponseEntity.status(HttpStatus.OK).body(repository.findByPrijava(oglas, korisnik).size()!=0);
+     }
+
      
 }

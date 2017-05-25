@@ -1,5 +1,7 @@
 package ba.posao.controllers;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,8 +35,14 @@ public class OglasiPrijaveController {
 			Korisnik _korisnik = korisnikService.getKorisnikByUserName(auth.getName());	
 			if (_korisnik == null || _korisnik.getIdKorisnika() != k_id){
 				return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Zabranjen pristup");
-			}
-			
+			}			
 			return ResponseEntity.status(HttpStatus.OK).body(service.addPrijavu(k_id, o_id));
 	  }
+	 
+	 @CrossOrigin
+	  @RequestMapping(value = "", method = RequestMethod.GET)
+	  public ResponseEntity prijavljen(@RequestParam(name="korisnik")int k_id, @RequestParam(name="oglas")int o_id)
+	  {
+			return service.imaPrijava(k_id, o_id);
+	  } 
 }
