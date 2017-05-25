@@ -11,9 +11,74 @@ export default Ember.Controller.extend({
     naziv: "",
     opis: "",
     polja: [],
+    kategorijaError: false,
+    lokacijaError: false,
+    templateError: false,
+    datumError: false,
+    nazivError: false,
+    opisError: false,
+    poljaEror: false,
 
-    validacija(){
-        return true;
+    validacija: function(){
+
+        let ispravno = true;
+
+        let _kategorijaError = false;
+        let _lokacijaError = false;
+        let _templateError = false;
+        let _datumError = false;
+        let _nazivError = false;
+        let _opisError = false;
+        let _poljaError = false;
+
+        if (this.get("kategorija") == null){
+
+            ispravno = false;
+            _kategorijaError = true;
+        }
+
+        if (this.get("lokacija") == null){
+
+            ispravno = false;
+            _lokacijaError = true;
+        }
+
+        if (this.get("template") == null){
+
+            ispravno = false;
+            _templateError = true;
+        }
+
+        if (this.get("datum") == null){
+
+            ispravno = false;
+            _datumError = true;
+        }
+
+        if (this.get("naziv") == null){
+            ispravno = false;
+            _nazivError = true;
+        }
+
+        if (this.get("opis") == null){
+            ispravno = false;
+            _opisError = true;
+        }
+
+        if (this.get("polja") == null){
+            ispravno = false;
+            _poljaError = true;
+        }
+
+        this.set("kategorijaError", _kategorijaError);
+        this.set("templateError", _templateError);
+        this.set("lokacijaError", _lokacijaError);
+        this.set("datumError", _datumError);
+        this.set("nazivError", _nazivError);
+        this.set("opisError", _opisError);
+        this.set("poljaEror", _poljaError);
+
+        return ispravno;
     },
 
 	register: function(){

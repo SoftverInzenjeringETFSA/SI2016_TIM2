@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	kategorijaService: Ember.inject.service('kategorija-service'),
     noviNaziv: "",
+    noviNazivError: false.
 
 	add: function(kategorija) {
         this.get('kategorijaService').add(kategorija).then(x => {}).catch(x => {});
@@ -27,7 +28,18 @@ export default Ember.Controller.extend({
     },
 
     validirajNovu: function(){
-        return true;
+
+        let ispravno = true;
+
+        let _noviNazivError = false;
+
+        if (this.get("noviNaziv") == null){
+
+            ispravno = false;
+            _noviNazivError = true;
+        }
+
+        return ispravno;
     },
 
     validirajIzmjenu: function(){
@@ -38,7 +50,8 @@ export default Ember.Controller.extend({
     actions: {
     	add: function(){
 			let _kategorija = {naziv: this.get("noviNaziv")};
-			this.add(_kategorija);
+            if (this.validirajNovu)
+                this.add(_kategorija);
     	}, 
 
         izmijeni: function(index){

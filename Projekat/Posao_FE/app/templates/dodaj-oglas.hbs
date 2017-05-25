@@ -15,6 +15,10 @@
           <div>
             <div class="form-group pomjereniTextBox">
                 <label for="category">Kategoriju oglasa:</label>
+                {{#if kategorijaError}}
+                  <span class="greskaUnosa">Trebate unijeti kategoriju!</span>
+                {{/if}}
+
                 <select class="form-control" name="kategorija" onchange={{action "selectKategorija" value="target.value"}}>
                   <option value="-1" >-</option>
                   {{#each model.kategorije as |kategorija|}}      
@@ -25,6 +29,11 @@
 
             <div class="form-group pomjereniTextBox">
                 <label for="category">Template oglasa:</label>
+
+                {{#if templateError}}
+                  <span class="greskaUnosa">Trebate unijeti template!</span>
+                {{/if}}
+
                 <select class="form-control" name="template" onchange={{action "selectTemplate" value="target.value"}}>
                   <option value="-1" >-</option>
                   {{#each model.templatei as |template|}}      
@@ -35,6 +44,11 @@
 
               <div class="form-group pomjereniTextBox">
               <label for="category">Lokacija:</label>
+
+              {{#if lokacijaError}}
+                <span class="greskaUnosa">Trebate unijeti lokaciju!</span>
+              {{/if}}
+
               <select class="form-control" name="lokacija" onchange={{action "selectLokacija" value="target.value"}}>
                   <option value="-1" >-</option>
                   {{#each model.lokacije as |lokacija|}}      
@@ -45,27 +59,45 @@
 
             <div class="form-group pomjereniTextBox">
               <label for="inputNaziv1">Naziv oglasa:</label><br>
-              <span class="greskaUnosa">Morate unijeti naziv!</span>
+
+              {{#if nazivError}}
+                <span class="greskaUnosa">Trebate unijeti naziv oglasa!</span>
+              {{/if}}
               {{input type="text" class="form-control" id="inputNaziv1" placeholder="Naziv" value=naziv}}
             </div>
 
             <div class="form-group firma">
               <label for="inputOpis">Opis:</label><br>
-              <span class="greskaUnosa">Morate unijeti opis!</span>
+
+              {{#if opisError}}
+                  <span class="greskaUnosa">Trebate unijeti opis!</span>
+              {{/if}}
+              
               {{textarea class="form-control" id="inputOpis" value=opis}}
             </div>
 
             <div class="form-group datum">
               <label class="marginaWTF" for="inputDateTime">Datum isteka:</label>
-                  <div class='input-group datum date' id='inputDateTime'>
-                      {{input type='date' class="form-control datum" value=datum}}
-                      
-                  </div>
+
+
+                {{#if datumError}}
+                  <span class="greskaUnosa">Trebate unijeti datum!</span>
+                {{/if}}
+
+                <div class='input-group datum date' id='inputDateTime'>
+                    {{input type='date' class="form-control datum" value=datum}}
+                    
+                </div>
               </div>
 
               {{#each polja as |polje index|}}
               <div class="form-group pomjereniTextBox">
               <label for={{polje.staje}}>{{polje.staje}}:</label>
+
+              {{#if templateError}}
+                  <span class="greskaUnosa">Trebate unijeti polje!</span>
+              {{/if}}
+
               {{input type="text" class="form-control" placeholder=polje.staje value=polje.vrijednost}}
               </div>
               {{/each}}
@@ -87,6 +119,12 @@
           </div>
           <div class="form-group">
               <label for="inputDateTime">Datum:</label>
+
+              {{#if datumError}}
+                <span class="greskaUnosa">Trebate unijeti datum!</span>
+              {{/if}}
+
+
               <div class='input-group date' id='inputDateTime'>
                   {{input type='date' class="form-control" value=datum}}
                   <span class="input-group-addon">
