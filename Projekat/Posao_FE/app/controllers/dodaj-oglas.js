@@ -55,12 +55,12 @@ export default Ember.Controller.extend({
             _datumError = true;
         }
 
-        if (this.get("naziv") == null){
+        if (this.get("naziv") == ""){
             ispravno = false;
             _nazivError = true;
         }
 
-        if (this.get("opis") == null){
+        if (this.get("opis") == ""){
             ispravno = false;
             _opisError = true;
         }

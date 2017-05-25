@@ -14,7 +14,7 @@
           <div class="form-group pomjereniTextBox">
             <label for="inputUsername1">Korisničko ime:</label><br>
             {{#if usernameError}}
-            <span class="greskaUnosa">Morate unijeti korisničko ime!</span>
+            <span class="greskaUnosa">{{imeVarijable}}</span>
             {{/if}}
             {{input type="text" class="form-control" id="inputUsername1" placeholder="Username" value=username}}
           </div>
@@ -22,7 +22,7 @@
           <div class="form-group pomjereniTextBox">
             <label for="inputPassword3">Lozinka:</label><br>
             {{#if passwordError}}
-            <span class="greskaUnosa">Morate unijeti lozinku!</span>
+            <span class="greskaUnosa">Password mora imati minimalno 6 karaktera!</span>
             {{/if}}
             {{input type="password" class="form-control" id="inputPassword3" placeholder="Password" value=password}}
           </div>
@@ -46,7 +46,7 @@
           <div class="form-group pomjereniTextBox">
             <label for="inputIme1">Ime:</label><br>
             {{#if imeError}}
-            <span class="greskaUnosa">Morate unijeti ime!</span>
+            <span class="greskaUnosa">Ime mora biti uneseno!</span>
             {{/if}}
             {{input type="text" class="form-control" id="inputIme1" placeholder="Ime" value=ime}}
 
@@ -55,7 +55,7 @@
           <div class="form-group pomjereniTextBox">
             <label for="inputPrezime1">Prezime:</label><br>
             {{#if prezimeError}}
-            <span class="greskaUnosa">Morate unijeti prezime!</span>
+            <span class="greskaUnosa">Prezime mora biti uneseno!</span>
             {{/if}}
             {{input type="text" class="form-control" id="inputPrezime1" placeholder="Prezime" value=prezime}}
           </div>
@@ -63,7 +63,7 @@
           <div class="form-group firma">
             <label for="inputFirma1">Firma:</label><br>
             {{#if firmaError}}
-            <span class="greskaUnosa">Morate unijeti ime firme!</span>
+            <span class="greskaUnosa">Ime firme mora biti uneseno!</span>
             {{/if}}
             {{input type="text" class="form-control" id="inputFirma1" placeholder="Firma" value=nazivFirme disabled=(poslodavac-helper tip)}}
           </div>
@@ -72,7 +72,7 @@
           <div class="form-group pomjereniTextBox">
             <label for="inputCV">CV:</label><br>
             {{#if cvError}}
-            <span class="greskaUnosa">Morate unijeti CV!</span>
+            <span class="greskaUnosa">Morate unijeti CV duži od 50 karaktera!</span>
             {{/if}}
             {{textarea class="form-control" id="inputCV" disabled=(nezaposleni-helper tip) value=cv}}
           </div>

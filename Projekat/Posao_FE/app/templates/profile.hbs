@@ -14,10 +14,10 @@
               <h4 class="modal-title">Izvještaj</h4>
             </div>
             <div class="modal-body">
-              <div>Ukupni broj oglasa: </div> <div>{{izvjestaj.brojOglasa}}</div>
-              <div>Broj registrovanih poslodavaca: </div> <div>{{izvjestaj.brojOglasa}}</div>
-              <div>Broj registrovanih nezaposlenih korisnika: </div> <div>{{izvjestaj.brojNezaposlenih}}</div>
-              <div>Broj prijava na oglase: </div> <div>{{izvjestaj.brojPrijava}}</div>
+              <div>Ukupni broj oglasa: {{izvjestaj.brojOglasa}}</div>
+              <div>Broj registrovanih poslodavaca: {{izvjestaj.brojOglasa}}</div>
+              <div>Broj registrovanih nezaposlenih korisnika: {{izvjestaj.brojNezaposlenih}}</div>
+              <div>Broj prijava na oglase: {{izvjestaj.brojPrijava}}</div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal" {{action 'sakrijModal'}}>Close</button>
@@ -39,20 +39,20 @@
                   <div>
                     <div class="form-group pomjereniTextBox">
                       <label for="inputPassword3_profil">Lozinka:</label><br>
-                      <span class="greskaUnosa">Morate unijeti lozinku!</span>
+                      <span class="greskaUnosa">Password mora imati minimalno 6 karaktera!</span>
                       {{input type="password" class="form-control" id="inputPassword3_profil" placeholder="Password" value=model.profil.password}}
                     </div>
 
                     <div class="form-group pomjereniTextBox">
                       <label for="inputEmail3_profil">Email:</label><br>
-                      <span class="greskaUnosa">Morate unijeti email!</span>
+                      <span class="greskaUnosa">Morate unijeti validan email!</span>
                       {{input type="email" class="form-control" id="inputEmail3_profil" placeholder="Email" value=model.profil.email}}
                     </div>
 
                     {{#if this.model.profil.poslodavac}}
                     <div class="form-group pomjereniTextBox">
                       <label for="inputTelefon1_profil">Telefon:</label><br>
-                      <span class="greskaUnosa">Morate unijeti telefon!</span>
+                      <span class="greskaUnosa">Morate unijeti telefon u formatu 123456789!</span>
                       {{input type="text" class="form-control" id="inputTelefon1_profil" placeholder="123456789" value=model.profil.poslodavac.telefon}}
                     </div>
                     {{/if}}
@@ -82,7 +82,7 @@
                     {{#if this.model.profil.nezaposleni}}
                     <div class="form-group firma">
                       <label for="inputCV_profil">CV:</label><br>
-                      <span class="greskaUnosa">Morate unijeti CV!</span>
+                      <span class="greskaUnosa">Morate unijeti CV duži od 50 karaktera!</span>
                       {{textarea class="form-control" id="inputCV_profil" value=model.profil.nezaposleni.cv}}
                     </div>
                     {{/if}}

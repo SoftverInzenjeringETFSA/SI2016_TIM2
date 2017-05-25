@@ -29,17 +29,18 @@ export default Ember.Controller.extend({
 
     validirajNovu: function(){
 
-        let ispravno = true;
-
+        let uspjesno = true;
         let _noviNazivError = false;
 
-        if (this.get("noviNaziv") == null){
+        if (this.get('noviNaziv') ==  "") {
 
-            ispravno = false;
             _noviNazivError = true;
-        }
+            uspjesno = false;
+        } 
 
-        return ispravno;
+        this.set("noviNazivError", _noviNazivError);
+
+        return uspjesno;
     },
 
     validirajIzmjenu: function(){
@@ -49,9 +50,13 @@ export default Ember.Controller.extend({
 
     actions: {
     	add: function(){
-			let _kategorija = {naziv: this.get("noviNaziv")};
-            if (this.validirajNovu)
+
+            if (this.validirajNovu()) {
+    			
+                let _kategorija = {naziv: this.get("noviNaziv")};
                 this.add(_kategorija);
+            }
+
     	}, 
 
         izmijeni: function(index){
