@@ -29,49 +29,54 @@ export default Ember.Controller.extend({
         let _nazivFirmeError = false;
         let _cvError = false;
 
-        if (this.get("model.profil.password") == "") {
+        //samo slova
+        let re = /^[A-Za-z]+$/;
+        //slova i razmak
+        let re2 = /^[a-zA-Z ]*$/;
+        //slova,-.brojevi i -_.'
+        let re3=/^[a-z\d\-_.'\s]+$/i;
+        //email unicode
+        let re1 = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+        if (this.get("model.profil.password") == "" || this.get("model.profil.password").length < 6) {
             _passwordError = true;
             uspjesno = false;
-            console.log("Validiram password");
         }
-
-        if (this.get("model.profil.email") == "") {
+        
+        if (this.get("model.profil.email") == null || !re1.test(this.get("model.profil.email"))){
+            ispravno = false;
             _emailError = true;
-            uspjesno = false;
-            console.log("Validiram email");
         }
 
-        if (this.get("model.profil.poslodavac.telefon") == "") {
-            _telefonError = true;
-            uspjesno = false;
-            console.log("Validiram telefon");
-        }
-
-        if (this.get("model.profil.nezaposleni.ime") == "") {
-            _imeError = true;
-            uspjesno = false;
-            console.log("Validiram ime");
-        }
-
-        if (this.get("model.profil.nezaposleni.prezime")) {
-            _prezimeError = true;
-            uspjesno = false;
-
-            console.log("Validiram prezime");
-        }
+        if (this.get("model.profil.poslodavac.telefon") == null || !this.get("model.profil.poslodavac.telefon").match(/^\d{9}$/)){
+                ispravno = false;
+                _telefonError = true;
+            }
 
         if (this.get("model.profil.poslodavac.nazivFirme") == "") {
             _nazivFirmeError = true;
             uspjesno = false;
+        }
 
-            console.log("Validiram imeFirme");
+
+        if (this.get("model.profil.poslodavac.nazivFirme") == null || this.get("model.profil.poslodavac.nazivFirme").length < 1 /*|| !re2.test(this.get("model.profil.poslodavac.nazivFirme"))*/){
+            ispravno = false;
+            _firmaError = true;
         }
 
         if (this.get("model.profil.nezaposleni.cv") == "") {
             _cvError = true;
             uspjesno = false;
+        }
 
-            console.log("Validiram CV");
+        if (this.get("model.profil.nezaposleni.ime") == null || this.get("model.profil.nezaposleni.ime").length > 15 || this.get("model.profil.nezaposleni.ime").length < 1 /*|| !re3.test(this.get("model.profil.nezaposleni.ime"))*/){
+            uspjesno = false;
+            _imeError = true;
+        }
+
+        if (this.get("model.profil.nezaposleni.prezime") == null || this.get("model.profil.nezaposleni.prezime").length > 30 || this.get("model.profil.nezaposleni.prezime").length < 1 /*|| !re3.test(this.get("model.profil.nezaposleni.prezime"))*/){
+            uspjesno = false;
+            _prezimeError = true;
         }
 
         this.set("passwordError", _passwordError);
