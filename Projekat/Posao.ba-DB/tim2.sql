@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2017 at 06:04 PM
+-- Generation Time: May 25, 2017 at 10:36 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -162,7 +162,7 @@ CREATE TABLE `notifikacija` (
   `idKorisnika` int(11) NOT NULL,
   `tekst` varchar(255) NOT NULL,
   `pregledana` tinyint(4) NOT NULL DEFAULT '0',
-  `vrijemeGenerisanja` datetime NOT NULL
+  `vrijemeGenerisanja` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -207,7 +207,7 @@ CREATE TABLE `oglas` (
   `idPoslodavca` int(11) NOT NULL,
   `idLokacije` int(11) NOT NULL,
   `idKategorije` int(11) NOT NULL,
-  `datumObjave` datetime NOT NULL,
+  `datumObjave` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `datumIsteka` datetime NOT NULL,
   `sakriven` tinyint(4) NOT NULL,
   `zatvoren` tinyint(4) NOT NULL DEFAULT '0',
@@ -320,7 +320,7 @@ CREATE TABLE `poruke` (
   `idPosiljaoca` int(11) NOT NULL,
   `idPrimaoca` int(11) NOT NULL,
   `tekst` varchar(1000) NOT NULL,
-  `vrijeme` datetime NOT NULL,
+  `vrijeme` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `procitano` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
