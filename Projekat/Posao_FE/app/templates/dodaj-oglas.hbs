@@ -14,7 +14,7 @@
           </div>
           <div>
             <div class="form-group pomjereniTextBox">
-                <label for="category">Kategoriju oglasa:</label>
+                <label for="category">Kategoriju oglasa:</label><br>
                 {{#if kategorijaError}}
                   <span class="greskaUnosa">Trebate unijeti kategoriju!</span>
                 {{/if}}
@@ -28,7 +28,7 @@
             </div>
 
             <div class="form-group pomjereniTextBox">
-                <label for="category">Template oglasa:</label>
+                <label for="category">Template oglasa:</label><br>
 
                 {{#if templateError}}
                   <span class="greskaUnosa">Trebate unijeti template!</span>
@@ -43,7 +43,7 @@
             </div>
 
               <div class="form-group pomjereniTextBox">
-              <label for="category">Lokacija:</label>
+              <label for="category">Lokacija:</label><br>
 
               {{#if lokacijaError}}
                 <span class="greskaUnosa">Trebate unijeti lokaciju!</span>
@@ -63,6 +63,7 @@
               {{#if nazivError}}
                 <span class="greskaUnosa">Trebate unijeti naziv oglasa!</span>
               {{/if}}
+
               {{input type="text" class="form-control" id="inputNaziv1" placeholder="Naziv" value=naziv}}
             </div>
 
@@ -77,7 +78,7 @@
             </div>
 
             <div class="form-group datum">
-              <label class="marginaWTF" for="inputDateTime">Datum isteka:</label>
+              <label class="marginaWTF" for="inputDateTime">Datum isteka:</label><br>
 
 
                 {{#if datumError}}
@@ -92,7 +93,7 @@
 
               {{#each polja as |polje index|}}
               <div class="form-group pomjereniTextBox">
-              <label for={{polje.staje}}>{{polje.staje}}:</label>
+              <label for={{polje.staje}}>{{polje.staje}}:</label><br>
 
               {{#if templateError}}
                   <span class="greskaUnosa">Trebate unijeti polje!</span>
@@ -118,7 +119,7 @@
             <hr class="h-divider" />
           </div>
           <div class="form-group">
-              <label for="inputDateTime">Datum:</label>
+              <label for="inputDateTime">Datum:</label><br>
 
               {{#if datumError}}
                 <span class="greskaUnosa">Trebate unijeti datum!</span>
