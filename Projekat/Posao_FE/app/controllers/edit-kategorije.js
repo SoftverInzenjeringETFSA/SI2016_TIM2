@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	kategorijaService: Ember.inject.service('kategorija-service'),
     noviNaziv: "",
-    noviNazivError: false.
+    noviNazivError: false,
 
 	add: function(kategorija) {
         this.get('kategorijaService').add(kategorija).then(x => {}).catch(x => {});
