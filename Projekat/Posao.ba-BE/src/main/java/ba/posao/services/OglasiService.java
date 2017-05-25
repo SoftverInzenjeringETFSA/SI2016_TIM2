@@ -112,6 +112,14 @@ public class OglasiService {
 		   else return repository.searchCategoryLocation(idlokacije, idkategorije);
 	   }
 	   
+	   public List<Oglas> searchAll(Boolean order)
+	   {
+		   if (order)
+			   return repository.searchAllASC();
+		   else return repository.searchAll();
+			   
+	   }
+	   
 	   public int getCount() {
 		   return repository.getCount();
 	   }

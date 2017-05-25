@@ -1,8 +1,11 @@
 package ba.posao.controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -67,7 +70,7 @@ public class OglasController {
 		return ResponseEntity.status(HttpStatus.OK).body(oglasRepository.findAllByPoslodavacIdKorisnika(id));
 	}
 	
-	// /oglasi/kategorija?kategorija=...
+	// /oglasi?kategorija=...
 	@CrossOrigin
 	@GetMapping(path="")
 	public @ResponseBody List<Oglas> findByKategorije(@RequestParam("kategorija") String kategorija) {
@@ -92,6 +95,9 @@ public class OglasController {
 	  public ResponseEntity register(@RequestBody OglasDTO oglas)
 	  {
 		 Oglas _oglas = new Oglas();
+		 
+		 if (oglas.getDatumIsteka()==null || oglas.getDatumIsteka().compareTo((Date) LocalDate.now().toDate())==1)
+		 
 		 _oglas.setDatumIsteka(oglas.getDatumIsteka());
 		 _oglas.setKategorije(oglas.getKategorije());
 		 _oglas.setLokacija(oglas.getLokacija());
@@ -159,6 +165,8 @@ public class OglasController {
 			 return oglasService.searchCategory(idkategorije, order);
 		 else if (name!=null && idlokacije==null & idkategorije==null)
 			 return oglasRepository.findAllByOglasPodaciVrijednost(name);
+		 else if (idlokacije==null && name==null && idkategorije==null)
+			 return oglasService.searchAll(order);
 		 else if (idlokacije==null) 
 			 return oglasService.searchNameCategory(name, idkategorije, order);
 		 else if (idkategorije==null)
