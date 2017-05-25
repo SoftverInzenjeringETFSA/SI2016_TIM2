@@ -19,6 +19,11 @@ Router.map(function() {
   this.route('pregled-notifikacija');
   this.route('pregled-korisnika');
   this.route('pregled-profila-public');
+
+  this.route('unauthorized');
+  this.route("error", { path: "*path"});
+
+
 });
 
 export default Router;

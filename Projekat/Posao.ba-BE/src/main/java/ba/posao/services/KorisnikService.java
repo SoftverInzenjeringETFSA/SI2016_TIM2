@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
@@ -51,22 +53,79 @@ public class KorisnikService implements UserDetailsService{
         return repository.findAll(request).getContent();
     }
     
-    public void addKorisnici(Korisnik k) {
+    public ResponseEntity addKorisnici(Korisnik k) {
+    	
+    	if (k.getUsername()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username ne može biti prazno");
+    	else if (repository.findByUsername(k.getUsername())!=null)
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username mora biti jedinstven");
+    	else if (k.getPassword()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Password ne može biti prazno");
+    	else if (k.getEmail()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Morate unijeti email");
+    	else if (k.getNezaposleni()!=null) {
+    		if (k.getNezaposleni().getIme()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ime ne može biti prazno");
+    		else if (k.getNezaposleni().getPrezime()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Prezime ne može biti prazno");
+    		else if (k.getNezaposleni().getCv()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CV ne može biti prazno");
+    }
+    	else if (k.getPoslodavac()!=null) {
+    		if (k.getPoslodavac().getIme()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ime ne može biti prazno");
+    		else if (k.getPoslodavac().getNazivFirme()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Naziv firme ne može biti prazno");
+    		else if (k.getPoslodavac().getPrezime()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Prezime ne može biti prazno");
+    		else if (k.getPoslodavac().getTelefon()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Telefon ne može biti prazno");
+    	}
     	repository.save(k);
+    	return ResponseEntity.status(HttpStatus.OK).body(true);
 	}
     
-    public Boolean updateKorisnici(Korisnik k, int id) {
+    public ResponseEntity updateKorisnici(Korisnik k, int id) {
     	
     	Korisnik _k=repository.findByIdKorisnika(id);
+    /*	if (k.getUsername()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username ne može biti prazno");
+    	else if (repository.findByUsername(k.getUsername())!=null)
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username mora biti jedinstven");
+    	else if (k.getPassword()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Password ne može biti prazno");
+    	else if (k.getEmail()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Morate unijeti email");
+    	else if (k.getNezaposleni()!=null) {
+    		if (k.getNezaposleni().getIme()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ime ne može biti prazno");
+    		else if (k.getNezaposleni().getPrezime()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Prezime ne može biti prazno");
+    		else if (k.getNezaposleni().getCv()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CV ne može biti prazno");
+    }
+    	else if (k.getPoslodavac()!=null) {
+    		if (k.getPoslodavac().getIme()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ime ne može biti prazno");
+    		else if (k.getPoslodavac().getNazivFirme()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Naziv firme ne može biti prazno");
+    		else if (k.getPoslodavac().getPrezime()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Prezime ne može biti prazno");
+    		else if (k.getPoslodavac().getTelefon()=="")
+    			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Telefon ne može biti prazno");
+    	} */
     	_k=k;
     	_k.setPassword(toMD5(k.getPassword()));
     	_k.setIdKorisnika(id);
     	repository.save(_k);
-    	return true;
+    	return ResponseEntity.status(HttpStatus.OK).body(true);
 	}
 
-    public void removeKorisnici(int id) {
+    public ResponseEntity removeKorisnici(int id) {
+    	if (repository.findByIdKorisnika(id)==null)
+    		ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ne postoji trazeni korisnik");
     	repository.delete(id);
+    	return ResponseEntity.status(HttpStatus.OK).body(true);
 	}
     
     /*
@@ -104,18 +163,24 @@ public class KorisnikService implements UserDetailsService{
     	
     	return "ERROR_UNKNOWN";
     }
-    public Boolean registerKorisnik(Korisnik korisnik) {
+    public ResponseEntity registerKorisnik(Korisnik korisnik) {
     	
     	// Registracija nije implementirana do kraja
 
-        if(repository.findByUsername(korisnik.getUsername()) != null) {
-            throw new ServiceException("Korisnik sa datim username-om vec postoji!");
-        }
+       
+        if (korisnik.getUsername()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username ne može biti prazno");
+    	else if (repository.findByUsername(korisnik.getUsername())!=null)
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username mora biti jedinstven");
+    	else if (korisnik.getPassword()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Password ne može biti prazno");
+    	else if (korisnik.getEmail()=="")
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Morate unijeti email");
         
         korisnik.setPassword(toMD5(korisnik.getPassword()));
         Korisnik kreiranKorisnik = repository.save(korisnik);
 
-        return kreiranKorisnik != null;
+        return ResponseEntity.status(HttpStatus.OK).body( kreiranKorisnik != null);
 
     }
 	 @Override
@@ -180,4 +245,6 @@ public class KorisnikService implements UserDetailsService{
 			
 			return hexString.toString();
 	   }
+	    
+	   
 }

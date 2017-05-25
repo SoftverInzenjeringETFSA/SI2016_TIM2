@@ -5,7 +5,6 @@ export default Ember.Controller.extend({
     noviNaziv: "",
     noviNazivError: false,
 
-
     add: function(kategorija) {
         this.get('kategorijaService').add(kategorija).then(x => {}).catch(x => {});
     },

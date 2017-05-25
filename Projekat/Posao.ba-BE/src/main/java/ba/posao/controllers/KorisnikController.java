@@ -46,12 +46,12 @@ public class KorisnikController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity register(@RequestBody Korisnik korisnik)
     {
+    	if (korisnik==null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Nemoguce kreirati praznog korisnika");
         try {
         	if(korisnik.getNezaposleni() != null)
         	{
         		korisnik.getNezaposleni().setKorisnici(korisnik);
-                return ResponseEntity.status(HttpStatus.OK)
-                        .body(korisnikService.registerKorisnik(korisnik));
+                return korisnikService.registerKorisnik(korisnik);
                 //korisnik.getNezaposleni().setKorisnici(korisnik);
                 //return ResponseEntity.status(HttpStatus.OK)
                 //        .body(nezaposleniService.registerNezaposleni(korisnik.getNezaposleni()));
@@ -59,8 +59,7 @@ public class KorisnikController {
         	else if (korisnik.getPoslodavac() != null)
         	{
         		korisnik.getPoslodavac().setKorisnici(korisnik);
-                return ResponseEntity.status(HttpStatus.OK)
-                        .body(korisnikService.registerKorisnik(korisnik));
+                return korisnikService.registerKorisnik(korisnik);
         	} 
         	else return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
@@ -83,8 +82,7 @@ public class KorisnikController {
 		}
     	
         try {
-            return ResponseEntity.status(HttpStatus.OK)
-                                .body(korisnikService.updateKorisnici(korisnik, id));
+            return korisnikService.updateKorisnici(korisnik, id);
         }
         catch (ServiceException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -119,14 +117,6 @@ public class KorisnikController {
     	return k;
     }
     
-    @RequestMapping(path= "/add", method = RequestMethod.POST)
-	public String addKorisnici(@RequestBody Korisnik k){
-    	
-    	if (korisnikService.getKorisnikByUserName(k.getUsername())==null)
-    		korisnikService.addKorisnici(k);
-    	else return "Vec postoji korisnik sa ovim username";
-		return "done"; 
-	}
     
     @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity deleteKorisnici(@RequestParam(name = "id") int id, @RequestBody PasswordDTO pass) {
@@ -139,8 +129,7 @@ public class KorisnikController {
 		String passMD5=korisnikService.toMD5(pass.getPassword());
 		if (passMD5.equals(_korisnik.getPassword()))
 		{
-			korisnikService.removeKorisnici(id);
-			return ResponseEntity.status(HttpStatus.OK).body(true);
+			return korisnikService.removeKorisnici(id);
 		}
 		else return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Pogresan password");
 		

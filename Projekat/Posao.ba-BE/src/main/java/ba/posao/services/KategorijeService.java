@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import ba.posao.models.Kategorije;
@@ -34,19 +36,24 @@ public class KategorijeService {
         return repository.findAll(request).getContent();
     }
     
-    public Boolean addKategorije(Kategorije k) {
+    public ResponseEntity addKategorije(Kategorije k) {
+    	
+    	if (k.getNaziv().equals(""))
+    		
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ime kategorije ne može biti prazno");
+    	
     	if (repository.findByName(k.getNaziv()).size()==0)
     	repository.save(k);
-    	else return false;
-    	return true;
+    	else return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Vec postoji ova kategorija");
+    	return ResponseEntity.status(HttpStatus.OK).body(true);
 	}
     
     //ako nema id
-    public Boolean updateKategorije(Kategorije k, int id) {
+    public ResponseEntity updateKategorije(Kategorije k, int id) {
     	
-    	if ( repository.findById(id).equals(null))
+    	if ( repository.findById(id)==null)
     	{    	
-    		return false;
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ne postoji trazena kategorija");
     	}
     	else 
     	{ 
@@ -55,15 +62,19 @@ public class KategorijeService {
     		if (repository.findByName(k.getNaziv()).isEmpty())
     		{
     			repository.save(_k);
-    			return true;
+    			return ResponseEntity.status(HttpStatus.OK).body(true);
     		}
-        	return false;
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Vec postoji kategorija sa ovakvim nazivom");
     	}
 	}
 
-    public Boolean removeKategorije(int id) {
+    public ResponseEntity removeKategorije(int id) {
+    	
+    	if (repository.findById(id)==null)
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ne postoji trazena kategorija");
+    	
     	repository.delete(id);
-    	return true;
+    	return ResponseEntity.status(HttpStatus.OK).body(true);
 	}
     
     public Kategorije findByIdKategorije(Integer id) {
