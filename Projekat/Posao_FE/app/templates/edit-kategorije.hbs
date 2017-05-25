@@ -12,11 +12,7 @@
 
         <div class="form-group text-center">
             <label for="inputNaziv1">Naziv:</label><br>
-
-            {{#if nazivError}}
-              <span class="greskaUnosa">Morate unijeti naziv!</span>
-            {{/if}}
-
+            <span class="greskaUnosa">Morate unijeti naziv!</span>
             {{input type="text" class="form-control" id="inputnaziv_template" placeholder="Naziv" value=noviNaziv}}
          </div>
 
@@ -34,9 +30,7 @@
         {{#each model.kategorije as |kategorija index|}}
         <div class="form-group text-center">
             <label for="inputNaziv1">Naziv:</label><br>
-
-
-
+            <span class="greskaUnosa">Morate unijeti naziv!</span>
             {{input type="text" class="form-control" placeholder="Naziv" value=kategorija.naziv}}
          </div>
 
