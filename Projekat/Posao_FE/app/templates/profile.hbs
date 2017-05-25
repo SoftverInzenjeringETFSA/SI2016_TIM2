@@ -39,20 +39,26 @@
                   <div>
                     <div class="form-group pomjereniTextBox">
                       <label for="inputPassword3_profil">Lozinka:</label><br>
-                      <span class="greskaUnosa">Morate unijeti lozinku!</span>
+                      {{#if passwordError}}
+                        <span class="greskaUnosa">Morate unijeti lozinku!</span><br>
+                      {{/if}}
                       {{input type="password" class="form-control" id="inputPassword3_profil" placeholder="Password" value=model.profil.password}}
                     </div>
 
                     <div class="form-group pomjereniTextBox">
                       <label for="inputEmail3_profil">Email:</label><br>
-                      <span class="greskaUnosa">Morate unijeti email!</span>
+                      {{#if emailError}}
+                        <span class="greskaUnosa">Morate unijeti email!</span><br>
+                      {{/if}}
                       {{input type="email" class="form-control" id="inputEmail3_profil" placeholder="Email" value=model.profil.email}}
                     </div>
 
                     {{#if this.model.profil.poslodavac}}
                     <div class="form-group pomjereniTextBox">
                       <label for="inputTelefon1_profil">Telefon:</label><br>
-                      <span class="greskaUnosa">Morate unijeti telefon!</span>
+                      {{#if telefonError}}
+                        <span class="greskaUnosa">Morate unijeti telefon!</span><br>
+                      {{/if}}
                       {{input type="text" class="form-control" id="inputTelefon1_profil" placeholder="123456789" value=model.profil.poslodavac.telefon}}
                     </div>
                     {{/if}}
@@ -60,6 +66,9 @@
                     {{#if this.model.profil.nezaposleni}}
                     <div class="form-group pomjereniTextBox">
                       <label for="inputIme1_profil">Ime:</label><br>
+                      {{#if imeError}}
+                        <span class="greskaUnosa">Morate unijeti ime!</span><br>
+                      {{/if}}
                       <span class="greskaUnosa">Morate unijeti ime!</span>
                       {{input type="text" class="form-control" id="inputIme1_profil" placeholder="Ime" value=model.profil.nezaposleni.ime}}
                     </div>
@@ -67,6 +76,9 @@
                     <div class="form-group pomjereniTextBox">
                       <label for="inputPrezime1_profil">Prezime:</label><br>
                       <span class="greskaUnosa">Morate unijeti prezime!</span>
+                      {{#if prezimeError}}
+                        <span class="greskaUnosa">Morate unijeti prezime!</span><br>
+                      {{/if}}
                       {{input type="text" class="form-control" id="inputPrezime1_profil" placeholder="Prezime" value=model.profil.nezaposleni.prezime}}
                     </div>
                     {{/if}}
@@ -74,7 +86,9 @@
                     {{#if this.model.profil.poslodavac}}
                     <div class="form-group pomjereniTextBox">
                       <label for="inputFirma1_profil">Firma:</label><br>
-                      <span class="greskaUnosa">Morate unijeti firmu!</span>
+                      {{#if nazivFirmeError}}
+                        <span class="greskaUnosa">Morate unijeti firmu!</span><br>
+                      {{/if}}
                       {{input type="text" class="form-control" id="inputFirma1_profil" placeholder="Firma" value=model.profil.poslodavac.nazivFirme}}
                     </div>
                     {{/if}}
@@ -82,7 +96,9 @@
                     {{#if this.model.profil.nezaposleni}}
                     <div class="form-group firma">
                       <label for="inputCV_profil">CV:</label><br>
-                      <span class="greskaUnosa">Morate unijeti CV!</span>
+                      {{#if cvError}}
+                        <span class="greskaUnosa">Morate unijeti CV!</span><br>
+                      {{/if}}
                       {{textarea class="form-control" id="inputCV_profil" value=model.profil.nezaposleni.cv}}
                     </div>
                     {{/if}}

@@ -1,12 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	kategorijaService: Ember.inject.service('kategorija-service'),
+    kategorijaService: Ember.inject.service('kategorija-service'),
     noviNaziv: "",
     noviNazivError: false,
 
 
-	add: function(kategorija) {
+    add: function(kategorija) {
         this.get('kategorijaService').add(kategorija).then(x => {}).catch(x => {});
     },
 
@@ -50,15 +50,15 @@ export default Ember.Controller.extend({
 
 
     actions: {
-    	add: function(){
+        add: function(){
 
             if (this.validirajNovu()) {
-    			
+                
                 let _kategorija = {naziv: this.get("noviNaziv")};
                 this.add(_kategorija);
             }
 
-    	}, 
+        }, 
 
         izmijeni: function(index){
             let _kategorije = this.get("model.kategorije");
