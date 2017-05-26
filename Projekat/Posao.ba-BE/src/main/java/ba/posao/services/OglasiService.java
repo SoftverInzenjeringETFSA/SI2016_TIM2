@@ -63,12 +63,13 @@ public class OglasiService {
 	   else return false;
 	    }
 	   
-	   public Boolean reOpenOglas(int id) {
+	   public Boolean reOpenOglas(int id, Date d) {
 		   if (repository.findById(id)!=null)
 		   {
 		    	Oglas o = repository.findById(id);
 		    	if (o.getZatvoren()==1) {
 		    		byte b=0;
+		    		o.setDatumIsteka(d);
 			    	o.setZatvoren(b);
 			    	repository.save(o);
 			    	return true;
@@ -83,6 +84,12 @@ public class OglasiService {
 		   return repository.searchASC(name, idlokacije, idkategorije);
 		   else return repository.searchDESC(name, idlokacije, idkategorije);
 		   
+	   }
+	   
+	   public List<Oglas> searchName(String name, Boolean order) {
+		   if (order)
+		   return repository.findAllByOglasPodaciVrijednostASC(name);
+		   else return repository.findAllByOglasPodaciVrijednost(name);
 	   }
 	   
 	   public List<Oglas> searchLocation(int idlokacije, Boolean order) {
