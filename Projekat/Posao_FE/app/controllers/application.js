@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     session: Ember.inject.service('session'),
     collapsedBool: false,
+    credentialsError: false,
 	collapsedStr: "collapse navbar-collapse",
 
 	authenticate: function(credentials) {
@@ -11,20 +12,17 @@ export default Ember.Controller.extend({
     },
 
 	actions: {
-		 login: function(credentials, doRedirect) {
+    	
+        login: function(credentials, doRedirect) {
             var self = this;
             this.authenticate(credentials).then(function(value) {
-                console.log(self.get("session.data"));
+                self.set('credentialsError', false);
 
                 if(doRedirect) {
                     self.transitionToRoute('index');
                 }
-                //this.errorMessage = "Uspješan login!";
             }.bind(doRedirect), function(reason) {
-            	//self.errorMessage = "op";
-                self.transitionToRoute('registracija');
-
-                //this.errorMessage = "Pogrešni kredencijali.";
+                self.set('credentialsError', true);
             });
         },
 
