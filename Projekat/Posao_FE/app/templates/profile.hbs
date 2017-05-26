@@ -118,13 +118,19 @@
                     <div class="form-group firma">
                       <label for="inputCV_profil">CV:</label><br>
                       {{#if cvError}}
-                        <span class="greskaUnosa">Morate unijeti CV duži od 50 karaktera!</span><br>
+                        <span class="greskaUnosa">Morate unijeti CV!</span><br>
                       {{/if}}
                       {{textarea class="form-control" id="inputCV_profil" value=model.profil.nezaposleni.cv}}
                     </div>
                     {{/if}}
 
                     <div class="form-group text-center">
+                      {{#if serverError}}
+                        <span class="greskaUnosa">Došlo je do greške prilikom ažuriranja profila.</span><br>
+                      {{/if}}
+                      {{#if serverSuccess}}
+                        <span class="greskaUnosa">Uspješno ažuriran profil.</span><br>
+                      {{/if}}
                         <button type="submit" class="btn btn-success" {{action 'update'}}>Spasi izmjene</button>
                     </div>
                   </div>

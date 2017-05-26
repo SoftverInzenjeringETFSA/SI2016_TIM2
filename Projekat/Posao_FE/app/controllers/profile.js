@@ -17,6 +17,8 @@ export default Ember.Controller.extend({
     prezimeError: false,
     nazivFirmeError: false,
     cvError: false,
+    serverError: false,
+    serverSuccess: false,
 
 
     validacija: function(){
@@ -84,7 +86,14 @@ export default Ember.Controller.extend({
     },
 
     update: function(korisnik, id) {
-        this.get('korisnikService').update(korisnik, id).then(x => {}).catch(err => {});
+        var self = this;
+        this.get('korisnikService').update(korisnik, id).then(x => {
+            self.set("serverError", false);
+            self.set("serverSuccess", true);
+        }).catch(err => {
+            self.set("serverError", true);
+            self.set("serverSuccess", false);
+        });
     },
 
     delete: function(korisnikId){

@@ -47,7 +47,9 @@
                         {{#if prijavaSuccess}}Uspješno ste prijavljeni na oglas!{{/if}}
                         {{#if prijavaError}}Došlo je do greške prilikom prijave.{{/if}}
                         {{#if (eq model.imaprijava.bool false)}}
+                        {{#if (eq model.oglas.zatvoren 1)}}
                         <button class="btn btn-default login-button" {{action 'prijava' model.oglas.idOglasa}}>Prijavi se</button><br><br>
+                        {{/if}}
                         {{/if}}
                             
                     <div>
@@ -76,6 +78,12 @@
 
                       {{#if datumError}}
                         <span class="greskaUnosa">Trebate unijeti datum!</span>
+                      {{/if}}
+                      {{#if reopenError}}
+                        <span class="greskaUnosa">Došlo je do greške prilikom obnavljanja oglasa.</span>
+                      {{/if}}
+                      {{#if reopenSuccess}}
+                        <span class="greskaUnosa">Uspješno obnovljen oglas!</span>
                       {{/if}}
 
                       <div class='input-group date' id='inputDateTime'>

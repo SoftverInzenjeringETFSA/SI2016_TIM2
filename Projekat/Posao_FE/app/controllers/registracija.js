@@ -108,7 +108,13 @@ export default Ember.Controller.extend({
 	register: function(korisnik) {
 		let self = this;
 
-        this.get('korisnikService').register(korisnik).then(data => self.set("serverSuccess", true)).catch(err => self.set("serverError", true));
+        this.get('korisnikService').register(korisnik).then(data => {
+        	self.set("serverSuccess", true);
+        	self.set("serverError", false);
+        }).catch(err => {
+        	self.set("serverError", true);
+        	self.set("serverSuccess", false);
+        });
     },
 
     actions: {
