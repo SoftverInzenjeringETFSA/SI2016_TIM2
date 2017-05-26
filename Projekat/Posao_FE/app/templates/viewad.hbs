@@ -12,7 +12,6 @@
                     <hr class="h-divider" />
                 </div>
 
-
                 <div class="form-horizontal col-xs-12">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Kategorija:</label>
@@ -43,8 +42,13 @@
                             <p>Ne</p>
                         {{/if}}
                         </div>
-                    </div>  
-
+                    </div>
+                        {{#if prijavaSuccess}}Uspješno ste prijavljeni na oglas!{{/if}}
+                        {{#if prijavaError}}Došlo je do greške prilikom prijave.{{/if}}
+                        {{#if (eq model.imaprijava.bool false)}}
+                        <button class="btn btn-default login-button" {{action 'prijava' model.oglas.idOglasa}}>Prijavi se</button><br><br>
+                        {{/if}}
+                            
                     <div>
                         {{#each model.oglas.oglasPodaci as |podatak|}}
                         <div class="form-group">
@@ -56,9 +60,6 @@
                         {{/each}}
                     </div>
                     <div class="form-group text-center">
-                        {{#if (eq session.data.authenticated.role "ROLE_NEZAPOSLENI")}}
-                            <button class="btn btn-default login-button" {{action 'prijava' model.oglas.idOglasa}}>Prijavi se</button><br><br>
-                        {{/if}}
                         {{#if (eq session.data.authenticated.role "ROLE_ADMIN")}}
                             <button class="btn btn-danger" {{action 'delete'}}>Izbriši oglas</button><br><br>
                         {{/if}}

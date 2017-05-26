@@ -19,10 +19,6 @@ export default Ember.Route.extend({
 
 	model: function(params, transition) {
 		let userid = this.get("session.data.authenticated.userid");
-		console.log(this.get("session"));
-		console.log("userid");
-		console.log(userid);
-
 		let _poruke = this.get("porukeService").all(userid);
 
 		return Ember.RSVP.hash({

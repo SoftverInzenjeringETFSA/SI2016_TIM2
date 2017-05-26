@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import BaseService from './base-service';
 import Oglas from '../models/oglas';
+import Wrappedboolean from '../models/wrappedboolean';
 
 export default BaseService.extend({
     timeService: Ember.inject.service('time-service'),
@@ -22,6 +23,15 @@ export default BaseService.extend({
             oglas.setProperties(data);
         });
         return oglas;        
+    },
+
+    imaprijava: function(korisnik, oglas) {
+        var wrappedboolean = Wrappedboolean.create({});
+        this.ajax({ url: `prijave/?korisnik=${korisnik}&oglas=${oglas}`, type: "GET"}).then(function(data) {
+            wrappedboolean.setProperties({bool: data});
+        });
+
+        return wrappedboolean;   
     },
 
     my: function(id){

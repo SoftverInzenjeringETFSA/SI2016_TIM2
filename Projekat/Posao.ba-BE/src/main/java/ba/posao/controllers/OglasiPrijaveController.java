@@ -43,6 +43,12 @@ public class OglasiPrijaveController {
 	  @RequestMapping(value = "", method = RequestMethod.GET)
 	  public ResponseEntity prijavljen(@RequestParam(name="korisnik")int k_id, @RequestParam(name="oglas")int o_id)
 	  {
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			Korisnik _korisnik = korisnikService.getKorisnikByUserName(auth.getName());	
+			if (_korisnik == null || _korisnik.getIdKorisnika() != k_id){
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Zabranjen pristup");
+			}	
+
 			return service.imaPrijava(k_id, o_id);
 	  } 
 }

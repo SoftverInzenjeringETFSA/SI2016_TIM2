@@ -3,9 +3,11 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	oglasiService: Ember.inject.service('oglasi-service'),
 	session: Ember.inject.service(),
+    prijavaSuccess: false,
+    prijavaError: false,
 
 	prijava: function(korisnik, oglas) {
-        return this.get('oglasiService').prijava(korisnik, oglas).then(x => {}).catch(err => {});
+        return this.get('oglasiService').prijava(korisnik, oglas).then(x => {this.set("prijavaSuccess", true); this.set("model.imaprijava", true)}).catch(err => {this.set("prijavaSuccess", false)});
     },
 
     delete: function(oglasId) {
