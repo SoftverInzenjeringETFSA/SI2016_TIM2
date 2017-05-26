@@ -31,4 +31,8 @@ export default BaseService.extend({
     send: function(poruka) {
         return this.ajax({ url: `poruke/send`, type: "POST", data: JSON.stringify(poruka)});
     },
+
+    getUnread: function(id){
+        return this.ajax({ url: `poruke/unread?korisnik=${id}`, type: "GET"});
+    },
 });
