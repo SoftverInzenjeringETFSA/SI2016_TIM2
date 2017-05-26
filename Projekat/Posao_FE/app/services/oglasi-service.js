@@ -49,19 +49,23 @@ export default BaseService.extend({
     },
 
     postavi: function(oglas) {
-    return this.ajax({ url: `oglasi/postavioglas`, type: "POST", data: JSON.stringify(oglas)});
+        return this.ajax({ url: `oglasi/postavioglas`, type: "POST", data: JSON.stringify(oglas)});
     },
 
     prijava: function(userid, adid) {
-    return this.ajax({ url: `prijave/add?korisnik=${userid}&oglas=${adid}`, type: "POST", data: {}});
+        return this.ajax({ url: `prijave/add?korisnik=${userid}&oglas=${adid}`, type: "POST", data: {}});
     },
 
     zatvori: function(id) {
-    return this.ajax({ url: `oglasi/close?id=${id}`, type: "POST", data: {}});
+        return this.ajax({ url: `oglasi/close?id=${id}`, type: "POST", data: {}});
     },
 
     delete: function(adid) {
-    return this.ajax({ url: `oglasi/remove?id=${adid}`, type: "DELETE", data: {}});
+        return this.ajax({ url: `oglasi/remove?id=${adid}`, type: "DELETE", data: {}});
+    },
+
+    reopen: function(adid, newDate) {
+        return this.ajax({ url: `oglasi/reopen?id=${adid}&date=${newDate}`, type: "POST", data: {}});
     },
 
     search: function(name, kategorijaId, filter, asc){

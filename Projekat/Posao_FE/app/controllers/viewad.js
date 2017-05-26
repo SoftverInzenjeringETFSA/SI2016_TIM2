@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	oglasiService: Ember.inject.service('oglasi-service'),
 	session: Ember.inject.service(),
+    noviDatumIsteka: null,
     prijavaSuccess: false,
     prijavaError: false,
 
@@ -18,6 +19,9 @@ export default Ember.Controller.extend({
         return this.get('oglasiService').zatvori(oglasId);
     },
 
+    reopen: function(oglasId) {
+        this.get('oglasiService').reopen(oglasId).then();
+    },
 
     actions: {
     	prijava: function(oglasId){
@@ -37,6 +41,12 @@ export default Ember.Controller.extend({
             this.zatvori(oglasId).then(x => {
                 this.set('model.oglas.zatvoren', 1);
             });
+        },
+
+        reopen: function(){
+            let oglasId = this.get("model.oglas.idOglasa");
+            let noviDatum = this.get("noviDatumIsteka");
+            this.reopen(oglasId, noviDatum);            
         },
     }
 });
