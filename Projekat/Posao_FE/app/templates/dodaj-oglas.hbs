@@ -106,6 +106,7 @@
             <div class="form-group text-center">
                 {{#if serverError}}
                 <span class="greskaUnosa">Došlo je do greške prilikom unosa oglasa.</span>
+                <span class="greskaUnosa">{{serverErrorText}}</span>
                 {{/if}}
                 {{#if serverSuccess}}
                 <span class="greskaUnosa">Uspješno kreiran oglas.</span>

@@ -19,6 +19,7 @@ export default Ember.Controller.extend({
     opisError: false,
     poljaEror: false,
     serverError: false,
+    serverErrorText: "",
     serverSuccess: false,
 
     validacija: function(){
@@ -86,6 +87,8 @@ export default Ember.Controller.extend({
     },
 
 	register: function(){
+        this.set("serverErrorText", "");
+
 		let oglas = {};
         var self = this;
 		oglas.poslodavacId = this.get("session.data.authenticated.userid");
@@ -111,9 +114,13 @@ export default Ember.Controller.extend({
 		this.get("oglasiService").postavi(oglas).then(x => {
             self.set("serverSuccess", true);
             self.set("serverError", false);
+            self.set("serverErrorText", "");
+
         }).catch(err => {
             self.set("serverSuccess", false);
             self.set("serverError", true);
+            self.set("serverErrorText", err.responseText);
+
         });
 
 

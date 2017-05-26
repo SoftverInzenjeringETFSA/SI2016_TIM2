@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
     noviNazivError: false,
     noviNError: false,
     noviServerError: false,
+    noviServerErrorText: "",
     noviServerSuccess: false,
     indexGreske: null,
 
@@ -44,13 +45,19 @@ export default Ember.Controller.extend({
     },
 
     addTemplate: function(template){
+        this.set("serverErrorText", "");
+
         var self = this;
         this.get("templateService").add(template).then(x => {
             self.set("noviServerError", false);
             self.set("noviServerSuccess", true);
+            self.set("serverErrorText", "");
+
         }).catch(x => {
             self.set("noviServerError", true);
             self.set("noviServerSuccess", false);
+            self.set("serverErrorText", err.responseText);
+
         });
     },
 
