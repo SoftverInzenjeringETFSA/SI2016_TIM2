@@ -17,5 +17,8 @@ public interface PorukeRepository extends JpaRepository<Poruke, Long> {
 	@Query("select p from Poruke p where idPosiljaoca=?")
 	public List<Poruke> findBySender(Integer id);
 	
+	@Query("select count(p) from Poruke p where procitano=false and idPrimaoca=?")
+	public int countUnread(Integer id);
+	
 	
 }

@@ -97,10 +97,18 @@ public class OglasController {
 		 Oglas _oglas = new Oglas();
 		 
 		 if (oglas.getDatumIsteka()==null || oglas.getDatumIsteka().compareTo((Date) LocalDate.now().toDate())==1)
-		 
+		 {
+			 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Pogresan datum isteka");
+	  }
 		 _oglas.setDatumIsteka(oglas.getDatumIsteka());
+		 
 		 _oglas.setKategorije(oglas.getKategorije());
 		 _oglas.setLokacija(oglas.getLokacija());
+		 
+		 if (oglas.getNaziv()=="" )
+		 {
+			 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Pogresan naziv oglasa");
+		 }
 		 _oglas.setNaziv(oglas.getNaziv());
 		 _oglas.setOglasPodaci(oglas.getOglasPodaci());
 		 _oglas.setOglasPrijave(new ArrayList<OglasPrijave>());

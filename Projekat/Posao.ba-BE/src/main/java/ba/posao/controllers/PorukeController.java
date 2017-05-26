@@ -57,7 +57,7 @@ public class PorukeController {
 		if (_korisnik == null || _korisnik.getIdKorisnika() != id){
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Zabranjen pristup");
 		}
-		
+			
 		return ResponseEntity.status(HttpStatus.OK).body(service.getMessagesByRecipient(id));
 	}
 	
@@ -74,4 +74,16 @@ public class PorukeController {
 		return ResponseEntity.ok(service.sendMssg(poruka));
 		
 	}
+	
+	@CrossOrigin
+    @RequestMapping(path="/unread", method = RequestMethod.GET)
+    public  ResponseEntity count(@RequestParam("korisnik") int id) {
+	/*	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Korisnik _korisnik = korisnikService.getKorisnikByUserName(auth.getName());	
+		if (_korisnik == null || _korisnik.getIdKorisnika() != id){
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Zabranjen pristup");
+		} */
+		return ResponseEntity.status(HttpStatus.OK).body(service.countUnread(id));
+	}
+	
 }

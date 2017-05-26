@@ -27,6 +27,13 @@ public class PorukeService {
 	}
 	
 	public List<Poruke> getMessagesByRecipient(int id){
+		
+		List<Poruke> poruke =repository.findByRecipient(id);
+		for (int i=0; i<poruke.size(); i++)
+		{
+			poruke.get(i).setProcitano(true);
+			repository.save(poruke.get(i));
+		}		
 		return repository.findByRecipient(id);
 	}
 	
@@ -41,6 +48,12 @@ public class PorukeService {
 		repository.save(p);
 		return true;
 	}
+	
+	public Boolean countUnread(int korisnik)
+	{
+		return repository.countUnread(korisnik)!=0;
+	}
+	
 	
 	
 }
