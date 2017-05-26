@@ -41,7 +41,7 @@ public class PorukeController {
     @RequestMapping(path="/get/sender", method = RequestMethod.GET)
     public  ResponseEntity findS(@RequestParam("sender") int id) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		Korisnik _korisnik = korisnikService.getKorisnikByUserName(auth.getName());	
+		Korisnik _korisnik = korisnikService.getKorisnikByUserName(auth.getName());
 		if (_korisnik == null || _korisnik.getIdKorisnika() != id){
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Zabranjen pristup");
 		}
@@ -78,11 +78,11 @@ public class PorukeController {
 	@CrossOrigin
     @RequestMapping(path="/unread", method = RequestMethod.GET)
     public  ResponseEntity count(@RequestParam("korisnik") int id) {
-	/*	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Korisnik _korisnik = korisnikService.getKorisnikByUserName(auth.getName());	
 		if (_korisnik == null || _korisnik.getIdKorisnika() != id){
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Zabranjen pristup");
-		} */
+		} 
 		return ResponseEntity.status(HttpStatus.OK).body(service.countUnread(id));
 	}
 	
