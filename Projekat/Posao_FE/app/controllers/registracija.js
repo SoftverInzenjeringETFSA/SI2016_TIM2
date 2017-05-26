@@ -29,12 +29,7 @@ export default Ember.Controller.extend({
 		let _firmaError = false;
 		let _cvError = false;
 		let _tipError = false;
-		//samo slova
-		let re = /^[A-Za-z]+$/;
-		//slova i razmak
-		let re2 = /^[a-zA-Z ]*$/;
-		//slova,-.brojevi i -_.'
-		let re3=/^[a-z\d\-_.'\s]+$/i;
+		
 		//email unicode
 		let re1 = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 

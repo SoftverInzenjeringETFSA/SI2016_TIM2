@@ -4,6 +4,8 @@ export default Ember.Controller.extend({
     kategorijaService: Ember.inject.service('kategorija-service'),
     noviNaziv: "",
     noviNazivError: false,
+    noviNError: false,
+    indexGreske: null,
 
     add: function(kategorija) {
         this.get('kategorijaService').add(kategorija).then(x => {}).catch(x => {});
@@ -44,7 +46,28 @@ export default Ember.Controller.extend({
     },
 
     validirajIzmjenu: function(){
-        return true;
+
+        let uspjesno = true;
+        let _noviNError = false;
+        let _polja=this.get('model.kategorije');
+        let _indexGreske=null;
+
+        for(let i=0; i<_polja.length; i++)
+        {
+            console.log(_polja[i]);
+            if(_polja[i].naziv=="")
+            {
+                console.log("aaaa");
+                _noviNError = true;
+                uspjesno = false;
+                _indexGreske=i;
+                break;
+            }
+        }
+
+        this.set("noviNError", _noviNError);
+        this.set("indexGreske", _indexGreske);
+        return uspjesno;
     },
 
 
@@ -60,15 +83,22 @@ export default Ember.Controller.extend({
         }, 
 
         izmijeni: function(index){
-            let _kategorije = this.get("model.kategorije");
-            let kategorija = _kategorije[index];
-            this.izmijeni(kategorija);
+
+            if(this.validirajIzmjenu())
+            {
+                let _kategorije = this.get("model.kategorije");
+                let kategorija = _kategorije[index];
+                this.izmijeni(kategorija);
+            }
         },
 
         brisi: function(index){
-            let _kategorije = this.get("model.kategorije");
-            let kategorija = _kategorije[index];
-            this.brisi(kategorija, index);
+            if(this.validirajIzmjenu())
+            {
+                let _kategorije = this.get("model.kategorije");
+                let kategorija = _kategorije[index];
+                this.brisi(kategorija, index);
+            }
         }
     }
 });

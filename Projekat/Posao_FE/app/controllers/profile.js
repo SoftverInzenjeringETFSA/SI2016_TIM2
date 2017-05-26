@@ -7,8 +7,6 @@ export default Ember.Controller.extend({
     session: Ember.inject.service(),
     modalClass: "modal fade",
     modalStyle: "display:hidden",
-    modalProfileDeleteClass: "modal fade",
-    modalProfileDeleteStyle: "display:hidden",
     izvjestaj: Izvjestaj.create({}),
     passwordError: false,
     emailError: false,
@@ -31,12 +29,7 @@ export default Ember.Controller.extend({
         let _nazivFirmeError = false;
         let _cvError = false;
 
-        //samo slova
-        let re = /^[A-Za-z]+$/;
-        //slova i razmak
-        let re2 = /^[a-zA-Z ]*$/;
-        //slova,-.brojevi i -_.'
-        let re3=/^[a-z\d\-_.'\s]+$/i;
+
         //email unicode
         let re1 = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
@@ -93,10 +86,7 @@ export default Ember.Controller.extend({
     },
 
     delete: function(korisnikId){
-        this.get('korisnikService').delete(korisnikId).then(x => {
-            this.get('session').invalidate();
-            return this.transitionToRoute('index');
-        });
+        return this.get('korisnikService').delete(korisnikId);
     },
 
     getReport: function(){
@@ -114,12 +104,19 @@ export default Ember.Controller.extend({
         },
 
         provjeri: function() {
+
             console.log(this.get("model.profil.poslodavac.telefon"));
+
         },
+
 
         delete: function(){
             let korisnikId = this.get("session.data.authenticated.userid");
-            this.delete(korisnikId);
+
+            if (this.delete(korisnikId)){
+                this.get('session').invalidate();
+                this.transitionToRoute('index');
+            }
         },
 
         sakrijModal: function(){
@@ -128,21 +125,11 @@ export default Ember.Controller.extend({
             this.set("izvjestaj", {brojOglasa: "", brojNezaposlenih: "", brojPoslodavaca: "", brojPrijava: ""});
         },
 
-        sakrijProfileDeleteModal: function(){
-            this.set("modalProfileDeleteClass", "modal fade");
-            this.set("modalProfileDeleteStyle", "display:none");
-        },
-
         report: function(){
             this.set("modalClass", "modal fade in");
             this.set("modalStyle", "display:block");
+
             this.getReport();
         },
-
-        showProfileDeleteModal: function(){
-            this.set("modalProfileDeleteClass", "modal fade in");
-            this.set("modalProfileDeleteStyle", "display:block");
-        },
-
     }
 });
