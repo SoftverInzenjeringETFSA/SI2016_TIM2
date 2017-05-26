@@ -85,6 +85,12 @@ public class OglasiService {
 		   
 	   }
 	   
+	   public List<Oglas> searchName(String name, Boolean order) {
+		   if (order)
+		   return repository.findAllByOglasPodaciVrijednostASC(name);
+		   else return repository.findAllByOglasPodaciVrijednost(name);
+	   }
+	   
 	   public List<Oglas> searchLocation(int idlokacije, Boolean order) {
 		   if (order)
 		   return repository.searchLocationASC(idlokacije);

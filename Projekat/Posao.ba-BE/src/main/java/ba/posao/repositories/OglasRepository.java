@@ -22,20 +22,23 @@ public interface OglasRepository extends PagingAndSortingRepository<Oglas, Integ
 	
 	public List<Oglas> findAllByKategorijeNaziv(String naziv);
 	
-	@Query("SELECT o FROM Oglas o, OglasPodaci op WHERE o.idOglasa=op.id AND vrijednost LIKE %:vrijednost%")
+	@Query("SELECT o FROM Oglas o, Poslodavci p Where (p.idKorisnika=o.poslodavac and p.nazivFirme LIKE %:vrijednost%) or o.naziv LIKE %:vrijednost% order by o.datumObjave desc" )
 	public List<Oglas> findAllByOglasPodaciVrijednost(@Param("vrijednost")String vrijednost);
+	
+	@Query("SELECT o FROM Oglas o ,Poslodavci p Where (p.idKorisnika=o.poslodavac and p.nazivFirme LIKE %:vrijednost%) or o.naziv LIKE %:vrijednost% order by o.datumObjave" )
+	public List<Oglas> findAllByOglasPodaciVrijednostASC(@Param("vrijednost")String vrijednost);
 	
 	@Query("SELECT COUNT(*)  FROM OglasPrijave")
 	public Integer brojUspjesnihPrijava();
 	
 	public List<Oglas> findAllByLokacijaNaziv(String lokacija);
 	
-	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.lokacija.id=:lokacija and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave" )
+	@Query("SELECT o FROM Oglas o, Poslodavci p Where ((p.idKorisnika=o.poslodavac and p.nazivFirme LIKE %:name%) or o.naziv LIKE %:name%) and o.lokacija.id=:lokacija and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave" )
 	public List<Oglas> searchASC(@Param("name")String name, 
 			@Param("lokacija")Integer idlokacije, 
 			@Param("kategorija")Integer idkategorije);	
 	
-	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.lokacija.id=:lokacija and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave desc" )
+	@Query("SELECT o FROM Oglas o, Poslodavci p Where ((p.idKorisnika=o.poslodavac and p.nazivFirme LIKE %:name%) or o.naziv LIKE %:name%) and o.lokacija.id=:lokacija and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave desc" )
 	public List<Oglas> searchDESC(@Param("name")String name, 
 			@Param("lokacija")Integer idlokacije, 
 			@Param("kategorija")Integer idkategorije);	
@@ -52,19 +55,19 @@ public interface OglasRepository extends PagingAndSortingRepository<Oglas, Integ
 	@Query("SELECT o FROM Oglas o WHERE o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave" )
 	public List<Oglas> searchKategoryASC(@Param("kategorija")Integer idkategorije);
 	
-	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave desc" )
+	@Query("SELECT o FROM Oglas o , Poslodavci p Where ((p.idKorisnika=o.poslodavac and p.nazivFirme LIKE %:name%) or o.naziv LIKE %:name%) and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave desc" )
 	public List<Oglas> searchNameCategory(@Param("name")String name, 
 			@Param("kategorija")Integer idkategorije);
 	
-	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave" )
+	@Query("SELECT o FROM Oglas o , Poslodavci p Where ((p.idKorisnika=o.poslodavac and p.nazivFirme LIKE %:name%) or o.naziv LIKE %:name%) and o.kategorije.idkategorije=:kategorija ORDER BY o.datumObjave" )
 	public List<Oglas> searchNameCategoryASC(@Param("name")String name, 
 			@Param("kategorija")Integer idkategorije);
 	
-	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.lokacija.id=:lokacija ORDER BY o.datumObjave desc" )
+	@Query("SELECT o FROM Oglas o , Poslodavci p Where ((p.idKorisnika=o.poslodavac and p.nazivFirme LIKE %:name%) or o.naziv LIKE %:name%) and o.lokacija.id=:lokacija ORDER BY o.datumObjave desc" )
 	public List<Oglas> searchNameLocatin(@Param("name")String name, 
 			@Param("lokacija")Integer idlokacije);	
 	
-	@Query("SELECT o FROM Oglas o WHERE o.naziv LIKE %:name% and o.lokacija.id=:lokacija ORDER BY o.datumObjave" )
+	@Query("SELECT o FROM Oglas o , Poslodavci p Where ((p.idKorisnika=o.poslodavac and p.nazivFirme LIKE %:name%) or o.naziv LIKE %:name%) and o.lokacija.id=:lokacija ORDER BY o.datumObjave" )
 	public List<Oglas> searchNameLocatinASC(@Param("name")String name, 
 			@Param("lokacija")Integer idlokacije);	
 	
