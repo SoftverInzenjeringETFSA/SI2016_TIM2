@@ -51,7 +51,7 @@ export default Ember.Controller.extend({
             _emailError = true;
         }
 
-        if (this.get("model.profil.poslodavac.telefon") == null || !this.get("model.profil.poslodavac.telefon").match(/^\d{9}$/)){
+        if (this.get("model.profil.poslodavac.telefon") == null || (!this.get("model.profil.poslodavac.telefon").match(/^\d{9}$/) && !this.get("model.profil.poslodavac.telefon").match(/^\d{8}$/))){
                 uspjesno = false;
                 _telefonError = true;
             }
