@@ -152,9 +152,9 @@ public class OglasController {
 	    }
 	 
 	 @RequestMapping(value = "/reopen", method = RequestMethod.POST)
-	    public ResponseEntity reOpen(@RequestParam(name="id")int id)
+	    public ResponseEntity reOpen(@RequestParam(name="id")int id, @RequestBody Date d)
 	    {
-		return ResponseEntity.status(HttpStatus.OK).body(oglasService.reOpenOglas(id));
+		return ResponseEntity.status(HttpStatus.OK).body(oglasService.reOpenOglas(id, d));
 	    }
 	 
 	 @RequestMapping(path="/search", method = RequestMethod.GET)
