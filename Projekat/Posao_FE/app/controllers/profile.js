@@ -7,6 +7,8 @@ export default Ember.Controller.extend({
     session: Ember.inject.service(),
     modalClass: "modal fade",
     modalStyle: "display:hidden",
+    modalProfileDeleteClass: "modal fade",
+    modalProfileDeleteStyle: "display:hidden",
     izvjestaj: Izvjestaj.create({}),
     passwordError: false,
     emailError: false,
@@ -91,7 +93,10 @@ export default Ember.Controller.extend({
     },
 
     delete: function(korisnikId){
-        return this.get('korisnikService').delete(korisnikId);
+        this.get('korisnikService').delete(korisnikId).then(x => {
+            this.get('session').invalidate();
+            return this.transitionToRoute('index');
+        });
     },
 
     getReport: function(){
@@ -109,19 +114,12 @@ export default Ember.Controller.extend({
         },
 
         provjeri: function() {
-
             console.log(this.get("model.profil.poslodavac.telefon"));
-
         },
-
 
         delete: function(){
             let korisnikId = this.get("session.data.authenticated.userid");
-
-            if (this.delete(korisnikId)){
-                this.get('session').invalidate();
-                this.transitionToRoute('index');
-            }
+            this.delete(korisnikId);
         },
 
         sakrijModal: function(){
@@ -130,11 +128,21 @@ export default Ember.Controller.extend({
             this.set("izvjestaj", {brojOglasa: "", brojNezaposlenih: "", brojPoslodavaca: "", brojPrijava: ""});
         },
 
+        sakrijProfileDeleteModal: function(){
+            this.set("modalProfileDeleteClass", "modal fade");
+            this.set("modalProfileDeleteStyle", "display:none");
+        },
+
         report: function(){
             this.set("modalClass", "modal fade in");
             this.set("modalStyle", "display:block");
-
             this.getReport();
         },
+
+        showProfileDeleteModal: function(){
+            this.set("modalProfileDeleteClass", "modal fade in");
+            this.set("modalProfileDeleteStyle", "display:block");
+        },
+
     }
 });

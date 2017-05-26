@@ -27,10 +27,7 @@ export default BaseService.extend({
     },
 
     delete: function(korisnikid) {
-        this.ajax({ url: `korisnici/delete?id=${korisnikid}`, type: "DELETE", data: JSON.stringify({})}).then(function(data) {
-        });
-    
-        return true;
+        return this.ajax({ url: `korisnici/delete?id=${korisnikid}`, type: "DELETE", data: JSON.stringify({})});
     },
 
 
