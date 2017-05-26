@@ -14,11 +14,14 @@
             {{textarea class="form-control" id="inputPoruka" value=poruka.tekst}}
         </div>
         <div class="modal-footer">
-          {{#if sucess}}
+          {{#if success}}
           <span>Poruka uspješno poslana.</span>
           {{/if}}
-          {{#if error}}
+          {{#if serverError}}
           <span>Došlo je do greške.</span>
+          {{/if}}
+          {{#if messageError}}
+          <span>Morate unijeti poruku.</span>
           {{/if}}
 
           <button type="button" class="btn btn-default" data-dismiss="modal" {{action 'sakrijModal'}}>Close</button>

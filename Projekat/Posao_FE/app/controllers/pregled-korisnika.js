@@ -10,16 +10,27 @@ export default Ember.Controller.extend({
     modalStyle: "display:hidden",
     poruka: Poruka.create({}),
     success: false,
-    error: false,
+    messageError: false,
+    serverError: false,
 
     sendMessage: function(){
-        this.get("porukeService").send(this.get("poruka")).then(res => {}).catch(err => {});
+        var self = this;
+
+        this.get("porukeService").send(this.get("poruka")).then(res => {
+            self.set("success", true);
+            self.set("serverError", false);
+        }).catch(err => {
+            self.set("success", false);
+            self.set("serverError", true);
+        });
     },
 
     validiraj: function(){
-        let _success = false;
-        let _error = false;
-        let validno = true;
+        let validno = this.get("poruka.tekst") != null && this.get("poruka.tekst").length !== 0;
+
+        this.set("serverError", false);
+        this.set("success", false);
+        this.set("messageError", !validno);
 
         return validno;
     },
@@ -28,6 +39,9 @@ export default Ember.Controller.extend({
 
         sakrijModal: function(){
             this.set("modalClass", "modal fade");
+            this.set("success", false);
+            this.set("messageError", false);
+            this.set("serverError", false);
             this.set("modalStyle", "display:none");
             this.set("poruka", Poruka.create({}));
           //  this.set("izvjestaj", {brojOglasa: "", brojUspjesnihOglasa: "", brojKorisnika: ""});
@@ -42,7 +56,7 @@ export default Ember.Controller.extend({
         //    this.getReport();
         },
 
-        posalji: function(){
+        send: function(){
             if (this.validiraj())
             {
                 this.sendMessage();
