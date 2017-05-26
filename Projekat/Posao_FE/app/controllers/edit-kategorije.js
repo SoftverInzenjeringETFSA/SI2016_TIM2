@@ -93,12 +93,11 @@ export default Ember.Controller.extend({
         },
 
         brisi: function(index){
-            if(this.validirajIzmjenu())
-            {
+            
                 let _kategorije = this.get("model.kategorije");
                 let kategorija = _kategorije[index];
                 this.brisi(kategorija, index);
-            }
+            
         }
     }
 });
