@@ -1,7 +1,9 @@
+import Ember from 'ember';
 import BaseService from './base-service';
 import Oglas from '../models/oglas';
 
 export default BaseService.extend({
+    timeService: Ember.inject.service('time-service'),
 
     all: function() {
         var oglasi = [];
@@ -19,7 +21,6 @@ export default BaseService.extend({
         this.ajax({ url: `oglasi/get?id=${id}`, type: "GET"}).then(function(data) {
             oglas.setProperties(data);
         });
-
         return oglas;        
     },
 

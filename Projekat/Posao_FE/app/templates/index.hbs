@@ -1,8 +1,7 @@
 <div class="main-page">     
 	<div class="container-fluid">
 		<div class="row row-eq-height">
-			<div class="col-md-3 sidebar">		
-				
+			<div class="col-md-3 sidebar">			
 				<!-- Employer form -->
 				<div class="row">
 					<form role="search" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-12 col-lg-12">
@@ -37,7 +36,8 @@
 								<option value="TEMP_DESC">Najnoviji ka najstarijim</option>
 								<option value="TEMP_ASC">najstariji ka najnovijima</option>
 							</select>
-
+						</div>
+						<div class="form-group">
 						<label for="filter">Lokacija:</label>
 							<select class="form-control" name="filter" onchange={{action "selectFilter" value="target.value"}}>
 								<option value="-1">-</option>
@@ -45,7 +45,6 @@
 									<option value={{lokacija.id}}>{{lokacija.naziv}}</option>
 								{{/each}}
 							</select>
-
 						</div>
 						<button type="submit" class="btn btn-default" {{action 'search'}}>Filtriraj</button>
 					</form>
