@@ -40,7 +40,7 @@
                     <div class="form-group pomjereniTextBox">
                       <label for="inputPassword3_profil">Lozinka:</label><br>
                       {{#if passwordError}}
-                        <span class="greskaUnosa">Morate unijeti lozinku!</span><br>
+                        <span class="greskaUnosa">Password mora imati minimalno 6 karaktera!</span><br>
                       {{/if}}
                       {{input type="password" class="form-control" id="inputPassword3_profil" placeholder="Password" value=model.profil.password}}
                     </div>
@@ -48,7 +48,7 @@
                     <div class="form-group pomjereniTextBox">
                       <label for="inputEmail3_profil">Email:</label><br>
                       {{#if emailError}}
-                        <span class="greskaUnosa">Morate unijeti email!</span><br>
+                        <span class="greskaUnosa">Morate unijeti validan email!</span><br>
                       {{/if}}
                       {{input type="email" class="form-control" id="inputEmail3_profil" placeholder="Email" value=model.profil.email}}
                     </div>
@@ -57,7 +57,7 @@
                     <div class="form-group pomjereniTextBox">
                       <label for="inputTelefon1_profil">Telefon:</label><br>
                       {{#if telefonError}}
-                        <span class="greskaUnosa">Morate unijeti telefon!</span><br>
+                        <span class="greskaUnosa">Morate unijeti telefon u formatu 661234567 ili 66123456!</span><br>
                       {{/if}}
                       {{input type="text" class="form-control" id="inputTelefon1_profil" placeholder="123456789" value=model.profil.poslodavac.telefon}}
                     </div>
@@ -95,7 +95,7 @@
                     <div class="form-group firma">
                       <label for="inputCV_profil">CV:</label><br>
                       {{#if cvError}}
-                        <span class="greskaUnosa">Morate unijeti CV!</span><br>
+                        <span class="greskaUnosa">Morate unijeti CV duži od 50 karaktera!</span><br>
                       {{/if}}
                       {{textarea class="form-control" id="inputCV_profil" value=model.profil.nezaposleni.cv}}
                     </div>
