@@ -9,7 +9,7 @@
 			                <div class="input-group">
 			                    {{input type="text" class="form-control input-lg" placeholder="Unesite pojam pretrage..." value=pretraga}}
 			                    <span class="input-group-btn">
-			                        <button class="btn btn-info btn-lg" type="submit">
+			                        <button class="btn btn-info btn-lg" {{action 'search'}}>
 			                            <i class="glyphicon glyphicon-search" style="margin-top:2px"></i>
 			                        </button>
 			                    </span>
@@ -51,6 +51,7 @@
 				</div>
 			</div>
 
+			<!-- Right side -->
 			<div class="col-md-7 col-md-offset-1">
 				<table class="table table-hover advert-table">
 					<tbody>
