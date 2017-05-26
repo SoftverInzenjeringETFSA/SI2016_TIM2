@@ -16,14 +16,13 @@ Router.map(function() {
   this.route('profile');
   this.route('kreiraj-template', {path: '/kreiraj-template'});
   this.route('edit-kategorije');
+  this.route('outbox');
   this.route('pregled-notifikacija');
   this.route('pregled-korisnika');
   this.route('pregled-profila-public');
-
+  
   this.route('unauthorized');
   this.route("error", { path: "*path"});
-
-
 });
 
 export default Router;
