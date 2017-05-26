@@ -31,7 +31,8 @@ export default BaseService.extend({
     
     all: function() {
         var oglasi = [];
-        this.ajax({ url: `oglasi/all`, type: "GET"}).then(function(data) {
+        //this.ajax({ url: `oglasi/all`, type: "GET"}).then(function(data) {
+        this.ajax({ url: `oglasi/search?asc=false`, type: "GET"}).then(function(data) {
             data.forEach(function(oglas) {
                 oglas.datumObjave = getTimeAgo(oglas.datumObjave);
                 oglasi.addObject(Oglas.create(oglas));
@@ -44,6 +45,7 @@ export default BaseService.extend({
     details: function(id) {
         var oglas = Oglas.create({});
         this.ajax({ url: `oglasi/get?id=${id}`, type: "GET"}).then(function(data) {
+            oglas.datumObjave = getTimeAgo(oglas.datumObjave);
             oglas.setProperties(data);
         });
         return oglas;        
@@ -62,6 +64,7 @@ export default BaseService.extend({
         var oglasi = [];
         this.ajax({ url: `oglasi/poslodavac?id=${id}`, type: "GET"}).then(function(data) {
             data.forEach(function(oglas) {
+                oglas.datumObjave = getTimeAgo(oglas.datumObjave);
                 oglasi.addObject(Oglas.create(oglas));
             });
         });
@@ -124,6 +127,7 @@ export default BaseService.extend({
         var oglasi = [];
         this.ajax({ url: query, type: "GET"}).then(function(data) {
             data.forEach(function(oglas) {
+                oglas.datumObjave = getTimeAgo(oglas.datumObjave);
                 oglasi.addObject(Oglas.create(oglas));
             });
         });
