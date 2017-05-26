@@ -34,9 +34,10 @@
         {{#each model.kategorije as |kategorija index|}}
         <div class="form-group text-center">
             <label for="inputNaziv1">Naziv:</label><br>
-
-              <span class="greskaUnosa">Morate unijeti naziv!</span>
-
+            {{#if noviNError}}
+            {{#if (eq indexGreske index)}}
+            <span class="greskaUnosa">Morate unijeti naziv!</span>
+            {{/if}}{{/if}}
             {{input type="text" class="form-control" placeholder="Naziv" value=kategorija.naziv}}
          </div>
 
