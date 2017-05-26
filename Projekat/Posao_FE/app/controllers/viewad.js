@@ -19,8 +19,8 @@ export default Ember.Controller.extend({
         return this.get('oglasiService').zatvori(oglasId);
     },
 
-    reopen: function(oglasId) {
-        this.get('oglasiService').reopen(oglasId).then();
+    reopen: function(oglasId, noviDatum) {
+        this.get('oglasiService').reopen(oglasId, noviDatum).then();
     },
 
     actions: {

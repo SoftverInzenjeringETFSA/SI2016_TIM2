@@ -203,7 +203,7 @@ public class KorisnikService implements UserDetailsService{
 	    
 	    public Korisnik getKorisnikByUserName(String username) {
 	    	Korisnik k = repository.findByUsername(username);
-	    	k.setPassword("");
+	    	//k.setPassword("");
 	    	return k;
 	    	
 	    }

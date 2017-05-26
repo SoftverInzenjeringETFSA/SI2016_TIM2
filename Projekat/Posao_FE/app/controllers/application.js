@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     session: Ember.inject.service('session'),
+    porukeService: Ember.inject.service('poruke-service'),
     collapsedBool: false,
     credentialsError: false,
 	collapsedStr: "collapse navbar-collapse",
@@ -17,6 +18,7 @@ export default Ember.Controller.extend({
             var self = this;
             this.authenticate(credentials).then(function(value) {
                 self.set('credentialsError', false);
+                self.get("porukeService").getUnread(self.get("session.data.authenticated.userid")).then(data => self.set("session.imaNeprocitanih", data));
 
                 if(doRedirect) {
                     self.transitionToRoute('index');
