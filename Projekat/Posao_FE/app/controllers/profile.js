@@ -4,7 +4,7 @@ import Izvjestaj from '../models/izvjestaj';
 export default Ember.Controller.extend({
     korisnikService: Ember.inject.service('korisnik-service'),
     izvjestajService: Ember.inject.service('izvjestaj-service'),
-	session: Ember.inject.service(),
+    session: Ember.inject.service(),
     modalClass: "modal fade",
     modalStyle: "display:hidden",
     izvjestaj: Izvjestaj.create({}),
@@ -41,27 +41,23 @@ export default Ember.Controller.extend({
         if (this.get("model.profil.password") == "" || this.get("model.profil.password").length < 6) {
             _passwordError = true;
             uspjesno = false;
+            console.log("validiram password");
         }
         
         if (this.get("model.profil.email") == null || !re1.test(this.get("model.profil.email"))){
-            ispravno = false;
+            uspjesno = false;
             _emailError = true;
         }
 
         if (this.get("model.profil.poslodavac.telefon") == null || !this.get("model.profil.poslodavac.telefon").match(/^\d{9}$/)){
-                ispravno = false;
+                uspjesno = false;
                 _telefonError = true;
             }
 
-        if (this.get("model.profil.poslodavac.nazivFirme") == "") {
-            _nazivFirmeError = true;
+
+        if (this.get("model.profil.poslodavac.nazivFirme") == "" /*|| !re2.test(this.get("model.profil.poslodavac.nazivFirme"))*/){
             uspjesno = false;
-        }
-
-
-        if (this.get("model.profil.poslodavac.nazivFirme") == null || this.get("model.profil.poslodavac.nazivFirme").length < 1 /*|| !re2.test(this.get("model.profil.poslodavac.nazivFirme"))*/){
-            ispravno = false;
-            _firmaError = true;
+            _nazivFirmeError = true;
         }
 
         if (this.get("model.profil.nezaposleni.cv") == "") {
@@ -90,7 +86,7 @@ export default Ember.Controller.extend({
         return uspjesno;
     },
 
-	update: function(korisnik, id) {
+    update: function(korisnik, id) {
         this.get('korisnikService').update(korisnik, id).then(x => {}).catch(err => {});
     },
 
@@ -104,13 +100,13 @@ export default Ember.Controller.extend({
     },
 
     actions: {
-    	update: function(){
-			let korisnik = this.get('model.profil');
+        update: function(){
+            let korisnik = this.get('model.profil');
 
             if(this.validacija()){
                 this.update(korisnik, korisnik.idKorisnika);
             }
-    	},
+        },
 
         provjeri: function() {
 
