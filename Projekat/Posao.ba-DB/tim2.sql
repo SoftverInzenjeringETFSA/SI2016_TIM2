@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2017 at 10:36 PM
+-- Generation Time: May 26, 2017 at 11:12 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -45,7 +45,7 @@ INSERT INTO `admin` (`idKorisnika`) VALUES
 
 CREATE TABLE `kantoni` (
   `idKantona` int(11) NOT NULL,
-  `naziv` varchar(45) NOT NULL
+  `naziv` varchar(45) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -72,7 +72,7 @@ INSERT INTO `kantoni` (`idKantona`, `naziv`) VALUES
 
 CREATE TABLE `kategorije` (
   `idKategorije` int(11) NOT NULL,
-  `naziv` varchar(45) NOT NULL
+  `naziv` varchar(45) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -92,9 +92,9 @@ INSERT INTO `kategorije` (`idKategorije`, `naziv`) VALUES
 
 CREATE TABLE `korisnici` (
   `idKorisnika` int(11) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `password_hash` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `username` varchar(30) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL,
+  `password_hash` varchar(255) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -104,7 +104,7 @@ CREATE TABLE `korisnici` (
 INSERT INTO `korisnici` (`idKorisnika`, `username`, `password_hash`, `email`) VALUES
 (1, 'admin', '098f6bcd4621d373cade4e832627b4f6', 'admin@posao.ba'),
 (2, 'firma1', '098f6bcd4621d373cade4e832627b4f6', 'firma1@firma1.com'),
-(5, 'korisnik2', '098f6bcd4621d373cade4e832627b4f6', 'korisnik2@domena.com'),
+(5, 'korisnik2', '', 'korisnik2@domena.com'),
 (6, 'ekalac1', 'test', 'no');
 
 -- --------------------------------------------------------
@@ -116,7 +116,7 @@ INSERT INTO `korisnici` (`idKorisnika`, `username`, `password_hash`, `email`) VA
 CREATE TABLE `lokacije` (
   `idLokacije` int(11) NOT NULL,
   `idKantona` int(11) NOT NULL,
-  `naziv` varchar(45) NOT NULL
+  `naziv` varchar(45) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -137,9 +137,9 @@ INSERT INTO `lokacije` (`idLokacije`, `idKantona`, `naziv`) VALUES
 
 CREATE TABLE `nezaposleni` (
   `idKorisnika` int(11) NOT NULL,
-  `ime` varchar(60) NOT NULL,
-  `prezime` varchar(60) NOT NULL,
-  `cv` varchar(1000) DEFAULT NULL,
+  `ime` varchar(60) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL,
+  `prezime` varchar(60) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL,
+  `cv` varchar(1000) CHARACTER SET utf8 COLLATE utf8_slovenian_ci DEFAULT NULL,
   `privatanProfil` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -160,7 +160,7 @@ INSERT INTO `nezaposleni` (`idKorisnika`, `ime`, `prezime`, `cv`, `privatanProfi
 CREATE TABLE `notifikacija` (
   `idNotifikacije` int(11) NOT NULL,
   `idKorisnika` int(11) NOT NULL,
-  `tekst` varchar(255) NOT NULL,
+  `tekst` varchar(255) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL,
   `pregledana` tinyint(4) NOT NULL DEFAULT '0',
   `vrijemeGenerisanja` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -213,8 +213,8 @@ CREATE TABLE `oglas` (
   `zatvoren` tinyint(4) NOT NULL DEFAULT '0',
   `uspjesan` tinyint(4) DEFAULT NULL,
   `prioritet` int(11) NOT NULL DEFAULT '5',
-  `naziv` varchar(256) NOT NULL,
-  `opis` text NOT NULL
+  `naziv` varchar(256) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL,
+  `opis` text CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -222,11 +222,12 @@ CREATE TABLE `oglas` (
 --
 
 INSERT INTO `oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `datumObjave`, `datumIsteka`, `sakriven`, `zatvoren`, `uspjesan`, `prioritet`, `naziv`, `opis`) VALUES
-(1, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
+(1, 2, 1, 1, '2017-05-24 12:08:35', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
 (2, 2, 2, 2, '2017-05-10 00:00:00', '2017-06-01 23:59:59', 0, 0, 0, 2, 'Oglas 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
 (3, 2, 3, 2, '2017-05-08 00:00:00', '2017-05-19 00:00:00', 0, 0, 0, 2, 'Oglas 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
 (4, 2, 3, 1, '2017-05-07 00:00:00', '2017-06-07 00:00:00', 0, 1, 0, 1, 'Oglas 4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
-(6, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas X', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.');
+(6, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas X', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
+(8, 2, 1, 1, '2017-05-26 12:30:17', '2017-05-28 02:00:00', 0, 0, 0, 0, 'Neki oglas', 'lorem ipsum dolor sit amet');
 
 -- --------------------------------------------------------
 
@@ -237,8 +238,8 @@ INSERT INTO `oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `
 CREATE TABLE `oglaspodaci` (
   `id` int(11) NOT NULL,
   `idOglasa` int(11) NOT NULL,
-  `vrijednost` varchar(1000) NOT NULL,
-  `staje` varchar(256) NOT NULL
+  `vrijednost` varchar(1000) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL,
+  `staje` varchar(256) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -253,7 +254,14 @@ INSERT INTO `oglaspodaci` (`id`, `idOglasa`, `vrijednost`, `staje`) VALUES
 (12, 2, '2017-05-10 00:00:00', 'Datum i vrijeme'),
 (13, 2, 'Mostar', 'Lokacija'),
 (14, 2, 'Zenica', 'Lokacija'),
-(15, 2, 'Napomena', 'Napomena');
+(15, 2, 'Napomena', 'Napomena'),
+(16, 8, 'nesto', 'Vještine'),
+(17, 8, 'nesto', 'Datum objave'),
+(18, 8, 'asfas', 'Lokacija'),
+(19, 8, 'asfasg', 'Opis'),
+(20, 8, 'asfasf', 'Datum isteka'),
+(21, 8, 'asfasg', 'Kratak opis'),
+(22, 8, 'asfasfasf', 'Naslov');
 
 -- --------------------------------------------------------
 
@@ -265,7 +273,7 @@ CREATE TABLE `oglasprijave` (
   `idPrijave` int(11) NOT NULL,
   `idOglasa` int(11) NOT NULL,
   `idKorisnika` int(11) NOT NULL,
-  `dodatneInformacije` varchar(1000) DEFAULT NULL,
+  `dodatneInformacije` varchar(1000) CHARACTER SET utf8 COLLATE utf8_slovenian_ci DEFAULT NULL,
   `vrijemePrijave` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -285,7 +293,7 @@ INSERT INTO `oglasprijave` (`idPrijave`, `idOglasa`, `idKorisnika`, `dodatneInfo
 CREATE TABLE `poljatemplatea` (
   `id` int(11) NOT NULL,
   `idTemplate` int(11) NOT NULL,
-  `nazivPolja` varchar(45) NOT NULL
+  `nazivPolja` varchar(256) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -319,7 +327,7 @@ CREATE TABLE `poruke` (
   `idPoruke` int(11) NOT NULL,
   `idPosiljaoca` int(11) NOT NULL,
   `idPrimaoca` int(11) NOT NULL,
-  `tekst` varchar(1000) NOT NULL,
+  `tekst` varchar(1000) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL,
   `vrijeme` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `procitano` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -329,10 +337,10 @@ CREATE TABLE `poruke` (
 --
 
 INSERT INTO `poruke` (`idPoruke`, `idPosiljaoca`, `idPrimaoca`, `tekst`, `vrijeme`, `procitano`) VALUES
-(1, 2, 5, 'Do?i da me ljubis', '2017-05-23 00:00:00', 0),
-(2, 2, 5, 'Do?i da me ljubis', '2017-05-23 00:00:00', 0),
-(3, 2, 5, 'Do?i da me ljubis', '2017-05-23 00:00:00', 0),
-(4, 2, 5, 'Korisnik Drugi Nezaposlenise prijavio na oglas Oglas 1', '2017-05-23 00:00:00', 0);
+(1, 2, 5, 'Do?i da me ljubis', '2017-05-23 00:00:00', 1),
+(2, 2, 5, 'Do?i da me ljubis', '2017-05-23 00:00:00', 1),
+(3, 2, 5, 'Do?i da me ljubis', '2017-05-23 00:00:00', 1),
+(4, 2, 5, 'Korisnik Drugi Nezaposlenise prijavio na oglas Oglas 1', '2017-05-23 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -342,10 +350,10 @@ INSERT INTO `poruke` (`idPoruke`, `idPosiljaoca`, `idPrimaoca`, `tekst`, `vrijem
 
 CREATE TABLE `poslodavci` (
   `idKorisnika` int(11) NOT NULL,
-  `ime` varchar(60) NOT NULL,
-  `prezime` varchar(60) NOT NULL,
-  `nazivFirme` varchar(100) NOT NULL,
-  `telefon` varchar(45) NOT NULL
+  `ime` varchar(60) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL,
+  `prezime` varchar(60) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL,
+  `nazivFirme` varchar(100) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL,
+  `telefon` varchar(45) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -396,7 +404,7 @@ INSERT INTO `sakrivenipodaci` (`idPoslodavca`, `privatnoIme`, `privatnoPrezime`,
 
 CREATE TABLE `template` (
   `idTemplate` int(11) NOT NULL,
-  `naziv` varchar(45) NOT NULL
+  `naziv` varchar(256) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -570,12 +578,12 @@ ALTER TABLE `notifikacija`
 -- AUTO_INCREMENT for table `oglas`
 --
 ALTER TABLE `oglas`
-  MODIFY `idOglasa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idOglasa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `oglaspodaci`
 --
 ALTER TABLE `oglaspodaci`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `oglasprijave`
 --
