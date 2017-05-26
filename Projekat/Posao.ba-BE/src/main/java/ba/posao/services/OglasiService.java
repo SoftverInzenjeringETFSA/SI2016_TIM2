@@ -63,12 +63,13 @@ public class OglasiService {
 	   else return false;
 	    }
 	   
-	   public Boolean reOpenOglas(int id) {
+	   public Boolean reOpenOglas(int id, Date d) {
 		   if (repository.findById(id)!=null)
 		   {
 		    	Oglas o = repository.findById(id);
 		    	if (o.getZatvoren()==1) {
 		    		byte b=0;
+		    		o.setDatumIsteka(d);
 			    	o.setZatvoren(b);
 			    	repository.save(o);
 			    	return true;
