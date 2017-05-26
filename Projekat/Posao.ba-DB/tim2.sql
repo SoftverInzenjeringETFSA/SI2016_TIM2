@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2017 at 11:12 AM
+-- Generation Time: May 26, 2017 at 11:15 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -337,9 +337,9 @@ CREATE TABLE `poruke` (
 --
 
 INSERT INTO `poruke` (`idPoruke`, `idPosiljaoca`, `idPrimaoca`, `tekst`, `vrijeme`, `procitano`) VALUES
-(1, 2, 5, 'Do?i da me ljubis', '2017-05-23 00:00:00', 1),
-(2, 2, 5, 'Do?i da me ljubis', '2017-05-23 00:00:00', 1),
-(3, 2, 5, 'Do?i da me ljubis', '2017-05-23 00:00:00', 1),
+(1, 2, 5, 'Dođi da me ljubis', '2017-05-23 00:00:00', 1),
+(2, 2, 5, 'Dođi da me ljubis', '2017-05-23 00:00:00', 1),
+(3, 2, 5, 'Dođi da me ljubis', '2017-05-23 00:00:00', 1),
 (4, 2, 5, 'Korisnik Drugi Nezaposlenise prijavio na oglas Oglas 1', '2017-05-23 00:00:00', 1);
 
 -- --------------------------------------------------------
