@@ -35,6 +35,7 @@ export default Ember.Controller.extend({
 
 
         //email unicode
+        // let re1   = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
         let re1 = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
         if (this.get("model.profil.password") == "" || this.get("model.profil.password").length < 6) {
@@ -115,9 +116,7 @@ export default Ember.Controller.extend({
         },
 
         provjeri: function() {
-
             console.log(this.get("model.profil.poslodavac.telefon"));
-
         },
 
 

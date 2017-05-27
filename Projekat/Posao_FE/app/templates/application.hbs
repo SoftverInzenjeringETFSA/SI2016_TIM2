@@ -38,6 +38,13 @@
           <li>{{#link-to 'outbox'}}Outbox{{/link-to}}</li>
           <li>{{#link-to 'pregled-korisnika'}}Pregled nezaposlenih{{/link-to}}</li>
           {{/if}}
+
+          <!-- Link za registraciju na mobilnim uređajima -->
+          {{#unless session.isAuthenticated}}
+          <li class="mobile-registracija-link">
+            {{#link-to "registracija"}}Nemaš profil?&ensp;Registruj se!{{/link-to}}
+          </li>
+          {{/unless}}
         </ul>
 
         {{#if session.isAuthenticated}}
@@ -55,7 +62,7 @@
           {{#if credentialsError}}
             <span class="registracija-link" style="color: red !important;">Pogrešni pristupni podaci</span>
           {{/if}} 
-          {{#link-to "registracija" class="registracija-link"}}Nemaš profil? Registruj se!{{/link-to}}
+          {{#link-to "registracija" class="registracija-link"}}Nemaš profil?&ensp;Registruj se!{{/link-to}}
           <div class="form-group">
             {{input type="text" class="form-control" placeholder="Korisničko ime" value=identification}}
           </div>

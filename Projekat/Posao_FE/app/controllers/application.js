@@ -19,10 +19,8 @@ export default Ember.Controller.extend({
             this.authenticate(credentials).then(function(value) {
                 self.set('credentialsError', false);
                 self.get("porukeService").getUnread(self.get("session.data.authenticated.userid")).then(data => self.set("session.imaNeprocitanih", data));
-
-                if(doRedirect) {
-                    self.transitionToRoute('index');
-                }
+                
+                if(doRedirect) self.transitionToRoute('index');
             }.bind(doRedirect), function(reason) {
                 self.set('credentialsError', true);
             });
