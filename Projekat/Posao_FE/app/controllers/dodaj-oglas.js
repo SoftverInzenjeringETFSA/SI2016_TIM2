@@ -109,8 +109,10 @@ export default Ember.Controller.extend({
 		oglas.datumIsteka = null;
         var trajanjeOglasa = Number.parseInt(this.get("trajanje"));
         var trajanjeOglasa = this.get("trajanje");
+        oglas.vrijemeTrajanja = trajanjeOglasa;
 
-		this.get("oglasiService").postavi(oglas, trajanjeOglasa).then(x => {
+        //this.get("oglasiService").postavi(oglas, trajanjeOglasa).then(x => {
+		this.get("oglasiService").postavi(oglas).then(x => {
             self.set("serverSuccess", true);
             self.set("serverError", false);
             self.set("serverErrorText", "");

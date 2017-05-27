@@ -48,8 +48,8 @@ export default BaseService.extend({
         return oglasi;
     },
 
-    postavi: function(oglas, trajanje) {
-        return this.ajax({ url: `oglasi/postavioglas?trajanje=${trajanje}`, type: "POST", data: JSON.stringify(oglas)});
+    postavi: function(oglas) {
+        return this.ajax({ url: `oglasi/postavioglas`, type: "POST", data: JSON.stringify(oglas)});
     },
 
     prijava: function(userid, adid) {
