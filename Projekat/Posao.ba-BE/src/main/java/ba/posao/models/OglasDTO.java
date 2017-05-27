@@ -26,7 +26,7 @@ public class OglasDTO implements Serializable {
     
     private Date datumObjave;
 
-    private Date datumIsteka;
+    private Integer vrijemeTrajanja;
     private byte sakriven;
     private byte zatvoren;
     private byte uspjesan;
@@ -79,12 +79,14 @@ public class OglasDTO implements Serializable {
 		this.datumObjave = datumObjave;
 	}
 
-	public Date getDatumIsteka() {
-		return datumIsteka;
+	
+
+	public Integer getVrijemeTrajanja() {
+		return vrijemeTrajanja;
 	}
 
-	public void setDatumIsteka(Date datumIsteka) {
-		this.datumIsteka = datumIsteka;
+	public void setVrijemeTrajanja(Integer vrijemeTrajanja) {
+		this.vrijemeTrajanja = vrijemeTrajanja;
 	}
 
 	public byte getSakriven() {

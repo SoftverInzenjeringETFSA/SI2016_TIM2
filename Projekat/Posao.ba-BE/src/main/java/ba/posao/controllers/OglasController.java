@@ -96,11 +96,8 @@ public class OglasController {
 	  {
 		 Oglas _oglas = new Oglas();
 		 
-		 if (oglas.getDatumIsteka()==null || oglas.getDatumIsteka().compareTo((Date) LocalDate.now().toDate())==1)
-		 {
-			 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Pogresan datum isteka");
-	  }
-		 _oglas.setDatumIsteka(oglas.getDatumIsteka());
+		
+		 _oglas.setDatumIsteka(DateTime.now().plusDays(oglas.getVrijemeTrajanja()).toDate());
 		 
 		 _oglas.setKategorije(oglas.getKategorije());
 		 _oglas.setLokacija(oglas.getLokacija());
@@ -153,7 +150,7 @@ public class OglasController {
 	 
 	 @RequestMapping(value = "/reopen", method = RequestMethod.POST)
 
-	    public ResponseEntity reOpen(@RequestParam(name="id")int id, @RequestParam(name="date")Date date)
+	    public ResponseEntity reOpen(@RequestParam(name="id")int id, @RequestParam(name="date")Integer date)
 	    {
 		return ResponseEntity.status(HttpStatus.OK).body(oglasService.reOpenOglas(id, date));
 	    }

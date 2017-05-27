@@ -1,11 +1,9 @@
 package ba.posao.services;
 
-import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,13 +61,13 @@ public class OglasiService {
 	   else return false;
 	    }
 	   
-	   public Boolean reOpenOglas(int id, Date d) {
+	   public Boolean reOpenOglas(int id, Integer d) {
 		   if (repository.findById(id)!=null)
 		   {
 		    	Oglas o = repository.findById(id);
 		    	if (o.getZatvoren()==1) {
 		    		byte b=0;
-		    		o.setDatumIsteka(d);
+		    		o.setDatumIsteka((DateTime.now().plusDays(d)).toDate());
 			    	o.setZatvoren(b);
 			    	repository.save(o);
 			    	return true;
