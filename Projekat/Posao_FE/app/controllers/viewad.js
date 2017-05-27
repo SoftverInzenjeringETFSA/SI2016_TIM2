@@ -8,6 +8,8 @@ export default Ember.Controller.extend({
     prijavaError: false,
     reopenSuccess: false,
     reopenError: false,
+    zatvaranjeSuccess: false,
+    zatvaranjeError: false,
 
 	prijava: function(korisnik, oglas) {
         var self = this;
@@ -32,12 +34,14 @@ export default Ember.Controller.extend({
     reopen: function(oglasId, brojDana) {
         var self = this;
         this.get('oglasiService').reopen(oglasId, brojDana).then(x => {
-            self.set("prijavaSuccess", true);
-            self.set("prijavaError", false);
+            self.set("reopenSuccess", true);
+            self.set("reopenError", false);
             self.set("datumError", false);
+            self.set("model.oglas.zatvoren", 0);
+
         }).catch(err => {
-            self.set("prijavaError", true);
-            self.set("prijavaSuccess", false);
+            self.set("reopenError", true);
+            self.set("reopenSuccess", false);
             self.set("datumError", false);
         });
     },
@@ -49,16 +53,25 @@ export default Ember.Controller.extend({
     	},
 
     	delete: function(){
+            var self = this;
+
 		    let oglasId = this.get("model.oglas.idOglasa");
             this.delete(oglasId).then(x => {
-                this.transitionToRoute('index');
+                self.transitionToRoute('index');
             });
     	},
 
         zatvori: function(){
+            var self = this;
+
             let oglasId = this.get("model.oglas.idOglasa");
             this.zatvori(oglasId).then(x => {
-                this.set('model.oglas.zatvoren', 1);
+                self.set('model.oglas.zatvoren', 1);
+                self.set("zatvaranjeSuccess", true);
+                self.set("zatvaranjeError", false);
+            }).catch(err => {
+                self.set("zatvaranjeSuccess", false);
+                self.set("zatvaranjeError", true);
             });
         },
 

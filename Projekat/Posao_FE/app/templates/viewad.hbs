@@ -35,6 +35,8 @@
                             <p>Da</p>
                           {{#if (eq model.userid model.oglas.poslodavac.idKorisnika)}}
                             <div class="form-group text-center">
+                                {{#if zatvaranjeSuccess}}<p>Uspješno ste zatvorili oglas!</p>{{/if}}
+                                {{#if zatvaranjeError}}<p>Došlo je do greške prilikom.</p>{{/if}}
                                 <button class="btn btn-default login-button" {{action 'zatvori'}}>Zatvori</button><br><br>
                             </div>
                           {{/if}}
@@ -44,8 +46,8 @@
                         {{/if}}
                         </div>
                     </div>
-                        {{#if prijavaSuccess}}Uspješno ste prijavljeni na oglas!{{/if}}
-                        {{#if prijavaError}}Došlo je do greške prilikom prijave.{{/if}}
+                        {{#if prijavaSuccess}}<p>Uspješno ste prijavljeni na oglas!</p>{{/if}}
+                        {{#if prijavaError}}<p>Došlo je do greške prilikom prijave.</p>{{/if}}
                         {{#if (eq model.imaprijava.bool false)}}
                         {{#if (eq model.oglas.zatvoren 0)}}
                         <button class="btn btn-default login-button" {{action 'prijava' model.oglas.idOglasa}}>Prijavi se</button><br><br>

@@ -6,14 +6,44 @@ export default Ember.Controller.extend({
     noviNazivError: false,
     noviNError: false,
     indexGreske: null,
+    noviServerError: false,
+    noviServerErrorText: "",
+    noviSuccess: false,
+
+    izmjenaServerError: false,
+    izmjenaServerErrorText: "",
+    izmjenaSuccess: false,
+
+    brisanjeServerError: false,
+    brisanjeServerErrorText: "",
+    brisanjeSuccess: false,
 
     add: function(kategorija) {
-        this.get('kategorijaService').add(kategorija).then(x => {}).catch(x => {});
+        var self = this;
+
+        this.get('kategorijaService').add(kategorija).then(x => {
+            self.set("noviServerError", false);
+            self.set("noviServerErrorText", "");
+            self.set("noviSuccess", true);
+        }).catch(err => {
+            self.set("noviServerError", true);
+            self.set("noviServerErrorText", err.responseText);
+            self.set("noviSuccess", false);
+        });
     },
 
     izmijeni: function(kategorija) {
+        var self = this;
 
-        this.get('kategorijaService').update(kategorija, kategorija.id).then(x => {}).catch(x => {});
+        this.get('kategorijaService').update(kategorija, kategorija.id).then(x => {
+            self.set("izmjenaServerError", false);
+            self.set("izmjenaServerErrorText", "");
+            self.set("izmjenaSuccess", true);
+        }).catch(err => {
+            self.set("izmjenaServerError", true);
+            self.set("izmjenaServerErrorText", err.responseText);
+            self.set("izmjenaSuccess", false);
+        });
         //this.set("model.kategorije", )
     },
 
@@ -23,8 +53,16 @@ export default Ember.Controller.extend({
         this.get('kategorijaService').delete(kategorija.id).then(x => {
                     let _kategorije = this.get("model.kategorije");
                     this.set("model.kategorije", [..._kategorije.slice(0, index), ..._kategorije.slice(index + 1)]);
+
+                    self.set("izmjenaServerError", false);
+                    self.set("izmjenaServerErrorText", "");
+                    self.set("izmjenaSuccess", true);
                     //ispis poruke
-        }).catch(err => {});
+        }).catch(err => {
+                    self.set("izmjenaServerError", true);
+                    self.set("izmjenaServerErrorText", err.responseText);
+                    self.set("izmjenaSuccess", false);
+        });
 
 
     },

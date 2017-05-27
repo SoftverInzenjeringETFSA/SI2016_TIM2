@@ -96,6 +96,7 @@
             </div>
 
             <!-- Polja oglasa -->
+
             {{#each polja as |polje index|}}
             <div class="form-group pomjereniTextBox">
               <label for={{polje.staje}}>{{polje.staje}}:</label><br>
@@ -110,6 +111,10 @@
 
             <!-- Error providers -->
             <div class="form-group text-center">
+              {{#if poljaError}}
+                <span class="greskaUnosa">Morate ispuniti sva polja.</span>
+              {{/if}}
+
               {{#if serverError}}
               <span class="greskaUnosa">Došlo je do greške prilikom unosa oglasa.</span>
               <span class="greskaUnosa">{{serverErrorText}}</span>

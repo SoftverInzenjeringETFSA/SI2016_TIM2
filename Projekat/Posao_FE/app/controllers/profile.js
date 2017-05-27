@@ -18,6 +18,7 @@ export default Ember.Controller.extend({
     nazivFirmeError: false,
     cvError: false,
     serverError: false,
+    serverErrorText: "",
     serverSuccess: false,
     ponovljeniPass: "",
     ponovljeniPassError: false,
@@ -117,9 +118,12 @@ export default Ember.Controller.extend({
         this.get('korisnikService').update(korisnik, id).then(x => {
             self.set("serverError", false);
             self.set("serverSuccess", true);
+            self.set("serverErrorText", "");
         }).catch(err => {
             self.set("serverError", true);
             self.set("serverSuccess", false);
+            self.set("serverErrorText", err.responseText);
+
         });
     },
 

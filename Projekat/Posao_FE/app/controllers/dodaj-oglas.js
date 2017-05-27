@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
     datumError: false,
     nazivError: false,
     opisError: false,
-    poljaEror: false,
+    poljaError: false,
     serverError: false,
     serverErrorText: "",
     serverSuccess: false,
@@ -44,30 +44,42 @@ export default Ember.Controller.extend({
             _lokacijaError = true;
         }
 
-        if (this.get("template") == null){
-            ispravno = false;
-            _templateError = true;
-        }
 
-        if (this.get("trajanje") == null || parseint(this.get('trajanje')) < 1){
+        //suvišno?
+
+        //if (this.get("template") == null){
+        //    ispravno = false;
+        //    _templateError = true;
+        //}
+
+        if (this.get("trajanje") == null || Number.parseInt(this.get('trajanje')) < 1){
             ispravno = false;
             _datumError = true;
         }
+        console.log(ispravno);
 
         if (this.get("naziv") == ""){
             ispravno = false;
             _nazivError = true;
         }
+        console.log(ispravno);
 
         if (this.get("opis") == ""){
             ispravno = false;
             _opisError = true;
         }
 
-        if (this.get("polja") == null){
-            ispravno = false;
-            _poljaError = true;
-        }
+        console.log(ispravno);
+
+        this.get("polja").forEach(polje => {
+            console.log("polje");
+            console.log(polje.vrijednost);
+            if(polje.vrijednost == null || polje.vrijednost === ""){
+                ispravno = false;
+                _poljaError = true;
+            }
+        });
+        console.log(ispravno);
 
         this.set("kategorijaError", _kategorijaError);
         this.set("templateError", _templateError);
@@ -75,7 +87,7 @@ export default Ember.Controller.extend({
         this.set("datumError", _datumError);
         this.set("nazivError", _nazivError);
         this.set("opisError", _opisError);
-        this.set("poljaEror", _poljaError);
+        this.set("poljaError", _poljaError);
 
         return ispravno;
     },
@@ -102,7 +114,8 @@ export default Ember.Controller.extend({
 		oglas.opis = this.get("opis");
 		oglas.oglasPodaci = this.get("polja");
 		oglas.datumIsteka = null;
-        var trajanjeOglasa = parseint(this.get("trajanje"));
+        var trajanjeOglasa = Number.parseInt(this.get("trajanje"));
+        var trajanjeOglasa = this.get("trajanje");
 
 		this.get("oglasiService").postavi(oglas, trajanjeOglasa).then(x => {
             self.set("serverSuccess", true);

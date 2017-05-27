@@ -12,6 +12,7 @@ export default Ember.Controller.extend({
     success: false,
     messageError: false,
     serverError: false,
+    serverErrorText: "",
 
     sendMessage: function(){
         var self = this;
@@ -19,9 +20,11 @@ export default Ember.Controller.extend({
         this.get("porukeService").send(this.get("poruka")).then(res => {
             self.set("success", true);
             self.set("serverError", false);
+            self.set("serverErrorText", "");
         }).catch(err => {
             self.set("success", false);
-            self.set("serverError", true);
+            self.set("serverErrorText", "");
+            self.set("serverError", err.responseText);
         });
     },
 

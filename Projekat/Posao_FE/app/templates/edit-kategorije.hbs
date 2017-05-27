@@ -18,6 +18,14 @@
             {{/if}}
 
             {{input type="text" class="form-control" id="inputnaziv_template" placeholder="Naziv" value=noviNaziv}}
+
+            {{#if noviServerError}}
+              <span class="greskaUnosa">Došlo je do greške. </span>
+              <span class="greskaUnosa">{{noviServerErrorText}}</span>
+            {{/if}}
+            {{#if noviSuccess}}
+              <span class="greskaUnosa">Uspješno ste dodali kategoriju. </span>
+            {{/if}}
          </div>
 
          <div class="form-group text-center">
@@ -30,6 +38,22 @@
           <h1>Izmjena ili brisanje kategorije</h1>
           <hr class="h-divider" />
         </div>
+            {{#if izmjenaServerError}}
+              <span class="greskaUnosa">Došlo je do greške. </span>
+              <span class="greskaUnosa">{{izmjenaServerErrorText}}</span>
+            {{/if}}
+            {{#if izmjenaSuccess}}
+              <span class="greskaUnosa">Uspješno ste promijenili kategoriju. </span>
+            {{/if}}
+
+            {{#if brisanjeServerError}}
+              <span class="greskaUnosa">Došlo je do greške. </span>
+              <span class="greskaUnosa">{{brisanjeServerErrorText}}</span>
+            {{/if}}
+            {{#if brisanjeSuccess}}
+              <span class="greskaUnosa">Uspješno ste izbrisali kategoriju. </span>
+            {{/if}}
+
 
         {{#each model.kategorije as |kategorija index|}}
         <div class="form-group text-center">

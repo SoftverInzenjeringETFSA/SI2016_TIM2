@@ -153,6 +153,8 @@
                     <div class="form-group text-center">
                       {{#if serverError}}
                         <span class="greskaUnosa">Došlo je do greške prilikom ažuriranja profila.</span><br>
+                        <span class="greskaUnosa">{{serverErrorText}}</span><br>
+                        <p></p>
                       {{/if}}
                       {{#if serverSuccess}}
                         <span class="greskaUnosa">Uspješno ažuriran profil.</span><br>

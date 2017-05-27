@@ -65,7 +65,7 @@ export default BaseService.extend({
     },
 
     reopen: function(adid, days) {
-        return this.ajax({ url: `oglasi/reopen?id=${adid}&days=${days}`, type: "POST", data: {}});
+        return this.ajax({ url: `oglasi/reopen?id=${adid}&date=${days}`, type: "POST", data: {}});
     },
 
     search: function(name, kategorijaId, filter, asc){
