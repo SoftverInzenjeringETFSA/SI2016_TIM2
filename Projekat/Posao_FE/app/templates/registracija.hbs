@@ -36,6 +36,14 @@
           </div>
 
           <div class="form-group pomjereniTextBox">
+            <label for="inputPassword3_pon">Ponovite lozinku:</label><br>
+            {{#if ponovljeniPassError}}
+            <span class="greskaUnosa">Unosi lozinke se ne podudaraju.</span>
+            {{/if}}
+            {{input type="password" class="form-control" id="inputPassword3_pon" placeholder="Password" value=ponovljeniPass}}
+          </div>
+
+          <div class="form-group pomjereniTextBox">
             <label for="inputTelefon1">Telefon:</label><br>
             {{#if telefonError}}
             <span class="greskaUnosa">Morate unijeti telefon u formatu 661234567 ili 66123456!</span>

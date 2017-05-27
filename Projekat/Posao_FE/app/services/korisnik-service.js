@@ -14,6 +14,7 @@ export default BaseService.extend({
         var korisnik = Korisnik.create({});
 
     	this.ajax({url: `korisnici/get/exact?name=${username}`, type: "GET"}).then(function(data){
+            data.password = "";
     		korisnik.setProperties(data);
     	});
 

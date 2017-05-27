@@ -14,6 +14,8 @@ export default Ember.Controller.extend({
 	serverSuccess: false,
 	serverError: false,
 	serverErrorText: "",
+	ponovljeniPass: "",
+	ponovljeniPassError: false,
 
 
 	validiraj: function(){
@@ -30,6 +32,7 @@ export default Ember.Controller.extend({
 		let _firmaError = false;
 		let _cvError = false;
 		let _tipError = false;
+		let _ponovljeniPassError = false;
 		
 		//email unicode
 		let re1 = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -47,12 +50,24 @@ export default Ember.Controller.extend({
 			_usernameError = true;
 			this.set("imeVarijable", "Polje mora sadržavati više od 0 katraktera!");
 		}
+		else{
+			this.set("imeVarijable", "");
+		}
+
 
 		if (this.get("password") == null || this.get("password").length < 6){
 			ispravno = false;
 			_passwordError = true;
 		}
 
+		if (!_passwordError)
+		{
+			if (this.get("ponovljeniPass") == null || (this.get("ponovljeniPass") !== this.get("password")))
+			{
+					ispravno = false;
+					_ponovljeniPassError = true;				
+			}
+		}
 		
 		if (this.get("email") == null || !re1.test(this.get("email"))){
 			ispravno = false;
@@ -70,10 +85,11 @@ export default Ember.Controller.extend({
 
 		if (!_tipError && this.get("tip") == "Poslodavac")
 		{
-			if (this.get("telefon") == null || !this.get("telefon").match(/^\d{9}$/)){
-				ispravno = false;
-				_telefonError = true;
-			}
+	        if (this.get("model.profil.poslodavac.telefon") == null || (!this.get("model.profil.poslodavac.telefon").match(/^\d{9}$/) && !this.get("model.profil.poslodavac.telefon").match(/^\d{8}$/))){
+                uspjesno = false;
+                _telefonError = true;
+            }
+
 
 			if (this.get("nazivFirme") == null || this.get("nazivFirme").length < 1 /*|| !re2.test(this.get("nazivFirme"))*/){
 				ispravno = false;
@@ -101,6 +117,7 @@ export default Ember.Controller.extend({
 		this.set("cvError", _cvError);
 		this.set("firmaError", _firmaError);
 		this.set("tipError", _tipError);
+		this.set("ponovljeniPassError", _ponovljeniPassError);
 
 		return ispravno;
 

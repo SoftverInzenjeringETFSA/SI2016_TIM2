@@ -68,6 +68,14 @@
                       {{input type="password" class="form-control" id="inputPassword3_profil" placeholder="Password" value=model.profil.password}}
                     </div>
 
+                  <div class="form-group pomjereniTextBox">
+                    <label for="inputPassword3_pon_profil">Ponovite lozinku:</label><br>
+                    {{#if ponovljeniPassError}}
+                    <span class="greskaUnosa">Unosi lozinke se ne podudaraju.</span>
+                    {{/if}}
+                    {{input type="password" class="form-control" id="inputPassword3_pon_profil" placeholder="Password" value=ponovljeniPass}}
+                  </div>
+
                     <div class="form-group pomjereniTextBox">
                       <label for="inputEmail3_profil">Email:</label><br>
                       {{#if emailError}}
@@ -95,6 +103,7 @@
                       {{input type="text" class="form-control" id="inputIme1_profil" placeholder="Ime" value=model.profil.nezaposleni.ime}}
                     </div>
 
+
                     <div class="form-group pomjereniTextBox">
                       <label for="inputPrezime1_profil">Prezime:</label><br>
                       {{#if prezimeError}}
@@ -105,6 +114,23 @@
                     {{/if}}
 
                     {{#if this.model.profil.poslodavac}}
+                    <div class="form-group pomjereniTextBox">
+                      <label for="inputIme1_profil">Ime:</label><br>
+                      {{#if imeError}}
+                        <span class="greskaUnosa">Morate unijeti ime!</span><br>
+                      {{/if}}
+                      {{input type="text" class="form-control" id="inputIme1_profilP" placeholder="Ime" value=model.profil.poslodavac.ime}}
+                    </div>
+
+
+                    <div class="form-group pomjereniTextBox">
+                      <label for="inputPrezime1_profil">Prezime:</label><br>
+                      {{#if prezimeError}}
+                        <span class="greskaUnosa">Morate unijeti prezime!</span><br>
+                      {{/if}}
+                      {{input type="text" class="form-control" id="inputPrezime1_profilP" placeholder="Prezime" value=model.profil.poslodavac.prezime}}
+                    </div>
+
                     <div class="form-group pomjereniTextBox">
                       <label for="inputFirma1_profil">Firma:</label><br>
                       {{#if nazivFirmeError}}
