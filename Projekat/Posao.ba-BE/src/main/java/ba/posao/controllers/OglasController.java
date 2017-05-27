@@ -48,6 +48,15 @@ public class OglasController {
 	@CrossOrigin
 	@GetMapping(path="/get")
 	public @ResponseBody Oglas getOglasById(@RequestParam("id") int id) {
+		
+		Oglas oglas= oglasRepository.findById(id);
+		
+		Byte b=1;
+		if (oglas.getDatumIsteka().compareTo(DateTime.now().toDate())<=0)
+		 {
+			oglas.setZatvoren(b);
+			oglasRepository.save(oglas);
+		 }		
 		return oglasRepository.findById(id);
 	}
 	
