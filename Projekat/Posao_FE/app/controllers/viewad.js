@@ -29,9 +29,9 @@ export default Ember.Controller.extend({
         return this.get('oglasiService').zatvori(oglasId);
     },
 
-    reopen: function(oglasId, noviDatum) {
+    reopen: function(oglasId, brojDana) {
         var self = this;
-        this.get('oglasiService').reopen(oglasId, noviDatum).then(x => {
+        this.get('oglasiService').reopen(oglasId, brojDana).then(x => {
             self.set("prijavaSuccess", true);
             self.set("prijavaError", false);
             self.set("datumError", false);

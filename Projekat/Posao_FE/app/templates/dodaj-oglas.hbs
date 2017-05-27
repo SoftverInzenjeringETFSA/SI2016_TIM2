@@ -5,7 +5,7 @@
   
   <div class="container">
     <div class="row">
-      <!-- Left side -->
+
       <form class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
         <div class="col-xs-12 distinct-page-form">
           <div class="text-center">
@@ -13,6 +13,7 @@
             <hr class="h-divider" />
           </div>
           <div>
+            <!-- Kategorija -->
             <div class="form-group pomjereniTextBox">
                 <label for="category">Kategorija oglasa:</label><br>
                 {{#if kategorijaError}}
@@ -27,6 +28,7 @@
                 </select>
             </div>
 
+            <!-- Template -->
             <div class="form-group pomjereniTextBox">
                 <label for="category">Template oglasa:</label><br>
 
@@ -42,7 +44,8 @@
                 </select>
             </div>
 
-              <div class="form-group pomjereniTextBox">
+            <!-- Lokacija -->
+            <div class="form-group pomjereniTextBox">
               <label for="category">Lokacija:</label><br>
 
               {{#if lokacijaError}}
@@ -57,6 +60,7 @@
               </select>
             </div>
 
+            <!-- Naziv oglasa -->
             <div class="form-group pomjereniTextBox">
               <label for="inputNaziv1">Naziv oglasa:</label><br>
 
@@ -67,6 +71,7 @@
               {{input type="text" class="form-control" id="inputNaziv1" placeholder="Naziv" value=naziv}}
             </div>
 
+            <!-- Opis -->
             <div class="form-group firma">
               <label for="inputOpis">Opis:</label><br>
 
@@ -77,42 +82,43 @@
               {{textarea class="form-control" id="inputOpis" value=opis}}
             </div>
 
+            <!-- Trajanje oglasa -->
             <div class="form-group datum">
-              <label class="marginaWTF" for="inputDateTime">Datum isteka:</label><br>
+              <label class="marginaWTF" for="inputDateTime">Trajanje oglasa:</label><br>
 
+              {{#if datumError}}
+                <span class="greskaUnosa">Trebate unijeti datum!</span>
+              {{/if}}
 
-                {{#if datumError}}
-                  <span class="greskaUnosa">Trebate unijeti datum!</span>
-                {{/if}}
-
-                <div class='input-group datum date' id='inputDateTime'>
-                    {{input type='date' class="form-control datum" value=datum}}
-                    
-                </div>
+              <div class='input-group datum date' id='inputDateTime'>
+                  {{input type='number' class="form-control datum" value=trajanje}}   
               </div>
+            </div>
 
-              {{#each polja as |polje index|}}
-              <div class="form-group pomjereniTextBox">
+            <!-- Polja oglasa -->
+            {{#each polja as |polje index|}}
+            <div class="form-group pomjereniTextBox">
               <label for={{polje.staje}}>{{polje.staje}}:</label><br>
 
               {{#if templateError}}
-                  <span class="greskaUnosa">Trebate unijeti polje!</span>
+                <span class="greskaUnosa">Trebate unijeti polje!</span>
               {{/if}}
 
               {{input type="text" class="form-control" placeholder=polje.staje value=polje.vrijednost}}
-              </div>
-              {{/each}}
+            </div>
+            {{/each}}
 
+            <!-- Error providers -->
             <div class="form-group text-center">
-                {{#if serverError}}
-                <span class="greskaUnosa">Došlo je do greške prilikom unosa oglasa.</span>
-                <span class="greskaUnosa">{{serverErrorText}}</span>
-                {{/if}}
-                {{#if serverSuccess}}
-                <span class="greskaUnosa">Uspješno kreiran oglas.</span>
-                {{/if}}
+              {{#if serverError}}
+              <span class="greskaUnosa">Došlo je do greške prilikom unosa oglasa.</span>
+              <span class="greskaUnosa">{{serverErrorText}}</span>
+              {{/if}}
+              {{#if serverSuccess}}
+              <span class="greskaUnosa">Uspješno kreiran oglas.</span>
+              {{/if}}
 
-                <button type="submit" class="btn btn-success" {{action 'register'}}>Dodaj</button>
+              <button type="submit" class="btn btn-success" {{action 'register'}}>Dodaj</button>
             </div>
           </div>
         </div>

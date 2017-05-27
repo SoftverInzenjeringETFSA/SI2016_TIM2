@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
     kategorija: null,
     lokacija: null,
     template: null,
-    datum: null,
+    trajanje: null,
     naziv: "",
     opis: "",
     polja: [],
@@ -35,25 +35,21 @@ export default Ember.Controller.extend({
         let _poljaError = false;
 
         if (this.get("kategorija") == null){
-
             ispravno = false;
             _kategorijaError = true;
         }
 
         if (this.get("lokacija") == null){
-
             ispravno = false;
             _lokacijaError = true;
         }
 
         if (this.get("template") == null){
-
             ispravno = false;
             _templateError = true;
         }
 
-        if (this.get("datum") == null){
-
+        if (this.get("trajanje") == null || parseint(this.get('trajanje')) < 1){
             ispravno = false;
             _datumError = true;
         }
@@ -81,8 +77,6 @@ export default Ember.Controller.extend({
         this.set("opisError", _opisError);
         this.set("poljaEror", _poljaError);
 
-        console.log("ispravnost");
-        console.log(ispravno);
         return ispravno;
     },
 
@@ -95,8 +89,7 @@ export default Ember.Controller.extend({
 		oglas.lokacija = this.get("lokacija");
 
 		oglas.kategorije = this.get("kategorija");
-		console.log("kategorija");
-		console.log(oglas);
+
 		//hardkodirano
 		oglas.sakriven = "0";
         oglas.oglasPrijave = new Array();
@@ -108,10 +101,10 @@ export default Ember.Controller.extend({
 		oglas.naziv = this.get("naziv");
 		oglas.opis = this.get("opis");
 		oglas.oglasPodaci = this.get("polja");
-		oglas.datumIsteka = this.get("datum");
+		oglas.datumIsteka = null;
+        var trajanjeOglasa = parseint(this.get("trajanje"));
 
-
-		this.get("oglasiService").postavi(oglas).then(x => {
+		this.get("oglasiService").postavi(oglas, trajanjeOglasa).then(x => {
             self.set("serverSuccess", true);
             self.set("serverError", false);
             self.set("serverErrorText", "");

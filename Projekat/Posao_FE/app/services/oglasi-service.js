@@ -48,8 +48,8 @@ export default BaseService.extend({
         return oglasi;
     },
 
-    postavi: function(oglas) {
-        return this.ajax({ url: `oglasi/postavioglas`, type: "POST", data: JSON.stringify(oglas)});
+    postavi: function(oglas, trajanje) {
+        return this.ajax({ url: `oglasi/postavioglas?trajanje=${trajanje}`, type: "POST", data: JSON.stringify(oglas)});
     },
 
     prijava: function(userid, adid) {
@@ -64,8 +64,8 @@ export default BaseService.extend({
         return this.ajax({ url: `oglasi/remove?id=${adid}`, type: "DELETE", data: {}});
     },
 
-    reopen: function(adid, newDate) {
-        return this.ajax({ url: `oglasi/reopen?id=${adid}&date=${newDate}`, type: "POST", data: {}});
+    reopen: function(adid, days) {
+        return this.ajax({ url: `oglasi/reopen?id=${adid}&days=${days}`, type: "POST", data: {}});
     },
 
     search: function(name, kategorijaId, filter, asc){
