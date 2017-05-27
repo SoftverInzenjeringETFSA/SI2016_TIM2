@@ -56,30 +56,23 @@ export default Ember.Controller.extend({
             ispravno = false;
             _datumError = true;
         }
-        console.log(ispravno);
 
         if (this.get("naziv") == ""){
             ispravno = false;
             _nazivError = true;
         }
-        console.log(ispravno);
 
         if (this.get("opis") == ""){
             ispravno = false;
             _opisError = true;
         }
 
-        console.log(ispravno);
-
         this.get("polja").forEach(polje => {
-            console.log("polje");
-            console.log(polje.vrijednost);
             if(polje.vrijednost == null || polje.vrijednost === ""){
                 ispravno = false;
                 _poljaError = true;
             }
         });
-        console.log(ispravno);
 
         this.set("kategorijaError", _kategorijaError);
         this.set("templateError", _templateError);
@@ -143,8 +136,6 @@ export default Ember.Controller.extend({
 	    selectLokacija(lokacijaId) {
     		let lokacije = this.get("model.lokacije");
     		let _lokacija = lokacije.find(x => x.get("id") == lokacijaId);
-			console.log(_lokacija);
-
 
       		this.set('lokacija', _lokacija);
     	},
@@ -158,7 +149,10 @@ export default Ember.Controller.extend({
     	selectTemplate(templateId) {
     		let templatei = this.get("model.templatei");
     		let template =templatei.find(x => x.get("id") == templateId);
-    		let _polja = new Array(template.poljaTemplatea.length);
+            var _polja = [];
+            if (template){
+                _polja = new Array(template.poljaTemplatea.length);
+            }
     		
     		for (let i = 0; i < template.poljaTemplatea.length; i++) {
     			_polja[i] = {vrijednost: ""};

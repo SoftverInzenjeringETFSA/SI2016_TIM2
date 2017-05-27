@@ -22,12 +22,10 @@ export default Ember.Controller.extend({
   
   actions: {
     selectKategorija(kategorijaId) {
-        console.log(kategorijaId);
       this.set('kategorijaId', kategorijaId);
     },
 
     selectFilter(filter) {
-        console.log(filter);
       this.set('filter', filter);
     },
 

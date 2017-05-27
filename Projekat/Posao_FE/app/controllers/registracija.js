@@ -38,9 +38,6 @@ export default Ember.Controller.extend({
 		let re1 = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 		if (this.get("tip") == null){
-			console.log("validiram");
-			console.log(this.get("tip"));
-
 			ispravno = false;
 			_tipError = true;
 		}

@@ -40,7 +40,6 @@ export default Ember.Controller.extend({
         },
 
         loginNormal: function() {
-        	console.log("test");
             var credentials = this.getProperties('identification', 'password');
             this.send('login', credentials, true);
         },

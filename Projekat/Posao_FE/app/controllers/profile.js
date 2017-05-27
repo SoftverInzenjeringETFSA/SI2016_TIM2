@@ -146,7 +146,7 @@ export default Ember.Controller.extend({
         },
 
         provjeri: function() {
-            console.log(this.get("model.profil.poslodavac.telefon"));
+
         },
 
 

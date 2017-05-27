@@ -8,10 +8,6 @@ export default Ember.Route.extend({
 	lokacijaService: Ember.inject.service(),
 	session: Ember.inject.service(),
 
-	beforeModel: function(transition){
-		//this.set("session.imaNeprocitanih", false);
-	},
-
 	model: function(params, transition) {
 		let _kategorije = this.get('kategorijaService').all();
 

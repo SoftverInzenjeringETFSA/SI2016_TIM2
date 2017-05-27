@@ -23,8 +23,8 @@ export default Ember.Controller.extend({
             self.set("serverErrorText", "");
         }).catch(err => {
             self.set("success", false);
-            self.set("serverErrorText", "");
-            self.set("serverError", err.responseText);
+            self.set("serverErrorText", err.responseText);
+            self.set("serverError", true);
         });
     },
 

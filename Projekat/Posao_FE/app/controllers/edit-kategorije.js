@@ -92,10 +92,8 @@ export default Ember.Controller.extend({
 
         for(let i=0; i<_polja.length; i++)
         {
-            console.log(_polja[i]);
             if(_polja[i].naziv=="")
             {
-                console.log("aaaa");
                 _noviNError = true;
                 uspjesno = false;
                 _indexGreske=i;
