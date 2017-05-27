@@ -6,6 +6,9 @@ export default Ember.Controller.extend({
 
     noviNazivError: false,
     noviNError: false,
+    noviServerError: false,
+    noviServerErrorText: "",
+    noviServerSuccess: false,
     indexGreske: null,
 
     validirajPolje: function(){
@@ -42,7 +45,20 @@ export default Ember.Controller.extend({
     },
 
     addTemplate: function(template){
-        this.get("templateService").add(template).then(x => {}).catch(x => {});
+        this.set("serverErrorText", "");
+
+        var self = this;
+        this.get("templateService").add(template).then(x => {
+            self.set("noviServerError", false);
+            self.set("noviServerSuccess", true);
+            self.set("serverErrorText", "");
+
+        }).catch(x => {
+            self.set("noviServerError", true);
+            self.set("noviServerSuccess", false);
+            self.set("serverErrorText", err.responseText);
+
+        });
     },
 
     actions: {
@@ -54,8 +70,6 @@ export default Ember.Controller.extend({
 
         izbrisi: function(index){
             let templ = this.get("model.template");
-            console.log("index");
-            console.log(index);
             let novaPolja = [...templ.poljaTemplatea.slice(0, index), ...templ.poljaTemplatea.slice(index + 1, templ.poljaTemplatea.length)]; 
             this.set("model.template.poljaTemplatea", novaPolja);
         },

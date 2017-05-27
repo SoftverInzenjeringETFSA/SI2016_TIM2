@@ -32,10 +32,18 @@
             {{/if}}{{/if}}
             {{input type="text" class="form-control" value=polje.nazivPolja}} 
         </div>
+
         <button type="button" class="btn btn-success" {{action 'izbrisi' index}}>Izbriši</button><br>
       {{/each}}
          </div>
          <div class="form-group text-center">
+            {{#if noviServerError}}
+              <span class="greskaUnosa">Došlo je do greške prilikom dodavanja.</span>
+              <span class="greskaUnosa">{{noviServerErrorText}}</span>
+            {{/if}}
+            {{#if noviServerSuccess}}
+              <span class="greskaUnosa">Uspješno ste dodali template.</span>
+            {{/if}}
             <button type="button" class="btn btn-success" {{action 'submit'}}>Submit</button>
          </div>
       </form>

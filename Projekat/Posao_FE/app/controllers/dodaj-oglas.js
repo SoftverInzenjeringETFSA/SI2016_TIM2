@@ -18,6 +18,9 @@ export default Ember.Controller.extend({
     nazivError: false,
     opisError: false,
     poljaEror: false,
+    serverError: false,
+    serverErrorText: "",
+    serverSuccess: false,
 
     validacija: function(){
 
@@ -78,11 +81,16 @@ export default Ember.Controller.extend({
         this.set("opisError", _opisError);
         this.set("poljaEror", _poljaError);
 
+        console.log("ispravnost");
+        console.log(ispravno);
         return ispravno;
     },
 
 	register: function(){
+        this.set("serverErrorText", "");
+
 		let oglas = {};
+        var self = this;
 		oglas.poslodavacId = this.get("session.data.authenticated.userid");
 		oglas.lokacija = this.get("lokacija");
 
@@ -102,7 +110,18 @@ export default Ember.Controller.extend({
 		oglas.oglasPodaci = this.get("polja");
 		oglas.datumIsteka = this.get("datum");
 
-		this.get("oglasiService").postavi(oglas).then(x => {}).catch(err => {});
+
+		this.get("oglasiService").postavi(oglas).then(x => {
+            self.set("serverSuccess", true);
+            self.set("serverError", false);
+            self.set("serverErrorText", "");
+
+        }).catch(err => {
+            self.set("serverSuccess", false);
+            self.set("serverError", true);
+            self.set("serverErrorText", err.responseText);
+
+        });
 
 
 	},
@@ -140,8 +159,6 @@ export default Ember.Controller.extend({
   				_polja[i].staje = template.poljaTemplatea[i].nazivPolja;
 			}
     		this.set("polja", _polja.slice());
-    		console.log("polja");
-    		console.log(this.get("polja"));
 
       		this.set('template', template);
     	},
