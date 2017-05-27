@@ -47,7 +47,7 @@
                         {{#if prijavaSuccess}}Uspješno ste prijavljeni na oglas!{{/if}}
                         {{#if prijavaError}}Došlo je do greške prilikom prijave.{{/if}}
                         {{#if (eq model.imaprijava.bool false)}}
-                        {{#if (eq model.oglas.zatvoren 1)}}
+                        {{#if (eq model.oglas.zatvoren 0)}}
                         <button class="btn btn-default login-button" {{action 'prijava' model.oglas.idOglasa}}>Prijavi se</button><br><br>
                         {{/if}}
                         {{/if}}
