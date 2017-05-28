@@ -76,7 +76,7 @@ public class OglasController {
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Zabranjen pristup");
 		}
 		
-		return ResponseEntity.status(HttpStatus.OK).body(oglasRepository.findAllByPoslodavacIdKorisnika(id));
+		return ResponseEntity.status(HttpStatus.OK).body(oglasRepository.findAllByPoslodavacIdKorisnikaOrderByDatumObjaveDesc(id));
 	}
 	
 	// /oglasi?kategorija=...

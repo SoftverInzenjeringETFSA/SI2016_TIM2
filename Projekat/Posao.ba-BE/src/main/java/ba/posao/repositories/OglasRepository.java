@@ -13,7 +13,7 @@ public interface OglasRepository extends PagingAndSortingRepository<Oglas, Integ
 	@Query("select o from Oglas o where idOglasa=?")
 	public Oglas findById(Integer id);
 	
-	public List<Oglas> findAllByPoslodavacIdKorisnika(Integer idPoslodavca);
+	public List<Oglas> findAllByPoslodavacIdKorisnikaOrderByDatumObjaveDesc(Integer idPoslodavca);
 	
 	public List<Oglas> findAll();
 	
