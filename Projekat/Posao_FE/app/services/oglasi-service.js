@@ -11,6 +11,9 @@ export default BaseService.extend({
         this.ajax({ url: `oglasi/search?asc=false`, type: "GET"}).then(function(data) {
             data.forEach(function(oglas) {
                 oglas.datumObjave = getTimeAgo(oglas.datumObjave);
+                let date = new Date(oglas.datumIsteka);
+                oglas.datumIsteka = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear() + '.';
+
                 oglasi.addObject(Oglas.create(oglas));
             });
         });
@@ -41,6 +44,9 @@ export default BaseService.extend({
         this.ajax({ url: `oglasi/poslodavac?id=${id}`, type: "GET"}).then(function(data) {
             data.forEach(function(oglas) {
                 oglas.datumObjave = getTimeAgo(oglas.datumObjave);
+                let date = new Date(oglas.datumIsteka);
+                oglas.datumIsteka = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear() + '.';
+
                 oglasi.addObject(Oglas.create(oglas));
             });
         });

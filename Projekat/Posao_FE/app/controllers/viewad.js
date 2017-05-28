@@ -17,9 +17,20 @@ export default Ember.Controller.extend({
         return this.get('oglasiService').prijava(korisnik, oglas).then(x => {
             self.set("prijavaSuccess", true);
             self.set("prijavaError", false);
+
+            self.set("zatvaranjeSuccess", false);
+            self.set("zatvaranjeError", false);
+            self.set("reopenSuccess", false);
+            self.set("reopenError", false);
+
             self.set("model.imaprijava", true)}).catch(err => {
                 self.set("prijavaSuccess", false);
                 self.set("prijavaError", true);
+
+                self.set("zatvaranjeSuccess", false);
+                self.set("zatvaranjeError", false);
+                self.set("reopenSuccess", false);
+                self.set("reopenError", false);
             });
     },
 
@@ -39,10 +50,20 @@ export default Ember.Controller.extend({
             self.set("datumError", false);
             self.set("model.oglas.zatvoren", 0);
 
+            self.set("zatvaranjeSuccess", false);
+            self.set("zatvaranjeError", false);
+            self.set("prijavaSuccess", false);
+            self.set("prijavaError", false);
+
         }).catch(err => {
             self.set("reopenError", true);
             self.set("reopenSuccess", false);
             self.set("datumError", false);
+
+            self.set("zatvaranjeSuccess", false);
+            self.set("zatvaranjeError", false);
+            self.set("prijavaSuccess", false);
+            self.set("prijavaError", false);            
         });
     },
 
@@ -69,9 +90,19 @@ export default Ember.Controller.extend({
                 self.set('model.oglas.zatvoren', 1);
                 self.set("zatvaranjeSuccess", true);
                 self.set("zatvaranjeError", false);
+
+                self.set("reopenSuccess", false);
+                self.set("reopenError", false);
+                self.set("prijavaSuccess", false);
+                self.set("prijavaError", false);
+
             }).catch(err => {
                 self.set("zatvaranjeSuccess", false);
                 self.set("zatvaranjeError", true);
+                self.set("reopenSuccess", false);
+                self.set("reopenError", false);
+                self.set("prijavaSuccess", false);
+                self.set("prijavaError", false);
             });
         },
 
