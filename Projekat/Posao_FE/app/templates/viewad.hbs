@@ -53,6 +53,11 @@
                         <button class="btn btn-default login-button" {{action 'prijava' model.oglas.idOglasa}}>Prijavi se</button><br><br>
                         {{/if}}
                         {{/if}}
+                        {{#if (eq session.data.authenticated.role "ROLE_NEZAPOSLENI")}}
+                        {{#if (eq model.imaprijava.bool true)}}
+                        Već ste prijavljeni ste na ovaj oglas.
+                        {{/if}}
+                        {{/if}}
                             
                     <div>
                         {{#each model.oglas.oglasPodaci as |podatak|}}

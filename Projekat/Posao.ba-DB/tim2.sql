@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2017 at 11:15 AM
+-- Generation Time: May 28, 2017 at 08:07 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -80,9 +80,9 @@ CREATE TABLE `kategorije` (
 --
 
 INSERT INTO `kategorije` (`idKategorije`, `naziv`) VALUES
-(1, 'IT'),
 (2, 'Ekonomija'),
-(3, 'Uslužne djelatnosti');
+(3, 'Uslužne djelatnosti'),
+(5, 'IT');
 
 -- --------------------------------------------------------
 
@@ -104,8 +104,7 @@ CREATE TABLE `korisnici` (
 INSERT INTO `korisnici` (`idKorisnika`, `username`, `password_hash`, `email`) VALUES
 (1, 'admin', '098f6bcd4621d373cade4e832627b4f6', 'admin@posao.ba'),
 (2, 'firma1', '098f6bcd4621d373cade4e832627b4f6', 'firma1@firma1.com'),
-(5, 'korisnik2', '', 'korisnik2@domena.com'),
-(6, 'ekalac1', 'test', 'no');
+(5, 'korisnik1', '098f6bcd4621d373cade4e832627b4f6', 'korisnik2@domena.com');
 
 -- --------------------------------------------------------
 
@@ -148,8 +147,7 @@ CREATE TABLE `nezaposleni` (
 --
 
 INSERT INTO `nezaposleni` (`idKorisnika`, `ime`, `prezime`, `cv`, `privatanProfil`) VALUES
-(5, 'Drugi', 'Nezaposleni', 'CV Tekst 2', 0),
-(6, 'Elza', '', NULL, 0);
+(5, 'Drugi', 'Nezaposleni', 'CV Tekst 2', 0);
 
 -- --------------------------------------------------------
 
@@ -222,12 +220,9 @@ CREATE TABLE `oglas` (
 --
 
 INSERT INTO `oglas` (`idOglasa`, `idPoslodavca`, `idLokacije`, `idKategorije`, `datumObjave`, `datumIsteka`, `sakriven`, `zatvoren`, `uspjesan`, `prioritet`, `naziv`, `opis`) VALUES
-(1, 2, 1, 1, '2017-05-24 12:08:35', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
-(2, 2, 2, 2, '2017-05-10 00:00:00', '2017-06-01 23:59:59', 0, 0, 0, 2, 'Oglas 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
-(3, 2, 3, 2, '2017-05-08 00:00:00', '2017-05-19 00:00:00', 0, 0, 0, 2, 'Oglas 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
-(4, 2, 3, 1, '2017-05-07 00:00:00', '2017-06-07 00:00:00', 0, 1, 0, 1, 'Oglas 4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
-(6, 2, 1, 1, '2017-05-05 00:00:00', '2017-07-01 23:59:59', 0, 0, 0, 1, 'Oglas X', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
-(8, 2, 1, 1, '2017-05-26 12:30:17', '2017-05-28 02:00:00', 0, 0, 0, 0, 'Neki oglas', 'lorem ipsum dolor sit amet');
+(2, 2, 2, 3, '2017-05-10 00:00:00', '2017-06-21 00:00:00', 0, 0, 0, 2, 'Potreban trgovac', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
+(3, 2, 3, 5, '2017-05-08 00:00:00', '2017-05-19 00:00:00', 0, 1, 0, 2, 'Traži se PHP developer', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis vulputate mi. Nullam interdum nulla risus, vitae varius metus volutpat ut. Aliquam sem mauris, vulputate vitae neque a, dapibus feugiat elit. In dignissim ornare urna, ultrices dapibus metus semper id. Ut eget ex a felis finibus facilisis a ac massa. Aenean condimentum quam eu odio imperdiet, a maximus odio accumsan. In at fermentum arcu, in laoreet tortor. Vivamus ultrices aliquet velit, non aliquam leo. Quisque sit amet commodo sem. Donec pretium ut orci a fermentum. Morbi purus lectus, molestie non nisi ut, suscipit ullamcorper justo. Ut consequat egestas varius. Nullam magna enim, viverra id eros quis, pulvinar aliquet libero.'),
+(9, 2, 2, 2, '2017-05-27 21:45:58', '2017-06-30 00:00:00', 0, 0, 0, 0, 'Potreban ekonomista', 'dsfsdf bbebebebebebkenendnndnd');
 
 -- --------------------------------------------------------
 
@@ -247,21 +242,10 @@ CREATE TABLE `oglaspodaci` (
 --
 
 INSERT INTO `oglaspodaci` (`id`, `idOglasa`, `vrijednost`, `staje`) VALUES
-(8, 2, 'Trgovac', 'Zanimanje'),
-(9, 2, 'Kratak opis', 'Opis'),
-(10, 2, 'Opis posla ....', 'Opis'),
-(11, 2, 'SSS', 'SSS'),
-(12, 2, '2017-05-10 00:00:00', 'Datum i vrijeme'),
-(13, 2, 'Mostar', 'Lokacija'),
-(14, 2, 'Zenica', 'Lokacija'),
-(15, 2, 'Napomena', 'Napomena'),
-(16, 8, 'nesto', 'Vještine'),
-(17, 8, 'nesto', 'Datum objave'),
-(18, 8, 'asfas', 'Lokacija'),
-(19, 8, 'asfasg', 'Opis'),
-(20, 8, 'asfasf', 'Datum isteka'),
-(21, 8, 'asfasg', 'Kratak opis'),
-(22, 8, 'asfasfasf', 'Naslov');
+(10, 2, 'Prodavanje i utovaranje robe', 'Opis posla'),
+(11, 2, 'SSS', 'Stručna sprema'),
+(15, 2, 'Radi se u tri smjene', 'Napomena'),
+(23, 3, 'Spring, Ember.js', 'Vjestine');
 
 -- --------------------------------------------------------
 
@@ -276,13 +260,6 @@ CREATE TABLE `oglasprijave` (
   `dodatneInformacije` varchar(1000) CHARACTER SET utf8 COLLATE utf8_slovenian_ci DEFAULT NULL,
   `vrijemePrijave` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `oglasprijave`
---
-
-INSERT INTO `oglasprijave` (`idPrijave`, `idOglasa`, `idKorisnika`, `dodatneInformacije`, `vrijemePrijave`) VALUES
-(1, 1, 5, NULL, '2017-05-23 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -301,21 +278,12 @@ CREATE TABLE `poljatemplatea` (
 --
 
 INSERT INTO `poljatemplatea` (`id`, `idTemplate`, `nazivPolja`) VALUES
-(1, 1, 'Naslov'),
-(2, 1, 'Kratak opis'),
-(3, 1, 'Opis'),
 (4, 1, 'Vještine'),
-(5, 1, 'Datum objave'),
-(6, 1, 'Datum isteka'),
-(7, 1, 'Lokacija'),
-(8, 2, 'Naslov'),
-(9, 2, 'Kratak opis'),
-(10, 2, 'Opis'),
+(10, 2, 'Opis posla'),
 (11, 2, 'Stručna sprema'),
-(12, 2, 'Datum objave'),
-(13, 2, 'Datum isteka'),
-(14, 2, 'Lokacija'),
-(15, 2, 'Napomene');
+(15, 2, 'Napomene'),
+(16, 3, 'Iskustvo'),
+(17, 4, 'Oblast');
 
 -- --------------------------------------------------------
 
@@ -331,16 +299,6 @@ CREATE TABLE `poruke` (
   `vrijeme` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `procitano` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `poruke`
---
-
-INSERT INTO `poruke` (`idPoruke`, `idPosiljaoca`, `idPrimaoca`, `tekst`, `vrijeme`, `procitano`) VALUES
-(1, 2, 5, 'Dođi da me ljubis', '2017-05-23 00:00:00', 1),
-(2, 2, 5, 'Dođi da me ljubis', '2017-05-23 00:00:00', 1),
-(3, 2, 5, 'Dođi da me ljubis', '2017-05-23 00:00:00', 1),
-(4, 2, 5, 'Korisnik Drugi Nezaposlenise prijavio na oglas Oglas 1', '2017-05-23 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -361,7 +319,7 @@ CREATE TABLE `poslodavci` (
 --
 
 INSERT INTO `poslodavci` (`idKorisnika`, `ime`, `prezime`, `nazivFirme`, `telefon`) VALUES
-(2, 'VlasnikUpdated', 'Firme', 'Firma1', '123-456');
+(2, 'VlasnikUpdated', 'F-rmef', 'Firma1', '123456191');
 
 -- --------------------------------------------------------
 
@@ -558,12 +516,12 @@ ALTER TABLE `kantoni`
 -- AUTO_INCREMENT for table `kategorije`
 --
 ALTER TABLE `kategorije`
-  MODIFY `idKategorije` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idKategorije` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `korisnici`
 --
 ALTER TABLE `korisnici`
-  MODIFY `idKorisnika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idKorisnika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `lokacije`
 --
@@ -578,27 +536,27 @@ ALTER TABLE `notifikacija`
 -- AUTO_INCREMENT for table `oglas`
 --
 ALTER TABLE `oglas`
-  MODIFY `idOglasa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idOglasa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `oglaspodaci`
 --
 ALTER TABLE `oglaspodaci`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `oglasprijave`
 --
 ALTER TABLE `oglasprijave`
-  MODIFY `idPrijave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idPrijave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `poljatemplatea`
 --
 ALTER TABLE `poljatemplatea`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `poruke`
 --
 ALTER TABLE `poruke`
-  MODIFY `idPoruke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idPoruke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `pozivnice`
 --

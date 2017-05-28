@@ -1,10 +1,7 @@
 # SI2016_TIM2
 
 
-
-
-## Konfiguracija
-
+## Konfiguracija i pokretanje
 
 * Instalirati Eclipse Neon.3
     *   Instalirati Spring IDE -> Help->Eclipse Marketplace
@@ -12,8 +9,8 @@
     
 *   Instalirati MySql (Korištena verzija 5.7.18, druge verzije bi trebale biti kompatibilne)
 
-*   Izvršiti skriptu init.sql (Može se koristiti i mysql workbench za ove korake)
-    * mysql -u root -p < init.sql
+*   Izvršiti skriptu tim2.sql (Može se koristiti i mysql workbench za ove korake)
+    * mysql -u root -p < tim2.sql
     * prijaviti se na bazu kao root (mysql -u root -p)
     * kreirati novog korisnika i dodati privilegije
     * CREATE USER 'EtfSI2016'@'localhost' IDENTIFIED BY '2016SIEtf';
@@ -27,52 +24,25 @@
 
 * Instalirati Ember CLI
 
+* izvršiti npm install u Projekat/Posao_FE
+
+Nakon pokretanja backenda i servera baze podataka, aplikacija se pokreće unošenjem "ember s" u Posao_FE. 
 
 ## Urađeno
 
+__Napomena__: svi trenutni korisnici u bazi podataka imaju password "test". Početni korisnici u bazi su "admin", "korisnik1", "firma1" sa ulogama admin, nezaposleni i poslodavac respektivno. Sve uloge osim admina se mogu dodavati kroz UI.
 
-Unutar projekta Posao.ba implementirano je sljedeće:
-* Frontend:
-   * Welcome page
-   * Login page
-   * Registracija (Poslodavac i nezaposleni)
-   * Profil korisnika
-   * Oglas
-   * Lista oglasa
-   * Pretraga oglasa
-   * Unos oglasa
-
-* Backend:
-   * Baza podataka
-   * REST servisi za: 
-      * Korisnike
-         * Pretraga korisnika po email-u i username-u
-         * Pretraga svih korisnika
-         * Dodavanje korisnika
-         * Brisanje korisnika
-         * Update korisnika
-         * Utvrđivanje vrste korisnika (Admin, poslodavac ili nezaposleni)
-         * Login korisnika
-         * Započeta registracija korisnika
-         * Notifikacije
-      * Oglase
-         * Oglasi jednog poslodavca /oglasi/poslodavac/{id}
-         * Oglasi po kategorijama oglasi/kategorija?kategorija=NazivKategorije
-         * Pretraga po vrijednostima /oglasi/pretraga?vrijednost=ABC
-         * Pretraga po lokaciji /oglasi/pretraga/lokacija?lokacija=Sarajevo
-         * Pretraga oglasa po ID-u /oglasi/{id}
+Unutar projekta Posao.ba implementirano je sljedeće, za naznačene vrste korisnika:
+   * **Registracija** (kao poslodavac ili nezaposleni)
+   * **Profil korisnika** - uređivanje, brisanje (za sve registrovane). **Napomena**: do ovog se dolazi klikom na username nakon logina
+   * **Oglasi** - pregled aktivnih oglasa, pretraga i filtriranje (za sve korisnike i goste); prijava (za nezaposlenog); kreiranje sa ili bez templatea, obnova, zatvaranje, pregled sopstvenih oglasa (za poslodavca); brisanje oglasa (za admina)
+   * **Kategorije** - dodavanje, uređivanje, brisanje (za admina)
+   * **Templatei** - dodavanje (za admina)
+   * **Prikaz nezaposlenih korisnika poslodavcu**
+   * **Poruke** - čitanje (nezaposleni); slanje i čitanje poslanih (poslodavac). **Napomena: Korisnik ulogovan kao poslodavac do polja za slanje poruke dolazi pregledom svih nezaposlenih, klikom na dugme "pošalji poruku"
+   * **Notifikacije** - generisanje poslodavcu kada se neko prijavi na njegov oglas, ispis poslodavcu
    
    
-   
-## TO DO:
-
-
-Potrebno je osposobiti povezivanje frontend-a i backend-a, vršenjem odgovarajuće serijalizacije podataka u ember-data i obratno.
-http://nortpoint.io/2016/10/13/lets-make-friends-with-spring-and-emberjs/
-Implementirati preostale funkcionalnosti.
-
-
-
 ## Folderi
 
 
@@ -81,6 +51,5 @@ Implementirati preostale funkcionalnosti.
 * Reference - Dokumenti povezani s dokumentacijom
 * Projekat:
    * Posao.ba-BE - backend projekat
+   * Posao.ba-DB - dump baze podataka - trenutno u bazi postoje tri korisnika, tri oglasa od kojih su dva aktivna, četiri templatea, tri kategorije, nijedna prijava, nijedna poruka i notifikacija.
    * Posao_FE - frontend projekat
-
-
