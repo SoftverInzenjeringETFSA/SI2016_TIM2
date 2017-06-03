@@ -82,8 +82,8 @@ export default Ember.Controller.extend({
 
 		if (!_tipError && this.get("tip") == "Poslodavac")
 		{
-	        if (this.get("model.profil.poslodavac.telefon") == null || (!this.get("model.profil.poslodavac.telefon").match(/^\d{9}$/) && !this.get("model.profil.poslodavac.telefon").match(/^\d{8}$/))){
-                uspjesno = false;
+	        if (this.get("telefon") == null || (!this.get("telefon").match(/^\d{9}$/) && !this.get("telefon").match(/^\d{8}$/))){
+                ispravno = false;
                 _telefonError = true;
             }
 
