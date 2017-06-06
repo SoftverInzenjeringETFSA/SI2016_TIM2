@@ -56,12 +56,21 @@ export default Ember.Controller.extend({
 
                     self.set("izmjenaServerError", false);
                     self.set("izmjenaServerErrorText", "");
-                    self.set("izmjenaSuccess", true);
+                    self.set("izmjenaSuccess", false);
+
+                    self.set("brisanjeServerError", false);
+                    self.set("brisanjeServerErrorText", "");
+                    self.set("brisanjeSuccess", true);
+
                     //ispis poruke
         }).catch(err => {
-                    self.set("izmjenaServerError", true);
-                    self.set("izmjenaServerErrorText", err.responseText);
+                    self.set("izmjenaServerError", false);
+                    self.set("izmjenaServerErrorText", "");
                     self.set("izmjenaSuccess", false);
+
+                    self.set("brisanjeServerError", true);
+                    self.set("brisanjeServerErrorText", err.responseText);
+                    self.set("brisanjeSuccess", false);
         });
 
 
@@ -72,7 +81,7 @@ export default Ember.Controller.extend({
         let uspjesno = true;
         let _noviNazivError = false;
 
-        if (this.get('noviNaziv') ==  "") {
+        if (this.get('noviNaziv') ==  null || this.get('noviNaziv').replace(/\s/g,"") == "") {
 
             _noviNazivError = true;
             uspjesno = false;
@@ -92,7 +101,7 @@ export default Ember.Controller.extend({
 
         for(let i=0; i<_polja.length; i++)
         {
-            if(_polja[i].naziv=="")
+            if(_polja[i].naziv.replace(/\s/g,"") == "")
             {
                 _noviNError = true;
                 uspjesno = false;

@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
 
 
 
-        if (this.get('model.template.naziv') ==  "") {
+        if (this.get('model.template.naziv') ==  null || this.get('model.template.naziv').replace(/\s/g,"") == "") {
 
             _noviNazivError = true;
             uspjesno = false;
@@ -29,7 +29,7 @@ export default Ember.Controller.extend({
 
         for(let i=0; i<_polja.length; i++)
         {
-            if(_polja[i].nazivPolja=="")
+            if(_polja[i].nazivPolja.replace(/\s/g,"") == "")
             {
                 _noviNError = true;
                 uspjesno = false;
