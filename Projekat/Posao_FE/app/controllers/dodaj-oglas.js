@@ -154,12 +154,12 @@ export default Ember.Controller.extend({
             var _polja = [];
             if (template){
                 _polja = new Array(template.poljaTemplatea.length);
+
+        		for (let i = 0; i < template.poljaTemplatea.length; i++) {
+        			_polja[i] = {vrijednost: ""};
+      				_polja[i].staje = template.poljaTemplatea[i].nazivPolja;
+                }
             }
-    		
-    		for (let i = 0; i < template.poljaTemplatea.length; i++) {
-    			_polja[i] = {vrijednost: ""};
-  				_polja[i].staje = template.poljaTemplatea[i].nazivPolja;
-			}
     		this.set("polja", _polja.slice());
 
       		this.set('template', template);
