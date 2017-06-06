@@ -42,7 +42,7 @@ public class PorukeService {
 		Poruke p = new Poruke();
 		p.setPrimalac(korisnikRepository.findByIdKorisnika(poruka.getPrimalac()));
 		p.setPosiljalac(korisnikRepository.findByIdKorisnika(poruka.getPosiljalac()));
-		p.setVrijeme((Date) LocalDate.now().toDate());
+		p.setVrijeme(new Date());
 		p.setTekst(poruka.getTekst());
 		p.setProcitano(false);
 		repository.save(p);
