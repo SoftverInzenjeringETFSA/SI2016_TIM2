@@ -77,9 +77,13 @@ export default Ember.Controller.extend({
             var self = this;
 
 		    let oglasId = this.get("model.oglas.idOglasa");
-            this.delete(oglasId).then(x => {
-                self.transitionToRoute('index');
-            });
+            let potvrda = confirm("Jeste li sigurni da želite izbrisati oglas?");
+            if (potvrda){
+                this.delete(oglasId).then(x => {
+                    //alert("Uspješno izbrisan oglas");
+                    self.transitionToRoute('index');
+                });                
+            }
     	},
 
         zatvori: function(){
