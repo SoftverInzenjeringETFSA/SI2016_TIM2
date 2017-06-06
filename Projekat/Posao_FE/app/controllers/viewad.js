@@ -80,7 +80,7 @@ export default Ember.Controller.extend({
             let potvrda = confirm("Jeste li sigurni da želite izbrisati oglas?");
             if (potvrda){
                 this.delete(oglasId).then(x => {
-                    //alert("Uspješno izbrisan oglas");
+                    alert("Uspješno izbrisan oglas");
                     self.transitionToRoute('index');
                 });                
             }
@@ -90,24 +90,29 @@ export default Ember.Controller.extend({
             var self = this;
 
             let oglasId = this.get("model.oglas.idOglasa");
-            this.zatvori(oglasId).then(x => {
-                self.set('model.oglas.zatvoren', 1);
-                self.set("zatvaranjeSuccess", true);
-                self.set("zatvaranjeError", false);
 
-                self.set("reopenSuccess", false);
-                self.set("reopenError", false);
-                self.set("prijavaSuccess", false);
-                self.set("prijavaError", false);
+            let potvrda = confirm("Jeste li sigurni da želite zatvoriti oglas?");
 
-            }).catch(err => {
-                self.set("zatvaranjeSuccess", false);
-                self.set("zatvaranjeError", true);
-                self.set("reopenSuccess", false);
-                self.set("reopenError", false);
-                self.set("prijavaSuccess", false);
-                self.set("prijavaError", false);
-            });
+            if(potvrda){
+                this.zatvori(oglasId).then(x => {
+                    self.set('model.oglas.zatvoren', 1);
+                    self.set("zatvaranjeSuccess", true);
+                    self.set("zatvaranjeError", false);
+                    self.set("reopenSuccess", false);
+                    self.set("reopenError", false);
+                    self.set("prijavaSuccess", false);
+                    self.set("prijavaError", false);
+                }).catch(err => {
+                    self.set("zatvaranjeSuccess", false);
+                    self.set("zatvaranjeError", true);
+                    self.set("reopenSuccess", false);
+                    self.set("reopenError", false);
+                    self.set("prijavaSuccess", false);
+                    self.set("prijavaError", false);
+            });   
+            }
+
+
         },
 
         reopen: function(){
