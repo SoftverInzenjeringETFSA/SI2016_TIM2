@@ -23,6 +23,7 @@ export default Ember.Controller.extend({
     ponovljeniPass: "",
     ponovljeniPassError: false,
     
+    confirmationPasswordFailed: "",
     brisanjePass: "",
 
 
@@ -129,8 +130,8 @@ export default Ember.Controller.extend({
         });
     },
 
-    delete: function(korisnikId){
-        return this.get('korisnikService').delete(korisnikId);
+    delete: function(korisnikId, korisnikPass){
+        return this.get('korisnikService').delete(korisnikId, korisnikPass);
     },
 
     getReport: function(){
@@ -154,8 +155,12 @@ export default Ember.Controller.extend({
 
         delete: function(){
             let korisnikId = this.get("session.data.authenticated.userid");
+            let confirmationPassword = this.get("brisanjePass");
 
-            if (this.delete(korisnikId)){
+            if(confirmationPassword.length < 3)
+                this.set("confirmationPasswordFailed", "Morate unijeti password");
+
+            else if (this.delete(korisnikId, confirmationPassword)){
                 this.get('session').invalidate();
                 this.transitionToRoute('index');
             }
@@ -181,6 +186,7 @@ export default Ember.Controller.extend({
         },
 
         showProfileDeleteModal: function(){
+            this.set("confirmationPasswordFailed", "");
             this.set("modalProfileDeleteClass", "modal fade in");
             this.set("modalProfileDeleteStyle", "display:block");
         },

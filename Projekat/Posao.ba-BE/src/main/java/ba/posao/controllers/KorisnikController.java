@@ -119,23 +119,22 @@ public class KorisnikController {
     
     
     @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
-    public ResponseEntity deleteKorisnici(@RequestParam(name = "id") int id) {
+    public ResponseEntity deleteKorisnici(@RequestParam(name = "id") int id, @RequestParam(name="pw") String pass) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
 		Korisnik _korisnik = korisnikService.getKorisnikByUserName(auth.getName());	
 		if (_korisnik == null || _korisnik.getIdKorisnika() != id){
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Zabranjen pristup");
 		}
 		
-		return korisnikService.removeKorisnici(id);
-		
-		/*
-		String passMD5=korisnikService.toMD5(pass.getPassword());
-		if (passMD5.equals(_korisnik.getPassword()))
-		{
+		// Password je validan pa mozemo obrisati korisnika
+		String passMD5 = korisnikService.toMD5(pass);
+		if (passMD5.equals(_korisnik.getPassword())) {
 			return korisnikService.removeKorisnici(id);
 		}
-		else return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Pogresan password");
-		*/
+		
+		// Dati password nije validan
+		return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Pogresan password");
     }
     
     @RequestMapping(path="/tip", method = RequestMethod.GET) 

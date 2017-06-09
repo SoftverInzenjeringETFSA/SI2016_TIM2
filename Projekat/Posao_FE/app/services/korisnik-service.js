@@ -25,10 +25,10 @@ export default BaseService.extend({
         return this.ajax({ url: `korisnici/update?id=${id}`, type: "POST", data: JSON.stringify(korisnik)});
     },
 
-    delete: function(korisnikid) {
-        return this.ajax({ url: `korisnici/delete?id=${korisnikid}`, type: "DELETE", data: JSON.stringify({})});
+    delete: function(korisnikid, korisnikPass) {
+        return this.ajax({ url: `korisnici/delete?id=${korisnikid}&pw=${korisnikPass}`, 
+            type: "DELETE", data: JSON.stringify({})});
     },
-
 
     izvjestaj: function() {
         var izvjestaj = Izvjestaj.create({});
