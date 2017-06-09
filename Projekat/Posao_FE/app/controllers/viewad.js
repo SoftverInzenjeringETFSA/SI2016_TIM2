@@ -44,7 +44,12 @@ export default Ember.Controller.extend({
 
     reopen: function(oglasId, brojDana) {
         var self = this;
-        this.get('oglasiService').reopen(oglasId, brojDana).then(x => {
+        if (isNaN(this.get("noviDatumIsteka")) || this.get("noviDatumIsteka") < 1 || !this.get("noviDatumIsteka").toString().match(/^\d+$/)){
+            self.set("datumError", true);
+        }
+
+        else{
+           this.get('oglasiService').reopen(oglasId, brojDana).then(x => {
             self.set("reopenSuccess", true);
             self.set("reopenError", false);
             self.set("datumError", false);
@@ -55,16 +60,19 @@ export default Ember.Controller.extend({
             self.set("prijavaSuccess", false);
             self.set("prijavaError", false);
 
-        }).catch(err => {
-            self.set("reopenError", true);
-            self.set("reopenSuccess", false);
-            self.set("datumError", false);
+            }).catch(err => {
+                self.set("reopenError", true);
+                self.set("reopenSuccess", false);
+                self.set("datumError", false);
 
-            self.set("zatvaranjeSuccess", false);
-            self.set("zatvaranjeError", false);
-            self.set("prijavaSuccess", false);
-            self.set("prijavaError", false);            
-        });
+                self.set("zatvaranjeSuccess", false);
+                self.set("zatvaranjeError", false);
+                self.set("prijavaSuccess", false);
+                self.set("prijavaError", false);            
+            }); 
+    }
+
+
     },
 
     actions: {

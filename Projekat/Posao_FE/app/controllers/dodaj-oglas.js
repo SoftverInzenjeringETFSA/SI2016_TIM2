@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     templateService: Ember.inject.service('template-service'),
-	oglasiService: Ember.inject.service('oglasi-service'),
-	session: Ember.inject.service('session'),
+    oglasiService: Ember.inject.service('oglasi-service'),
+    session: Ember.inject.service('session'),
     kategorija: null,
     lokacija: null,
     template: null,
@@ -57,22 +57,29 @@ export default Ember.Controller.extend({
             _datumError = true;
         }
 
-        if (this.get("naziv") == "" || !this.get("naziv").match(/^[a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i)){
+        if (this.get("naziv").replace(/\s/g,"") == ""){
             ispravno = false;
             _nazivError = true;
         }
 
-        if (this.get("opis") == "" || !this.get("opis").match(/^[0-9a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\ \_\+\-\*\:\.\,\;\?\!\$\#\(\)\[\]\{\}\=\@]{1,500}$/im)){
+        if (this.get("opis").replace(/\s/g,"") == ""){
             ispravno = false;
             _opisError = true;
         }
 
+
+        if (isNaN(this.get("trajanje")) || this.get("trajanje") < 1 || !this.get("trajanje").toString().match(/^\d+$/)){
+            ispravno = false;
+            _datumError = true;
+        }
+
         this.get("polja").forEach(polje => {
-            if(polje.vrijednost == null || polje.vrijednost === ""){
+            if(polje.vrijednost == null || polje.vrijednost.replace(/\s/g,"") === ""){
                 ispravno = false;
                 _poljaError = true;
             }
         });
+
 
         this.set("kategorijaError", _kategorijaError);
         this.set("templateError", _templateError);
@@ -85,34 +92,34 @@ export default Ember.Controller.extend({
         return ispravno;
     },
 
-	register: function(){
+    register: function(){
         this.set("serverErrorText", "");
 
-		let oglas = {};
+        let oglas = {};
         var self = this;
-		oglas.poslodavacId = this.get("session.data.authenticated.userid");
-		oglas.lokacija = this.get("lokacija");
+        oglas.poslodavacId = this.get("session.data.authenticated.userid");
+        oglas.lokacija = this.get("lokacija");
 
-		oglas.kategorije = this.get("kategorija");
+        oglas.kategorije = this.get("kategorija");
 
-		//hardkodirano
-		oglas.sakriven = "0";
+        //hardkodirano
+        oglas.sakriven = "0";
         oglas.oglasPrijave = new Array();
 
-		oglas.zatvoren = "0";
-		oglas.uspjesan = "0";
-		oglas.prioritet = "0";
+        oglas.zatvoren = "0";
+        oglas.uspjesan = "0";
+        oglas.prioritet = "0";
 
-		oglas.naziv = this.get("naziv");
-		oglas.opis = this.get("opis");
-		oglas.oglasPodaci = this.get("polja");
-		oglas.datumIsteka = null;
+        oglas.naziv = this.get("naziv");
+        oglas.opis = this.get("opis");
+        oglas.oglasPodaci = this.get("polja");
+        oglas.datumIsteka = null;
         var trajanjeOglasa = Number.parseInt(this.get("trajanje"));
         var trajanjeOglasa = this.get("trajanje");
         oglas.vrijemeTrajanja = trajanjeOglasa;
 
         //this.get("oglasiService").postavi(oglas, trajanjeOglasa).then(x => {
-		this.get("oglasiService").postavi(oglas).then(x => {
+        this.get("oglasiService").postavi(oglas).then(x => {
             self.set("serverSuccess", true);
             self.set("serverError", false);
             self.set("serverErrorText", "");
@@ -125,44 +132,44 @@ export default Ember.Controller.extend({
         });
 
 
-	},
+    },
 
     actions: {
-	    selectKategorija(kategorijaId) {
-    		let kategorije = this.get("model.kategorije");
-    		let _kategorija = kategorije.find(x => x.get("id") == kategorijaId);
+        selectKategorija(kategorijaId) {
+            let kategorije = this.get("model.kategorije");
+            let _kategorija = kategorije.find(x => x.get("id") == kategorijaId);
 
-      		this.set('kategorija', _kategorija);
-    	},
+            this.set('kategorija', _kategorija);
+        },
 
-	    selectLokacija(lokacijaId) {
-    		let lokacije = this.get("model.lokacije");
-    		let _lokacija = lokacije.find(x => x.get("id") == lokacijaId);
+        selectLokacija(lokacijaId) {
+            let lokacije = this.get("model.lokacije");
+            let _lokacija = lokacije.find(x => x.get("id") == lokacijaId);
 
-      		this.set('lokacija', _lokacija);
-    	},
+            this.set('lokacija', _lokacija);
+        },
 
-    	register() {
+        register() {
             if (this.validacija()){
                 this.register();
             }
-    	},
+        },
 
-    	selectTemplate(templateId) {
-    		let templatei = this.get("model.templatei");
-    		let template =templatei.find(x => x.get("id") == templateId);
+        selectTemplate(templateId) {
+            let templatei = this.get("model.templatei");
+            let template =templatei.find(x => x.get("id") == templateId);
             var _polja = [];
             if (template){
                 _polja = new Array(template.poljaTemplatea.length);
 
-        		for (let i = 0; i < template.poljaTemplatea.length; i++) {
-        			_polja[i] = {vrijednost: ""};
-      				_polja[i].staje = template.poljaTemplatea[i].nazivPolja;
+                for (let i = 0; i < template.poljaTemplatea.length; i++) {
+                    _polja[i] = {vrijednost: ""};
+                    _polja[i].staje = template.poljaTemplatea[i].nazivPolja;
                 }
             }
-    		this.set("polja", _polja.slice());
+            this.set("polja", _polja.slice());
 
-      		this.set('template', template);
-    	},
-	}
+            this.set('template', template);
+        },
+    }
 });

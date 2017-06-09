@@ -22,6 +22,8 @@ export default Ember.Controller.extend({
     serverSuccess: false,
     ponovljeniPass: "",
     ponovljeniPassError: false,
+    
+    brisanjePass: "",
 
 
     validacija: function(){
@@ -37,10 +39,11 @@ export default Ember.Controller.extend({
         let _ponovljeniPassError = false;
         let _cvError = false;
 
-        
-        let re1 = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        //email unicode
+        // let re1   = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        let re1 = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-        if (this.get("model.profil.password") == "" || this.get("model.profil.password").length < 6 || !this.get("model.profil.password").match(/^[0-9a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\_\+\-\*\:\.\,\;\?\!\$\#]{6,30}$/gi)) {
+        if (this.get("model.profil.password") == "" || this.get("model.profil.password").length < 6) {
             _passwordError = true;
             uspjesno = false;
         }
@@ -65,17 +68,14 @@ export default Ember.Controller.extend({
                     _telefonError = true;
                 }
 
-            if (this.get("model.profil.poslodavac.nazivFirme") == "" || !this.get("model.profil.poslodavac.nazivFirme").match(/^[0-9a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-_\.]{2,30}$/i)){
                 uspjesno = false;
                 _nazivFirmeError = true;
             }
 
-        if (this.get("model.profil.poslodavac.ime") == null || this.get("model.profil.poslodavac.ime").length > 30 || this.get("model.profil.poslodavac.ime").length < 1 || !this.get("model.profil.poslodavac.ime").match(/^[a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i)){
             uspjesno = false;
             _imeError = true;
         }
 
-        if (this.get("model.profil.poslodavac.prezime") == null || this.get("model.profil.poslodavac.prezime").length > 30 || this.get("model.profil.poslodavac.prezime").length < 1 || !this.get("model.profil.poslodavac.prezime").match(/^[a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i)){
             uspjesno = false;
             _prezimeError = true;
         }
@@ -83,17 +83,14 @@ export default Ember.Controller.extend({
 
         if (this.get("model.profil.nezaposleni"))
         {
-            if (this.get("model.profil.nezaposleni.cv") == "" || !this.get("model.profil.nezaposleni.cv").match(/^[0-9a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\ \_\+\-\*\:\.\,\;\?\!\$\#\(\)\[\]\{\}\=\@]{1,500}$/im)) {
                 _cvError = true;
                 uspjesno = false;
             }
 
-            if (this.get("model.profil.nezaposleni.ime") == null || this.get("model.profil.nezaposleni.ime").length > 30 || this.get("model.profil.nezaposleni.ime").length < 1 || !this.get("model.profil.nezaposleni.ime").match(/^[a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i)){
                 uspjesno = false;
                 _imeError = true;
             }
 
-            if (this.get("model.profil.nezaposleni.prezime") == null || this.get("model.profil.nezaposleni.prezime").length > 30 || this.get("model.profil.nezaposleni.prezime").length < 1 || !this.get("model.profil.nezaposleni.prezime").match(/^[a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i)){
                 uspjesno = false;
                 _prezimeError = true;
             }
@@ -167,6 +164,7 @@ export default Ember.Controller.extend({
         sakrijProfileDeleteModal: function(){
             this.set("modalProfileDeleteClass", "modal fade");
             this.set("modalProfileDeleteStyle", "display:none");
+            this.set("brisanjePass", "");
         },
 
         report: function(){
