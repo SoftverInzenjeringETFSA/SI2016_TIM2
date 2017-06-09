@@ -68,14 +68,17 @@ export default Ember.Controller.extend({
                     _telefonError = true;
                 }
 
+            if (this.get("model.profil.poslodavac.nazivFirme").replace(/\s/g,"") == "" /*|| !re2.test(this.get("model.profil.poslodavac.nazivFirme"))*/){
                 uspjesno = false;
                 _nazivFirmeError = true;
             }
 
+        if (this.get("model.profil.poslodavac.ime") == null || this.get("model.profil.poslodavac.ime").length > 15 || this.get("model.profil.poslodavac.ime").replace(/\s/g,"").length < 1 /*|| !re3.test(this.get("model.profil.nezaposleni.ime"))*/){
             uspjesno = false;
             _imeError = true;
         }
 
+        if (this.get("model.profil.poslodavac.prezime") == null || this.get("model.profil.poslodavac.prezime").length > 30 || this.get("model.profil.poslodavac.prezime").replace(/\s/g,"").length < 1 /*|| !re3.test(this.get("model.profil.nezaposleni.prezime"))*/){
             uspjesno = false;
             _prezimeError = true;
         }
@@ -83,14 +86,17 @@ export default Ember.Controller.extend({
 
         if (this.get("model.profil.nezaposleni"))
         {
+            if (this.get("model.profil.nezaposleni.cv").replace(/\s/g,"") == "") {
                 _cvError = true;
                 uspjesno = false;
             }
 
+            if (this.get("model.profil.nezaposleni.ime") == null || this.get("model.profil.nezaposleni.ime").length > 15 || this.get("model.profil.nezaposleni.ime").replace(/\s/g,"").length < 1 /*|| !re3.test(this.get("model.profil.nezaposleni.ime"))*/){
                 uspjesno = false;
                 _imeError = true;
             }
 
+            if (this.get("model.profil.nezaposleni.prezime") == null || this.get("model.profil.nezaposleni.prezime").length > 30 || this.get("model.profil.nezaposleni.prezime").replace(/\s/g,"").length < 1 /*|| !re3.test(this.get("model.profil.nezaposleni.prezime"))*/){
                 uspjesno = false;
                 _prezimeError = true;
             }
