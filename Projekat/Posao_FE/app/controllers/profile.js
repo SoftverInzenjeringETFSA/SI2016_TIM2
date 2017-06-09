@@ -156,14 +156,17 @@ export default Ember.Controller.extend({
         delete: function(){
             let korisnikId = this.get("session.data.authenticated.userid");
             let confirmationPassword = this.get("brisanjePass");
+            var self = this;
 
             if(confirmationPassword.length < 3)
                 this.set("confirmationPasswordFailed", "Morate unijeti password");
 
-            else if (this.delete(korisnikId, confirmationPassword)){
-                this.get('session').invalidate();
-                this.transitionToRoute('index');
-            }
+            else this.delete(korisnikId, confirmationPassword).then(x => {
+                self.get('session').invalidate();
+                self.transitionToRoute('index');
+            }).catch(err => {
+                self.set("confirmationPasswordFailed", "Greška: " + err.responseText);
+            });
         },
 
         sakrijModal: function(){
