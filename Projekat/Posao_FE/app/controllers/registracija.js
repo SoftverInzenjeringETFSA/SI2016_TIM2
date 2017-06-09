@@ -74,7 +74,7 @@ export default Ember.Controller.extend({
 
 		if (!_tipError && this.get("tip") == "Nezaposleni")
 		{
-			if (this.get("cv") == null || this.get("cv").length < 50 || !this.get("cv").match(/^[0-9a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\ \_\+\-\*\:\.\,\;\?\!\$\#\(\)\[\]\{\}\=\@]{1,500}$/im)){
+			if (this.get("cv") == null || this.get("cv").replace(/\s/g,"").length < 1 || this.get("cv").length < 50 || !this.get("cv").match(/^[ 0-9a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\ \_\+\-\*\:\.\,\;\?\!\$\#\(\)\[\]\{\}\=\@]{1,500}$/im)){
 				ispravno = false;
 				_cvError = true;
 			}
@@ -88,18 +88,18 @@ export default Ember.Controller.extend({
             }
 
 
-			if (this.get("nazivFirme") == null || this.get("nazivFirme").length < 1 || !this.get("nazivFirme").match(/^[0-9a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-_\.]{2,30}$/i)){
+			if (this.get("nazivFirme") == null || this.get("nazivFirme").replace(/\s/g,"").length < 1 || !this.get("nazivFirme").match(/^[ 0-9a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-_\.]{2,30}$/i)){
 				ispravno = false;
 				_firmaError = true;
 			}
 		}
 
-		if (this.get("ime") == null || this.get("ime").length > 15 || this.get("ime").length < 1 || !this.get("ime").match(/^[a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i)){
+		if (this.get("ime") == null || this.get("ime").length > 15 || this.get("ime").replace(/\s/g,"").length < 1 || !this.get("ime").match(/^[ a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i)){
 			ispravno = false;
 			_imeError = true;
 		}
 
-		if (this.get("prezime") == null || this.get("prezime").length > 30 || this.get("prezime").length < 1 || !this.get("prezime").match(/^[a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i)){
+		if (this.get("prezime") == null || this.get("prezime").length > 30 || this.get("prezime").replace(/\s/g,"").length < 1 || !this.get("prezime").match(/^[ a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i)){
 			ispravno = false;
 			_prezimeError = true;
 		}
