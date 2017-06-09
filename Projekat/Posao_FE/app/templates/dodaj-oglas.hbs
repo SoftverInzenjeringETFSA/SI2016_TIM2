@@ -65,7 +65,7 @@
               <label for="inputNaziv1">Naziv oglasa:</label><br>
 
               {{#if nazivError}}
-                <span class="greskaUnosa">Trebate unijeti naziv oglasa!</span>
+                <span class="greskaUnosa">Naziv se može sastojati samo od slova, brojeva i znakova . _ -!</span>
               {{/if}}
 
               {{input type="text" class="form-control" id="inputNaziv1" placeholder="Naziv" value=naziv}}
@@ -87,7 +87,7 @@
               <label class="marginaWTF" for="inputDateTime">Trajanje oglasa:</label><br>
 
               {{#if datumError}}
-                <span class="greskaUnosa">Trebate unijeti datum!</span>
+                <span class="greskaUnosa">Trebate unijeti trajanje!</span>
               {{/if}}
 
               <div class='input-group datum date' id='inputDateTime'>

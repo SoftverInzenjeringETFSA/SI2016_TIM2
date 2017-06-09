@@ -35,24 +35,24 @@ export default Ember.Controller.extend({
 		let _ponovljeniPassError = false;
 		
 		//email unicode
-		let re1 = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+		let re1 = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 		if (this.get("tip") == null){
 			ispravno = false;
 			_tipError = true;
 		}
 		
-		if (this.get("username") == null || this.get("username").length < 1){
+		if (this.get("username") == null || this.get("username").length < 1 || !this.get("username").match(/^[0-9a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-_\.]{2,30}$/i)){
 			ispravno = false;
 			_usernameError = true;
-			this.set("imeVarijable", "Polje mora sadržavati više od 0 katraktera!");
+			this.set("imeVarijable", "Korisničko ime se može sastojati samo od slova, brojeva i znakova . _ -!");
 		}
 		else{
 			this.set("imeVarijable", "");
 		}
 
 
-		if (this.get("password") == null || this.get("password").length < 6){
+		if (this.get("password") == null || this.get("password").length < 6 || !this.get("password").match(/^[0-9a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\_\+\-\*\:\.\,\;\?\!\$\#]{6,30}$/gi)){
 			ispravno = false;
 			_passwordError = true;
 		}
@@ -74,7 +74,7 @@ export default Ember.Controller.extend({
 
 		if (!_tipError && this.get("tip") == "Nezaposleni")
 		{
-			if (this.get("cv") == null || this.get("cv").length < 50 ){
+			if (this.get("cv") == null || this.get("cv").length < 50 || !this.get("cv").match(/^[0-9a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\ \_\+\-\*\:\.\,\;\?\!\$\#\(\)\[\]\{\}\=\@]{1,500}$/im)){
 				ispravno = false;
 				_cvError = true;
 			}
@@ -88,18 +88,18 @@ export default Ember.Controller.extend({
             }
 
 
-			if (this.get("nazivFirme") == null || this.get("nazivFirme").length < 1 /*|| !re2.test(this.get("nazivFirme"))*/){
+			if (this.get("nazivFirme") == null || this.get("nazivFirme").length < 1 || !this.get("nazivFirme").match(/^[0-9a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-_\.]{2,30}$/i)){
 				ispravno = false;
 				_firmaError = true;
 			}
 		}
 
-		if (this.get("ime") == null || this.get("ime").length > 15 || this.get("ime").length < 1 /*|| !re3.test(this.get("ime"))*/){
+		if (this.get("ime") == null || this.get("ime").length > 15 || this.get("ime").length < 1 || !this.get("ime").match(/^[a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i)){
 			ispravno = false;
 			_imeError = true;
 		}
 
-		if (this.get("prezime") == null || this.get("prezime").length > 30 || this.get("prezime").length < 1 /*|| !re3.test(this.get("prezime"))*/){
+		if (this.get("prezime") == null || this.get("prezime").length > 30 || this.get("prezime").length < 1 || !this.get("prezime").match(/^[a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i)){
 			ispravno = false;
 			_prezimeError = true;
 		}

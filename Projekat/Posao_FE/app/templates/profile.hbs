@@ -63,7 +63,7 @@
                     <div class="form-group pomjereniTextBox">
                       <label for="inputPassword3_profil">Lozinka:</label><br>
                       {{#if passwordError}}
-                        <span class="greskaUnosa">Password mora imati minimalno 6 karaktera!</span><br>
+                        <span class="greskaUnosa">Password mora imati minimalno 6 karaktera i to samo slova, brojeve i znakove +-_*:.,;?!$#!</span><br>
                       {{/if}}
                       {{input type="password" class="form-control" id="inputPassword3_profil" placeholder="Password" value=model.profil.password}}
                     </div>
@@ -98,7 +98,7 @@
                     <div class="form-group pomjereniTextBox">
                       <label for="inputIme1_profil">Ime:</label><br>
                       {{#if imeError}}
-                        <span class="greskaUnosa">Morate unijeti ime!</span><br>
+                        <span class="greskaUnosa">Ime se može sastojati samo od slova i znaka -!</span><br>
                       {{/if}}
                       {{input type="text" class="form-control" id="inputIme1_profil" placeholder="Ime" value=model.profil.nezaposleni.ime}}
                     </div>
@@ -107,7 +107,7 @@
                     <div class="form-group pomjereniTextBox">
                       <label for="inputPrezime1_profil">Prezime:</label><br>
                       {{#if prezimeError}}
-                        <span class="greskaUnosa">Morate unijeti prezime!</span><br>
+                        <span class="greskaUnosa">Prezime se može sastojati samo od slova i znaka -!</span><br>
                       {{/if}}
                       {{input type="text" class="form-control" id="inputPrezime1_profil" placeholder="Prezime" value=model.profil.nezaposleni.prezime}}
                     </div>
@@ -117,7 +117,7 @@
                     <div class="form-group pomjereniTextBox">
                       <label for="inputIme1_profil">Ime:</label><br>
                       {{#if imeError}}
-                        <span class="greskaUnosa">Morate unijeti ime!</span><br>
+                        <span class="greskaUnosa">Ime se može sastojati samo od slova i znaka -</span><br>
                       {{/if}}
                       {{input type="text" class="form-control" id="inputIme1_profilP" placeholder="Ime" value=model.profil.poslodavac.ime}}
                     </div>
@@ -126,7 +126,7 @@
                     <div class="form-group pomjereniTextBox">
                       <label for="inputPrezime1_profil">Prezime:</label><br>
                       {{#if prezimeError}}
-                        <span class="greskaUnosa">Morate unijeti prezime!</span><br>
+                        <span class="greskaUnosa">Prezime se može sastojati samo od slova i znaka -!</span><br>
                       {{/if}}
                       {{input type="text" class="form-control" id="inputPrezime1_profilP" placeholder="Prezime" value=model.profil.poslodavac.prezime}}
                     </div>
@@ -134,7 +134,7 @@
                     <div class="form-group pomjereniTextBox">
                       <label for="inputFirma1_profil">Firma:</label><br>
                       {{#if nazivFirmeError}}
-                        <span class="greskaUnosa">Morate unijeti firmu!</span><br>
+                        <span class="greskaUnosa">Ime firme se može sastojati samo od slova, brojeva i znakova . _ -!</span><br>
                       {{/if}}
                       {{input type="text" class="form-control" id="inputFirma1_profil" placeholder="Firma" value=model.profil.poslodavac.nazivFirme}}
                     </div>
@@ -144,7 +144,7 @@
                     <div class="form-group firma">
                       <label for="inputCV_profil">CV:</label><br>
                       {{#if cvError}}
-                        <span class="greskaUnosa">Morate unijeti CV!</span><br>
+                        <span class="greskaUnosa">Morate unijeti CV od 1 do 500 karaktera duzine!</span><br>
                       {{/if}}
                       {{textarea class="form-control" id="inputCV_profil" value=model.profil.nezaposleni.cv}}
                     </div>

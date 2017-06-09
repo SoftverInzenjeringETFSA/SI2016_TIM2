@@ -13,7 +13,7 @@
         <div class="form-group text-center">
             <label for="inputNaziv1">Naziv templatea:</label><br>
             {{#if noviNazivError}}
-            <span class="greskaUnosa">Morate unijeti naziv!</span>
+            <span class="greskaUnosa">Naziv se može sastojati samo od slova, brojeva i znakova . _ -!</span>
             {{/if}}
             {{input type="text" class="form-control" id="inputnaziv_template" placeholder="Naziv" value=model.template.naziv}}
          </div>
@@ -28,7 +28,7 @@
             <label for="inputNaziv1">Polje:</label><br>
             {{#if noviNError}}
             {{#if (eq indexGreske index)}}
-            <span class="greskaUnosa">Morate unijeti naziv!</span>
+            <span class="greskaUnosa">Naziv se može sastojati samo od slova, brojeva i znakova . _ -!</span>
             {{/if}}{{/if}}
             {{input type="text" class="form-control" value=polje.nazivPolja}} 
         </div>

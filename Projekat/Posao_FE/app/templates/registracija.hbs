@@ -22,7 +22,7 @@
           <div class="form-group pomjereniTextBox">
             <label for="inputPassword3">Lozinka:</label><br>
             {{#if passwordError}}
-            <span class="greskaUnosa">Password mora imati minimalno 6 karaktera!</span>
+            <span class="greskaUnosa">Password mora imati minimalno 6 karaktera i to samo slova, brojeve i znakove +-_*:.,;?!$#!</span>
             {{/if}}
             {{input type="password" class="form-control" id="inputPassword3" placeholder="Password" value=password}}
           </div>
@@ -54,7 +54,7 @@
           <div class="form-group pomjereniTextBox">
             <label for="inputIme1">Ime:</label><br>
             {{#if imeError}}
-            <span class="greskaUnosa">Ime mora biti uneseno!</span>
+            <span class="greskaUnosa">Ime se može sastojati samo od slova i znaka -!</span>
             {{/if}}
             {{input type="text" class="form-control" id="inputIme1" placeholder="Ime" value=ime}}
 
@@ -63,7 +63,7 @@
           <div class="form-group pomjereniTextBox">
             <label for="inputPrezime1">Prezime:</label><br>
             {{#if prezimeError}}
-            <span class="greskaUnosa">Prezime mora biti uneseno!</span>
+            <span class="greskaUnosa">Prezime se može sastojati samo od slova i znaka -!</span>
             {{/if}}
             {{input type="text" class="form-control" id="inputPrezime1" placeholder="Prezime" value=prezime}}
           </div>
@@ -71,7 +71,7 @@
           <div class="form-group firma">
             <label for="inputFirma1">Firma:</label><br>
             {{#if firmaError}}
-            <span class="greskaUnosa">Ime firme mora biti uneseno!</span>
+            <span class="greskaUnosa">Ime firme se može sastojati samo od slova, brojeva i znakova . _ -!</span>
             {{/if}}
             {{input type="text" class="form-control" id="inputFirma1" placeholder="Firma" value=nazivFirme disabled=(poslodavac-helper tip)}}
           </div>
@@ -80,7 +80,7 @@
           <div class="form-group pomjereniTextBox">
             <label for="inputCV">CV:</label><br>
             {{#if cvError}}
-            <span class="greskaUnosa">Morate unijeti CV duži od 50 karaktera!</span>
+            <span class="greskaUnosa">Morate unijeti CV!</span>
             {{/if}}
             {{textarea class="form-control" id="inputCV" disabled=(nezaposleni-helper tip) value=cv}}
           </div>

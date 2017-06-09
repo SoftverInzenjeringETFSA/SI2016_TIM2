@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
 
 
 
-        if (this.get('model.template.naziv') ==  null || this.get('model.template.naziv').replace(/\s/g,"") == "") {
+        if (this.get('model.template.naziv') ==  null || this.get('model.template.naziv').replace(/\s/g,"") == "" || this.get('model.template.naziv').length < 1 || !this.get('model.template.naziv').match(/^[a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i)) {
 
             _noviNazivError = true;
             uspjesno = false;
@@ -29,7 +29,7 @@ export default Ember.Controller.extend({
 
         for(let i=0; i<_polja.length; i++)
         {
-            if(_polja[i].nazivPolja.replace(/\s/g,"") == "")
+            if(_polja[i].nazivPolja.replace(/\s/g,"") == "" || this.get('model.template.naziv').length < 1 || !_polja[i].nazivPolja.match(/^[a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i))
             {
                 _noviNError = true;
                 uspjesno = false;

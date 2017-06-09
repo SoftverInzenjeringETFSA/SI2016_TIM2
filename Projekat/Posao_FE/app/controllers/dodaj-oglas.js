@@ -57,12 +57,12 @@ export default Ember.Controller.extend({
             _datumError = true;
         }
 
-        if (this.get("naziv") == ""){
+        if (this.get("naziv") == "" || !this.get("naziv").match(/^[a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\-]{2,30}$/i)){
             ispravno = false;
             _nazivError = true;
         }
 
-        if (this.get("opis") == ""){
+        if (this.get("opis") == "" || !this.get("opis").match(/^[0-9a-z\u0106\u0107\u010C\u010D\u0110\u0111\u0160\u0161\u017D-\u017F\u212A\ \_\+\-\*\:\.\,\;\?\!\$\#\(\)\[\]\{\}\=\@]{1,500}$/im)){
             ispravno = false;
             _opisError = true;
         }
