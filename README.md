@@ -1,5 +1,6 @@
 # SI2016_TIM2
 
+### Našu aplikaciju možete pregledati na: <a href="https://posao-ba.herokuapp.com/">ETF Posao.ba</a>
 
 ## Konfiguracija i pokretanje
 
