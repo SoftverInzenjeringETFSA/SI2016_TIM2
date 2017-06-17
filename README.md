@@ -1,6 +1,7 @@
 # SI2016_TIM2
 
 ### Našu aplikaciju možete pregledati na: <a href="https://posao-ba.herokuapp.com/">ETF Posao.ba</a>
+> <strong>Napomena:</strong> Zbog nedostatka aktivnosti na stranici, moguće je da dođe do zaustavljanja servera te je potrebno neko vrijeme da se ponovno pokrenu. Ukoliko se oglasi ne prikažu odmah po pristupanju aplikaciji, molimo da sačekate cca. 30 sekundi, te pokušate osvježiti stranicu.
 
 ## Konfiguracija i pokretanje
 
